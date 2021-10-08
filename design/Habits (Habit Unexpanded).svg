@@ -123,6 +123,30 @@
       <feComposite operator="in" in2="blur-15"/>
       <feComposite in="SourceGraphic"/>
     </filter>
+    <filter id="Shadow_3" x="282" y="508" width="68" height="68" filterUnits="userSpaceOnUse">
+      <feOffset dy="2" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="2" result="blur-16"/>
+      <feFlood flood-opacity="0.2"/>
+      <feComposite operator="in" in2="blur-16"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Shadow_2" x="273" y="498" width="86" height="86" filterUnits="userSpaceOnUse">
+      <feOffset dy="1" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="5" result="blur-17"/>
+      <feFlood flood-opacity="0.122"/>
+      <feComposite operator="in" in2="blur-17"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Shadow_1" x="280.5" y="508.5" width="71" height="71" filterUnits="userSpaceOnUse">
+      <feOffset dy="4" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="2.5" result="blur-18"/>
+      <feFlood flood-opacity="0.141"/>
+      <feComposite operator="in" in2="blur-18"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <clipPath id="clip-path-9">
+      <circle id="FAB_Mask" data-name="FAB Mask" cx="28" cy="28" r="28" fill="#fff"/>
+    </clipPath>
     <clipPath id="clip-Habits_Habit_Unexpanded_">
       <rect width="360" height="640"/>
     </clipPath>
@@ -277,6 +301,31 @@
           <path id="Path_18-3" data-name="Path 18" d="M0,0H24V24H0Z" fill="none"/>
           <path id="Path_19-3" data-name="Path 19" d="M12,8a2,2,0,1,0-2-2A2.006,2.006,0,0,0,12,8Zm0,2a2,2,0,1,0,2,2A2.006,2.006,0,0,0,12,10Zm0,6a2,2,0,1,0,2,2A2.006,2.006,0,0,0,12,16Z"/>
         </g>
+      </g>
+    </g>
+    <g id="Light_FAB_1._Standard" data-name="Light 🌕/ FAB / 1. Standard" transform="translate(288 512)">
+      <g id="Circle_Elevation_Dark_04dp" data-name="Circle Elevation/Dark 🌑/04dp" transform="translate(-109)">
+        <g transform="matrix(1, 0, 0, 1, -179, -512)" filter="url(#Shadow_3)">
+          <rect id="Shadow_3-2" data-name="Shadow 3" width="56" height="56" rx="28" transform="translate(288 512)" fill="#fff"/>
+        </g>
+        <g transform="matrix(1, 0, 0, 1, -179, -512)" filter="url(#Shadow_2)">
+          <rect id="Shadow_2-2" data-name="Shadow 2" width="56" height="56" rx="28" transform="translate(288 512)" fill="#fff"/>
+        </g>
+        <g transform="matrix(1, 0, 0, 1, -179, -512)" filter="url(#Shadow_1)">
+          <rect id="Shadow_1-2" data-name="Shadow 1" width="56" height="56" rx="28" transform="translate(288 512)" fill="#fff"/>
+        </g>
+      </g>
+      <g id="Fill" clip-path="url(#clip-path-9)">
+        <rect id="_FAB_Color" data-name="🎨 FAB Color" width="56" height="56" fill="#6200ee"/>
+      </g>
+      <g id="State" clip-path="url(#clip-path-9)">
+        <g id="States_Light_Primary_Container" data-name="States/Light 🌕/Primary Container">
+          <rect id="States_Light_Primary_Container_100_Overlay" data-name="States/Light 🌕/Primary Container 100%/Overlay" fill="rgba(255,255,255,0)"/>
+        </g>
+      </g>
+      <g id="icon_content_add_24px" data-name="icon/content/add_24px" transform="translate(16 16)">
+        <rect id="Boundary-2" data-name="Boundary" width="24" height="24" fill="none"/>
+        <path id="_Color" data-name=" ↳Color" d="M14,8H8v6H6V8H0V6H6V0H8V6h6Z" transform="translate(5 5)" fill="#fff"/>
       </g>
     </g>
   </g>
