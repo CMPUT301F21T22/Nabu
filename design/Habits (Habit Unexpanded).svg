@@ -57,21 +57,21 @@
     <clipPath id="clip-path-5">
       <rect id="Mask" width="360" height="56" fill="#6200ee"/>
     </clipPath>
-    <filter id="Rectangle-7" x="2" y="84" width="356" height="94" filterUnits="userSpaceOnUse">
+    <filter id="Rectangle-7" x="2" y="84" width="356" height="111" filterUnits="userSpaceOnUse">
       <feOffset dy="2" input="SourceAlpha"/>
       <feGaussianBlur stdDeviation="2" result="blur-7"/>
       <feFlood flood-opacity="0.2"/>
       <feComposite operator="in" in2="blur-7"/>
       <feComposite in="SourceGraphic"/>
     </filter>
-    <filter id="Rectangle-8" x="-7" y="74" width="374" height="112" filterUnits="userSpaceOnUse">
+    <filter id="Rectangle-8" x="-7" y="74" width="374" height="129" filterUnits="userSpaceOnUse">
       <feOffset dy="1" input="SourceAlpha"/>
       <feGaussianBlur stdDeviation="5" result="blur-8"/>
       <feFlood flood-opacity="0.122"/>
       <feComposite operator="in" in2="blur-8"/>
       <feComposite in="SourceGraphic"/>
     </filter>
-    <filter id="Rectangle-9" x="0.5" y="84.5" width="359" height="97" filterUnits="userSpaceOnUse">
+    <filter id="Rectangle-9" x="0.5" y="84.5" width="359" height="114" filterUnits="userSpaceOnUse">
       <feOffset dy="4" input="SourceAlpha"/>
       <feGaussianBlur stdDeviation="2.5" result="blur-9"/>
       <feFlood flood-opacity="0.141"/>
@@ -79,69 +79,48 @@
       <feComposite in="SourceGraphic"/>
     </filter>
     <clipPath id="clip-path-6">
-      <rect id="Rectangle_18" data-name="Rectangle 18" width="24" height="24" transform="translate(-77 813)" fill="#fff" stroke="#707070" stroke-width="1"/>
+      <rect id="Rectangle_20" data-name="Rectangle 20" width="24" height="24" transform="translate(304 16)" fill="#fff" stroke="#707070" stroke-width="1"/>
     </clipPath>
-    <filter id="Rectangle-10" x="2" y="174" width="356" height="94" filterUnits="userSpaceOnUse">
+    <filter id="Rectangle-10" x="2" y="191" width="356" height="111" filterUnits="userSpaceOnUse">
       <feOffset dy="2" input="SourceAlpha"/>
       <feGaussianBlur stdDeviation="2" result="blur-10"/>
       <feFlood flood-opacity="0.2"/>
       <feComposite operator="in" in2="blur-10"/>
       <feComposite in="SourceGraphic"/>
     </filter>
-    <filter id="Rectangle-11" x="-7" y="164" width="374" height="112" filterUnits="userSpaceOnUse">
+    <filter id="Rectangle-11" x="-7" y="181" width="374" height="129" filterUnits="userSpaceOnUse">
       <feOffset dy="1" input="SourceAlpha"/>
       <feGaussianBlur stdDeviation="5" result="blur-11"/>
       <feFlood flood-opacity="0.122"/>
       <feComposite operator="in" in2="blur-11"/>
       <feComposite in="SourceGraphic"/>
     </filter>
-    <filter id="Rectangle-12" x="0.5" y="174.5" width="359" height="97" filterUnits="userSpaceOnUse">
+    <filter id="Rectangle-12" x="0.5" y="191.5" width="359" height="114" filterUnits="userSpaceOnUse">
       <feOffset dy="4" input="SourceAlpha"/>
       <feGaussianBlur stdDeviation="2.5" result="blur-12"/>
       <feFlood flood-opacity="0.141"/>
       <feComposite operator="in" in2="blur-12"/>
       <feComposite in="SourceGraphic"/>
     </filter>
-    <filter id="Rectangle-13" x="2" y="264" width="356" height="94" filterUnits="userSpaceOnUse">
+    <filter id="Rectangle-13" x="2" y="298" width="356" height="111" filterUnits="userSpaceOnUse">
       <feOffset dy="2" input="SourceAlpha"/>
       <feGaussianBlur stdDeviation="2" result="blur-13"/>
       <feFlood flood-opacity="0.2"/>
       <feComposite operator="in" in2="blur-13"/>
       <feComposite in="SourceGraphic"/>
     </filter>
-    <filter id="Rectangle-14" x="-7" y="254" width="374" height="112" filterUnits="userSpaceOnUse">
+    <filter id="Rectangle-14" x="-7" y="288" width="374" height="129" filterUnits="userSpaceOnUse">
       <feOffset dy="1" input="SourceAlpha"/>
       <feGaussianBlur stdDeviation="5" result="blur-14"/>
       <feFlood flood-opacity="0.122"/>
       <feComposite operator="in" in2="blur-14"/>
       <feComposite in="SourceGraphic"/>
     </filter>
-    <filter id="Rectangle-15" x="0.5" y="264.5" width="359" height="97" filterUnits="userSpaceOnUse">
+    <filter id="Rectangle-15" x="0.5" y="298.5" width="359" height="114" filterUnits="userSpaceOnUse">
       <feOffset dy="4" input="SourceAlpha"/>
       <feGaussianBlur stdDeviation="2.5" result="blur-15"/>
       <feFlood flood-opacity="0.141"/>
       <feComposite operator="in" in2="blur-15"/>
-      <feComposite in="SourceGraphic"/>
-    </filter>
-    <filter id="Rectangle-16" x="2" y="354" width="356" height="94" filterUnits="userSpaceOnUse">
-      <feOffset dy="2" input="SourceAlpha"/>
-      <feGaussianBlur stdDeviation="2" result="blur-16"/>
-      <feFlood flood-opacity="0.2"/>
-      <feComposite operator="in" in2="blur-16"/>
-      <feComposite in="SourceGraphic"/>
-    </filter>
-    <filter id="Rectangle-17" x="-7" y="344" width="374" height="112" filterUnits="userSpaceOnUse">
-      <feOffset dy="1" input="SourceAlpha"/>
-      <feGaussianBlur stdDeviation="5" result="blur-17"/>
-      <feFlood flood-opacity="0.122"/>
-      <feComposite operator="in" in2="blur-17"/>
-      <feComposite in="SourceGraphic"/>
-    </filter>
-    <filter id="Rectangle-18" x="0.5" y="354.5" width="359" height="97" filterUnits="userSpaceOnUse">
-      <feOffset dy="4" input="SourceAlpha"/>
-      <feGaussianBlur stdDeviation="2.5" result="blur-18"/>
-      <feFlood flood-opacity="0.141"/>
-      <feComposite operator="in" in2="blur-18"/>
       <feComposite in="SourceGraphic"/>
     </filter>
     <clipPath id="clip-Habits_Habit_Unexpanded_">
@@ -151,7 +130,7 @@
   <g id="Habits_Habit_Unexpanded_" data-name="Habits (Habit Unexpanded)" clip-path="url(#clip-Habits_Habit_Unexpanded_)">
     <rect width="360" height="640" fill="#fff"/>
     <g id="ΩElements_System_bar_Primary" data-name="ΩElements/System bar/Primary">
-      <rect id="Rectangle-19" data-name="Rectangle" width="360" height="24" fill="#5600e8"/>
+      <rect id="Rectangle-16" data-name="Rectangle" width="360" height="24" fill="#5600e8"/>
       <path id="Mask-2" data-name="Mask" d="M34,0H46L40,10ZM18,5a5,5,0,1,1,5,5A5,5,0,0,1,18,5ZM0,10V0H10V10Z" transform="translate(306 7)" fill="rgba(255,255,255,0.38)"/>
     </g>
     <g id="Component_2_4" data-name="Component 2 – 4" transform="translate(0 584)">
@@ -159,20 +138,20 @@
         <g id="Light_Elevation_00dp" data-name="Light 🌕/Elevation/00dp">
           <g id="Shadow">
             <g transform="matrix(1, 0, 0, 1, 0, -584)" filter="url(#Rectangle)" style="mix-blend-mode: multiply;isolation: isolate">
-              <rect id="Rectangle-20" data-name="Rectangle" width="360" height="56" transform="translate(0 584)" fill="#fff"/>
+              <rect id="Rectangle-17" data-name="Rectangle" width="360" height="56" transform="translate(0 584)" fill="#fff"/>
             </g>
             <g transform="matrix(1, 0, 0, 1, 0, -584)" filter="url(#Rectangle-2)" style="mix-blend-mode: multiply;isolation: isolate">
-              <rect id="Rectangle-21" data-name="Rectangle" width="360" height="56" transform="translate(0 584)" fill="#fff"/>
+              <rect id="Rectangle-18" data-name="Rectangle" width="360" height="56" transform="translate(0 584)" fill="#fff"/>
             </g>
             <g transform="matrix(1, 0, 0, 1, 0, -584)" filter="url(#Rectangle-3)" style="mix-blend-mode: multiply;isolation: isolate">
-              <rect id="Rectangle-22" data-name="Rectangle" width="360" height="56" transform="translate(0 584)" fill="#fff"/>
+              <rect id="Rectangle-19" data-name="Rectangle" width="360" height="56" transform="translate(0 584)" fill="#fff"/>
             </g>
           </g>
         </g>
         <rect id="Primary" width="360" height="56" fill="#fff"/>
       </g>
       <g id="Group_12" data-name="Group 12" opacity="0.6">
-        <rect id="Rectangle-23" data-name="Rectangle" width="90" height="56" fill="#fff" style="mix-blend-mode: multiply;isolation: isolate"/>
+        <rect id="Rectangle-20" data-name="Rectangle" width="90" height="56" fill="#fff" style="mix-blend-mode: multiply;isolation: isolate"/>
         <text id="_Caption" data-name="✏️ Caption" transform="translate(45 45)" fill="rgba(0,0,0,0.87)" font-size="12" font-family="Roboto-Regular, Roboto" letter-spacing="0.033em"><tspan x="-20.556" y="0">My Day</tspan></text>
         <g id="Mask_Group_5" data-name="Mask Group 5" clip-path="url(#clip-path)">
           <g id="light_mode_black_24dp" transform="translate(33 8)">
@@ -182,7 +161,7 @@
         </g>
       </g>
       <g id="Group_13" data-name="Group 13" opacity="0.6">
-        <rect id="Rectangle-24" data-name="Rectangle" width="90" height="56" transform="translate(90)" fill="#fff" style="mix-blend-mode: multiply;isolation: isolate"/>
+        <rect id="Rectangle-21" data-name="Rectangle" width="90" height="56" transform="translate(90)" fill="#fff" style="mix-blend-mode: multiply;isolation: isolate"/>
         <text id="_Caption-2" data-name="✏️ Caption" transform="translate(135 45)" fill="rgba(0,0,0,0.87)" font-size="12" font-family="Roboto-Regular, Roboto" letter-spacing="0.033em"><tspan x="-20.893" y="0">Friends</tspan></text>
         <g id="Mask_Group_6" data-name="Mask Group 6" clip-path="url(#clip-path-2)">
           <g id="people_black_24dp" transform="translate(123 8)">
@@ -192,7 +171,7 @@
         </g>
       </g>
       <g id="Group_14" data-name="Group 14">
-        <rect id="Rectangle-25" data-name="Rectangle" width="90" height="56" transform="translate(180)" fill="#fff" style="mix-blend-mode: multiply;isolation: isolate"/>
+        <rect id="Rectangle-22" data-name="Rectangle" width="90" height="56" transform="translate(180)" fill="#fff" style="mix-blend-mode: multiply;isolation: isolate"/>
         <text id="_Caption-3" data-name="✏️ Caption" transform="translate(225 45)" fill="rgba(0,0,0,0.87)" font-size="12" font-family="Roboto-Regular, Roboto" letter-spacing="0.033em"><tspan x="-18.417" y="0">Habits</tspan></text>
         <g id="Mask_Group_8" data-name="Mask Group 8" clip-path="url(#clip-path-3)">
           <g id="widgets_black_24dp" transform="translate(213 8)">
@@ -202,7 +181,7 @@
         </g>
       </g>
       <g id="Group_15" data-name="Group 15" opacity="0.6">
-        <rect id="Rectangle-26" data-name="Rectangle" width="90" height="56" transform="translate(270)" fill="#fff" style="mix-blend-mode: multiply;isolation: isolate"/>
+        <rect id="Rectangle-23" data-name="Rectangle" width="90" height="56" transform="translate(270)" fill="#fff" style="mix-blend-mode: multiply;isolation: isolate"/>
         <text id="_Caption-4" data-name="✏️ Caption" transform="translate(315 45)" fill="rgba(0,0,0,0.87)" font-size="12" font-family="Roboto-Regular, Roboto" letter-spacing="0.033em"><tspan x="-23.285" y="0">Settings</tspan></text>
         <g id="Mask_Group_7" data-name="Mask Group 7" clip-path="url(#clip-path-4)">
           <g id="settings_black_24dp" transform="translate(303 8)">
@@ -216,13 +195,13 @@
       <g id="Light_Elevation_00dp-2" data-name="Light 🌕/Elevation/00dp">
         <g id="Shadow-2" data-name="Shadow" style="mix-blend-mode: multiply;isolation: isolate">
           <g transform="matrix(1, 0, 0, 1, 0, -24)" filter="url(#Rectangle-4)">
-            <rect id="Rectangle-27" data-name="Rectangle" width="360" height="56" transform="translate(0 24)" fill="#fff"/>
+            <rect id="Rectangle-24" data-name="Rectangle" width="360" height="56" transform="translate(0 24)" fill="#fff"/>
           </g>
           <g transform="matrix(1, 0, 0, 1, 0, -24)" filter="url(#Rectangle-5)">
-            <rect id="Rectangle-28" data-name="Rectangle" width="360" height="56" transform="translate(0 24)" fill="#fff"/>
+            <rect id="Rectangle-25" data-name="Rectangle" width="360" height="56" transform="translate(0 24)" fill="#fff"/>
           </g>
           <g transform="matrix(1, 0, 0, 1, 0, -24)" filter="url(#Rectangle-6)">
-            <rect id="Rectangle-29" data-name="Rectangle" width="360" height="56" transform="translate(0 24)" fill="#fff"/>
+            <rect id="Rectangle-26" data-name="Rectangle" width="360" height="56" transform="translate(0 24)" fill="#fff"/>
           </g>
         </g>
       </g>
@@ -232,90 +211,71 @@
       </g>
     </g>
     <g id="Component_10_2" data-name="Component 10 – 2" transform="translate(8 88)">
-      <g id="Shadow-3" data-name="Shadow" style="isolation: isolate">
+      <g id="Shadow-3" data-name="Shadow" opacity="0.8" style="isolation: isolate">
         <g transform="matrix(1, 0, 0, 1, -8, -88)" filter="url(#Rectangle-7)">
-          <rect id="Rectangle-30" data-name="Rectangle" width="344" height="82" rx="5" transform="translate(8 88)" fill="#fff"/>
+          <rect id="Rectangle-27" data-name="Rectangle" width="344" height="99" rx="5" transform="translate(8 88)" fill="#fff"/>
         </g>
         <g transform="matrix(1, 0, 0, 1, -8, -88)" filter="url(#Rectangle-8)">
-          <rect id="Rectangle-31" data-name="Rectangle" width="344" height="82" rx="5" transform="translate(8 88)" fill="#fff"/>
+          <rect id="Rectangle-28" data-name="Rectangle" width="344" height="99" rx="5" transform="translate(8 88)" fill="#fff"/>
         </g>
         <g transform="matrix(1, 0, 0, 1, -8, -88)" filter="url(#Rectangle-9)">
-          <rect id="Rectangle-32" data-name="Rectangle" width="344" height="82" rx="5" transform="translate(8 88)" fill="#fff"/>
+          <rect id="Rectangle-29" data-name="Rectangle" width="344" height="99" rx="5" transform="translate(8 88)" fill="#fff"/>
         </g>
       </g>
-      <text id="_Page_Title-2" data-name="✏️ Page Title" transform="translate(16 27)" font-size="12" font-family="Roboto-Bold, Roboto" font-weight="700" letter-spacing="0.008em"><tspan x="0" y="0">Go to Work</tspan></text>
-      <text id="_Page_Title-3" data-name="✏️ Page Title" transform="translate(16 41)" font-size="12" font-family="Roboto-Regular, Roboto" letter-spacing="0.008em"><tspan x="0" y="0">Money.</tspan></text>
-      <text id="_Page_Title-4" data-name="✏️ Page Title" transform="translate(16 63)" font-size="12" font-family="Roboto-Regular, Roboto" letter-spacing="0.008em" opacity="0.5"><tspan x="0" y="0">Started September 30, 2020.</tspan></text>
-      <g id="Mask_Group_9" data-name="Mask Group 9" transform="translate(381 -784)" clip-path="url(#clip-path-6)">
-        <g id="expand_more_black_24dp" transform="translate(-77 813)">
-          <path id="Path_14" data-name="Path 14" d="M24,24H0V0H24Z" fill="none" opacity="0.87"/>
-          <path id="Path_15" data-name="Path 15" d="M16.59,8.59,12,13.17,7.41,8.59,6,10l6,6,6-6Z"/>
-        </g>
-      </g>
-    </g>
-    <g id="Component_10_3" data-name="Component 10 – 3" transform="translate(8 178)">
-      <g id="Shadow-4" data-name="Shadow" style="isolation: isolate">
-        <g transform="matrix(1, 0, 0, 1, -8, -178)" filter="url(#Rectangle-10)">
-          <rect id="Rectangle-33" data-name="Rectangle" width="344" height="82" rx="5" transform="translate(8 178)" fill="#fff"/>
-        </g>
-        <g transform="matrix(1, 0, 0, 1, -8, -178)" filter="url(#Rectangle-11)">
-          <rect id="Rectangle-34" data-name="Rectangle" width="344" height="82" rx="5" transform="translate(8 178)" fill="#fff"/>
-        </g>
-        <g transform="matrix(1, 0, 0, 1, -8, -178)" filter="url(#Rectangle-12)">
-          <rect id="Rectangle-35" data-name="Rectangle" width="344" height="82" rx="5" transform="translate(8 178)" fill="#fff"/>
-        </g>
-      </g>
-      <text id="_Page_Title-5" data-name="✏️ Page Title" transform="translate(16 27)" font-size="12" font-family="Roboto-Bold, Roboto" font-weight="700" letter-spacing="0.008em"><tspan x="0" y="0">Walk Dog</tspan></text>
-      <text id="_Page_Title-6" data-name="✏️ Page Title" transform="translate(16 41)" font-size="12" font-family="Roboto-Regular, Roboto" letter-spacing="0.008em"><tspan x="0" y="0">He needs it.</tspan></text>
-      <text id="_Page_Title-7" data-name="✏️ Page Title" transform="translate(16 63)" font-size="12" font-family="Roboto-Regular, Roboto" letter-spacing="0.008em" opacity="0.5"><tspan x="0" y="0">Started February 31, 2021.</tspan></text>
-      <g id="Mask_Group_9-2" data-name="Mask Group 9" transform="translate(381 -784)" clip-path="url(#clip-path-6)">
-        <g id="expand_more_black_24dp-2" data-name="expand_more_black_24dp" transform="translate(-77 813)">
-          <path id="Path_14-2" data-name="Path 14" d="M24,24H0V0H24Z" fill="none" opacity="0.87"/>
-          <path id="Path_15-2" data-name="Path 15" d="M16.59,8.59,12,13.17,7.41,8.59,6,10l6,6,6-6Z"/>
+      <text id="_Page_Title-2" data-name="✏️ Page Title" transform="translate(16 29)" font-size="14" font-family="Roboto-Medium, Roboto" font-weight="500" letter-spacing="0.007em"><tspan x="0" y="0">Go to Work</tspan></text>
+      <text id="_Page_Title-3" data-name="✏️ Page Title" transform="translate(16 46)" font-size="14" font-family="Roboto-Regular, Roboto" letter-spacing="0.007em" opacity="0.6"><tspan x="0" y="0">Need money to live.</tspan></text>
+      <text id="_Page_Title-4" data-name="✏️ Page Title" transform="translate(16 79)" font-size="14" font-family="Roboto-Regular, Roboto" letter-spacing="0.007em" opacity="0.6"><tspan x="0" y="0">Sept. 30, 2021</tspan></text>
+      <text id="_Page_Title-5" data-name="✏️ Page Title" transform="translate(328 79)" font-size="14" font-family="Roboto-Regular, Roboto" letter-spacing="0.007em" opacity="0.6"><tspan x="-161.237" y="0">Mon, Tues, Wed, Thu &amp; Fri</tspan></text>
+      <g id="Mask_Group_11" data-name="Mask Group 11" opacity="0.6" clip-path="url(#clip-path-6)">
+        <g id="more_vert_black_24dp" transform="translate(304 16)">
+          <path id="Path_18" data-name="Path 18" d="M0,0H24V24H0Z" fill="none"/>
+          <path id="Path_19" data-name="Path 19" d="M12,8a2,2,0,1,0-2-2A2.006,2.006,0,0,0,12,8Zm0,2a2,2,0,1,0,2,2A2.006,2.006,0,0,0,12,10Zm0,6a2,2,0,1,0,2,2A2.006,2.006,0,0,0,12,16Z"/>
         </g>
       </g>
     </g>
-    <g id="Component_10_4" data-name="Component 10 – 4" transform="translate(8 268)">
-      <g id="Shadow-5" data-name="Shadow" style="isolation: isolate">
-        <g transform="matrix(1, 0, 0, 1, -8, -268)" filter="url(#Rectangle-13)">
-          <rect id="Rectangle-36" data-name="Rectangle" width="344" height="82" rx="5" transform="translate(8 268)" fill="#fff"/>
+    <g id="Component_10_3" data-name="Component 10 – 3" transform="translate(8 195)">
+      <g id="Shadow-4" data-name="Shadow" opacity="0.8" style="isolation: isolate">
+        <g transform="matrix(1, 0, 0, 1, -8, -195)" filter="url(#Rectangle-10)">
+          <rect id="Rectangle-30" data-name="Rectangle" width="344" height="99" rx="5" transform="translate(8 195)" fill="#fff"/>
         </g>
-        <g transform="matrix(1, 0, 0, 1, -8, -268)" filter="url(#Rectangle-14)">
-          <rect id="Rectangle-37" data-name="Rectangle" width="344" height="82" rx="5" transform="translate(8 268)" fill="#fff"/>
+        <g transform="matrix(1, 0, 0, 1, -8, -195)" filter="url(#Rectangle-11)">
+          <rect id="Rectangle-31" data-name="Rectangle" width="344" height="99" rx="5" transform="translate(8 195)" fill="#fff"/>
         </g>
-        <g transform="matrix(1, 0, 0, 1, -8, -268)" filter="url(#Rectangle-15)">
-          <rect id="Rectangle-38" data-name="Rectangle" width="344" height="82" rx="5" transform="translate(8 268)" fill="#fff"/>
+        <g transform="matrix(1, 0, 0, 1, -8, -195)" filter="url(#Rectangle-12)">
+          <rect id="Rectangle-32" data-name="Rectangle" width="344" height="99" rx="5" transform="translate(8 195)" fill="#fff"/>
         </g>
       </g>
-      <text id="_Page_Title-8" data-name="✏️ Page Title" transform="translate(16 27)" font-size="12" font-family="Roboto-Bold, Roboto" font-weight="700" letter-spacing="0.008em"><tspan x="0" y="0">Eat Breakfast</tspan></text>
-      <text id="_Page_Title-9" data-name="✏️ Page Title" transform="translate(16 41)" font-size="12" font-family="Roboto-Regular, Roboto" letter-spacing="0.008em"><tspan x="0" y="0">Gotta get those calories.</tspan></text>
-      <text id="_Page_Title-10" data-name="✏️ Page Title" transform="translate(16 63)" font-size="12" font-family="Roboto-Regular, Roboto" letter-spacing="0.008em" opacity="0.5"><tspan x="0" y="0">Started August 30, 2021.</tspan></text>
-      <g id="Mask_Group_9-3" data-name="Mask Group 9" transform="translate(381 -784)" clip-path="url(#clip-path-6)">
-        <g id="expand_more_black_24dp-3" data-name="expand_more_black_24dp" transform="translate(-77 813)">
-          <path id="Path_14-3" data-name="Path 14" d="M24,24H0V0H24Z" fill="none" opacity="0.87"/>
-          <path id="Path_15-3" data-name="Path 15" d="M16.59,8.59,12,13.17,7.41,8.59,6,10l6,6,6-6Z"/>
+      <text id="_Page_Title-6" data-name="✏️ Page Title" transform="translate(16 29)" font-size="14" font-family="Roboto-Medium, Roboto" font-weight="500" letter-spacing="0.007em"><tspan x="0" y="0">Walk Dog</tspan></text>
+      <text id="_Page_Title-7" data-name="✏️ Page Title" transform="translate(16 46)" font-size="14" font-family="Roboto-Regular, Roboto" letter-spacing="0.007em" opacity="0.6"><tspan x="0" y="0">He needs it.</tspan></text>
+      <text id="_Page_Title-8" data-name="✏️ Page Title" transform="translate(16 79)" font-size="14" font-family="Roboto-Regular, Roboto" letter-spacing="0.007em" opacity="0.6"><tspan x="0" y="0">Sept. 30, 2021</tspan></text>
+      <text id="_Page_Title-9" data-name="✏️ Page Title" transform="translate(328 79)" font-size="14" font-family="Roboto-Regular, Roboto" letter-spacing="0.007em" opacity="0.6"><tspan x="-127.865" y="0">Tues, Thu, Sat &amp; Sun</tspan></text>
+      <g id="Mask_Group_11-2" data-name="Mask Group 11" opacity="0.6" clip-path="url(#clip-path-6)">
+        <g id="more_vert_black_24dp-2" data-name="more_vert_black_24dp" transform="translate(304 16)">
+          <path id="Path_18-2" data-name="Path 18" d="M0,0H24V24H0Z" fill="none"/>
+          <path id="Path_19-2" data-name="Path 19" d="M12,8a2,2,0,1,0-2-2A2.006,2.006,0,0,0,12,8Zm0,2a2,2,0,1,0,2,2A2.006,2.006,0,0,0,12,10Zm0,6a2,2,0,1,0,2,2A2.006,2.006,0,0,0,12,16Z"/>
         </g>
       </g>
     </g>
-    <g id="Component_10_5" data-name="Component 10 – 5" transform="translate(8 358)">
-      <g id="Shadow-6" data-name="Shadow" style="isolation: isolate">
-        <g transform="matrix(1, 0, 0, 1, -8, -358)" filter="url(#Rectangle-16)">
-          <rect id="Rectangle-39" data-name="Rectangle" width="344" height="82" rx="5" transform="translate(8 358)" fill="#fff"/>
+    <g id="Component_10_4" data-name="Component 10 – 4" transform="translate(8 302)">
+      <g id="Shadow-5" data-name="Shadow" opacity="0.8" style="isolation: isolate">
+        <g transform="matrix(1, 0, 0, 1, -8, -302)" filter="url(#Rectangle-13)">
+          <rect id="Rectangle-33" data-name="Rectangle" width="344" height="99" rx="5" transform="translate(8 302)" fill="#fff"/>
         </g>
-        <g transform="matrix(1, 0, 0, 1, -8, -358)" filter="url(#Rectangle-17)">
-          <rect id="Rectangle-40" data-name="Rectangle" width="344" height="82" rx="5" transform="translate(8 358)" fill="#fff"/>
+        <g transform="matrix(1, 0, 0, 1, -8, -302)" filter="url(#Rectangle-14)">
+          <rect id="Rectangle-34" data-name="Rectangle" width="344" height="99" rx="5" transform="translate(8 302)" fill="#fff"/>
         </g>
-        <g transform="matrix(1, 0, 0, 1, -8, -358)" filter="url(#Rectangle-18)">
-          <rect id="Rectangle-41" data-name="Rectangle" width="344" height="82" rx="5" transform="translate(8 358)" fill="#fff"/>
+        <g transform="matrix(1, 0, 0, 1, -8, -302)" filter="url(#Rectangle-15)">
+          <rect id="Rectangle-35" data-name="Rectangle" width="344" height="99" rx="5" transform="translate(8 302)" fill="#fff"/>
         </g>
       </g>
-      <text id="_Page_Title-11" data-name="✏️ Page Title" transform="translate(16 27)" font-size="12" font-family="Roboto-Bold, Roboto" font-weight="700" letter-spacing="0.008em"><tspan x="0" y="0">Exercise</tspan></text>
-      <text id="_Page_Title-12" data-name="✏️ Page Title" transform="translate(16 41)" font-size="12" font-family="Roboto-Regular, Roboto" letter-spacing="0.008em"><tspan x="0" y="0">Too many calories.</tspan></text>
-      <text id="_Page_Title-13" data-name="✏️ Page Title" transform="translate(16 63)" font-size="12" font-family="Roboto-Regular, Roboto" letter-spacing="0.008em" opacity="0.5"><tspan x="0" y="0">Starting November 5, 2021.</tspan></text>
-      <g id="Mask_Group_9-4" data-name="Mask Group 9" transform="translate(381 -784)" clip-path="url(#clip-path-6)">
-        <g id="expand_more_black_24dp-4" data-name="expand_more_black_24dp" transform="translate(-77 813)">
-          <path id="Path_14-4" data-name="Path 14" d="M24,24H0V0H24Z" fill="none" opacity="0.87"/>
-          <path id="Path_15-4" data-name="Path 15" d="M16.59,8.59,12,13.17,7.41,8.59,6,10l6,6,6-6Z"/>
+      <text id="_Page_Title-10" data-name="✏️ Page Title" transform="translate(16 29)" font-size="14" font-family="Roboto-Medium, Roboto" font-weight="500" letter-spacing="0.007em"><tspan x="0" y="0">Eat Mmmmmmmmmmuffins</tspan></text>
+      <text id="_Page_Title-11" data-name="✏️ Page Title" transform="translate(16 46)" font-size="14" font-family="Roboto-Regular, Roboto" letter-spacing="0.007em" opacity="0.6"><tspan x="0" y="0">They&apos;re lovely</tspan></text>
+      <text id="_Page_Title-12" data-name="✏️ Page Title" transform="translate(16 79)" font-size="14" font-family="Roboto-Regular, Roboto" letter-spacing="0.007em" opacity="0.6"><tspan x="0" y="0">Sept. 30, 2021</tspan></text>
+      <text id="_Page_Title-13" data-name="✏️ Page Title" transform="translate(328 79)" font-size="14" font-family="Roboto-Regular, Roboto" letter-spacing="0.007em" opacity="0.6"><tspan x="-60.996" y="0">Every Day</tspan></text>
+      <g id="Mask_Group_11-3" data-name="Mask Group 11" opacity="0.6" clip-path="url(#clip-path-6)">
+        <g id="more_vert_black_24dp-3" data-name="more_vert_black_24dp" transform="translate(304 16)">
+          <path id="Path_18-3" data-name="Path 18" d="M0,0H24V24H0Z" fill="none"/>
+          <path id="Path_19-3" data-name="Path 19" d="M12,8a2,2,0,1,0-2-2A2.006,2.006,0,0,0,12,8Zm0,2a2,2,0,1,0,2,2A2.006,2.006,0,0,0,12,10Zm0,6a2,2,0,1,0,2,2A2.006,2.006,0,0,0,12,16Z"/>
         </g>
       </g>
     </g>
