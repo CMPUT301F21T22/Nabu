@@ -1,20 +1,20 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="360" height="640" viewBox="0 0 360 640">
   <defs>
-    <filter id="Rectangle" x="-6" y="20" width="372" height="68" filterUnits="userSpaceOnUse">
+    <filter id="Rectangle" x="2" y="84" width="356" height="58" filterUnits="userSpaceOnUse">
       <feOffset dy="2" input="SourceAlpha"/>
       <feGaussianBlur stdDeviation="2" result="blur"/>
       <feFlood flood-opacity="0.2"/>
       <feComposite operator="in" in2="blur"/>
       <feComposite in="SourceGraphic"/>
     </filter>
-    <filter id="Rectangle-2" x="-15" y="10" width="390" height="86" filterUnits="userSpaceOnUse">
+    <filter id="Rectangle-2" x="-7" y="74" width="374" height="76" filterUnits="userSpaceOnUse">
       <feOffset dy="1" input="SourceAlpha"/>
       <feGaussianBlur stdDeviation="5" result="blur-2"/>
       <feFlood flood-opacity="0.122"/>
       <feComposite operator="in" in2="blur-2"/>
       <feComposite in="SourceGraphic"/>
     </filter>
-    <filter id="Rectangle-3" x="-7.5" y="20.5" width="375" height="71" filterUnits="userSpaceOnUse">
+    <filter id="Rectangle-3" x="0.5" y="84.5" width="359" height="61" filterUnits="userSpaceOnUse">
       <feOffset dy="4" input="SourceAlpha"/>
       <feGaussianBlur stdDeviation="2.5" result="blur-3"/>
       <feFlood flood-opacity="0.141"/>
@@ -22,109 +22,109 @@
       <feComposite in="SourceGraphic"/>
     </filter>
     <clipPath id="clip-path">
-      <rect id="Mask" width="360" height="56" fill="#6200ee"/>
+      <rect id="Rectangle_1" data-name="Rectangle 1" width="18" height="18" transform="translate(310 14)" fill="none"/>
     </clipPath>
-    <filter id="Rectangle-4" x="2" y="84" width="356" height="58" filterUnits="userSpaceOnUse">
+    <clipPath id="clip-path-2">
+      <rect id="Rectangle_9" data-name="Rectangle 9" width="18" height="18" fill="#fff"/>
+    </clipPath>
+    <filter id="Rectangle-4" x="2" y="192" width="356" height="58" filterUnits="userSpaceOnUse">
       <feOffset dy="2" input="SourceAlpha"/>
       <feGaussianBlur stdDeviation="2" result="blur-4"/>
       <feFlood flood-opacity="0.2"/>
       <feComposite operator="in" in2="blur-4"/>
       <feComposite in="SourceGraphic"/>
     </filter>
-    <filter id="Rectangle-5" x="-7" y="74" width="374" height="76" filterUnits="userSpaceOnUse">
+    <filter id="Rectangle-5" x="-7" y="182" width="374" height="76" filterUnits="userSpaceOnUse">
       <feOffset dy="1" input="SourceAlpha"/>
       <feGaussianBlur stdDeviation="5" result="blur-5"/>
       <feFlood flood-opacity="0.122"/>
       <feComposite operator="in" in2="blur-5"/>
       <feComposite in="SourceGraphic"/>
     </filter>
-    <filter id="Rectangle-6" x="0.5" y="84.5" width="359" height="61" filterUnits="userSpaceOnUse">
+    <filter id="Rectangle-6" x="0.5" y="192.5" width="359" height="61" filterUnits="userSpaceOnUse">
       <feOffset dy="4" input="SourceAlpha"/>
       <feGaussianBlur stdDeviation="2.5" result="blur-6"/>
       <feFlood flood-opacity="0.141"/>
       <feComposite operator="in" in2="blur-6"/>
       <feComposite in="SourceGraphic"/>
     </filter>
-    <clipPath id="clip-path-2">
-      <rect id="Rectangle_1" data-name="Rectangle 1" width="18" height="18" transform="translate(310 14)" fill="none"/>
-    </clipPath>
-    <clipPath id="clip-path-3">
-      <rect id="Rectangle_9" data-name="Rectangle 9" width="18" height="18" fill="#fff"/>
-    </clipPath>
-    <filter id="Rectangle-7" x="2" y="192" width="356" height="58" filterUnits="userSpaceOnUse">
+    <filter id="Rectangle-7" x="2" y="138" width="356" height="58" filterUnits="userSpaceOnUse">
       <feOffset dy="2" input="SourceAlpha"/>
       <feGaussianBlur stdDeviation="2" result="blur-7"/>
       <feFlood flood-opacity="0.2"/>
       <feComposite operator="in" in2="blur-7"/>
       <feComposite in="SourceGraphic"/>
     </filter>
-    <filter id="Rectangle-8" x="-7" y="182" width="374" height="76" filterUnits="userSpaceOnUse">
+    <filter id="Rectangle-8" x="-7" y="128" width="374" height="76" filterUnits="userSpaceOnUse">
       <feOffset dy="1" input="SourceAlpha"/>
       <feGaussianBlur stdDeviation="5" result="blur-8"/>
       <feFlood flood-opacity="0.122"/>
       <feComposite operator="in" in2="blur-8"/>
       <feComposite in="SourceGraphic"/>
     </filter>
-    <filter id="Rectangle-9" x="0.5" y="192.5" width="359" height="61" filterUnits="userSpaceOnUse">
+    <filter id="Rectangle-9" x="0.5" y="138.5" width="359" height="61" filterUnits="userSpaceOnUse">
       <feOffset dy="4" input="SourceAlpha"/>
       <feGaussianBlur stdDeviation="2.5" result="blur-9"/>
       <feFlood flood-opacity="0.141"/>
       <feComposite operator="in" in2="blur-9"/>
       <feComposite in="SourceGraphic"/>
     </filter>
-    <filter id="Rectangle-10" x="2" y="138" width="356" height="58" filterUnits="userSpaceOnUse">
-      <feOffset dy="2" input="SourceAlpha"/>
-      <feGaussianBlur stdDeviation="2" result="blur-10"/>
+    <filter id="Rectangle-10" x="-7.5" y="581.5" width="375" height="71" filterUnits="userSpaceOnUse">
+      <feOffset dy="5" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="2.5" result="blur-10"/>
       <feFlood flood-opacity="0.2"/>
       <feComposite operator="in" in2="blur-10"/>
       <feComposite in="SourceGraphic"/>
     </filter>
-    <filter id="Rectangle-11" x="-7" y="128" width="374" height="76" filterUnits="userSpaceOnUse">
-      <feOffset dy="1" input="SourceAlpha"/>
-      <feGaussianBlur stdDeviation="5" result="blur-11"/>
+    <filter id="Rectangle-11" x="-21" y="566" width="402" height="98" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="7" result="blur-11"/>
       <feFlood flood-opacity="0.122"/>
       <feComposite operator="in" in2="blur-11"/>
       <feComposite in="SourceGraphic"/>
     </filter>
-    <filter id="Rectangle-12" x="0.5" y="138.5" width="359" height="61" filterUnits="userSpaceOnUse">
-      <feOffset dy="4" input="SourceAlpha"/>
-      <feGaussianBlur stdDeviation="2.5" result="blur-12"/>
+    <filter id="Rectangle-12" x="-15" y="577" width="390" height="86" filterUnits="userSpaceOnUse">
+      <feOffset dy="8" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="5" result="blur-12"/>
       <feFlood flood-opacity="0.141"/>
       <feComposite operator="in" in2="blur-12"/>
       <feComposite in="SourceGraphic"/>
     </filter>
-    <filter id="Rectangle-13" x="-7.5" y="581.5" width="375" height="71" filterUnits="userSpaceOnUse">
-      <feOffset dy="5" input="SourceAlpha"/>
-      <feGaussianBlur stdDeviation="2.5" result="blur-13"/>
+    <clipPath id="clip-path-38">
+      <rect id="Boundary" width="24" height="24" transform="translate(33 8)" fill="none"/>
+    </clipPath>
+    <clipPath id="clip-path-39">
+      <rect id="Rectangle_15" data-name="Rectangle 15" width="24" height="24" transform="translate(123 8)" fill="#abff00"/>
+    </clipPath>
+    <clipPath id="clip-path-40">
+      <rect id="Rectangle_16" data-name="Rectangle 16" width="24" height="24" transform="translate(213 8)" fill="#abff00"/>
+    </clipPath>
+    <clipPath id="clip-path-41">
+      <rect id="Rectangle_17" data-name="Rectangle 17" width="24" height="24" transform="translate(303 8)" fill="#abff00"/>
+    </clipPath>
+    <filter id="Rectangle-13" x="-6" y="20" width="372" height="68" filterUnits="userSpaceOnUse">
+      <feOffset dy="2" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="2" result="blur-13"/>
       <feFlood flood-opacity="0.2"/>
       <feComposite operator="in" in2="blur-13"/>
       <feComposite in="SourceGraphic"/>
     </filter>
-    <filter id="Rectangle-14" x="-21" y="566" width="402" height="98" filterUnits="userSpaceOnUse">
-      <feOffset dy="3" input="SourceAlpha"/>
-      <feGaussianBlur stdDeviation="7" result="blur-14"/>
+    <filter id="Rectangle-14" x="-15" y="10" width="390" height="86" filterUnits="userSpaceOnUse">
+      <feOffset dy="1" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="5" result="blur-14"/>
       <feFlood flood-opacity="0.122"/>
       <feComposite operator="in" in2="blur-14"/>
       <feComposite in="SourceGraphic"/>
     </filter>
-    <filter id="Rectangle-15" x="-15" y="577" width="390" height="86" filterUnits="userSpaceOnUse">
-      <feOffset dy="8" input="SourceAlpha"/>
-      <feGaussianBlur stdDeviation="5" result="blur-15"/>
+    <filter id="Rectangle-15" x="-7.5" y="20.5" width="375" height="71" filterUnits="userSpaceOnUse">
+      <feOffset dy="4" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="2.5" result="blur-15"/>
       <feFlood flood-opacity="0.141"/>
       <feComposite operator="in" in2="blur-15"/>
       <feComposite in="SourceGraphic"/>
     </filter>
-    <clipPath id="clip-path-39">
-      <rect id="Boundary" width="24" height="24" transform="translate(33 8)" fill="none"/>
-    </clipPath>
-    <clipPath id="clip-path-40">
-      <rect id="Rectangle_15" data-name="Rectangle 15" width="24" height="24" transform="translate(123 8)" fill="#abff00"/>
-    </clipPath>
-    <clipPath id="clip-path-41">
-      <rect id="Rectangle_16" data-name="Rectangle 16" width="24" height="24" transform="translate(213 8)" fill="#abff00"/>
-    </clipPath>
     <clipPath id="clip-path-42">
-      <rect id="Rectangle_17" data-name="Rectangle 17" width="24" height="24" transform="translate(303 8)" fill="#abff00"/>
+      <rect id="Mask" width="360" height="56" fill="#6200ee"/>
     </clipPath>
     <clipPath id="clip-My_Day_Habit_Incomplete_">
       <rect width="360" height="640"/>
@@ -132,23 +132,495 @@
   </defs>
   <g id="My_Day_Habit_Incomplete_" data-name="My Day (Habit Incomplete)" clip-path="url(#clip-My_Day_Habit_Incomplete_)">
     <rect width="360" height="640" fill="#fff"/>
-    <g id="Light_App_bar_1._Top_A._Standard_4_States_" data-name="Light 🌕/ App bar / 1. Top / A. Standard / (4 States)" transform="translate(0 24)">
-      <g id="Light_Elevation_00dp" data-name="Light 🌕/Elevation/00dp">
-        <g id="Shadow" style="mix-blend-mode: multiply;isolation: isolate">
-          <g transform="matrix(1, 0, 0, 1, 0, -24)" filter="url(#Rectangle)">
-            <rect id="Rectangle-16" data-name="Rectangle" width="360" height="56" transform="translate(0 24)" fill="#fff"/>
+    <g id="ΩElements_System_bar_Primary" data-name="ΩElements/System bar/Primary">
+      <rect id="Rectangle-16" data-name="Rectangle" width="360" height="24" fill="#5600e8"/>
+      <path id="Mask-2" data-name="Mask" d="M34,0H46L40,10ZM18,5a5,5,0,1,1,5,5A5,5,0,0,1,18,5ZM0,10V0H10V10Z" transform="translate(306 7)" fill="rgba(255,255,255,0.38)"/>
+    </g>
+    <g id="_04dp" data-name="04dp" transform="translate(8 88)">
+      <rect id="Rectangle-17" data-name="Rectangle" width="16" height="64" fill="#fff"/>
+    </g>
+    <g id="Shadow" transform="translate(8 88)">
+      <g id="Shadow-2" data-name="Shadow" style="isolation: isolate">
+        <g transform="matrix(1, 0, 0, 1, -8, -88)" filter="url(#Rectangle)">
+          <rect id="Rectangle-18" data-name="Rectangle" width="344" height="46" rx="5" transform="translate(8 88)" fill="#fff"/>
+        </g>
+        <g transform="matrix(1, 0, 0, 1, -8, -88)" filter="url(#Rectangle-2)">
+          <rect id="Rectangle-19" data-name="Rectangle" width="344" height="46" rx="5" transform="translate(8 88)" fill="#fff"/>
+        </g>
+        <g transform="matrix(1, 0, 0, 1, -8, -88)" filter="url(#Rectangle-3)">
+          <rect id="Rectangle-20" data-name="Rectangle" width="344" height="46" rx="5" transform="translate(8 88)" fill="#fff"/>
+        </g>
+      </g>
+      <text id="_Page_Title" data-name="✏️ Page Title" transform="translate(16 27)" font-size="12" font-family="Roboto-Regular, Roboto" letter-spacing="0.008em"><tspan x="0" y="0">Go to Work</tspan></text>
+      <g id="Component_1_1" data-name="Component 1 – 1" transform="translate(310 14)">
+        <g id="Mask_Group_1" data-name="Mask Group 1" transform="translate(-310 -14)" clip-path="url(#clip-path)">
+          <g id="circle_black_18dp" transform="translate(310 14)">
+            <g id="Group_8" data-name="Group 8">
+              <rect id="Rectangle_8" data-name="Rectangle 8" width="18" height="18" fill="none"/>
+            </g>
+            <g id="Group_9" data-name="Group 9">
+              <path id="Path_1" data-name="Path 1" d="M9,1.5A7.5,7.5,0,1,0,16.5,9,7.493,7.493,0,0,0,9,1.5ZM9,15a6,6,0,1,1,6-6A6,6,0,0,1,9,15Z" fill="none"/>
+            </g>
           </g>
-          <g transform="matrix(1, 0, 0, 1, 0, -24)" filter="url(#Rectangle-2)">
-            <rect id="Rectangle-17" data-name="Rectangle" width="360" height="56" transform="translate(0 24)" fill="#fff"/>
-          </g>
-          <g transform="matrix(1, 0, 0, 1, 0, -24)" filter="url(#Rectangle-3)">
-            <rect id="Rectangle-18" data-name="Rectangle" width="360" height="56" transform="translate(0 24)" fill="#fff"/>
+        </g>
+        <g id="Mask_Group_4" data-name="Mask Group 4" clip-path="url(#clip-path-2)">
+          <g id="circle_black_18dp-2" data-name="circle_black_18dp">
+            <g id="Group_10" data-name="Group 10">
+              <rect id="Rectangle_10" data-name="Rectangle 10" width="18" height="18" fill="none"/>
+            </g>
+            <g id="Group_11" data-name="Group 11">
+              <path id="Path_6" data-name="Path 6" d="M9,1.5A7.5,7.5,0,1,0,16.5,9,7.493,7.493,0,0,0,9,1.5ZM9,15a6,6,0,1,1,6-6A6,6,0,0,1,9,15Z"/>
+            </g>
           </g>
         </g>
       </g>
-      <rect id="Primary" width="360" height="56" fill="#6200ee"/>
-      <g id="Mask_Group" data-name="Mask Group" clip-path="url(#clip-path)">
-        <text id="_Page_Title" data-name="✏️ Page Title" transform="translate(24 16)" fill="#fff" font-size="20" font-family="Roboto-Medium, Roboto" font-weight="500" letter-spacing="0.008em"><tspan x="0" y="19">My Day</tspan></text>
+      <g id="Component_1_4" data-name="Component 1 – 4" transform="translate(284 14)" opacity="0.4">
+        <g id="Mask_Group_1-2" data-name="Mask Group 1" transform="translate(-310 -14)" clip-path="url(#clip-path)">
+          <g id="circle_black_18dp-3" data-name="circle_black_18dp" transform="translate(310 14)">
+            <g id="Group_8-2" data-name="Group 8">
+              <rect id="Rectangle_8-2" data-name="Rectangle 8" width="18" height="18" fill="none"/>
+            </g>
+            <g id="Group_9-2" data-name="Group 9">
+              <path id="Path_1-2" data-name="Path 1" d="M9,1.5A7.5,7.5,0,1,0,16.5,9,7.493,7.493,0,0,0,9,1.5ZM9,15a6,6,0,1,1,6-6A6,6,0,0,1,9,15Z" fill="none"/>
+            </g>
+          </g>
+        </g>
+        <g id="Mask_Group_2" data-name="Mask Group 2" clip-path="url(#clip-path-2)">
+          <g id="check_circle_black_18dp">
+            <path id="Path_2" data-name="Path 2" d="M0,0H18V18H0Z" fill="none"/>
+            <path id="Path_3" data-name="Path 3" d="M9,1.5A7.5,7.5,0,1,0,16.5,9,7.5,7.5,0,0,0,9,1.5ZM7.5,12.75,3.75,9,4.807,7.943,7.5,10.628l5.693-5.693L14.25,6Z"/>
+          </g>
+        </g>
+      </g>
+      <g id="Component_1_5" data-name="Component 1 – 5" transform="translate(258 14)" opacity="0.4">
+        <g id="Mask_Group_1-3" data-name="Mask Group 1" transform="translate(-310 -14)" clip-path="url(#clip-path)">
+          <g id="circle_black_18dp-4" data-name="circle_black_18dp" transform="translate(310 14)">
+            <g id="Group_8-3" data-name="Group 8">
+              <rect id="Rectangle_8-3" data-name="Rectangle 8" width="18" height="18" fill="none"/>
+            </g>
+            <g id="Group_9-3" data-name="Group 9">
+              <path id="Path_1-3" data-name="Path 1" d="M9,1.5A7.5,7.5,0,1,0,16.5,9,7.493,7.493,0,0,0,9,1.5ZM9,15a6,6,0,1,1,6-6A6,6,0,0,1,9,15Z" fill="none"/>
+            </g>
+          </g>
+        </g>
+        <g id="Mask_Group_3" data-name="Mask Group 3" clip-path="url(#clip-path-2)">
+          <g id="close_black_18dp">
+            <path id="Path_4" data-name="Path 4" d="M0,0H18V18H0Z" fill="none"/>
+            <path id="Path_5" data-name="Path 5" d="M14.25,4.807,13.193,3.75,9,7.943,4.807,3.75,3.75,4.807,7.943,9,3.75,13.193,4.807,14.25,9,10.057l4.193,4.193,1.057-1.057L10.057,9Z"/>
+          </g>
+        </g>
+      </g>
+      <g id="Component_1_6" data-name="Component 1 – 6" transform="translate(232 14)" opacity="0.4">
+        <g id="Mask_Group_1-4" data-name="Mask Group 1" transform="translate(-310 -14)" clip-path="url(#clip-path)">
+          <g id="circle_black_18dp-5" data-name="circle_black_18dp" transform="translate(310 14)">
+            <g id="Group_8-4" data-name="Group 8">
+              <rect id="Rectangle_8-4" data-name="Rectangle 8" width="18" height="18" fill="none"/>
+            </g>
+            <g id="Group_9-4" data-name="Group 9">
+              <path id="Path_1-4" data-name="Path 1" d="M9,1.5A7.5,7.5,0,1,0,16.5,9,7.493,7.493,0,0,0,9,1.5ZM9,15a6,6,0,1,1,6-6A6,6,0,0,1,9,15Z" fill="none"/>
+            </g>
+          </g>
+        </g>
+        <g id="Mask_Group_2-2" data-name="Mask Group 2" clip-path="url(#clip-path-2)">
+          <g id="check_circle_black_18dp-2" data-name="check_circle_black_18dp">
+            <path id="Path_2-2" data-name="Path 2" d="M0,0H18V18H0Z" fill="none"/>
+            <path id="Path_3-2" data-name="Path 3" d="M9,1.5A7.5,7.5,0,1,0,16.5,9,7.5,7.5,0,0,0,9,1.5ZM7.5,12.75,3.75,9,4.807,7.943,7.5,10.628l5.693-5.693L14.25,6Z"/>
+          </g>
+        </g>
+      </g>
+      <g id="Component_1_7" data-name="Component 1 – 7" transform="translate(206 14)" opacity="0.4">
+        <g id="Mask_Group_1-5" data-name="Mask Group 1" transform="translate(-310 -14)" clip-path="url(#clip-path)">
+          <g id="circle_black_18dp-6" data-name="circle_black_18dp" transform="translate(310 14)">
+            <g id="Group_8-5" data-name="Group 8">
+              <rect id="Rectangle_8-5" data-name="Rectangle 8" width="18" height="18" fill="none"/>
+            </g>
+            <g id="Group_9-5" data-name="Group 9">
+              <path id="Path_1-5" data-name="Path 1" d="M9,1.5A7.5,7.5,0,1,0,16.5,9,7.493,7.493,0,0,0,9,1.5ZM9,15a6,6,0,1,1,6-6A6,6,0,0,1,9,15Z" fill="none"/>
+            </g>
+          </g>
+        </g>
+        <rect id="Rectangle_9-17" data-name="Rectangle 9" width="18" height="18" fill="none"/>
+      </g>
+      <g id="Component_1_8" data-name="Component 1 – 8" transform="translate(180 14)" opacity="0.4">
+        <g id="Mask_Group_1-6" data-name="Mask Group 1" transform="translate(-310 -14)" clip-path="url(#clip-path)">
+          <g id="circle_black_18dp-7" data-name="circle_black_18dp" transform="translate(310 14)">
+            <g id="Group_8-6" data-name="Group 8">
+              <rect id="Rectangle_8-6" data-name="Rectangle 8" width="18" height="18" fill="none"/>
+            </g>
+            <g id="Group_9-6" data-name="Group 9">
+              <path id="Path_1-6" data-name="Path 1" d="M9,1.5A7.5,7.5,0,1,0,16.5,9,7.493,7.493,0,0,0,9,1.5ZM9,15a6,6,0,1,1,6-6A6,6,0,0,1,9,15Z" fill="none"/>
+            </g>
+          </g>
+        </g>
+        <rect id="Rectangle_9-18" data-name="Rectangle 9" width="18" height="18" fill="none"/>
+      </g>
+      <g id="Component_1_9" data-name="Component 1 – 9" transform="translate(154 14)" opacity="0.4">
+        <g id="Mask_Group_1-7" data-name="Mask Group 1" transform="translate(-310 -14)" clip-path="url(#clip-path)">
+          <g id="circle_black_18dp-8" data-name="circle_black_18dp" transform="translate(310 14)">
+            <g id="Group_8-7" data-name="Group 8">
+              <rect id="Rectangle_8-7" data-name="Rectangle 8" width="18" height="18" fill="none"/>
+            </g>
+            <g id="Group_9-7" data-name="Group 9">
+              <path id="Path_1-7" data-name="Path 1" d="M9,1.5A7.5,7.5,0,1,0,16.5,9,7.493,7.493,0,0,0,9,1.5ZM9,15a6,6,0,1,1,6-6A6,6,0,0,1,9,15Z" fill="none"/>
+            </g>
+          </g>
+        </g>
+        <g id="Mask_Group_2-3" data-name="Mask Group 2" clip-path="url(#clip-path-2)">
+          <g id="check_circle_black_18dp-3" data-name="check_circle_black_18dp">
+            <path id="Path_2-3" data-name="Path 2" d="M0,0H18V18H0Z" fill="none"/>
+            <path id="Path_3-3" data-name="Path 3" d="M9,1.5A7.5,7.5,0,1,0,16.5,9,7.5,7.5,0,0,0,9,1.5ZM7.5,12.75,3.75,9,4.807,7.943,7.5,10.628l5.693-5.693L14.25,6Z"/>
+          </g>
+        </g>
+      </g>
+    </g>
+    <g id="Shadow-3" data-name="Shadow" transform="translate(8 196)">
+      <g id="Shadow-4" data-name="Shadow" style="isolation: isolate">
+        <g transform="matrix(1, 0, 0, 1, -8, -196)" filter="url(#Rectangle-4)">
+          <rect id="Rectangle-21" data-name="Rectangle" width="344" height="46" rx="5" transform="translate(8 196)" fill="#fff"/>
+        </g>
+        <g transform="matrix(1, 0, 0, 1, -8, -196)" filter="url(#Rectangle-5)">
+          <rect id="Rectangle-22" data-name="Rectangle" width="344" height="46" rx="5" transform="translate(8 196)" fill="#fff"/>
+        </g>
+        <g transform="matrix(1, 0, 0, 1, -8, -196)" filter="url(#Rectangle-6)">
+          <rect id="Rectangle-23" data-name="Rectangle" width="344" height="46" rx="5" transform="translate(8 196)" fill="#fff"/>
+        </g>
+      </g>
+      <text id="_Page_Title-2" data-name="✏️ Page Title" transform="translate(16 27)" font-size="12" font-family="Roboto-Regular, Roboto" letter-spacing="0.008em"><tspan x="0" y="0">Eat Breakfast</tspan></text>
+      <g id="Component_1_1-2" data-name="Component 1 – 1" transform="translate(310 14)">
+        <g id="Mask_Group_1-8" data-name="Mask Group 1" transform="translate(-310 -14)" clip-path="url(#clip-path)">
+          <g id="circle_black_18dp-9" data-name="circle_black_18dp" transform="translate(310 14)">
+            <g id="Group_8-8" data-name="Group 8">
+              <rect id="Rectangle_8-8" data-name="Rectangle 8" width="18" height="18" fill="none"/>
+            </g>
+            <g id="Group_9-8" data-name="Group 9">
+              <path id="Path_1-8" data-name="Path 1" d="M9,1.5A7.5,7.5,0,1,0,16.5,9,7.493,7.493,0,0,0,9,1.5ZM9,15a6,6,0,1,1,6-6A6,6,0,0,1,9,15Z" fill="none"/>
+            </g>
+          </g>
+        </g>
+        <g id="Mask_Group_4-2" data-name="Mask Group 4" clip-path="url(#clip-path-2)">
+          <g id="circle_black_18dp-10" data-name="circle_black_18dp">
+            <g id="Group_10-2" data-name="Group 10">
+              <rect id="Rectangle_10-2" data-name="Rectangle 10" width="18" height="18" fill="none"/>
+            </g>
+            <g id="Group_11-2" data-name="Group 11">
+              <path id="Path_6-2" data-name="Path 6" d="M9,1.5A7.5,7.5,0,1,0,16.5,9,7.493,7.493,0,0,0,9,1.5ZM9,15a6,6,0,1,1,6-6A6,6,0,0,1,9,15Z"/>
+            </g>
+          </g>
+        </g>
+      </g>
+      <g id="Component_1_4-2" data-name="Component 1 – 4" transform="translate(284 14)" opacity="0.4">
+        <g id="Mask_Group_1-9" data-name="Mask Group 1" transform="translate(-310 -14)" clip-path="url(#clip-path)">
+          <g id="circle_black_18dp-11" data-name="circle_black_18dp" transform="translate(310 14)">
+            <g id="Group_8-9" data-name="Group 8">
+              <rect id="Rectangle_8-9" data-name="Rectangle 8" width="18" height="18" fill="none"/>
+            </g>
+            <g id="Group_9-9" data-name="Group 9">
+              <path id="Path_1-9" data-name="Path 1" d="M9,1.5A7.5,7.5,0,1,0,16.5,9,7.493,7.493,0,0,0,9,1.5ZM9,15a6,6,0,1,1,6-6A6,6,0,0,1,9,15Z" fill="none"/>
+            </g>
+          </g>
+        </g>
+        <g id="Mask_Group_3-2" data-name="Mask Group 3" clip-path="url(#clip-path-2)">
+          <g id="close_black_18dp-2" data-name="close_black_18dp">
+            <path id="Path_4-2" data-name="Path 4" d="M0,0H18V18H0Z" fill="none"/>
+            <path id="Path_5-2" data-name="Path 5" d="M14.25,4.807,13.193,3.75,9,7.943,4.807,3.75,3.75,4.807,7.943,9,3.75,13.193,4.807,14.25,9,10.057l4.193,4.193,1.057-1.057L10.057,9Z"/>
+          </g>
+        </g>
+      </g>
+      <g id="Component_1_5-2" data-name="Component 1 – 5" transform="translate(258 14)" opacity="0.4">
+        <g id="Mask_Group_1-10" data-name="Mask Group 1" transform="translate(-310 -14)" clip-path="url(#clip-path)">
+          <g id="circle_black_18dp-12" data-name="circle_black_18dp" transform="translate(310 14)">
+            <g id="Group_8-10" data-name="Group 8">
+              <rect id="Rectangle_8-10" data-name="Rectangle 8" width="18" height="18" fill="none"/>
+            </g>
+            <g id="Group_9-10" data-name="Group 9">
+              <path id="Path_1-10" data-name="Path 1" d="M9,1.5A7.5,7.5,0,1,0,16.5,9,7.493,7.493,0,0,0,9,1.5ZM9,15a6,6,0,1,1,6-6A6,6,0,0,1,9,15Z" fill="none"/>
+            </g>
+          </g>
+        </g>
+        <g id="Mask_Group_3-3" data-name="Mask Group 3" clip-path="url(#clip-path-2)">
+          <g id="close_black_18dp-3" data-name="close_black_18dp">
+            <path id="Path_4-3" data-name="Path 4" d="M0,0H18V18H0Z" fill="none"/>
+            <path id="Path_5-3" data-name="Path 5" d="M14.25,4.807,13.193,3.75,9,7.943,4.807,3.75,3.75,4.807,7.943,9,3.75,13.193,4.807,14.25,9,10.057l4.193,4.193,1.057-1.057L10.057,9Z"/>
+          </g>
+        </g>
+      </g>
+      <g id="Component_1_6-2" data-name="Component 1 – 6" transform="translate(232 14)" opacity="0.4">
+        <g id="Mask_Group_1-11" data-name="Mask Group 1" transform="translate(-310 -14)" clip-path="url(#clip-path)">
+          <g id="circle_black_18dp-13" data-name="circle_black_18dp" transform="translate(310 14)">
+            <g id="Group_8-11" data-name="Group 8">
+              <rect id="Rectangle_8-11" data-name="Rectangle 8" width="18" height="18" fill="none"/>
+            </g>
+            <g id="Group_9-11" data-name="Group 9">
+              <path id="Path_1-11" data-name="Path 1" d="M9,1.5A7.5,7.5,0,1,0,16.5,9,7.493,7.493,0,0,0,9,1.5ZM9,15a6,6,0,1,1,6-6A6,6,0,0,1,9,15Z" fill="none"/>
+            </g>
+          </g>
+        </g>
+        <g id="Mask_Group_2-4" data-name="Mask Group 2" clip-path="url(#clip-path-2)">
+          <g id="check_circle_black_18dp-4" data-name="check_circle_black_18dp">
+            <path id="Path_2-4" data-name="Path 2" d="M0,0H18V18H0Z" fill="none"/>
+            <path id="Path_3-4" data-name="Path 3" d="M9,1.5A7.5,7.5,0,1,0,16.5,9,7.5,7.5,0,0,0,9,1.5ZM7.5,12.75,3.75,9,4.807,7.943,7.5,10.628l5.693-5.693L14.25,6Z"/>
+          </g>
+        </g>
+      </g>
+      <g id="Component_1_7-2" data-name="Component 1 – 7" transform="translate(206 14)" opacity="0.4">
+        <g id="Mask_Group_1-12" data-name="Mask Group 1" transform="translate(-310 -14)" clip-path="url(#clip-path)">
+          <g id="circle_black_18dp-14" data-name="circle_black_18dp" transform="translate(310 14)">
+            <g id="Group_8-12" data-name="Group 8">
+              <rect id="Rectangle_8-12" data-name="Rectangle 8" width="18" height="18" fill="none"/>
+            </g>
+            <g id="Group_9-12" data-name="Group 9">
+              <path id="Path_1-12" data-name="Path 1" d="M9,1.5A7.5,7.5,0,1,0,16.5,9,7.493,7.493,0,0,0,9,1.5ZM9,15a6,6,0,1,1,6-6A6,6,0,0,1,9,15Z" fill="none"/>
+            </g>
+          </g>
+        </g>
+        <g id="Mask_Group_2-5" data-name="Mask Group 2" clip-path="url(#clip-path-2)">
+          <g id="check_circle_black_18dp-5" data-name="check_circle_black_18dp">
+            <path id="Path_2-5" data-name="Path 2" d="M0,0H18V18H0Z" fill="none"/>
+            <path id="Path_3-5" data-name="Path 3" d="M9,1.5A7.5,7.5,0,1,0,16.5,9,7.5,7.5,0,0,0,9,1.5ZM7.5,12.75,3.75,9,4.807,7.943,7.5,10.628l5.693-5.693L14.25,6Z"/>
+          </g>
+        </g>
+      </g>
+      <g id="Component_1_8-2" data-name="Component 1 – 8" transform="translate(180 14)" opacity="0.4">
+        <g id="Mask_Group_1-13" data-name="Mask Group 1" transform="translate(-310 -14)" clip-path="url(#clip-path)">
+          <g id="circle_black_18dp-15" data-name="circle_black_18dp" transform="translate(310 14)">
+            <g id="Group_8-13" data-name="Group 8">
+              <rect id="Rectangle_8-13" data-name="Rectangle 8" width="18" height="18" fill="none"/>
+            </g>
+            <g id="Group_9-13" data-name="Group 9">
+              <path id="Path_1-13" data-name="Path 1" d="M9,1.5A7.5,7.5,0,1,0,16.5,9,7.493,7.493,0,0,0,9,1.5ZM9,15a6,6,0,1,1,6-6A6,6,0,0,1,9,15Z" fill="none"/>
+            </g>
+          </g>
+        </g>
+        <g id="Mask_Group_2-6" data-name="Mask Group 2" clip-path="url(#clip-path-2)">
+          <g id="check_circle_black_18dp-6" data-name="check_circle_black_18dp">
+            <path id="Path_2-6" data-name="Path 2" d="M0,0H18V18H0Z" fill="none"/>
+            <path id="Path_3-6" data-name="Path 3" d="M9,1.5A7.5,7.5,0,1,0,16.5,9,7.5,7.5,0,0,0,9,1.5ZM7.5,12.75,3.75,9,4.807,7.943,7.5,10.628l5.693-5.693L14.25,6Z"/>
+          </g>
+        </g>
+      </g>
+      <g id="Component_1_9-2" data-name="Component 1 – 9" transform="translate(154 14)" opacity="0.4">
+        <g id="Mask_Group_1-14" data-name="Mask Group 1" transform="translate(-310 -14)" clip-path="url(#clip-path)">
+          <g id="circle_black_18dp-16" data-name="circle_black_18dp" transform="translate(310 14)">
+            <g id="Group_8-14" data-name="Group 8">
+              <rect id="Rectangle_8-14" data-name="Rectangle 8" width="18" height="18" fill="none"/>
+            </g>
+            <g id="Group_9-14" data-name="Group 9">
+              <path id="Path_1-14" data-name="Path 1" d="M9,1.5A7.5,7.5,0,1,0,16.5,9,7.493,7.493,0,0,0,9,1.5ZM9,15a6,6,0,1,1,6-6A6,6,0,0,1,9,15Z" fill="none"/>
+            </g>
+          </g>
+        </g>
+        <g id="Mask_Group_3-4" data-name="Mask Group 3" clip-path="url(#clip-path-2)">
+          <g id="close_black_18dp-4" data-name="close_black_18dp">
+            <path id="Path_4-4" data-name="Path 4" d="M0,0H18V18H0Z" fill="none"/>
+            <path id="Path_5-4" data-name="Path 5" d="M14.25,4.807,13.193,3.75,9,7.943,4.807,3.75,3.75,4.807,7.943,9,3.75,13.193,4.807,14.25,9,10.057l4.193,4.193,1.057-1.057L10.057,9Z"/>
+          </g>
+        </g>
+      </g>
+    </g>
+    <g id="Shadow-5" data-name="Shadow" transform="translate(8 142)">
+      <g id="Shadow-6" data-name="Shadow" style="isolation: isolate">
+        <g transform="matrix(1, 0, 0, 1, -8, -142)" filter="url(#Rectangle-7)">
+          <rect id="Rectangle-24" data-name="Rectangle" width="344" height="46" rx="5" transform="translate(8 142)" fill="#fff"/>
+        </g>
+        <g transform="matrix(1, 0, 0, 1, -8, -142)" filter="url(#Rectangle-8)">
+          <rect id="Rectangle-25" data-name="Rectangle" width="344" height="46" rx="5" transform="translate(8 142)" fill="#fff"/>
+        </g>
+        <g transform="matrix(1, 0, 0, 1, -8, -142)" filter="url(#Rectangle-9)">
+          <rect id="Rectangle-26" data-name="Rectangle" width="344" height="46" rx="5" transform="translate(8 142)" fill="#fff"/>
+        </g>
+      </g>
+      <text id="_Page_Title-3" data-name="✏️ Page Title" transform="translate(16 27)" font-size="12" font-family="Roboto-Regular, Roboto" letter-spacing="0.008em"><tspan x="0" y="0">Walk Dog</tspan></text>
+      <g id="Component_1_1-3" data-name="Component 1 – 1" transform="translate(310 14)">
+        <g id="Mask_Group_1-15" data-name="Mask Group 1" transform="translate(-310 -14)" clip-path="url(#clip-path)">
+          <g id="circle_black_18dp-17" data-name="circle_black_18dp" transform="translate(310 14)">
+            <g id="Group_8-15" data-name="Group 8">
+              <rect id="Rectangle_8-15" data-name="Rectangle 8" width="18" height="18" fill="none"/>
+            </g>
+            <g id="Group_9-15" data-name="Group 9">
+              <path id="Path_1-15" data-name="Path 1" d="M9,1.5A7.5,7.5,0,1,0,16.5,9,7.493,7.493,0,0,0,9,1.5ZM9,15a6,6,0,1,1,6-6A6,6,0,0,1,9,15Z" fill="none"/>
+            </g>
+          </g>
+        </g>
+        <g id="Mask_Group_4-3" data-name="Mask Group 4" clip-path="url(#clip-path-2)">
+          <g id="circle_black_18dp-18" data-name="circle_black_18dp">
+            <g id="Group_10-3" data-name="Group 10">
+              <rect id="Rectangle_10-3" data-name="Rectangle 10" width="18" height="18" fill="none"/>
+            </g>
+            <g id="Group_11-3" data-name="Group 11">
+              <path id="Path_6-3" data-name="Path 6" d="M9,1.5A7.5,7.5,0,1,0,16.5,9,7.493,7.493,0,0,0,9,1.5ZM9,15a6,6,0,1,1,6-6A6,6,0,0,1,9,15Z"/>
+            </g>
+          </g>
+        </g>
+      </g>
+      <g id="Component_1_4-3" data-name="Component 1 – 4" transform="translate(284 14)" opacity="0.4">
+        <g id="Mask_Group_1-16" data-name="Mask Group 1" transform="translate(-310 -14)" clip-path="url(#clip-path)">
+          <g id="circle_black_18dp-19" data-name="circle_black_18dp" transform="translate(310 14)">
+            <g id="Group_8-16" data-name="Group 8">
+              <rect id="Rectangle_8-16" data-name="Rectangle 8" width="18" height="18" fill="none"/>
+            </g>
+            <g id="Group_9-16" data-name="Group 9">
+              <path id="Path_1-16" data-name="Path 1" d="M9,1.5A7.5,7.5,0,1,0,16.5,9,7.493,7.493,0,0,0,9,1.5ZM9,15a6,6,0,1,1,6-6A6,6,0,0,1,9,15Z" fill="none"/>
+            </g>
+          </g>
+        </g>
+        <rect id="Rectangle_9-19" data-name="Rectangle 9" width="18" height="18" fill="none"/>
+      </g>
+      <g id="Component_1_5-3" data-name="Component 1 – 5" transform="translate(258 14)" opacity="0.4">
+        <g id="Mask_Group_1-17" data-name="Mask Group 1" transform="translate(-310 -14)" clip-path="url(#clip-path)">
+          <g id="circle_black_18dp-20" data-name="circle_black_18dp" transform="translate(310 14)">
+            <g id="Group_8-17" data-name="Group 8">
+              <rect id="Rectangle_8-17" data-name="Rectangle 8" width="18" height="18" fill="none"/>
+            </g>
+            <g id="Group_9-17" data-name="Group 9">
+              <path id="Path_1-17" data-name="Path 1" d="M9,1.5A7.5,7.5,0,1,0,16.5,9,7.493,7.493,0,0,0,9,1.5ZM9,15a6,6,0,1,1,6-6A6,6,0,0,1,9,15Z" fill="none"/>
+            </g>
+          </g>
+        </g>
+        <g id="Mask_Group_3-5" data-name="Mask Group 3" clip-path="url(#clip-path-2)">
+          <g id="close_black_18dp-5" data-name="close_black_18dp">
+            <path id="Path_4-5" data-name="Path 4" d="M0,0H18V18H0Z" fill="none"/>
+            <path id="Path_5-5" data-name="Path 5" d="M14.25,4.807,13.193,3.75,9,7.943,4.807,3.75,3.75,4.807,7.943,9,3.75,13.193,4.807,14.25,9,10.057l4.193,4.193,1.057-1.057L10.057,9Z"/>
+          </g>
+        </g>
+      </g>
+      <g id="Component_1_6-3" data-name="Component 1 – 6" transform="translate(232 14)" opacity="0.4">
+        <g id="Mask_Group_1-18" data-name="Mask Group 1" transform="translate(-310 -14)" clip-path="url(#clip-path)">
+          <g id="circle_black_18dp-21" data-name="circle_black_18dp" transform="translate(310 14)">
+            <g id="Group_8-18" data-name="Group 8">
+              <rect id="Rectangle_8-18" data-name="Rectangle 8" width="18" height="18" fill="none"/>
+            </g>
+            <g id="Group_9-18" data-name="Group 9">
+              <path id="Path_1-18" data-name="Path 1" d="M9,1.5A7.5,7.5,0,1,0,16.5,9,7.493,7.493,0,0,0,9,1.5ZM9,15a6,6,0,1,1,6-6A6,6,0,0,1,9,15Z" fill="none"/>
+            </g>
+          </g>
+        </g>
+        <rect id="Rectangle_9-20" data-name="Rectangle 9" width="18" height="18" fill="none"/>
+      </g>
+      <g id="Component_1_7-3" data-name="Component 1 – 7" transform="translate(206 14)" opacity="0.4">
+        <g id="Mask_Group_1-19" data-name="Mask Group 1" transform="translate(-310 -14)" clip-path="url(#clip-path)">
+          <g id="circle_black_18dp-22" data-name="circle_black_18dp" transform="translate(310 14)">
+            <g id="Group_8-19" data-name="Group 8">
+              <rect id="Rectangle_8-19" data-name="Rectangle 8" width="18" height="18" fill="none"/>
+            </g>
+            <g id="Group_9-19" data-name="Group 9">
+              <path id="Path_1-19" data-name="Path 1" d="M9,1.5A7.5,7.5,0,1,0,16.5,9,7.493,7.493,0,0,0,9,1.5ZM9,15a6,6,0,1,1,6-6A6,6,0,0,1,9,15Z" fill="none"/>
+            </g>
+          </g>
+        </g>
+        <g id="Mask_Group_2-7" data-name="Mask Group 2" clip-path="url(#clip-path-2)">
+          <g id="check_circle_black_18dp-7" data-name="check_circle_black_18dp">
+            <path id="Path_2-7" data-name="Path 2" d="M0,0H18V18H0Z" fill="none"/>
+            <path id="Path_3-7" data-name="Path 3" d="M9,1.5A7.5,7.5,0,1,0,16.5,9,7.5,7.5,0,0,0,9,1.5ZM7.5,12.75,3.75,9,4.807,7.943,7.5,10.628l5.693-5.693L14.25,6Z"/>
+          </g>
+        </g>
+      </g>
+      <g id="Component_1_8-3" data-name="Component 1 – 8" transform="translate(180 14)" opacity="0.4">
+        <g id="Mask_Group_1-20" data-name="Mask Group 1" transform="translate(-310 -14)" clip-path="url(#clip-path)">
+          <g id="circle_black_18dp-23" data-name="circle_black_18dp" transform="translate(310 14)">
+            <g id="Group_8-20" data-name="Group 8">
+              <rect id="Rectangle_8-20" data-name="Rectangle 8" width="18" height="18" fill="none"/>
+            </g>
+            <g id="Group_9-20" data-name="Group 9">
+              <path id="Path_1-20" data-name="Path 1" d="M9,1.5A7.5,7.5,0,1,0,16.5,9,7.493,7.493,0,0,0,9,1.5ZM9,15a6,6,0,1,1,6-6A6,6,0,0,1,9,15Z" fill="none"/>
+            </g>
+          </g>
+        </g>
+        <g id="Mask_Group_2-8" data-name="Mask Group 2" clip-path="url(#clip-path-2)">
+          <g id="check_circle_black_18dp-8" data-name="check_circle_black_18dp">
+            <path id="Path_2-8" data-name="Path 2" d="M0,0H18V18H0Z" fill="none"/>
+            <path id="Path_3-8" data-name="Path 3" d="M9,1.5A7.5,7.5,0,1,0,16.5,9,7.5,7.5,0,0,0,9,1.5ZM7.5,12.75,3.75,9,4.807,7.943,7.5,10.628l5.693-5.693L14.25,6Z"/>
+          </g>
+        </g>
+      </g>
+      <g id="Component_1_9-3" data-name="Component 1 – 9" transform="translate(154 14)" opacity="0.4">
+        <g id="Mask_Group_1-21" data-name="Mask Group 1" transform="translate(-310 -14)" clip-path="url(#clip-path)">
+          <g id="circle_black_18dp-24" data-name="circle_black_18dp" transform="translate(310 14)">
+            <g id="Group_8-21" data-name="Group 8">
+              <rect id="Rectangle_8-21" data-name="Rectangle 8" width="18" height="18" fill="none"/>
+            </g>
+            <g id="Group_9-21" data-name="Group 9">
+              <path id="Path_1-21" data-name="Path 1" d="M9,1.5A7.5,7.5,0,1,0,16.5,9,7.493,7.493,0,0,0,9,1.5ZM9,15a6,6,0,1,1,6-6A6,6,0,0,1,9,15Z" fill="none"/>
+            </g>
+          </g>
+        </g>
+        <rect id="Rectangle_9-21" data-name="Rectangle 9" width="18" height="18" fill="none"/>
+      </g>
+    </g>
+    <g id="Component_2_2" data-name="Component 2 – 2" transform="translate(0 584)">
+      <g id="Light_Bottom_Nav_Container" data-name="Light 🌕/ Bottom Nav/Container">
+        <g id="Light_Elevation_00dp" data-name="Light 🌕/Elevation/00dp">
+          <g id="Shadow-7" data-name="Shadow">
+            <g transform="matrix(1, 0, 0, 1, 0, -584)" filter="url(#Rectangle-10)" style="mix-blend-mode: multiply;isolation: isolate">
+              <rect id="Rectangle-27" data-name="Rectangle" width="360" height="56" transform="translate(0 584)" fill="#fff"/>
+            </g>
+            <g transform="matrix(1, 0, 0, 1, 0, -584)" filter="url(#Rectangle-11)" style="mix-blend-mode: multiply;isolation: isolate">
+              <rect id="Rectangle-28" data-name="Rectangle" width="360" height="56" transform="translate(0 584)" fill="#fff"/>
+            </g>
+            <g transform="matrix(1, 0, 0, 1, 0, -584)" filter="url(#Rectangle-12)" style="mix-blend-mode: multiply;isolation: isolate">
+              <rect id="Rectangle-29" data-name="Rectangle" width="360" height="56" transform="translate(0 584)" fill="#fff"/>
+            </g>
+          </g>
+        </g>
+        <rect id="Primary" width="360" height="56" fill="#fff"/>
+      </g>
+      <g id="Group_12" data-name="Group 12">
+        <rect id="Rectangle-30" data-name="Rectangle" width="90" height="56" fill="#fff" style="mix-blend-mode: multiply;isolation: isolate"/>
+        <text id="_Caption" data-name="✏️ Caption" transform="translate(45 45)" fill="rgba(0,0,0,0.87)" font-size="12" font-family="Roboto-Regular, Roboto" letter-spacing="0.033em"><tspan x="-20.556" y="0">My Day</tspan></text>
+        <g id="Mask_Group_5" data-name="Mask Group 5" clip-path="url(#clip-path-38)">
+          <g id="light_mode_black_24dp" transform="translate(33 8)">
+            <rect id="Rectangle_11" data-name="Rectangle 11" width="24" height="24" fill="none"/>
+            <path id="Path_7" data-name="Path 7" d="M12,9a3,3,0,1,1-3,3,3.009,3.009,0,0,1,3-3m0-2a5,5,0,1,0,5,5,5,5,0,0,0-5-5ZM2,13H4a1,1,0,0,0,0-2H2a1,1,0,0,0,0,2Zm18,0h2a1,1,0,0,0,0-2H20a1,1,0,0,0,0,2ZM11,2V4a1,1,0,0,0,2,0V2a1,1,0,0,0-2,0Zm0,18v2a1,1,0,0,0,2,0V20a1,1,0,0,0-2,0ZM5.99,4.58A1,1,0,0,0,4.58,5.99L5.64,7.05A1,1,0,0,0,7.05,5.64ZM18.36,16.95a1,1,0,0,0-1.41,1.41l1.06,1.06a1,1,0,0,0,1.41-1.41ZM19.42,5.99a1,1,0,0,0-1.41-1.41L16.95,5.64a1,1,0,0,0,1.41,1.41ZM7.05,18.36a1,1,0,0,0-1.41-1.41L4.58,18.01a1,1,0,0,0,1.41,1.41Z"/>
+          </g>
+        </g>
+      </g>
+      <g id="Group_13" data-name="Group 13" opacity="0.6">
+        <rect id="Rectangle-31" data-name="Rectangle" width="90" height="56" transform="translate(90)" fill="#fff" style="mix-blend-mode: multiply;isolation: isolate"/>
+        <text id="_Caption-2" data-name="✏️ Caption" transform="translate(135 45)" fill="rgba(0,0,0,0.87)" font-size="12" font-family="Roboto-Regular, Roboto" letter-spacing="0.033em"><tspan x="-20.893" y="0">Friends</tspan></text>
+        <g id="Mask_Group_6" data-name="Mask Group 6" clip-path="url(#clip-path-39)">
+          <g id="people_black_24dp" transform="translate(123 8)">
+            <path id="Path_8" data-name="Path 8" d="M0,0H24V24H0Z" fill="none"/>
+            <path id="Path_9" data-name="Path 9" d="M9,13.75c-2.34,0-7,1.17-7,3.5V19H16V17.25C16,14.92,11.34,13.75,9,13.75ZM4.34,17A9.642,9.642,0,0,1,9,15.75,9.642,9.642,0,0,1,13.66,17ZM9,12A3.5,3.5,0,1,0,5.5,8.5,3.5,3.5,0,0,0,9,12ZM9,7A1.5,1.5,0,1,1,7.5,8.5,1.5,1.5,0,0,1,9,7Zm7.04,6.81A4.193,4.193,0,0,1,18,17.25V19h4V17.25C22,15.23,18.5,14.08,16.04,13.81ZM15,12a3.5,3.5,0,0,0,0-7,3.446,3.446,0,0,0-1.5.35,5.461,5.461,0,0,1,0,6.3A3.446,3.446,0,0,0,15,12Z"/>
+          </g>
+        </g>
+      </g>
+      <g id="Group_14" data-name="Group 14" opacity="0.6">
+        <rect id="Rectangle-32" data-name="Rectangle" width="90" height="56" transform="translate(180)" fill="#fff" style="mix-blend-mode: multiply;isolation: isolate"/>
+        <text id="_Caption-3" data-name="✏️ Caption" transform="translate(225 45)" fill="rgba(0,0,0,0.87)" font-size="12" font-family="Roboto-Regular, Roboto" letter-spacing="0.033em"><tspan x="-18.417" y="0">Habits</tspan></text>
+        <g id="Mask_Group_8" data-name="Mask Group 8" clip-path="url(#clip-path-40)">
+          <g id="widgets_black_24dp" transform="translate(213 8)">
+            <path id="Path_12" data-name="Path 12" d="M0,0H24V24H0Z" fill="none"/>
+            <path id="Path_13" data-name="Path 13" d="M16.66,4.52l2.83,2.83-2.83,2.83L13.83,7.35l2.83-2.83M9,5V9H5V5H9M19,15v4H15V15h4M9,15v4H5V15H9M16.66,1.69,11,7.34,16.66,13l5.66-5.66L16.66,1.69ZM11,3H3v8h8ZM21,13H13v8h8ZM11,13H3v8h8Z"/>
+          </g>
+        </g>
+      </g>
+      <g id="Group_15" data-name="Group 15" opacity="0.6">
+        <rect id="Rectangle-33" data-name="Rectangle" width="90" height="56" transform="translate(270)" fill="#fff" style="mix-blend-mode: multiply;isolation: isolate"/>
+        <text id="_Caption-4" data-name="✏️ Caption" transform="translate(315 45)" fill="rgba(0,0,0,0.87)" font-size="12" font-family="Roboto-Regular, Roboto" letter-spacing="0.033em"><tspan x="-23.285" y="0">Settings</tspan></text>
+        <g id="Mask_Group_7" data-name="Mask Group 7" clip-path="url(#clip-path-41)">
+          <g id="settings_black_24dp" transform="translate(303 8)">
+            <path id="Path_10" data-name="Path 10" d="M0,0H24V24H0Z" fill="none"/>
+            <path id="Path_11" data-name="Path 11" d="M19.43,12.98A7.793,7.793,0,0,0,19.5,12a7.793,7.793,0,0,0-.07-.98l2.11-1.65a.5.5,0,0,0,.12-.64l-2-3.46a.5.5,0,0,0-.44-.25.467.467,0,0,0-.17.03l-2.49,1a7.306,7.306,0,0,0-1.69-.98l-.38-2.65A.488.488,0,0,0,14,2H10a.488.488,0,0,0-.49.42L9.13,5.07a7.683,7.683,0,0,0-1.69.98l-2.49-1a.566.566,0,0,0-.18-.03.5.5,0,0,0-.43.25l-2,3.46a.493.493,0,0,0,.12.64l2.11,1.65A7.931,7.931,0,0,0,4.5,12a7.931,7.931,0,0,0,.07.98L2.46,14.63a.5.5,0,0,0-.12.64l2,3.46a.5.5,0,0,0,.44.25.467.467,0,0,0,.17-.03l2.49-1a7.306,7.306,0,0,0,1.69.98l.38,2.65A.488.488,0,0,0,10,22h4a.488.488,0,0,0,.49-.42l.38-2.65a7.683,7.683,0,0,0,1.69-.98l2.49,1a.566.566,0,0,0,.18.03.5.5,0,0,0,.43-.25l2-3.46a.5.5,0,0,0-.12-.64Zm-1.98-1.71a5.343,5.343,0,0,1,.05.73c0,.21-.02.43-.05.73l-.14,1.13.89.7,1.08.84-.7,1.21-1.27-.51-1.04-.42-.9.68a5.857,5.857,0,0,1-1.25.73l-1.06.43-.16,1.13L12.7,20H11.3l-.19-1.35-.16-1.13-1.06-.43a5.674,5.674,0,0,1-1.23-.71l-.91-.7-1.06.43-1.27.51-.7-1.21,1.08-.84.89-.7-.14-1.13c-.03-.31-.05-.54-.05-.74s.02-.43.05-.73l.14-1.13-.89-.7L4.72,8.6l.7-1.21,1.27.51,1.04.42.9-.68a5.857,5.857,0,0,1,1.25-.73l1.06-.43.16-1.13L11.3,4h1.39l.19,1.35.16,1.13,1.06.43a5.674,5.674,0,0,1,1.23.71l.91.7,1.06-.43,1.27-.51.7,1.21-1.07.85-.89.7.14,1.13ZM12,8a4,4,0,1,0,4,4A4,4,0,0,0,12,8Zm0,6a2,2,0,1,1,2-2A2.006,2.006,0,0,1,12,14Z"/>
+          </g>
+        </g>
+      </g>
+    </g>
+    <g id="Component_8_2" data-name="Component 8 – 2" transform="translate(0 24)">
+      <g id="Light_Elevation_00dp-2" data-name="Light 🌕/Elevation/00dp">
+        <g id="Shadow-8" data-name="Shadow" style="mix-blend-mode: multiply;isolation: isolate">
+          <g transform="matrix(1, 0, 0, 1, 0, -24)" filter="url(#Rectangle-13)">
+            <rect id="Rectangle-34" data-name="Rectangle" width="360" height="56" transform="translate(0 24)" fill="#fff"/>
+          </g>
+          <g transform="matrix(1, 0, 0, 1, 0, -24)" filter="url(#Rectangle-14)">
+            <rect id="Rectangle-35" data-name="Rectangle" width="360" height="56" transform="translate(0 24)" fill="#fff"/>
+          </g>
+          <g transform="matrix(1, 0, 0, 1, 0, -24)" filter="url(#Rectangle-15)">
+            <rect id="Rectangle-36" data-name="Rectangle" width="360" height="56" transform="translate(0 24)" fill="#fff"/>
+          </g>
+        </g>
+      </g>
+      <rect id="Primary-2" data-name="Primary" width="360" height="56" fill="#6200ee"/>
+      <g id="Mask_Group" data-name="Mask Group" clip-path="url(#clip-path-42)">
+        <text id="_Page_Title-4" data-name="✏️ Page Title" transform="translate(24 16)" fill="#fff" font-size="20" font-family="Roboto-Medium, Roboto" font-weight="500" letter-spacing="0.008em"><tspan x="0" y="19">My Day</tspan></text>
         <g id="Group_1" data-name="Group 1" transform="translate(-10 -2)">
           <text id="THU" transform="translate(337 26)" fill="#fff" font-size="9" font-family="Roboto-Bold, Roboto" font-weight="700"><tspan x="-8.925" y="0">THU</tspan></text>
           <text id="_7" data-name="7" transform="translate(337 42)" fill="#fff" font-size="14" font-family="Roboto-Regular, Roboto"><tspan x="-3.931" y="0">7</tspan></text>
@@ -176,478 +648,6 @@
         <g id="Group_7" data-name="Group 7" transform="translate(-166 -2)" opacity="0.4">
           <text id="FRI" transform="translate(337 26)" fill="#fff" font-size="9" font-family="Roboto-Bold, Roboto" font-weight="700"><tspan x="-6.649" y="0">FRI</tspan></text>
           <text id="_1" data-name="1" transform="translate(337 42)" fill="#fff" font-size="14" font-family="Roboto-Regular, Roboto"><tspan x="-3.931" y="0">1</tspan></text>
-        </g>
-      </g>
-    </g>
-    <g id="ΩElements_System_bar_Primary" data-name="ΩElements/System bar/Primary">
-      <rect id="Rectangle-19" data-name="Rectangle" width="360" height="24" fill="#5600e8"/>
-      <path id="Mask-2" data-name="Mask" d="M34,0H46L40,10ZM18,5a5,5,0,1,1,5,5A5,5,0,0,1,18,5ZM0,10V0H10V10Z" transform="translate(306 7)" fill="rgba(255,255,255,0.38)"/>
-    </g>
-    <g id="_04dp" data-name="04dp" transform="translate(8 88)">
-      <rect id="Rectangle-20" data-name="Rectangle" width="16" height="64" fill="#fff"/>
-    </g>
-    <g id="Shadow-2" data-name="Shadow" transform="translate(8 88)">
-      <g id="Shadow-3" data-name="Shadow" style="isolation: isolate">
-        <g transform="matrix(1, 0, 0, 1, -8, -88)" filter="url(#Rectangle-4)">
-          <rect id="Rectangle-21" data-name="Rectangle" width="344" height="46" rx="5" transform="translate(8 88)" fill="#fff"/>
-        </g>
-        <g transform="matrix(1, 0, 0, 1, -8, -88)" filter="url(#Rectangle-5)">
-          <rect id="Rectangle-22" data-name="Rectangle" width="344" height="46" rx="5" transform="translate(8 88)" fill="#fff"/>
-        </g>
-        <g transform="matrix(1, 0, 0, 1, -8, -88)" filter="url(#Rectangle-6)">
-          <rect id="Rectangle-23" data-name="Rectangle" width="344" height="46" rx="5" transform="translate(8 88)" fill="#fff"/>
-        </g>
-      </g>
-      <text id="_Page_Title-2" data-name="✏️ Page Title" transform="translate(16 27)" font-size="12" font-family="Roboto-Regular, Roboto" letter-spacing="0.008em"><tspan x="0" y="0">Go to Work</tspan></text>
-      <g id="Component_1_1" data-name="Component 1 – 1" transform="translate(310 14)">
-        <g id="Mask_Group_1" data-name="Mask Group 1" transform="translate(-310 -14)" clip-path="url(#clip-path-2)">
-          <g id="circle_black_18dp" transform="translate(310 14)">
-            <g id="Group_8" data-name="Group 8">
-              <rect id="Rectangle_8" data-name="Rectangle 8" width="18" height="18" fill="none"/>
-            </g>
-            <g id="Group_9" data-name="Group 9">
-              <path id="Path_1" data-name="Path 1" d="M9,1.5A7.5,7.5,0,1,0,16.5,9,7.493,7.493,0,0,0,9,1.5ZM9,15a6,6,0,1,1,6-6A6,6,0,0,1,9,15Z" fill="none"/>
-            </g>
-          </g>
-        </g>
-        <g id="Mask_Group_4" data-name="Mask Group 4" clip-path="url(#clip-path-3)">
-          <g id="circle_black_18dp-2" data-name="circle_black_18dp">
-            <g id="Group_10" data-name="Group 10">
-              <rect id="Rectangle_10" data-name="Rectangle 10" width="18" height="18" fill="none"/>
-            </g>
-            <g id="Group_11" data-name="Group 11">
-              <path id="Path_6" data-name="Path 6" d="M9,1.5A7.5,7.5,0,1,0,16.5,9,7.493,7.493,0,0,0,9,1.5ZM9,15a6,6,0,1,1,6-6A6,6,0,0,1,9,15Z"/>
-            </g>
-          </g>
-        </g>
-      </g>
-      <g id="Component_1_4" data-name="Component 1 – 4" transform="translate(284 14)" opacity="0.4">
-        <g id="Mask_Group_1-2" data-name="Mask Group 1" transform="translate(-310 -14)" clip-path="url(#clip-path-2)">
-          <g id="circle_black_18dp-3" data-name="circle_black_18dp" transform="translate(310 14)">
-            <g id="Group_8-2" data-name="Group 8">
-              <rect id="Rectangle_8-2" data-name="Rectangle 8" width="18" height="18" fill="none"/>
-            </g>
-            <g id="Group_9-2" data-name="Group 9">
-              <path id="Path_1-2" data-name="Path 1" d="M9,1.5A7.5,7.5,0,1,0,16.5,9,7.493,7.493,0,0,0,9,1.5ZM9,15a6,6,0,1,1,6-6A6,6,0,0,1,9,15Z" fill="none"/>
-            </g>
-          </g>
-        </g>
-        <g id="Mask_Group_2" data-name="Mask Group 2" clip-path="url(#clip-path-3)">
-          <g id="check_circle_black_18dp">
-            <path id="Path_2" data-name="Path 2" d="M0,0H18V18H0Z" fill="none"/>
-            <path id="Path_3" data-name="Path 3" d="M9,1.5A7.5,7.5,0,1,0,16.5,9,7.5,7.5,0,0,0,9,1.5ZM7.5,12.75,3.75,9,4.807,7.943,7.5,10.628l5.693-5.693L14.25,6Z"/>
-          </g>
-        </g>
-      </g>
-      <g id="Component_1_5" data-name="Component 1 – 5" transform="translate(258 14)" opacity="0.4">
-        <g id="Mask_Group_1-3" data-name="Mask Group 1" transform="translate(-310 -14)" clip-path="url(#clip-path-2)">
-          <g id="circle_black_18dp-4" data-name="circle_black_18dp" transform="translate(310 14)">
-            <g id="Group_8-3" data-name="Group 8">
-              <rect id="Rectangle_8-3" data-name="Rectangle 8" width="18" height="18" fill="none"/>
-            </g>
-            <g id="Group_9-3" data-name="Group 9">
-              <path id="Path_1-3" data-name="Path 1" d="M9,1.5A7.5,7.5,0,1,0,16.5,9,7.493,7.493,0,0,0,9,1.5ZM9,15a6,6,0,1,1,6-6A6,6,0,0,1,9,15Z" fill="none"/>
-            </g>
-          </g>
-        </g>
-        <g id="Mask_Group_3" data-name="Mask Group 3" clip-path="url(#clip-path-3)">
-          <g id="close_black_18dp">
-            <path id="Path_4" data-name="Path 4" d="M0,0H18V18H0Z" fill="none"/>
-            <path id="Path_5" data-name="Path 5" d="M14.25,4.807,13.193,3.75,9,7.943,4.807,3.75,3.75,4.807,7.943,9,3.75,13.193,4.807,14.25,9,10.057l4.193,4.193,1.057-1.057L10.057,9Z"/>
-          </g>
-        </g>
-      </g>
-      <g id="Component_1_6" data-name="Component 1 – 6" transform="translate(232 14)" opacity="0.4">
-        <g id="Mask_Group_1-4" data-name="Mask Group 1" transform="translate(-310 -14)" clip-path="url(#clip-path-2)">
-          <g id="circle_black_18dp-5" data-name="circle_black_18dp" transform="translate(310 14)">
-            <g id="Group_8-4" data-name="Group 8">
-              <rect id="Rectangle_8-4" data-name="Rectangle 8" width="18" height="18" fill="none"/>
-            </g>
-            <g id="Group_9-4" data-name="Group 9">
-              <path id="Path_1-4" data-name="Path 1" d="M9,1.5A7.5,7.5,0,1,0,16.5,9,7.493,7.493,0,0,0,9,1.5ZM9,15a6,6,0,1,1,6-6A6,6,0,0,1,9,15Z" fill="none"/>
-            </g>
-          </g>
-        </g>
-        <g id="Mask_Group_2-2" data-name="Mask Group 2" clip-path="url(#clip-path-3)">
-          <g id="check_circle_black_18dp-2" data-name="check_circle_black_18dp">
-            <path id="Path_2-2" data-name="Path 2" d="M0,0H18V18H0Z" fill="none"/>
-            <path id="Path_3-2" data-name="Path 3" d="M9,1.5A7.5,7.5,0,1,0,16.5,9,7.5,7.5,0,0,0,9,1.5ZM7.5,12.75,3.75,9,4.807,7.943,7.5,10.628l5.693-5.693L14.25,6Z"/>
-          </g>
-        </g>
-      </g>
-      <g id="Component_1_7" data-name="Component 1 – 7" transform="translate(206 14)" opacity="0.4">
-        <g id="Mask_Group_1-5" data-name="Mask Group 1" transform="translate(-310 -14)" clip-path="url(#clip-path-2)">
-          <g id="circle_black_18dp-6" data-name="circle_black_18dp" transform="translate(310 14)">
-            <g id="Group_8-5" data-name="Group 8">
-              <rect id="Rectangle_8-5" data-name="Rectangle 8" width="18" height="18" fill="none"/>
-            </g>
-            <g id="Group_9-5" data-name="Group 9">
-              <path id="Path_1-5" data-name="Path 1" d="M9,1.5A7.5,7.5,0,1,0,16.5,9,7.493,7.493,0,0,0,9,1.5ZM9,15a6,6,0,1,1,6-6A6,6,0,0,1,9,15Z" fill="none"/>
-            </g>
-          </g>
-        </g>
-        <rect id="Rectangle_9-17" data-name="Rectangle 9" width="18" height="18" fill="none"/>
-      </g>
-      <g id="Component_1_8" data-name="Component 1 – 8" transform="translate(180 14)" opacity="0.4">
-        <g id="Mask_Group_1-6" data-name="Mask Group 1" transform="translate(-310 -14)" clip-path="url(#clip-path-2)">
-          <g id="circle_black_18dp-7" data-name="circle_black_18dp" transform="translate(310 14)">
-            <g id="Group_8-6" data-name="Group 8">
-              <rect id="Rectangle_8-6" data-name="Rectangle 8" width="18" height="18" fill="none"/>
-            </g>
-            <g id="Group_9-6" data-name="Group 9">
-              <path id="Path_1-6" data-name="Path 1" d="M9,1.5A7.5,7.5,0,1,0,16.5,9,7.493,7.493,0,0,0,9,1.5ZM9,15a6,6,0,1,1,6-6A6,6,0,0,1,9,15Z" fill="none"/>
-            </g>
-          </g>
-        </g>
-        <rect id="Rectangle_9-18" data-name="Rectangle 9" width="18" height="18" fill="none"/>
-      </g>
-      <g id="Component_1_9" data-name="Component 1 – 9" transform="translate(154 14)" opacity="0.4">
-        <g id="Mask_Group_1-7" data-name="Mask Group 1" transform="translate(-310 -14)" clip-path="url(#clip-path-2)">
-          <g id="circle_black_18dp-8" data-name="circle_black_18dp" transform="translate(310 14)">
-            <g id="Group_8-7" data-name="Group 8">
-              <rect id="Rectangle_8-7" data-name="Rectangle 8" width="18" height="18" fill="none"/>
-            </g>
-            <g id="Group_9-7" data-name="Group 9">
-              <path id="Path_1-7" data-name="Path 1" d="M9,1.5A7.5,7.5,0,1,0,16.5,9,7.493,7.493,0,0,0,9,1.5ZM9,15a6,6,0,1,1,6-6A6,6,0,0,1,9,15Z" fill="none"/>
-            </g>
-          </g>
-        </g>
-        <g id="Mask_Group_2-3" data-name="Mask Group 2" clip-path="url(#clip-path-3)">
-          <g id="check_circle_black_18dp-3" data-name="check_circle_black_18dp">
-            <path id="Path_2-3" data-name="Path 2" d="M0,0H18V18H0Z" fill="none"/>
-            <path id="Path_3-3" data-name="Path 3" d="M9,1.5A7.5,7.5,0,1,0,16.5,9,7.5,7.5,0,0,0,9,1.5ZM7.5,12.75,3.75,9,4.807,7.943,7.5,10.628l5.693-5.693L14.25,6Z"/>
-          </g>
-        </g>
-      </g>
-    </g>
-    <g id="Shadow-4" data-name="Shadow" transform="translate(8 196)">
-      <g id="Shadow-5" data-name="Shadow" style="isolation: isolate">
-        <g transform="matrix(1, 0, 0, 1, -8, -196)" filter="url(#Rectangle-7)">
-          <rect id="Rectangle-24" data-name="Rectangle" width="344" height="46" rx="5" transform="translate(8 196)" fill="#fff"/>
-        </g>
-        <g transform="matrix(1, 0, 0, 1, -8, -196)" filter="url(#Rectangle-8)">
-          <rect id="Rectangle-25" data-name="Rectangle" width="344" height="46" rx="5" transform="translate(8 196)" fill="#fff"/>
-        </g>
-        <g transform="matrix(1, 0, 0, 1, -8, -196)" filter="url(#Rectangle-9)">
-          <rect id="Rectangle-26" data-name="Rectangle" width="344" height="46" rx="5" transform="translate(8 196)" fill="#fff"/>
-        </g>
-      </g>
-      <text id="_Page_Title-3" data-name="✏️ Page Title" transform="translate(16 27)" font-size="12" font-family="Roboto-Regular, Roboto" letter-spacing="0.008em"><tspan x="0" y="0">Eat Breakfast</tspan></text>
-      <g id="Component_1_1-2" data-name="Component 1 – 1" transform="translate(310 14)">
-        <g id="Mask_Group_1-8" data-name="Mask Group 1" transform="translate(-310 -14)" clip-path="url(#clip-path-2)">
-          <g id="circle_black_18dp-9" data-name="circle_black_18dp" transform="translate(310 14)">
-            <g id="Group_8-8" data-name="Group 8">
-              <rect id="Rectangle_8-8" data-name="Rectangle 8" width="18" height="18" fill="none"/>
-            </g>
-            <g id="Group_9-8" data-name="Group 9">
-              <path id="Path_1-8" data-name="Path 1" d="M9,1.5A7.5,7.5,0,1,0,16.5,9,7.493,7.493,0,0,0,9,1.5ZM9,15a6,6,0,1,1,6-6A6,6,0,0,1,9,15Z" fill="none"/>
-            </g>
-          </g>
-        </g>
-        <g id="Mask_Group_4-2" data-name="Mask Group 4" clip-path="url(#clip-path-3)">
-          <g id="circle_black_18dp-10" data-name="circle_black_18dp">
-            <g id="Group_10-2" data-name="Group 10">
-              <rect id="Rectangle_10-2" data-name="Rectangle 10" width="18" height="18" fill="none"/>
-            </g>
-            <g id="Group_11-2" data-name="Group 11">
-              <path id="Path_6-2" data-name="Path 6" d="M9,1.5A7.5,7.5,0,1,0,16.5,9,7.493,7.493,0,0,0,9,1.5ZM9,15a6,6,0,1,1,6-6A6,6,0,0,1,9,15Z"/>
-            </g>
-          </g>
-        </g>
-      </g>
-      <g id="Component_1_4-2" data-name="Component 1 – 4" transform="translate(284 14)" opacity="0.4">
-        <g id="Mask_Group_1-9" data-name="Mask Group 1" transform="translate(-310 -14)" clip-path="url(#clip-path-2)">
-          <g id="circle_black_18dp-11" data-name="circle_black_18dp" transform="translate(310 14)">
-            <g id="Group_8-9" data-name="Group 8">
-              <rect id="Rectangle_8-9" data-name="Rectangle 8" width="18" height="18" fill="none"/>
-            </g>
-            <g id="Group_9-9" data-name="Group 9">
-              <path id="Path_1-9" data-name="Path 1" d="M9,1.5A7.5,7.5,0,1,0,16.5,9,7.493,7.493,0,0,0,9,1.5ZM9,15a6,6,0,1,1,6-6A6,6,0,0,1,9,15Z" fill="none"/>
-            </g>
-          </g>
-        </g>
-        <g id="Mask_Group_3-2" data-name="Mask Group 3" clip-path="url(#clip-path-3)">
-          <g id="close_black_18dp-2" data-name="close_black_18dp">
-            <path id="Path_4-2" data-name="Path 4" d="M0,0H18V18H0Z" fill="none"/>
-            <path id="Path_5-2" data-name="Path 5" d="M14.25,4.807,13.193,3.75,9,7.943,4.807,3.75,3.75,4.807,7.943,9,3.75,13.193,4.807,14.25,9,10.057l4.193,4.193,1.057-1.057L10.057,9Z"/>
-          </g>
-        </g>
-      </g>
-      <g id="Component_1_5-2" data-name="Component 1 – 5" transform="translate(258 14)" opacity="0.4">
-        <g id="Mask_Group_1-10" data-name="Mask Group 1" transform="translate(-310 -14)" clip-path="url(#clip-path-2)">
-          <g id="circle_black_18dp-12" data-name="circle_black_18dp" transform="translate(310 14)">
-            <g id="Group_8-10" data-name="Group 8">
-              <rect id="Rectangle_8-10" data-name="Rectangle 8" width="18" height="18" fill="none"/>
-            </g>
-            <g id="Group_9-10" data-name="Group 9">
-              <path id="Path_1-10" data-name="Path 1" d="M9,1.5A7.5,7.5,0,1,0,16.5,9,7.493,7.493,0,0,0,9,1.5ZM9,15a6,6,0,1,1,6-6A6,6,0,0,1,9,15Z" fill="none"/>
-            </g>
-          </g>
-        </g>
-        <g id="Mask_Group_3-3" data-name="Mask Group 3" clip-path="url(#clip-path-3)">
-          <g id="close_black_18dp-3" data-name="close_black_18dp">
-            <path id="Path_4-3" data-name="Path 4" d="M0,0H18V18H0Z" fill="none"/>
-            <path id="Path_5-3" data-name="Path 5" d="M14.25,4.807,13.193,3.75,9,7.943,4.807,3.75,3.75,4.807,7.943,9,3.75,13.193,4.807,14.25,9,10.057l4.193,4.193,1.057-1.057L10.057,9Z"/>
-          </g>
-        </g>
-      </g>
-      <g id="Component_1_6-2" data-name="Component 1 – 6" transform="translate(232 14)" opacity="0.4">
-        <g id="Mask_Group_1-11" data-name="Mask Group 1" transform="translate(-310 -14)" clip-path="url(#clip-path-2)">
-          <g id="circle_black_18dp-13" data-name="circle_black_18dp" transform="translate(310 14)">
-            <g id="Group_8-11" data-name="Group 8">
-              <rect id="Rectangle_8-11" data-name="Rectangle 8" width="18" height="18" fill="none"/>
-            </g>
-            <g id="Group_9-11" data-name="Group 9">
-              <path id="Path_1-11" data-name="Path 1" d="M9,1.5A7.5,7.5,0,1,0,16.5,9,7.493,7.493,0,0,0,9,1.5ZM9,15a6,6,0,1,1,6-6A6,6,0,0,1,9,15Z" fill="none"/>
-            </g>
-          </g>
-        </g>
-        <g id="Mask_Group_2-4" data-name="Mask Group 2" clip-path="url(#clip-path-3)">
-          <g id="check_circle_black_18dp-4" data-name="check_circle_black_18dp">
-            <path id="Path_2-4" data-name="Path 2" d="M0,0H18V18H0Z" fill="none"/>
-            <path id="Path_3-4" data-name="Path 3" d="M9,1.5A7.5,7.5,0,1,0,16.5,9,7.5,7.5,0,0,0,9,1.5ZM7.5,12.75,3.75,9,4.807,7.943,7.5,10.628l5.693-5.693L14.25,6Z"/>
-          </g>
-        </g>
-      </g>
-      <g id="Component_1_7-2" data-name="Component 1 – 7" transform="translate(206 14)" opacity="0.4">
-        <g id="Mask_Group_1-12" data-name="Mask Group 1" transform="translate(-310 -14)" clip-path="url(#clip-path-2)">
-          <g id="circle_black_18dp-14" data-name="circle_black_18dp" transform="translate(310 14)">
-            <g id="Group_8-12" data-name="Group 8">
-              <rect id="Rectangle_8-12" data-name="Rectangle 8" width="18" height="18" fill="none"/>
-            </g>
-            <g id="Group_9-12" data-name="Group 9">
-              <path id="Path_1-12" data-name="Path 1" d="M9,1.5A7.5,7.5,0,1,0,16.5,9,7.493,7.493,0,0,0,9,1.5ZM9,15a6,6,0,1,1,6-6A6,6,0,0,1,9,15Z" fill="none"/>
-            </g>
-          </g>
-        </g>
-        <g id="Mask_Group_2-5" data-name="Mask Group 2" clip-path="url(#clip-path-3)">
-          <g id="check_circle_black_18dp-5" data-name="check_circle_black_18dp">
-            <path id="Path_2-5" data-name="Path 2" d="M0,0H18V18H0Z" fill="none"/>
-            <path id="Path_3-5" data-name="Path 3" d="M9,1.5A7.5,7.5,0,1,0,16.5,9,7.5,7.5,0,0,0,9,1.5ZM7.5,12.75,3.75,9,4.807,7.943,7.5,10.628l5.693-5.693L14.25,6Z"/>
-          </g>
-        </g>
-      </g>
-      <g id="Component_1_8-2" data-name="Component 1 – 8" transform="translate(180 14)" opacity="0.4">
-        <g id="Mask_Group_1-13" data-name="Mask Group 1" transform="translate(-310 -14)" clip-path="url(#clip-path-2)">
-          <g id="circle_black_18dp-15" data-name="circle_black_18dp" transform="translate(310 14)">
-            <g id="Group_8-13" data-name="Group 8">
-              <rect id="Rectangle_8-13" data-name="Rectangle 8" width="18" height="18" fill="none"/>
-            </g>
-            <g id="Group_9-13" data-name="Group 9">
-              <path id="Path_1-13" data-name="Path 1" d="M9,1.5A7.5,7.5,0,1,0,16.5,9,7.493,7.493,0,0,0,9,1.5ZM9,15a6,6,0,1,1,6-6A6,6,0,0,1,9,15Z" fill="none"/>
-            </g>
-          </g>
-        </g>
-        <g id="Mask_Group_2-6" data-name="Mask Group 2" clip-path="url(#clip-path-3)">
-          <g id="check_circle_black_18dp-6" data-name="check_circle_black_18dp">
-            <path id="Path_2-6" data-name="Path 2" d="M0,0H18V18H0Z" fill="none"/>
-            <path id="Path_3-6" data-name="Path 3" d="M9,1.5A7.5,7.5,0,1,0,16.5,9,7.5,7.5,0,0,0,9,1.5ZM7.5,12.75,3.75,9,4.807,7.943,7.5,10.628l5.693-5.693L14.25,6Z"/>
-          </g>
-        </g>
-      </g>
-      <g id="Component_1_9-2" data-name="Component 1 – 9" transform="translate(154 14)" opacity="0.4">
-        <g id="Mask_Group_1-14" data-name="Mask Group 1" transform="translate(-310 -14)" clip-path="url(#clip-path-2)">
-          <g id="circle_black_18dp-16" data-name="circle_black_18dp" transform="translate(310 14)">
-            <g id="Group_8-14" data-name="Group 8">
-              <rect id="Rectangle_8-14" data-name="Rectangle 8" width="18" height="18" fill="none"/>
-            </g>
-            <g id="Group_9-14" data-name="Group 9">
-              <path id="Path_1-14" data-name="Path 1" d="M9,1.5A7.5,7.5,0,1,0,16.5,9,7.493,7.493,0,0,0,9,1.5ZM9,15a6,6,0,1,1,6-6A6,6,0,0,1,9,15Z" fill="none"/>
-            </g>
-          </g>
-        </g>
-        <g id="Mask_Group_3-4" data-name="Mask Group 3" clip-path="url(#clip-path-3)">
-          <g id="close_black_18dp-4" data-name="close_black_18dp">
-            <path id="Path_4-4" data-name="Path 4" d="M0,0H18V18H0Z" fill="none"/>
-            <path id="Path_5-4" data-name="Path 5" d="M14.25,4.807,13.193,3.75,9,7.943,4.807,3.75,3.75,4.807,7.943,9,3.75,13.193,4.807,14.25,9,10.057l4.193,4.193,1.057-1.057L10.057,9Z"/>
-          </g>
-        </g>
-      </g>
-    </g>
-    <g id="Shadow-6" data-name="Shadow" transform="translate(8 142)">
-      <g id="Shadow-7" data-name="Shadow" style="isolation: isolate">
-        <g transform="matrix(1, 0, 0, 1, -8, -142)" filter="url(#Rectangle-10)">
-          <rect id="Rectangle-27" data-name="Rectangle" width="344" height="46" rx="5" transform="translate(8 142)" fill="#fff"/>
-        </g>
-        <g transform="matrix(1, 0, 0, 1, -8, -142)" filter="url(#Rectangle-11)">
-          <rect id="Rectangle-28" data-name="Rectangle" width="344" height="46" rx="5" transform="translate(8 142)" fill="#fff"/>
-        </g>
-        <g transform="matrix(1, 0, 0, 1, -8, -142)" filter="url(#Rectangle-12)">
-          <rect id="Rectangle-29" data-name="Rectangle" width="344" height="46" rx="5" transform="translate(8 142)" fill="#fff"/>
-        </g>
-      </g>
-      <text id="_Page_Title-4" data-name="✏️ Page Title" transform="translate(16 27)" font-size="12" font-family="Roboto-Regular, Roboto" letter-spacing="0.008em"><tspan x="0" y="0">Walk Dog</tspan></text>
-      <g id="Component_1_1-3" data-name="Component 1 – 1" transform="translate(310 14)">
-        <g id="Mask_Group_1-15" data-name="Mask Group 1" transform="translate(-310 -14)" clip-path="url(#clip-path-2)">
-          <g id="circle_black_18dp-17" data-name="circle_black_18dp" transform="translate(310 14)">
-            <g id="Group_8-15" data-name="Group 8">
-              <rect id="Rectangle_8-15" data-name="Rectangle 8" width="18" height="18" fill="none"/>
-            </g>
-            <g id="Group_9-15" data-name="Group 9">
-              <path id="Path_1-15" data-name="Path 1" d="M9,1.5A7.5,7.5,0,1,0,16.5,9,7.493,7.493,0,0,0,9,1.5ZM9,15a6,6,0,1,1,6-6A6,6,0,0,1,9,15Z" fill="none"/>
-            </g>
-          </g>
-        </g>
-        <g id="Mask_Group_4-3" data-name="Mask Group 4" clip-path="url(#clip-path-3)">
-          <g id="circle_black_18dp-18" data-name="circle_black_18dp">
-            <g id="Group_10-3" data-name="Group 10">
-              <rect id="Rectangle_10-3" data-name="Rectangle 10" width="18" height="18" fill="none"/>
-            </g>
-            <g id="Group_11-3" data-name="Group 11">
-              <path id="Path_6-3" data-name="Path 6" d="M9,1.5A7.5,7.5,0,1,0,16.5,9,7.493,7.493,0,0,0,9,1.5ZM9,15a6,6,0,1,1,6-6A6,6,0,0,1,9,15Z"/>
-            </g>
-          </g>
-        </g>
-      </g>
-      <g id="Component_1_4-3" data-name="Component 1 – 4" transform="translate(284 14)" opacity="0.4">
-        <g id="Mask_Group_1-16" data-name="Mask Group 1" transform="translate(-310 -14)" clip-path="url(#clip-path-2)">
-          <g id="circle_black_18dp-19" data-name="circle_black_18dp" transform="translate(310 14)">
-            <g id="Group_8-16" data-name="Group 8">
-              <rect id="Rectangle_8-16" data-name="Rectangle 8" width="18" height="18" fill="none"/>
-            </g>
-            <g id="Group_9-16" data-name="Group 9">
-              <path id="Path_1-16" data-name="Path 1" d="M9,1.5A7.5,7.5,0,1,0,16.5,9,7.493,7.493,0,0,0,9,1.5ZM9,15a6,6,0,1,1,6-6A6,6,0,0,1,9,15Z" fill="none"/>
-            </g>
-          </g>
-        </g>
-        <rect id="Rectangle_9-19" data-name="Rectangle 9" width="18" height="18" fill="none"/>
-      </g>
-      <g id="Component_1_5-3" data-name="Component 1 – 5" transform="translate(258 14)" opacity="0.4">
-        <g id="Mask_Group_1-17" data-name="Mask Group 1" transform="translate(-310 -14)" clip-path="url(#clip-path-2)">
-          <g id="circle_black_18dp-20" data-name="circle_black_18dp" transform="translate(310 14)">
-            <g id="Group_8-17" data-name="Group 8">
-              <rect id="Rectangle_8-17" data-name="Rectangle 8" width="18" height="18" fill="none"/>
-            </g>
-            <g id="Group_9-17" data-name="Group 9">
-              <path id="Path_1-17" data-name="Path 1" d="M9,1.5A7.5,7.5,0,1,0,16.5,9,7.493,7.493,0,0,0,9,1.5ZM9,15a6,6,0,1,1,6-6A6,6,0,0,1,9,15Z" fill="none"/>
-            </g>
-          </g>
-        </g>
-        <g id="Mask_Group_3-5" data-name="Mask Group 3" clip-path="url(#clip-path-3)">
-          <g id="close_black_18dp-5" data-name="close_black_18dp">
-            <path id="Path_4-5" data-name="Path 4" d="M0,0H18V18H0Z" fill="none"/>
-            <path id="Path_5-5" data-name="Path 5" d="M14.25,4.807,13.193,3.75,9,7.943,4.807,3.75,3.75,4.807,7.943,9,3.75,13.193,4.807,14.25,9,10.057l4.193,4.193,1.057-1.057L10.057,9Z"/>
-          </g>
-        </g>
-      </g>
-      <g id="Component_1_6-3" data-name="Component 1 – 6" transform="translate(232 14)" opacity="0.4">
-        <g id="Mask_Group_1-18" data-name="Mask Group 1" transform="translate(-310 -14)" clip-path="url(#clip-path-2)">
-          <g id="circle_black_18dp-21" data-name="circle_black_18dp" transform="translate(310 14)">
-            <g id="Group_8-18" data-name="Group 8">
-              <rect id="Rectangle_8-18" data-name="Rectangle 8" width="18" height="18" fill="none"/>
-            </g>
-            <g id="Group_9-18" data-name="Group 9">
-              <path id="Path_1-18" data-name="Path 1" d="M9,1.5A7.5,7.5,0,1,0,16.5,9,7.493,7.493,0,0,0,9,1.5ZM9,15a6,6,0,1,1,6-6A6,6,0,0,1,9,15Z" fill="none"/>
-            </g>
-          </g>
-        </g>
-        <rect id="Rectangle_9-20" data-name="Rectangle 9" width="18" height="18" fill="none"/>
-      </g>
-      <g id="Component_1_7-3" data-name="Component 1 – 7" transform="translate(206 14)" opacity="0.4">
-        <g id="Mask_Group_1-19" data-name="Mask Group 1" transform="translate(-310 -14)" clip-path="url(#clip-path-2)">
-          <g id="circle_black_18dp-22" data-name="circle_black_18dp" transform="translate(310 14)">
-            <g id="Group_8-19" data-name="Group 8">
-              <rect id="Rectangle_8-19" data-name="Rectangle 8" width="18" height="18" fill="none"/>
-            </g>
-            <g id="Group_9-19" data-name="Group 9">
-              <path id="Path_1-19" data-name="Path 1" d="M9,1.5A7.5,7.5,0,1,0,16.5,9,7.493,7.493,0,0,0,9,1.5ZM9,15a6,6,0,1,1,6-6A6,6,0,0,1,9,15Z" fill="none"/>
-            </g>
-          </g>
-        </g>
-        <g id="Mask_Group_2-7" data-name="Mask Group 2" clip-path="url(#clip-path-3)">
-          <g id="check_circle_black_18dp-7" data-name="check_circle_black_18dp">
-            <path id="Path_2-7" data-name="Path 2" d="M0,0H18V18H0Z" fill="none"/>
-            <path id="Path_3-7" data-name="Path 3" d="M9,1.5A7.5,7.5,0,1,0,16.5,9,7.5,7.5,0,0,0,9,1.5ZM7.5,12.75,3.75,9,4.807,7.943,7.5,10.628l5.693-5.693L14.25,6Z"/>
-          </g>
-        </g>
-      </g>
-      <g id="Component_1_8-3" data-name="Component 1 – 8" transform="translate(180 14)" opacity="0.4">
-        <g id="Mask_Group_1-20" data-name="Mask Group 1" transform="translate(-310 -14)" clip-path="url(#clip-path-2)">
-          <g id="circle_black_18dp-23" data-name="circle_black_18dp" transform="translate(310 14)">
-            <g id="Group_8-20" data-name="Group 8">
-              <rect id="Rectangle_8-20" data-name="Rectangle 8" width="18" height="18" fill="none"/>
-            </g>
-            <g id="Group_9-20" data-name="Group 9">
-              <path id="Path_1-20" data-name="Path 1" d="M9,1.5A7.5,7.5,0,1,0,16.5,9,7.493,7.493,0,0,0,9,1.5ZM9,15a6,6,0,1,1,6-6A6,6,0,0,1,9,15Z" fill="none"/>
-            </g>
-          </g>
-        </g>
-        <g id="Mask_Group_2-8" data-name="Mask Group 2" clip-path="url(#clip-path-3)">
-          <g id="check_circle_black_18dp-8" data-name="check_circle_black_18dp">
-            <path id="Path_2-8" data-name="Path 2" d="M0,0H18V18H0Z" fill="none"/>
-            <path id="Path_3-8" data-name="Path 3" d="M9,1.5A7.5,7.5,0,1,0,16.5,9,7.5,7.5,0,0,0,9,1.5ZM7.5,12.75,3.75,9,4.807,7.943,7.5,10.628l5.693-5.693L14.25,6Z"/>
-          </g>
-        </g>
-      </g>
-      <g id="Component_1_9-3" data-name="Component 1 – 9" transform="translate(154 14)" opacity="0.4">
-        <g id="Mask_Group_1-21" data-name="Mask Group 1" transform="translate(-310 -14)" clip-path="url(#clip-path-2)">
-          <g id="circle_black_18dp-24" data-name="circle_black_18dp" transform="translate(310 14)">
-            <g id="Group_8-21" data-name="Group 8">
-              <rect id="Rectangle_8-21" data-name="Rectangle 8" width="18" height="18" fill="none"/>
-            </g>
-            <g id="Group_9-21" data-name="Group 9">
-              <path id="Path_1-21" data-name="Path 1" d="M9,1.5A7.5,7.5,0,1,0,16.5,9,7.493,7.493,0,0,0,9,1.5ZM9,15a6,6,0,1,1,6-6A6,6,0,0,1,9,15Z" fill="none"/>
-            </g>
-          </g>
-        </g>
-        <rect id="Rectangle_9-21" data-name="Rectangle 9" width="18" height="18" fill="none"/>
-      </g>
-    </g>
-    <g id="Component_2_2" data-name="Component 2 – 2" transform="translate(0 584)">
-      <g id="Light_Bottom_Nav_Container" data-name="Light 🌕/ Bottom Nav/Container">
-        <g id="Light_Elevation_00dp-2" data-name="Light 🌕/Elevation/00dp">
-          <g id="Shadow-8" data-name="Shadow">
-            <g transform="matrix(1, 0, 0, 1, 0, -584)" filter="url(#Rectangle-13)" style="mix-blend-mode: multiply;isolation: isolate">
-              <rect id="Rectangle-30" data-name="Rectangle" width="360" height="56" transform="translate(0 584)" fill="#fff"/>
-            </g>
-            <g transform="matrix(1, 0, 0, 1, 0, -584)" filter="url(#Rectangle-14)" style="mix-blend-mode: multiply;isolation: isolate">
-              <rect id="Rectangle-31" data-name="Rectangle" width="360" height="56" transform="translate(0 584)" fill="#fff"/>
-            </g>
-            <g transform="matrix(1, 0, 0, 1, 0, -584)" filter="url(#Rectangle-15)" style="mix-blend-mode: multiply;isolation: isolate">
-              <rect id="Rectangle-32" data-name="Rectangle" width="360" height="56" transform="translate(0 584)" fill="#fff"/>
-            </g>
-          </g>
-        </g>
-        <rect id="Primary-2" data-name="Primary" width="360" height="56" fill="#fff"/>
-      </g>
-      <g id="Group_12" data-name="Group 12">
-        <rect id="Rectangle-33" data-name="Rectangle" width="90" height="56" fill="#fff" style="mix-blend-mode: multiply;isolation: isolate"/>
-        <text id="_Caption" data-name="✏️ Caption" transform="translate(45 45)" fill="rgba(0,0,0,0.87)" font-size="12" font-family="Roboto-Regular, Roboto" letter-spacing="0.033em"><tspan x="-20.556" y="0">My Day</tspan></text>
-        <g id="Mask_Group_5" data-name="Mask Group 5" clip-path="url(#clip-path-39)">
-          <g id="light_mode_black_24dp" transform="translate(33 8)">
-            <rect id="Rectangle_11" data-name="Rectangle 11" width="24" height="24" fill="none"/>
-            <path id="Path_7" data-name="Path 7" d="M12,9a3,3,0,1,1-3,3,3.009,3.009,0,0,1,3-3m0-2a5,5,0,1,0,5,5,5,5,0,0,0-5-5ZM2,13H4a1,1,0,0,0,0-2H2a1,1,0,0,0,0,2Zm18,0h2a1,1,0,0,0,0-2H20a1,1,0,0,0,0,2ZM11,2V4a1,1,0,0,0,2,0V2a1,1,0,0,0-2,0Zm0,18v2a1,1,0,0,0,2,0V20a1,1,0,0,0-2,0ZM5.99,4.58A1,1,0,0,0,4.58,5.99L5.64,7.05A1,1,0,0,0,7.05,5.64ZM18.36,16.95a1,1,0,0,0-1.41,1.41l1.06,1.06a1,1,0,0,0,1.41-1.41ZM19.42,5.99a1,1,0,0,0-1.41-1.41L16.95,5.64a1,1,0,0,0,1.41,1.41ZM7.05,18.36a1,1,0,0,0-1.41-1.41L4.58,18.01a1,1,0,0,0,1.41,1.41Z"/>
-          </g>
-        </g>
-      </g>
-      <g id="Group_13" data-name="Group 13" opacity="0.6">
-        <rect id="Rectangle-34" data-name="Rectangle" width="90" height="56" transform="translate(90)" fill="#fff" style="mix-blend-mode: multiply;isolation: isolate"/>
-        <text id="_Caption-2" data-name="✏️ Caption" transform="translate(135 45)" fill="rgba(0,0,0,0.87)" font-size="12" font-family="Roboto-Regular, Roboto" letter-spacing="0.033em"><tspan x="-20.893" y="0">Friends</tspan></text>
-        <g id="Mask_Group_6" data-name="Mask Group 6" clip-path="url(#clip-path-40)">
-          <g id="people_black_24dp" transform="translate(123 8)">
-            <path id="Path_8" data-name="Path 8" d="M0,0H24V24H0Z" fill="none"/>
-            <path id="Path_9" data-name="Path 9" d="M9,13.75c-2.34,0-7,1.17-7,3.5V19H16V17.25C16,14.92,11.34,13.75,9,13.75ZM4.34,17A9.642,9.642,0,0,1,9,15.75,9.642,9.642,0,0,1,13.66,17ZM9,12A3.5,3.5,0,1,0,5.5,8.5,3.5,3.5,0,0,0,9,12ZM9,7A1.5,1.5,0,1,1,7.5,8.5,1.5,1.5,0,0,1,9,7Zm7.04,6.81A4.193,4.193,0,0,1,18,17.25V19h4V17.25C22,15.23,18.5,14.08,16.04,13.81ZM15,12a3.5,3.5,0,0,0,0-7,3.446,3.446,0,0,0-1.5.35,5.461,5.461,0,0,1,0,6.3A3.446,3.446,0,0,0,15,12Z"/>
-          </g>
-        </g>
-      </g>
-      <g id="Group_14" data-name="Group 14" opacity="0.6">
-        <rect id="Rectangle-35" data-name="Rectangle" width="90" height="56" transform="translate(180)" fill="#fff" style="mix-blend-mode: multiply;isolation: isolate"/>
-        <text id="_Caption-3" data-name="✏️ Caption" transform="translate(225 45)" fill="rgba(0,0,0,0.87)" font-size="12" font-family="Roboto-Regular, Roboto" letter-spacing="0.033em"><tspan x="-18.417" y="0">Habits</tspan></text>
-        <g id="Mask_Group_8" data-name="Mask Group 8" clip-path="url(#clip-path-41)">
-          <g id="widgets_black_24dp" transform="translate(213 8)">
-            <path id="Path_12" data-name="Path 12" d="M0,0H24V24H0Z" fill="none"/>
-            <path id="Path_13" data-name="Path 13" d="M16.66,4.52l2.83,2.83-2.83,2.83L13.83,7.35l2.83-2.83M9,5V9H5V5H9M19,15v4H15V15h4M9,15v4H5V15H9M16.66,1.69,11,7.34,16.66,13l5.66-5.66L16.66,1.69ZM11,3H3v8h8ZM21,13H13v8h8ZM11,13H3v8h8Z"/>
-          </g>
-        </g>
-      </g>
-      <g id="Group_15" data-name="Group 15" opacity="0.6">
-        <rect id="Rectangle-36" data-name="Rectangle" width="90" height="56" transform="translate(270)" fill="#fff" style="mix-blend-mode: multiply;isolation: isolate"/>
-        <text id="_Caption-4" data-name="✏️ Caption" transform="translate(315 45)" fill="rgba(0,0,0,0.87)" font-size="12" font-family="Roboto-Regular, Roboto" letter-spacing="0.033em"><tspan x="-23.285" y="0">Settings</tspan></text>
-        <g id="Mask_Group_7" data-name="Mask Group 7" clip-path="url(#clip-path-42)">
-          <g id="settings_black_24dp" transform="translate(303 8)">
-            <path id="Path_10" data-name="Path 10" d="M0,0H24V24H0Z" fill="none"/>
-            <path id="Path_11" data-name="Path 11" d="M19.43,12.98A7.793,7.793,0,0,0,19.5,12a7.793,7.793,0,0,0-.07-.98l2.11-1.65a.5.5,0,0,0,.12-.64l-2-3.46a.5.5,0,0,0-.44-.25.467.467,0,0,0-.17.03l-2.49,1a7.306,7.306,0,0,0-1.69-.98l-.38-2.65A.488.488,0,0,0,14,2H10a.488.488,0,0,0-.49.42L9.13,5.07a7.683,7.683,0,0,0-1.69.98l-2.49-1a.566.566,0,0,0-.18-.03.5.5,0,0,0-.43.25l-2,3.46a.493.493,0,0,0,.12.64l2.11,1.65A7.931,7.931,0,0,0,4.5,12a7.931,7.931,0,0,0,.07.98L2.46,14.63a.5.5,0,0,0-.12.64l2,3.46a.5.5,0,0,0,.44.25.467.467,0,0,0,.17-.03l2.49-1a7.306,7.306,0,0,0,1.69.98l.38,2.65A.488.488,0,0,0,10,22h4a.488.488,0,0,0,.49-.42l.38-2.65a7.683,7.683,0,0,0,1.69-.98l2.49,1a.566.566,0,0,0,.18.03.5.5,0,0,0,.43-.25l2-3.46a.5.5,0,0,0-.12-.64Zm-1.98-1.71a5.343,5.343,0,0,1,.05.73c0,.21-.02.43-.05.73l-.14,1.13.89.7,1.08.84-.7,1.21-1.27-.51-1.04-.42-.9.68a5.857,5.857,0,0,1-1.25.73l-1.06.43-.16,1.13L12.7,20H11.3l-.19-1.35-.16-1.13-1.06-.43a5.674,5.674,0,0,1-1.23-.71l-.91-.7-1.06.43-1.27.51-.7-1.21,1.08-.84.89-.7-.14-1.13c-.03-.31-.05-.54-.05-.74s.02-.43.05-.73l.14-1.13-.89-.7L4.72,8.6l.7-1.21,1.27.51,1.04.42.9-.68a5.857,5.857,0,0,1,1.25-.73l1.06-.43.16-1.13L11.3,4h1.39l.19,1.35.16,1.13,1.06.43a5.674,5.674,0,0,1,1.23.71l.91.7,1.06-.43,1.27-.51.7,1.21-1.07.85-.89.7.14,1.13ZM12,8a4,4,0,1,0,4,4A4,4,0,0,0,12,8Zm0,6a2,2,0,1,1,2-2A2.006,2.006,0,0,1,12,14Z"/>
-          </g>
         </g>
       </g>
     </g>
