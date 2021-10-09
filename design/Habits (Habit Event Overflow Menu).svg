@@ -96,21 +96,21 @@
     <clipPath id="clip-path-16">
       <rect id="Mask" width="360" height="56" fill="#6200ee"/>
     </clipPath>
-    <filter id="Shadow_3" x="281" y="508" width="68" height="68" filterUnits="userSpaceOnUse">
+    <filter id="Shadow_3" x="282" y="508" width="68" height="68" filterUnits="userSpaceOnUse">
       <feOffset dy="2" input="SourceAlpha"/>
       <feGaussianBlur stdDeviation="2" result="blur-10"/>
       <feFlood flood-opacity="0.2"/>
       <feComposite operator="in" in2="blur-10"/>
       <feComposite in="SourceGraphic"/>
     </filter>
-    <filter id="Shadow_2" x="272" y="498" width="86" height="86" filterUnits="userSpaceOnUse">
+    <filter id="Shadow_2" x="273" y="498" width="86" height="86" filterUnits="userSpaceOnUse">
       <feOffset dy="1" input="SourceAlpha"/>
       <feGaussianBlur stdDeviation="5" result="blur-11"/>
       <feFlood flood-opacity="0.122"/>
       <feComposite operator="in" in2="blur-11"/>
       <feComposite in="SourceGraphic"/>
     </filter>
-    <filter id="Shadow_1" x="279.5" y="508.5" width="71" height="71" filterUnits="userSpaceOnUse">
+    <filter id="Shadow_1" x="280.5" y="508.5" width="71" height="71" filterUnits="userSpaceOnUse">
       <feOffset dy="4" input="SourceAlpha"/>
       <feGaussianBlur stdDeviation="2.5" result="blur-12"/>
       <feFlood flood-opacity="0.141"/>
@@ -352,16 +352,16 @@
         <text id="_Page_Title-5" data-name="✏️ Page Title" transform="translate(24 16)" fill="#fff" font-size="20" font-family="Roboto-Medium, Roboto" font-weight="500" letter-spacing="0.008em"><tspan x="0" y="19">Habits</tspan></text>
       </g>
     </g>
-    <g id="Light_FAB_1._Standard" data-name="Light 🌕/ FAB / 1. Standard" transform="translate(287 512)">
+    <g id="Light_FAB_1._Standard" data-name="Light 🌕/ FAB / 1. Standard" transform="translate(288 512)">
       <g id="Circle_Elevation_Dark_04dp" data-name="Circle Elevation/Dark 🌑/04dp" transform="translate(-109)">
-        <g transform="matrix(1, 0, 0, 1, -178, -512)" filter="url(#Shadow_3)">
-          <rect id="Shadow_3-2" data-name="Shadow 3" width="56" height="56" rx="28" transform="translate(287 512)" fill="#fff"/>
+        <g transform="matrix(1, 0, 0, 1, -179, -512)" filter="url(#Shadow_3)">
+          <rect id="Shadow_3-2" data-name="Shadow 3" width="56" height="56" rx="28" transform="translate(288 512)" fill="#fff"/>
         </g>
-        <g transform="matrix(1, 0, 0, 1, -178, -512)" filter="url(#Shadow_2)">
-          <rect id="Shadow_2-2" data-name="Shadow 2" width="56" height="56" rx="28" transform="translate(287 512)" fill="#fff"/>
+        <g transform="matrix(1, 0, 0, 1, -179, -512)" filter="url(#Shadow_2)">
+          <rect id="Shadow_2-2" data-name="Shadow 2" width="56" height="56" rx="28" transform="translate(288 512)" fill="#fff"/>
         </g>
-        <g transform="matrix(1, 0, 0, 1, -178, -512)" filter="url(#Shadow_1)">
-          <rect id="Shadow_1-2" data-name="Shadow 1" width="56" height="56" rx="28" transform="translate(287 512)" fill="#fff"/>
+        <g transform="matrix(1, 0, 0, 1, -179, -512)" filter="url(#Shadow_1)">
+          <rect id="Shadow_1-2" data-name="Shadow 1" width="56" height="56" rx="28" transform="translate(288 512)" fill="#fff"/>
         </g>
       </g>
       <g id="Fill" clip-path="url(#clip-path-17)">
