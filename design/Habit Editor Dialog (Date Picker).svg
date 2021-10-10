@@ -1,20 +1,20 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="360" height="640" viewBox="0 0 360 640">
   <defs>
-    <filter id="Rectangle" x="-6" y="20" width="372" height="68" filterUnits="userSpaceOnUse">
+    <filter id="Shadow_3" x="283" y="564" width="68" height="68" filterUnits="userSpaceOnUse">
       <feOffset dy="2" input="SourceAlpha"/>
       <feGaussianBlur stdDeviation="2" result="blur"/>
       <feFlood flood-opacity="0.2"/>
       <feComposite operator="in" in2="blur"/>
       <feComposite in="SourceGraphic"/>
     </filter>
-    <filter id="Rectangle-2" x="-15" y="10" width="390" height="86" filterUnits="userSpaceOnUse">
+    <filter id="Shadow_2" x="274" y="554" width="86" height="86" filterUnits="userSpaceOnUse">
       <feOffset dy="1" input="SourceAlpha"/>
       <feGaussianBlur stdDeviation="5" result="blur-2"/>
       <feFlood flood-opacity="0.122"/>
       <feComposite operator="in" in2="blur-2"/>
       <feComposite in="SourceGraphic"/>
     </filter>
-    <filter id="Rectangle-3" x="-7.5" y="20.5" width="375" height="71" filterUnits="userSpaceOnUse">
+    <filter id="Shadow_1" x="281.5" y="564.5" width="71" height="71" filterUnits="userSpaceOnUse">
       <feOffset dy="4" input="SourceAlpha"/>
       <feGaussianBlur stdDeviation="2.5" result="blur-3"/>
       <feFlood flood-opacity="0.141"/>
@@ -22,22 +22,63 @@
       <feComposite in="SourceGraphic"/>
     </filter>
     <clipPath id="clip-path">
-      <rect id="Mask" width="360" height="56" fill="#6200ee"/>
-    </clipPath>
-    <clipPath id="clip-path-2">
-      <rect id="Rectangle_24" data-name="Rectangle 24" width="24" height="24" transform="translate(16 16)" fill="#fff" stroke="#707070" stroke-width="1"/>
+      <circle id="FAB_Mask" data-name="FAB Mask" cx="28" cy="28" r="28" fill="#fff"/>
     </clipPath>
     <clipPath id="clip-path-3">
+      <rect id="Boundary" width="24" height="24" fill="none"/>
+    </clipPath>
+    <filter id="Rectangle" x="-6" y="20" width="372" height="68" filterUnits="userSpaceOnUse">
+      <feOffset dy="2" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="2" result="blur-4"/>
+      <feFlood flood-opacity="0.2"/>
+      <feComposite operator="in" in2="blur-4"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Rectangle-2" x="-15" y="10" width="390" height="86" filterUnits="userSpaceOnUse">
+      <feOffset dy="1" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="5" result="blur-5"/>
+      <feFlood flood-opacity="0.122"/>
+      <feComposite operator="in" in2="blur-5"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Rectangle-3" x="-7.5" y="20.5" width="375" height="71" filterUnits="userSpaceOnUse">
+      <feOffset dy="4" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="2.5" result="blur-6"/>
+      <feFlood flood-opacity="0.141"/>
+      <feComposite operator="in" in2="blur-6"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <clipPath id="clip-path-4">
+      <rect id="Mask" width="360" height="56" fill="#6200ee"/>
+    </clipPath>
+    <clipPath id="clip-path-5">
+      <rect id="Rectangle_24" data-name="Rectangle 24" width="24" height="24" transform="translate(16 16)" fill="#fff" stroke="#707070" stroke-width="1"/>
+    </clipPath>
+    <clipPath id="clip-path-6">
       <rect id="Rectangle_26" data-name="Rectangle 26" width="24" height="24" transform="translate(16 274)" fill="#fff" stroke="#707070" stroke-width="1"/>
     </clipPath>
-    <clipPath id="clip-path-4">
+    <clipPath id="clip-path-7">
       <rect id="Rectangle_28" data-name="Rectangle 28" width="24" height="24" transform="translate(16 195)" fill="#fff" stroke="#707070" stroke-width="1"/>
     </clipPath>
-    <filter id="Rectangle_29" x="18" y="78" width="324" height="516" filterUnits="userSpaceOnUse">
-      <feOffset dy="4" input="SourceAlpha"/>
-      <feGaussianBlur stdDeviation="10" result="blur-4"/>
-      <feFlood flood-opacity="0.431"/>
-      <feComposite operator="in" in2="blur-4"/>
+    <filter id="Rectangle-4" x="17.5" y="250.5" width="325" height="161" filterUnits="userSpaceOnUse">
+      <feOffset dy="11" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="7.5" result="blur-7"/>
+      <feFlood flood-opacity="0.2"/>
+      <feComposite operator="in" in2="blur-7"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Rectangle-5" x="-29" y="202" width="418" height="254" filterUnits="userSpaceOnUse">
+      <feOffset dy="9" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="23" result="blur-8"/>
+      <feFlood flood-opacity="0.122"/>
+      <feComposite operator="in" in2="blur-8"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Rectangle-6" x="-17" y="229" width="394" height="230" filterUnits="userSpaceOnUse">
+      <feOffset dy="24" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="19" result="blur-9"/>
+      <feFlood flood-opacity="0.141"/>
+      <feComposite operator="in" in2="blur-9"/>
       <feComposite in="SourceGraphic"/>
     </filter>
     <clipPath id="clip-Habit_Editor_Dialog_Date_Picker_">
@@ -46,27 +87,56 @@
   </defs>
   <g id="Habit_Editor_Dialog_Date_Picker_" data-name="Habit Editor Dialog (Date Picker)" clip-path="url(#clip-Habit_Editor_Dialog_Date_Picker_)">
     <rect width="360" height="640" fill="#fff"/>
+    <g id="Light_FAB_1._Standard" data-name="Light 🌕/ FAB / 1. Standard" transform="translate(289 568)">
+      <g id="Circle_Elevation_Dark_04dp" data-name="Circle Elevation/Dark 🌑/04dp" transform="translate(-109)">
+        <g transform="matrix(1, 0, 0, 1, -180, -568)" filter="url(#Shadow_3)">
+          <rect id="Shadow_3-2" data-name="Shadow 3" width="56" height="56" rx="28" transform="translate(289 568)" fill="#fff"/>
+        </g>
+        <g transform="matrix(1, 0, 0, 1, -180, -568)" filter="url(#Shadow_2)">
+          <rect id="Shadow_2-2" data-name="Shadow 2" width="56" height="56" rx="28" transform="translate(289 568)" fill="#fff"/>
+        </g>
+        <g transform="matrix(1, 0, 0, 1, -180, -568)" filter="url(#Shadow_1)">
+          <rect id="Shadow_1-2" data-name="Shadow 1" width="56" height="56" rx="28" transform="translate(289 568)" fill="#fff"/>
+        </g>
+      </g>
+      <g id="Fill" clip-path="url(#clip-path)">
+        <rect id="_FAB_Color" data-name="🎨 FAB Color" width="56" height="56" fill="#6200ee"/>
+      </g>
+      <g id="State" clip-path="url(#clip-path)">
+        <g id="States_Light_Primary_Container" data-name="States/Light 🌕/Primary Container">
+          <rect id="States_Light_Primary_Container_100_Overlay" data-name="States/Light 🌕/Primary Container 100%/Overlay" fill="rgba(255,255,255,0)"/>
+        </g>
+      </g>
+      <g id="icon_content_add_24px" data-name="icon/content/add_24px" transform="translate(16 16)">
+        <g id="Mask_Group_15" data-name="Mask Group 15" clip-path="url(#clip-path-3)">
+          <g id="save_white_24dp">
+            <path id="Path_28" data-name="Path 28" d="M0,0H24V24H0Z" fill="none"/>
+            <path id="Path_29" data-name="Path 29" d="M17,3H5A2,2,0,0,0,3,5V19a2,2,0,0,0,2,2H19a2.006,2.006,0,0,0,2-2V7Zm2,16H5V5H16.17L19,7.83Zm-7-7a3,3,0,1,0,3,3A3,3,0,0,0,12,12ZM6,6h9v4H6Z" fill="#fff"/>
+          </g>
+        </g>
+      </g>
+    </g>
     <g id="ΩElements_System_bar_Primary" data-name="ΩElements/System bar/Primary">
-      <rect id="Rectangle-4" data-name="Rectangle" width="360" height="24" fill="#5600e8"/>
+      <rect id="Rectangle-7" data-name="Rectangle" width="360" height="24" fill="#5600e8"/>
       <path id="Mask-2" data-name="Mask" d="M34,0H46L40,10ZM18,5a5,5,0,1,1,5,5A5,5,0,0,1,18,5ZM0,10V0H10V10Z" transform="translate(306 7)" fill="rgba(255,255,255,0.38)"/>
     </g>
     <g id="Light_App_bar_1._Top_A._Standard_a._Flat" data-name="Light 🌕/ App bar / 1. Top / A. Standard / a. Flat" transform="translate(0 24)">
       <g id="Light_Elevation_00dp" data-name="Light 🌕/Elevation/00dp">
         <g id="Shadow" style="mix-blend-mode: multiply;isolation: isolate">
           <g transform="matrix(1, 0, 0, 1, 0, -24)" filter="url(#Rectangle)">
-            <rect id="Rectangle-5" data-name="Rectangle" width="360" height="56" transform="translate(0 24)" fill="#fff"/>
+            <rect id="Rectangle-8" data-name="Rectangle" width="360" height="56" transform="translate(0 24)" fill="#fff"/>
           </g>
           <g transform="matrix(1, 0, 0, 1, 0, -24)" filter="url(#Rectangle-2)">
-            <rect id="Rectangle-6" data-name="Rectangle" width="360" height="56" transform="translate(0 24)" fill="#fff"/>
+            <rect id="Rectangle-9" data-name="Rectangle" width="360" height="56" transform="translate(0 24)" fill="#fff"/>
           </g>
           <g transform="matrix(1, 0, 0, 1, 0, -24)" filter="url(#Rectangle-3)">
-            <rect id="Rectangle-7" data-name="Rectangle" width="360" height="56" transform="translate(0 24)" fill="#fff"/>
+            <rect id="Rectangle-10" data-name="Rectangle" width="360" height="56" transform="translate(0 24)" fill="#fff"/>
           </g>
         </g>
       </g>
       <rect id="Primary" width="360" height="56" fill="#6200ee"/>
-      <g id="Mask_Group" data-name="Mask Group" clip-path="url(#clip-path)">
-        <g id="Mask_Group_14" data-name="Mask Group 14" clip-path="url(#clip-path-2)">
+      <g id="Mask_Group" data-name="Mask Group" clip-path="url(#clip-path-4)">
+        <g id="Mask_Group_14" data-name="Mask Group 14" clip-path="url(#clip-path-5)">
           <g id="close_white_24dp" transform="translate(16 16)">
             <path id="Path_26" data-name="Path 26" d="M0,0H24V24H0Z" fill="none"/>
             <path id="Path_27" data-name="Path 27" d="M19,6.41,17.59,5,12,10.59,6.41,5,5,6.41,10.59,12,5,17.59,6.41,19,12,13.41,17.59,19,19,17.59,13.41,12Z" fill="#fff"/>
@@ -98,7 +168,7 @@
           <text id="_Label-2" data-name="✏️ Label" transform="translate(16 13)" fill="rgba(0,0,0,0.6)" font-size="12" font-family="Roboto-Regular, Roboto" letter-spacing="0.033em"><tspan x="0" y="0">Start Date</tspan></text>
         </g>
       </g>
-      <g id="Mask_Group_16" data-name="Mask Group 16" opacity="0.8" clip-path="url(#clip-path-3)">
+      <g id="Mask_Group_16" data-name="Mask Group 16" opacity="0.8" clip-path="url(#clip-path-6)">
         <g id="event_black_24dp" transform="translate(16 274)">
           <path id="Path_30" data-name="Path 30" d="M0,0H24V24H0Z" fill="none"/>
           <path id="Path_31" data-name="Path 31" d="M19,4H18V2H16V4H8V2H6V4H5A1.991,1.991,0,0,0,3.01,6L3,20a2,2,0,0,0,2,2H19a2.006,2.006,0,0,0,2-2V6A2.006,2.006,0,0,0,19,4Zm0,16H5V10H19ZM19,8H5V6H19Zm-7,5h5v5H12Z"/>
@@ -117,7 +187,7 @@
           <text id="_Label-3" data-name="✏️ Label" transform="translate(16 13)" fill="rgba(0,0,0,0.6)" font-size="12" font-family="Roboto-Regular, Roboto" letter-spacing="0.033em"><tspan x="0" y="0">Reason</tspan></text>
         </g>
       </g>
-      <g id="Mask_Group_17" data-name="Mask Group 17" opacity="0.8" clip-path="url(#clip-path-4)">
+      <g id="Mask_Group_17" data-name="Mask Group 17" opacity="0.8" clip-path="url(#clip-path-7)">
         <g id="notes_black_24dp" transform="translate(16 195)">
           <path id="Path_32" data-name="Path 32" d="M0,0H24V24H0Z" fill="none"/>
           <path id="Path_33" data-name="Path 33" d="M21,11.01,3,11v2H21ZM3,16H15v2H3ZM21,6H3V8.01L21,8Z"/>
@@ -180,13 +250,24 @@
       </g>
     </g>
     <rect id="Rectangle_30" data-name="Rectangle 30" width="360" height="616" transform="translate(0 24)" opacity="0.34"/>
-    <g id="Group_26" data-name="Group 26" transform="translate(0 8)">
-      <g transform="matrix(1, 0, 0, 1, 0, -8)" filter="url(#Rectangle_29)">
-        <rect id="Rectangle_29-2" data-name="Rectangle 29" width="264" height="456" transform="translate(48 104)" fill="#fff"/>
+    <g id="Light_Dialog_3_States_" data-name="Light 🌕/ Dialog (3 States)" transform="translate(40 262)">
+      <g id="Container" transform="translate(-56 -348)">
+        <g id="Light_Elevation" data-name="Light 🌕/Elevation" transform="translate(56 348)">
+          <g id="Shadow-2" data-name="Shadow" style="mix-blend-mode: multiply;isolation: isolate">
+            <g transform="matrix(1, 0, 0, 1, -40, -262)" filter="url(#Rectangle-4)">
+              <rect id="Rectangle-11" data-name="Rectangle" width="280" height="116" rx="4" transform="translate(40 262)" fill="#fff"/>
+            </g>
+            <g transform="matrix(1, 0, 0, 1, -40, -262)" filter="url(#Rectangle-5)">
+              <rect id="Rectangle-12" data-name="Rectangle" width="280" height="116" rx="4" transform="translate(40 262)" fill="#fff"/>
+            </g>
+            <g transform="matrix(1, 0, 0, 1, -40, -262)" filter="url(#Rectangle-6)">
+              <rect id="Rectangle-13" data-name="Rectangle" width="280" height="116" rx="4" transform="translate(40 262)" fill="#fff"/>
+            </g>
+          </g>
+        </g>
+        <rect id="Container-2" data-name="Container" width="280" height="116" rx="4" transform="translate(56 348)" fill="#fff"/>
       </g>
-      <text id="Native_Date_Picker_Dialog" data-name="Native
-Date Picker
-Dialog" transform="translate(180 300)" font-size="28" font-family="Roboto-Regular, Roboto"><tspan x="-39.676" y="0">Native</tspan><tspan x="-70.923" y="34">Date Picker</tspan><tspan x="-39.43" y="68">Dialog</tspan></text>
+      <text id="System_date_picker_dialog" data-name="System date picker dialog" transform="translate(24 24)" fill="rgba(0,0,0,0.6)" font-size="14" font-family="Roboto-Regular, Roboto" letter-spacing="0.018em"><tspan x="0" y="13">System date picker dialog</tspan></text>
     </g>
   </g>
 </svg>
