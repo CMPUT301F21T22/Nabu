@@ -66,30 +66,27 @@
     <clipPath id="clip-path-9">
       <rect id="Rectangle_32" data-name="Rectangle 32" width="24" height="24" transform="translate(168 330)" fill="#fff" stroke="#707070" stroke-width="1"/>
     </clipPath>
-    <filter id="Rectangle-4" x="48.5" y="114.5" width="303" height="255" filterUnits="userSpaceOnUse">
+    <filter id="Rectangle-4" x="48.5" y="71.5" width="303" height="291" filterUnits="userSpaceOnUse">
       <feOffset dy="5" input="SourceAlpha"/>
       <feGaussianBlur stdDeviation="2.5" result="blur-7"/>
       <feFlood flood-opacity="0.2"/>
       <feComposite operator="in" in2="blur-7"/>
       <feComposite in="SourceGraphic"/>
     </filter>
-    <filter id="Rectangle-5" x="35" y="99" width="330" height="282" filterUnits="userSpaceOnUse">
+    <filter id="Rectangle-5" x="35" y="56" width="330" height="318" filterUnits="userSpaceOnUse">
       <feOffset dy="3" input="SourceAlpha"/>
       <feGaussianBlur stdDeviation="7" result="blur-8"/>
       <feFlood flood-opacity="0.122"/>
       <feComposite operator="in" in2="blur-8"/>
       <feComposite in="SourceGraphic"/>
     </filter>
-    <filter id="Rectangle-6" x="41" y="110" width="318" height="270" filterUnits="userSpaceOnUse">
+    <filter id="Rectangle-6" x="41" y="67" width="318" height="306" filterUnits="userSpaceOnUse">
       <feOffset dy="8" input="SourceAlpha"/>
       <feGaussianBlur stdDeviation="5" result="blur-9"/>
       <feFlood flood-opacity="0.141"/>
       <feComposite operator="in" in2="blur-9"/>
       <feComposite in="SourceGraphic"/>
     </filter>
-    <clipPath id="clip-path-10">
-      <rect width="288" height="224" fill="none"/>
-    </clipPath>
     <clipPath id="clip-Habit_Event_Editor_Dialog_Location_Picker_">
       <rect width="360" height="640"/>
     </clipPath>
@@ -222,75 +219,45 @@
         </g>
       </g>
     </g>
-    <g id="Light_Menus_2._Large_Dropdown" data-name="Light 🌕/ Menus/2. Large Dropdown" transform="translate(56 61)">
-      <g id="Light_Elevation_00dp-2" data-name="Light 🌕/Elevation/00dp" transform="translate(0 56)">
+    <g id="Light_Menus_2._Large_Dropdown" data-name="Light 🌕/ Menus/2. Large Dropdown" transform="translate(56 74)">
+      <g id="Light_Elevation_00dp-2" data-name="Light 🌕/Elevation/00dp">
         <g id="Shadow-2" data-name="Shadow">
-          <g transform="matrix(1, 0, 0, 1, -56, -117)" filter="url(#Rectangle-4)" style="mix-blend-mode: multiply;isolation: isolate">
-            <rect id="Rectangle-11" data-name="Rectangle" width="288" height="240" rx="4" transform="translate(56 117)" fill="#fff"/>
+          <g transform="matrix(1, 0, 0, 1, -56, -74)" filter="url(#Rectangle-4)" style="mix-blend-mode: multiply;isolation: isolate">
+            <rect id="Rectangle-11" data-name="Rectangle" width="288" height="276" rx="4" transform="translate(56 74)" fill="#fff"/>
           </g>
-          <g transform="matrix(1, 0, 0, 1, -56, -117)" filter="url(#Rectangle-5)" style="mix-blend-mode: multiply;isolation: isolate">
-            <rect id="Rectangle-12" data-name="Rectangle" width="288" height="240" rx="4" transform="translate(56 117)" fill="#fff"/>
+          <g transform="matrix(1, 0, 0, 1, -56, -74)" filter="url(#Rectangle-5)" style="mix-blend-mode: multiply;isolation: isolate">
+            <rect id="Rectangle-12" data-name="Rectangle" width="288" height="276" rx="4" transform="translate(56 74)" fill="#fff"/>
           </g>
-          <g transform="matrix(1, 0, 0, 1, -56, -117)" filter="url(#Rectangle-6)" style="mix-blend-mode: multiply;isolation: isolate">
-            <rect id="Rectangle-13" data-name="Rectangle" width="288" height="240" rx="4" transform="translate(56 117)" fill="#fff"/>
-          </g>
-        </g>
-      </g>
-      <rect id="Container" width="288" height="296" rx="4" fill="#fff"/>
-      <g id="Repeat_Grid_4" data-name="Repeat Grid 4" transform="translate(0 64)" clip-path="url(#clip-path-10)">
-        <g transform="translate(0 -8)">
-          <g id="Light_Lists_Single-line_" data-name="Light 🌕/ Lists/Single-line/" transform="translate(0 8)">
-            <rect id="_Elevation" data-name="☁️ Elevation" width="288" height="48" fill="none"/>
-            <g id="_Icon" data-name="📍Icon" transform="translate(248 12)">
-              <rect id="Boundary-2" data-name="Boundary" width="24" height="24" fill="none"/>
-            </g>
-            <rect id="_States" data-name="💡States" width="288" height="56" fill="none"/>
-            <text id="_Subtitle_1" data-name="✏️ Subtitle 1" transform="translate(16 23)" fill="rgba(0,0,0,0.87)" font-size="16" font-family="Roboto-Regular, Roboto" letter-spacing="0.031em"><tspan x="0" y="0">Deville</tspan></text>
-            <text id="_Subtitle_1-2" data-name="✏️ Subtitle 1" transform="translate(16 44)" fill="rgba(0,0,0,0.87)" font-size="16" font-family="Roboto-Regular, Roboto" letter-spacing="0.031em" opacity="0.6"><tspan x="0" y="0">AB, Canada</tspan></text>
-          </g>
-        </g>
-        <g transform="translate(0 48)">
-          <g id="Light_Lists_Single-line_2" data-name="Light 🌕/ Lists/Single-line/" transform="translate(0 8)">
-            <rect id="_Elevation-2" data-name="☁️ Elevation" width="288" height="48" fill="none"/>
-            <g id="_Icon-2" data-name="📍Icon" transform="translate(248 12)">
-              <rect id="Boundary-3" data-name="Boundary" width="24" height="24" fill="none"/>
-            </g>
-            <rect id="_States-2" data-name="💡States" width="288" height="56" fill="none"/>
-            <text id="_Subtitle_1-3" data-name="✏️ Subtitle 1" transform="translate(16 23)" fill="rgba(0,0,0,0.87)" font-size="16" font-family="Roboto-Regular, Roboto" letter-spacing="0.031em"><tspan x="0" y="0">DEVILLE ABOGADOS</tspan></text>
-            <text id="_Subtitle_1-4" data-name="✏️ Subtitle 1" transform="translate(16 44)" fill="rgba(0,0,0,0.87)" font-size="16" font-family="Roboto-Regular, Roboto" letter-spacing="0.031em" opacity="0.6"><tspan x="0" y="0">Calle de Trafalgar, Madrid, Spain</tspan></text>
-          </g>
-        </g>
-        <g transform="translate(0 104)">
-          <g id="Light_Lists_Single-line_3" data-name="Light 🌕/ Lists/Single-line/" transform="translate(0 8)">
-            <rect id="_Elevation-3" data-name="☁️ Elevation" width="288" height="48" fill="none"/>
-            <g id="_Icon-3" data-name="📍Icon" transform="translate(248 12)">
-              <rect id="Boundary-4" data-name="Boundary" width="24" height="24" fill="none"/>
-            </g>
-            <rect id="_States-3" data-name="💡States" width="288" height="56" fill="none"/>
-            <text id="_Subtitle_1-5" data-name="✏️ Subtitle 1" transform="translate(16 23)" fill="rgba(0,0,0,0.87)" font-size="16" font-family="Roboto-Regular, Roboto" letter-spacing="0.031em"><tspan x="0" y="0">Deville IT-konsultbyrå AB</tspan></text>
-            <text id="_Subtitle_1-6" data-name="✏️ Subtitle 1" transform="translate(16 44)" fill="rgba(0,0,0,0.87)" font-size="16" font-family="Roboto-Regular, Roboto" letter-spacing="0.031em" opacity="0.6"><tspan x="0" y="0">Stockholm, Sweden</tspan></text>
-          </g>
-        </g>
-        <g transform="translate(0 160)">
-          <g id="Light_Lists_Single-line_4" data-name="Light 🌕/ Lists/Single-line/" transform="translate(0 8)">
-            <rect id="_Elevation-4" data-name="☁️ Elevation" width="288" height="48" fill="none"/>
-            <g id="_Icon-4" data-name="📍Icon" transform="translate(248 12)">
-              <rect id="Boundary-5" data-name="Boundary" width="24" height="24" fill="none"/>
-            </g>
-            <rect id="_States-4" data-name="💡States" width="288" height="56" fill="none"/>
-            <text id="_Subtitle_1-7" data-name="✏️ Subtitle 1" transform="translate(16 23)" fill="rgba(0,0,0,0.87)" font-size="16" font-family="Roboto-Regular, Roboto" letter-spacing="0.031em"><tspan x="0" y="0">Deville Coffee</tspan></text>
-            <text id="_Subtitle_1-8" data-name="✏️ Subtitle 1" transform="translate(16 44)" fill="rgba(0,0,0,0.87)" font-size="16" font-family="Roboto-Regular, Roboto" letter-spacing="0.031em" opacity="0.6"><tspan x="0" y="0">Barney Rush Road, Deville, Loui...</tspan></text>
+          <g transform="matrix(1, 0, 0, 1, -56, -74)" filter="url(#Rectangle-6)" style="mix-blend-mode: multiply;isolation: isolate">
+            <rect id="Rectangle-13" data-name="Rectangle" width="288" height="276" rx="4" transform="translate(56 74)" fill="#fff"/>
           </g>
         </g>
       </g>
-      <g id="Light_Lists_Single-line_6" data-name="Light 🌕/ Lists/Single-line/" transform="translate(0 8)">
-        <rect id="_Elevation-5" data-name="☁️ Elevation" width="288" height="48" fill="none"/>
-        <g id="_Icon-5" data-name="📍Icon" transform="translate(248 12)">
-          <rect id="Boundary-6" data-name="Boundary" width="24" height="24" fill="none"/>
-        </g>
-        <rect id="_States-5" data-name="💡States" width="288" height="56" fill="none"/>
-        <text id="_Subtitle_1-9" data-name="✏️ Subtitle 1" transform="translate(16 23)" fill="rgba(0,0,0,0.87)" font-size="16" font-family="Roboto-Medium, Roboto" font-weight="500" letter-spacing="0.031em"><tspan x="0" y="0">Current Location</tspan></text>
-        <text id="_Subtitle_1-10" data-name="✏️ Subtitle 1" transform="translate(16 44)" fill="rgba(0,0,0,0.87)" font-size="16" font-family="Roboto-Medium, Roboto" font-weight="500" letter-spacing="0.031em" opacity="0.6"><tspan x="0" y="0">Near Edmonton, AB, Canada</tspan></text>
+      <rect id="Container" width="288" height="276" rx="4" fill="#fff"/>
+      <g id="Group_32" data-name="Group 32" transform="translate(0 -4)">
+        <rect id="_Elevation" data-name="☁️ Elevation" width="288" height="52" transform="translate(0 64)" fill="none"/>
+        <text id="_Subtitle_1" data-name="✏️ Subtitle 1" transform="translate(16 85)" fill="rgba(0,0,0,0.87)" font-size="14" font-family="Roboto-Regular, Roboto" letter-spacing="0.031em"><tspan x="0" y="0">Deville</tspan></text>
+        <text id="_Subtitle_1-2" data-name="✏️ Subtitle 1" transform="translate(16 104)" fill="rgba(0,0,0,0.87)" font-size="14" font-family="Roboto-Regular, Roboto" letter-spacing="0.031em" opacity="0.6"><tspan x="0" y="0">AB, Canada</tspan></text>
+      </g>
+      <g id="Group_34" data-name="Group 34" transform="translate(0 48)">
+        <rect id="_Elevation-2" data-name="☁️ Elevation" width="288" height="52" transform="translate(0 64)" fill="none"/>
+        <text id="_Subtitle_1-3" data-name="✏️ Subtitle 1" transform="translate(16 85)" fill="rgba(0,0,0,0.87)" font-size="14" font-family="Roboto-Regular, Roboto" letter-spacing="0.031em"><tspan x="0" y="0">DEVILLE ABOGADOS</tspan></text>
+        <text id="_Subtitle_1-4" data-name="✏️ Subtitle 1" transform="translate(16 104)" fill="rgba(0,0,0,0.87)" font-size="14" font-family="Roboto-Regular, Roboto" letter-spacing="0.031em" opacity="0.6"><tspan x="0" y="0">Calle de Trafalgar, Madrid, Spain</tspan></text>
+      </g>
+      <g id="Group_35" data-name="Group 35" transform="translate(0 100)">
+        <rect id="_Elevation-3" data-name="☁️ Elevation" width="288" height="52" transform="translate(0 64)" fill="none"/>
+        <text id="_Subtitle_1-5" data-name="✏️ Subtitle 1" transform="translate(16 85)" fill="rgba(0,0,0,0.87)" font-size="14" font-family="Roboto-Regular, Roboto" letter-spacing="0.031em"><tspan x="0" y="0">Deville IT-konsultbyrå AB</tspan></text>
+        <text id="_Subtitle_1-6" data-name="✏️ Subtitle 1" transform="translate(16 104)" fill="rgba(0,0,0,0.87)" font-size="14" font-family="Roboto-Regular, Roboto" letter-spacing="0.031em" opacity="0.6"><tspan x="0" y="0">Stockholm, Sweden</tspan></text>
+      </g>
+      <g id="Group_36" data-name="Group 36" transform="translate(0 152)">
+        <rect id="_Elevation-4" data-name="☁️ Elevation" width="288" height="52" transform="translate(0 64)" fill="none"/>
+        <text id="_Subtitle_1-7" data-name="✏️ Subtitle 1" transform="translate(16 85)" fill="rgba(0,0,0,0.87)" font-size="14" font-family="Roboto-Regular, Roboto" letter-spacing="0.031em"><tspan x="0" y="0">Deville Coffee</tspan></text>
+        <text id="_Subtitle_1-8" data-name="✏️ Subtitle 1" transform="translate(16 104)" fill="rgba(0,0,0,0.87)" font-size="14" font-family="Roboto-Regular, Roboto" letter-spacing="0.031em" opacity="0.6"><tspan x="0" y="0">Barney Rush Road, Deville, Loui...</tspan></text>
+      </g>
+      <g id="Group_33" data-name="Group 33" transform="translate(0 -56)">
+        <rect id="_Elevation-5" data-name="☁️ Elevation" width="288" height="52" transform="translate(0 64)" fill="none"/>
+        <text id="_Subtitle_1-9" data-name="✏️ Subtitle 1" transform="translate(16 85)" fill="rgba(0,0,0,0.87)" font-size="14" font-family="Roboto-Medium, Roboto" font-weight="500" letter-spacing="0.031em"><tspan x="0" y="0">Current Location</tspan></text>
+        <text id="_Subtitle_1-10" data-name="✏️ Subtitle 1" transform="translate(16 104)" fill="rgba(0,0,0,0.87)" font-size="14" font-family="Roboto-Medium, Roboto" font-weight="500" letter-spacing="0.031em" opacity="0.6"><tspan x="0" y="0">Near Edmonton, AB, Canada</tspan></text>
       </g>
     </g>
   </g>
