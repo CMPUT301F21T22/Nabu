@@ -143,7 +143,7 @@
       <rect id="Rectangle-17" data-name="Rectangle" width="16" height="64" fill="#fff"/>
     </g>
     <g id="Shadow" transform="translate(8 88)">
-      <g id="Shadow-2" data-name="Shadow" style="isolation: isolate">
+      <g id="Shadow-2" data-name="Shadow" opacity="0.8" style="isolation: isolate">
         <g transform="matrix(1, 0, 0, 1, -8, -88)" filter="url(#Rectangle)">
           <rect id="Rectangle-18" data-name="Rectangle" width="344" height="50" rx="5" transform="translate(8 88)" fill="#fff"/>
         </g>
@@ -277,7 +277,7 @@
       <text id="_Page_Title" data-name="✏️ Page Title" transform="translate(16 17)" font-size="14" font-family="Roboto-Regular, Roboto" letter-spacing="0.007em"><tspan x="0" y="13">Go to Work</tspan></text>
     </g>
     <g id="Shadow-3" data-name="Shadow" transform="translate(8 204)">
-      <g id="Shadow-4" data-name="Shadow" style="isolation: isolate">
+      <g id="Shadow-4" data-name="Shadow" opacity="0.8" style="isolation: isolate">
         <g transform="matrix(1, 0, 0, 1, -8, -204)" filter="url(#Rectangle-4)">
           <rect id="Rectangle-21" data-name="Rectangle" width="344" height="64" rx="5" transform="translate(8 204)" fill="#fff"/>
         </g>
@@ -421,7 +421,7 @@
       <text id="_Page_Title-2" data-name="✏️ Page Title" transform="translate(16 17)" font-size="14" font-family="Roboto-Regular, Roboto" letter-spacing="0.007em"><tspan x="0" y="13">Eat Mmmmmmmm</tspan><tspan x="0" y="29">mmuffins</tspan></text>
     </g>
     <g id="Shadow-5" data-name="Shadow" transform="translate(8 146)">
-      <g id="Shadow-6" data-name="Shadow" style="isolation: isolate">
+      <g id="Shadow-6" data-name="Shadow" opacity="0.8" style="isolation: isolate">
         <g transform="matrix(1, 0, 0, 1, -8, -146)" filter="url(#Rectangle-7)">
           <rect id="Rectangle-24" data-name="Rectangle" width="344" height="50" rx="5" transform="translate(8 146)" fill="#fff"/>
         </g>

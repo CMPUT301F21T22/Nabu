@@ -143,7 +143,7 @@
       <rect id="Rectangle-17" data-name="Rectangle" width="16" height="64" fill="#fff"/>
     </g>
     <g id="Shadow" transform="translate(8 88)">
-      <g id="Shadow-2" data-name="Shadow" style="isolation: isolate">
+      <g id="Shadow-2" data-name="Shadow" opacity="0.8" style="isolation: isolate">
         <g transform="matrix(1, 0, 0, 1, -8, -88)" filter="url(#Rectangle)">
           <rect id="Rectangle-18" data-name="Rectangle" width="344" height="50" rx="5" transform="translate(8 88)" fill="#fff"/>
         </g>
@@ -277,8 +277,8 @@
       <text id="_Page_Title" data-name="✏️ Page Title" transform="translate(16 17)" font-size="14" font-family="Roboto-Regular, Roboto" letter-spacing="0.007em"><tspan x="0" y="13">Go to Work</tspan></text>
     </g>
     <g id="Shadow-3" data-name="Shadow" transform="translate(8 218)">
-      <g id="Shadow-4" data-name="Shadow" style="isolation: isolate">
-        <rect id="Rectangle-21" data-name="Rectangle" width="344" height="50" rx="5" fill="#efefef"/>
+      <g id="Shadow-4" data-name="Shadow" opacity="0.8" style="isolation: isolate">
+        <rect id="Rectangle-21" data-name="Rectangle" width="344" height="50" rx="5" fill="#eee"/>
       </g>
       <g id="Component_1_1-2" data-name="Component 1 – 1" transform="translate(310 16)" opacity="0.8">
         <g id="Mask_Group_1-8" data-name="Mask Group 1" transform="translate(-310 -14)" clip-path="url(#clip-path)">
@@ -527,7 +527,7 @@
       </g>
     </g>
     <g id="Shadow-8" data-name="Shadow" transform="translate(8 146)">
-      <g id="Shadow-9" data-name="Shadow" style="isolation: isolate">
+      <g id="Shadow-9" data-name="Shadow" opacity="0.8" style="isolation: isolate">
         <g transform="matrix(1, 0, 0, 1, -8, -146)" filter="url(#Rectangle-13)">
           <rect id="Rectangle-35" data-name="Rectangle" width="344" height="64" rx="5" transform="translate(8 146)" fill="#fff"/>
         </g>
