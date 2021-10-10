@@ -623,7 +623,7 @@
       </g>
       <rect id="Primary-2" data-name="Primary" width="360" height="56" fill="#6200ee"/>
       <g id="Mask_Group" data-name="Mask Group" clip-path="url(#clip-path-42)">
-        <text id="_Page_Title-4" data-name="✏️ Page Title" transform="translate(24 16)" fill="#fff" font-size="20" font-family="Roboto-Medium, Roboto" font-weight="500" letter-spacing="0.008em"><tspan x="0" y="19">My Day</tspan></text>
+        <text id="_Page_Title-4" data-name="✏️ Page Title" transform="translate(16 16)" fill="#fff" font-size="20" font-family="Roboto-Medium, Roboto" font-weight="500" letter-spacing="0.008em"><tspan x="0" y="19">My Day</tspan></text>
         <g id="Group_1" data-name="Group 1" transform="translate(-10 -2)">
           <text id="THU" transform="translate(337 26)" fill="#fff" font-size="9" font-family="Roboto-Bold, Roboto" font-weight="700"><tspan x="-8.925" y="0">THU</tspan></text>
           <text id="_7" data-name="7" transform="translate(337 42)" fill="#fff" font-size="14" font-family="Roboto-Regular, Roboto"><tspan x="-3.931" y="0">7</tspan></text>
