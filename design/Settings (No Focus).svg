@@ -79,7 +79,16 @@
       <feComposite in="SourceGraphic"/>
     </filter>
     <clipPath id="clip-path-6">
+      <rect id="Rectangle_50" data-name="Rectangle 50" width="24" height="24" transform="translate(16 24)" fill="#fff" stroke="#707070" stroke-width="1"/>
+    </clipPath>
+    <clipPath id="clip-path-7">
+      <rect width="344" height="112" fill="none"/>
+    </clipPath>
+    <clipPath id="clip-path-8">
       <rect id="Rectangle_43" data-name="Rectangle 43" width="24" height="24" transform="translate(-64 4125)" fill="#fff" stroke="#707070" stroke-width="1"/>
+    </clipPath>
+    <clipPath id="clip-path-9">
+      <rect id="Rectangle_51" data-name="Rectangle 51" width="24" height="24" transform="translate(-352 4254)" fill="#fff" stroke="#707070" stroke-width="1"/>
     </clipPath>
     <clipPath id="clip-Settings_No_Focus_">
       <rect width="360" height="640"/>
@@ -180,15 +189,41 @@
           <rect id="Rectangle-23" data-name="Rectangle" width="344" height="72" rx="5" transform="translate(8 88)" fill="#fff"/>
         </g>
       </g>
-      <text id="_Page_Title-2" data-name="✏️ Page Title" transform="translate(16 33)" font-size="14" font-family="Roboto-Regular, Roboto" letter-spacing="0.007em"><tspan x="0" y="0">Logged in as:</tspan></text>
-      <text id="_Page_Title-3" data-name="✏️ Page Title" transform="translate(16 52)" font-size="14" font-family="Roboto-Medium, Roboto" font-weight="500" letter-spacing="0.007em"><tspan x="0" y="0">me@somemail.com</tspan></text>
-      <g id="Mask_Group_23" data-name="Mask Group 23" transform="translate(368 -4101)" opacity="0.8" clip-path="url(#clip-path-6)">
-        <g id="logout_black_24dp" transform="translate(-64 4125)">
-          <g id="Group_46" data-name="Group 46">
-            <path id="Path_44" data-name="Path 44" d="M0,0H24V24H0Z" fill="none"/>
+      <text id="_Page_Title-2" data-name="✏️ Page Title" transform="translate(56 33)" font-size="14" font-family="Roboto-Regular, Roboto" letter-spacing="0.007em"><tspan x="0" y="0">Logged in as:</tspan></text>
+      <text id="_Page_Title-3" data-name="✏️ Page Title" transform="translate(56 52)" font-size="14" font-family="Roboto-Medium, Roboto" font-weight="500" letter-spacing="0.007em"><tspan x="0" y="0">me@somemail.com</tspan></text>
+      <g id="Mask_Group_27" data-name="Mask Group 27" opacity="0.8" clip-path="url(#clip-path-6)">
+        <g id="account_circle_black_24dp" transform="translate(16 24)">
+          <path id="Path_52" data-name="Path 52" d="M0,0H24V24H0Z" fill="none"/>
+          <path id="Path_53" data-name="Path 53" d="M12,2A10,10,0,1,0,22,12,10,10,0,0,0,12,2ZM7.07,18.28c.43-.9,3.05-1.78,4.93-1.78s4.51.88,4.93,1.78a7.925,7.925,0,0,1-9.86,0Zm11.29-1.45c-1.43-1.74-4.9-2.33-6.36-2.33s-4.93.59-6.36,2.33a8,8,0,1,1,12.72,0ZM12,6a3.5,3.5,0,1,0,3.5,3.5A3.491,3.491,0,0,0,12,6Zm0,5a1.5,1.5,0,1,1,1.5-1.5A1.5,1.5,0,0,1,12,11Z"/>
+        </g>
+      </g>
+    </g>
+    <g id="Repeat_Grid_5" data-name="Repeat Grid 5" transform="translate(8 168)" clip-path="url(#clip-path-7)">
+      <g transform="translate(368 -4238)">
+        <g id="Component_108_2" data-name="Component 108 – 2" transform="translate(-368 4238)">
+          <g id="Mask_Group_23" data-name="Mask Group 23" transform="translate(80 -4109)" opacity="0.8" clip-path="url(#clip-path-8)">
+            <g id="logout_black_24dp" transform="translate(-64 4125)">
+              <g id="Group_46" data-name="Group 46">
+                <path id="Path_44" data-name="Path 44" d="M0,0H24V24H0Z" fill="none"/>
+              </g>
+              <g id="Group_47" data-name="Group 47">
+                <path id="Path_45" data-name="Path 45" d="M17,8,15.59,9.41,17.17,11H9v2h8.17l-1.58,1.58L17,16l4-4ZM5,5h7V3H5A2.006,2.006,0,0,0,3,5V19a2.006,2.006,0,0,0,2,2h7V19H5Z"/>
+              </g>
+            </g>
           </g>
-          <g id="Group_47" data-name="Group 47">
-            <path id="Path_45" data-name="Path 45" d="M17,8,15.59,9.41,17.17,11H9v2h8.17l-1.58,1.58L17,16l4-4ZM5,5h7V3H5A2.006,2.006,0,0,0,3,5V19a2.006,2.006,0,0,0,2,2h7V19H5Z"/>
+          <rect id="Rectangle_49" data-name="Rectangle 49" width="344" height="56" fill="none"/>
+          <text id="_Page_Title-4" data-name="✏️ Page Title" transform="translate(56 32)" font-size="14" font-family="Roboto-Regular, Roboto" letter-spacing="0.007em" opacity="0.8"><tspan x="0" y="0">Log out</tspan></text>
+        </g>
+      </g>
+      <g transform="translate(368 -4182)">
+        <g id="Component_108_2-2" data-name="Component 108 – 2" transform="translate(-368 4238)">
+          <rect id="Rectangle_49-2" data-name="Rectangle 49" width="344" height="56" fill="none"/>
+          <text id="_Page_Title-5" data-name="✏️ Page Title" transform="translate(56 32)" font-size="14" font-family="Roboto-Regular, Roboto" letter-spacing="0.007em" opacity="0.8"><tspan x="0" y="0">Reset app</tspan></text>
+          <g id="Mask_Group_28" data-name="Mask Group 28" transform="translate(368 -4238)" opacity="0.8" clip-path="url(#clip-path-9)">
+            <g id="restore_black_24dp" transform="translate(-352 4254)">
+              <path id="Path_54" data-name="Path 54" d="M0,0H24V24H0Z" fill="none"/>
+              <path id="Path_55" data-name="Path 55" d="M13,3a9,9,0,0,0-9,9H1l4,3.99L9,12H6a7.034,7.034,0,1,1,2.06,4.94L6.64,18.36A9,9,0,1,0,13,3ZM12,8v5l4.25,2.52.77-1.28L13.5,12.15V8Z"/>
+            </g>
           </g>
         </g>
       </g>

@@ -90,36 +90,36 @@
     <clipPath id="clip-path-9">
       <rect id="Rectangle_50" data-name="Rectangle 50" width="24" height="24" transform="translate(16 24)" fill="#fff" stroke="#707070" stroke-width="1"/>
     </clipPath>
-    <filter id="Rectangle-10" x="17.5" y="250.5" width="325" height="161" filterUnits="userSpaceOnUse">
+    <filter id="Rectangle-10" x="17.5" y="202.5" width="325" height="258" filterUnits="userSpaceOnUse">
       <feOffset dy="11" input="SourceAlpha"/>
       <feGaussianBlur stdDeviation="7.5" result="blur-10"/>
       <feFlood flood-opacity="0.2"/>
       <feComposite operator="in" in2="blur-10"/>
       <feComposite in="SourceGraphic"/>
     </filter>
-    <filter id="Rectangle-11" x="-29" y="202" width="418" height="254" filterUnits="userSpaceOnUse">
+    <filter id="Rectangle-11" x="-29" y="154" width="418" height="351" filterUnits="userSpaceOnUse">
       <feOffset dy="9" input="SourceAlpha"/>
       <feGaussianBlur stdDeviation="23" result="blur-11"/>
       <feFlood flood-opacity="0.122"/>
       <feComposite operator="in" in2="blur-11"/>
       <feComposite in="SourceGraphic"/>
     </filter>
-    <filter id="Rectangle-12" x="-17" y="229" width="394" height="230" filterUnits="userSpaceOnUse">
+    <filter id="Rectangle-12" x="-17" y="181" width="394" height="327" filterUnits="userSpaceOnUse">
       <feOffset dy="24" input="SourceAlpha"/>
       <feGaussianBlur stdDeviation="19" result="blur-12"/>
       <feFlood flood-opacity="0.141"/>
       <feComposite operator="in" in2="blur-12"/>
       <feComposite in="SourceGraphic"/>
     </filter>
-    <clipPath id="clip-Settings_Logout_Confirmation_">
+    <clipPath id="clip-Settings_Reset_Confirmation_">
       <rect width="360" height="640"/>
     </clipPath>
   </defs>
-  <g id="Settings_Logout_Confirmation_" data-name="Settings (Logout Confirmation)" clip-path="url(#clip-Settings_Logout_Confirmation_)">
+  <g id="Settings_Reset_Confirmation_" data-name="Settings (Reset Confirmation)" clip-path="url(#clip-Settings_Reset_Confirmation_)">
     <rect width="360" height="640" fill="#fff"/>
     <g id="Repeat_Grid_6" data-name="Repeat Grid 6" transform="translate(8 168)" clip-path="url(#clip-path)">
       <g transform="translate(368 -4238)">
-        <g id="Component_108_3" data-name="Component 108 – 3" transform="translate(-368 4238)">
+        <g id="Component_108_5" data-name="Component 108 – 5" transform="translate(-368 4238)">
           <g id="Mask_Group_23" data-name="Mask Group 23" transform="translate(80 -4109)" opacity="0.8" clip-path="url(#clip-path-2)">
             <g id="logout_black_24dp" transform="translate(-64 4125)">
               <g id="Group_46" data-name="Group 46">
@@ -135,7 +135,7 @@
         </g>
       </g>
       <g transform="translate(368 -4182)">
-        <g id="Component_108_4" data-name="Component 108 – 4" transform="translate(-368 4238)">
+        <g id="Component_108_6" data-name="Component 108 – 6" transform="translate(-368 4238)">
           <rect id="Rectangle_49-2" data-name="Rectangle 49" width="344" height="56" fill="none"/>
           <text id="_Page_Title-2" data-name="✏️ Page Title" transform="translate(56 32)" font-size="14" font-family="Roboto-Regular, Roboto" letter-spacing="0.007em" opacity="0.8"><tspan x="0" y="0">Reset app</tspan></text>
           <g id="Mask_Group_28" data-name="Mask Group 28" transform="translate(368 -4238)" opacity="0.8" clip-path="url(#clip-path-3)">
@@ -151,7 +151,7 @@
       <rect id="Rectangle-13" data-name="Rectangle" width="360" height="24" fill="#5600e8"/>
       <path id="Mask-2" data-name="Mask" d="M34,0H46L40,10ZM18,5a5,5,0,1,1,5,5A5,5,0,0,1,18,5ZM0,10V0H10V10Z" transform="translate(306 7)" fill="rgba(255,255,255,0.38)"/>
     </g>
-    <g id="Component_2_13" data-name="Component 2 – 13" transform="translate(0 584)">
+    <g id="Component_2_17" data-name="Component 2 – 17" transform="translate(0 584)">
       <g id="Light_Bottom_Nav_Container" data-name="Light 🌕/ Bottom Nav/Container">
         <g id="Light_Elevation_00dp" data-name="Light 🌕/Elevation/00dp">
           <g id="Shadow">
@@ -209,7 +209,7 @@
         </g>
       </g>
     </g>
-    <g id="Component_8_14" data-name="Component 8 – 14" transform="translate(0 24)">
+    <g id="Component_8_18" data-name="Component 8 – 18" transform="translate(0 24)">
       <g id="Light_Elevation_00dp-2" data-name="Light 🌕/Elevation/00dp">
         <g id="Shadow-2" data-name="Shadow" style="mix-blend-mode: multiply;isolation: isolate">
           <g transform="matrix(1, 0, 0, 1, 0, -24)" filter="url(#Rectangle-4)">
@@ -228,7 +228,7 @@
         <text id="_Page_Title-3" data-name="✏️ Page Title" transform="translate(16 16)" fill="#fff" font-size="20" font-family="Roboto-Medium, Roboto" font-weight="500" letter-spacing="0.008em"><tspan x="0" y="19">Settings</tspan></text>
       </g>
     </g>
-    <g id="Component_105_3" data-name="Component 105 – 3" transform="translate(8 88)">
+    <g id="Component_105_4" data-name="Component 105 – 4" transform="translate(8 88)">
       <g id="Shadow-3" data-name="Shadow" opacity="0.8" style="isolation: isolate">
         <g transform="matrix(1, 0, 0, 1, -8, -88)" filter="url(#Rectangle-7)">
           <rect id="Rectangle-24" data-name="Rectangle" width="344" height="72" rx="5" transform="translate(8 88)" fill="#fff"/>
@@ -250,23 +250,23 @@
       </g>
     </g>
     <rect id="Rectangle_46" data-name="Rectangle 46" width="360" height="616" transform="translate(0 24)" opacity="0.34"/>
-    <g id="Light_Dialog_3_States_" data-name="Light 🌕/ Dialog (3 States)" transform="translate(40 262)">
+    <g id="Light_Dialog_3_States_" data-name="Light 🌕/ Dialog (3 States)" transform="translate(40 214)">
       <g id="Container" transform="translate(-56 -348)">
         <g id="Light_Elevation" data-name="Light 🌕/Elevation" transform="translate(56 348)">
           <g id="Shadow-4" data-name="Shadow" style="mix-blend-mode: multiply;isolation: isolate">
-            <g transform="matrix(1, 0, 0, 1, -40, -262)" filter="url(#Rectangle-10)">
-              <rect id="Rectangle-27" data-name="Rectangle" width="280" height="116" rx="4" transform="translate(40 262)" fill="#fff"/>
+            <g transform="matrix(1, 0, 0, 1, -40, -214)" filter="url(#Rectangle-10)">
+              <rect id="Rectangle-27" data-name="Rectangle" width="280" height="213" rx="4" transform="translate(40 214)" fill="#fff"/>
             </g>
-            <g transform="matrix(1, 0, 0, 1, -40, -262)" filter="url(#Rectangle-11)">
-              <rect id="Rectangle-28" data-name="Rectangle" width="280" height="116" rx="4" transform="translate(40 262)" fill="#fff"/>
+            <g transform="matrix(1, 0, 0, 1, -40, -214)" filter="url(#Rectangle-11)">
+              <rect id="Rectangle-28" data-name="Rectangle" width="280" height="213" rx="4" transform="translate(40 214)" fill="#fff"/>
             </g>
-            <g transform="matrix(1, 0, 0, 1, -40, -262)" filter="url(#Rectangle-12)">
-              <rect id="Rectangle-29" data-name="Rectangle" width="280" height="116" rx="4" transform="translate(40 262)" fill="#fff"/>
+            <g transform="matrix(1, 0, 0, 1, -40, -214)" filter="url(#Rectangle-12)">
+              <rect id="Rectangle-29" data-name="Rectangle" width="280" height="213" rx="4" transform="translate(40 214)" fill="#fff"/>
             </g>
           </g>
         </g>
-        <rect id="Container-2" data-name="Container" width="280" height="116" rx="4" transform="translate(56 348)" fill="#fff"/>
-        <g id="Button" transform="translate(56 412)">
+        <rect id="Container-2" data-name="Container" width="280" height="213" rx="4" transform="translate(56 348)" fill="#fff"/>
+        <g id="Button" transform="translate(56 509)">
           <path id="Container-3" data-name="Container" d="M0,0H280a0,0,0,0,1,0,0V48a4,4,0,0,1-4,4H4a4,4,0,0,1-4-4V0A0,0,0,0,1,0,0Z" fill="none"/>
           <g id="Button-2" data-name="Button" transform="translate(197 8)">
             <g id="Container-4" data-name="Container">
@@ -277,18 +277,20 @@
             </g>
             <text id="_Label" data-name="↳ ✏️ Label" transform="translate(8 23)" fill="#6200ee" font-size="14" font-family="Roboto-Medium, Roboto" font-weight="500" letter-spacing="0.089em"><tspan x="0" y="0">CANCEL</tspan></text>
           </g>
-          <g id="Button-3" data-name="Button" transform="translate(108 8)">
+          <g id="Button-3" data-name="Button" transform="translate(126 8)">
             <g id="Container-5" data-name="Container">
-              <rect id="_Color-2" data-name="↳ 🎨 Color" width="81" height="37" rx="4" fill="none"/>
+              <rect id="_Color-2" data-name="↳ 🎨 Color" width="63" height="37" rx="4" fill="none"/>
               <g id="_States-2" data-name="↳ 💡States">
-                <rect id="States_Light_Surface_containers_Primary_Content-2" data-name="States/Light 🌕/Surface containers/Primary Content" width="1" height="1" rx="0.5" fill="rgba(98,0,238,0)"/>
+                <rect id="States_Light_Surface_containers_Primary_Content-2" data-name="States/Light 🌕/Surface containers/Primary Content" fill="rgba(98,0,238,0)"/>
               </g>
             </g>
-            <text id="_Label-2" data-name="↳ ✏️ Label" transform="translate(8 23)" fill="#6200ee" font-size="14" font-family="Roboto-Medium, Roboto" font-weight="500" letter-spacing="0.089em"><tspan x="0" y="0">LOG OUT</tspan></text>
+            <text id="_Label-2" data-name="↳ ✏️ Label" transform="translate(8 23)" fill="#6200ee" font-size="14" font-family="Roboto-Medium, Roboto" font-weight="500" letter-spacing="0.089em"><tspan x="0" y="0">RESET</tspan></text>
           </g>
         </g>
       </g>
-      <text id="Are_you_sure_you_want_to_log_out_" data-name="Are you sure you want to log out?" transform="translate(24 24)" fill="rgba(0,0,0,0.6)" font-size="14" font-family="Roboto-Regular, Roboto" letter-spacing="0.018em"><tspan x="0" y="13">Are you sure you want to log out?</tspan></text>
+      <text id="Are_you_sure_you_want_to_reset_the_application_This_will_remove_all_local_and_synced_habit_and_habit_event_information." data-name="Are you sure you want to reset the application?
+
+This will remove all local and synced habit and habit event information." transform="translate(24 24)" fill="rgba(0,0,0,0.6)" font-size="14" font-family="Roboto-Regular, Roboto" letter-spacing="0.018em"><tspan x="0" y="13">Are you sure you want to reset the </tspan><tspan x="0" y="33">application?</tspan><tspan x="0" y="53"></tspan><tspan x="0" y="73">This will remove all local and </tspan><tspan x="0" y="93">synced habit and habit event </tspan><tspan x="0" y="113">information.</tspan></text>
     </g>
   </g>
 </svg>
