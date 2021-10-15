@@ -1,0 +1,147 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="360" height="640" viewBox="0 0 360 640">
+  <defs>
+    <filter id="Rectangle" x="-6" y="20" width="372" height="68" filterUnits="userSpaceOnUse">
+      <feOffset dy="2" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feFlood flood-opacity="0.2"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Rectangle-2" x="-15" y="10" width="390" height="86" filterUnits="userSpaceOnUse">
+      <feOffset dy="1" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="5" result="blur-2"/>
+      <feFlood flood-opacity="0.122"/>
+      <feComposite operator="in" in2="blur-2"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Rectangle-3" x="-7.5" y="20.5" width="375" height="71" filterUnits="userSpaceOnUse">
+      <feOffset dy="4" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="2.5" result="blur-3"/>
+      <feFlood flood-opacity="0.141"/>
+      <feComposite operator="in" in2="blur-3"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <clipPath id="clip-path">
+      <rect id="Mask" width="360" height="56" fill="#6200ee"/>
+    </clipPath>
+    <filter id="Rectangle-4" x="10" y="92" width="340" height="68" filterUnits="userSpaceOnUse">
+      <feOffset dy="2" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="2" result="blur-4"/>
+      <feFlood flood-opacity="0.2"/>
+      <feComposite operator="in" in2="blur-4"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Rectangle-5" x="1" y="82" width="358" height="86" filterUnits="userSpaceOnUse">
+      <feOffset dy="1" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="5" result="blur-5"/>
+      <feFlood flood-opacity="0.122"/>
+      <feComposite operator="in" in2="blur-5"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Rectangle-6" x="8.5" y="92.5" width="343" height="71" filterUnits="userSpaceOnUse">
+      <feOffset dy="4" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="2.5" result="blur-6"/>
+      <feFlood flood-opacity="0.141"/>
+      <feComposite operator="in" in2="blur-6"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <clipPath id="clip-path-2">
+      <rect id="Rectangle_44" data-name="Rectangle 44" width="24" height="24" fill="#fff" stroke="#707070" stroke-width="1"/>
+    </clipPath>
+    <filter id="Rectangle-7" x="10" y="164" width="340" height="68" filterUnits="userSpaceOnUse">
+      <feOffset dy="2" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="2" result="blur-7"/>
+      <feFlood flood-opacity="0.2"/>
+      <feComposite operator="in" in2="blur-7"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Rectangle-8" x="1" y="154" width="358" height="86" filterUnits="userSpaceOnUse">
+      <feOffset dy="1" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="5" result="blur-8"/>
+      <feFlood flood-opacity="0.122"/>
+      <feComposite operator="in" in2="blur-8"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Rectangle-9" x="8.5" y="164.5" width="343" height="71" filterUnits="userSpaceOnUse">
+      <feOffset dy="4" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="2.5" result="blur-9"/>
+      <feFlood flood-opacity="0.141"/>
+      <feComposite operator="in" in2="blur-9"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <clipPath id="clip-path-3">
+      <rect id="Rectangle_45" data-name="Rectangle 45" width="24" height="24" transform="translate(16 16)" fill="#fff" stroke="#707070" stroke-width="1"/>
+    </clipPath>
+    <clipPath id="clip-Authentication">
+      <rect width="360" height="640"/>
+    </clipPath>
+  </defs>
+  <g id="Authentication" clip-path="url(#clip-Authentication)">
+    <rect width="360" height="640" fill="#fff"/>
+    <g id="ΩElements_System_bar_Primary" data-name="ΩElements/System bar/Primary">
+      <rect id="Rectangle-10" data-name="Rectangle" width="360" height="24" fill="#5600e8"/>
+      <path id="Mask-2" data-name="Mask" d="M34,0H46L40,10ZM18,5a5,5,0,1,1,5,5A5,5,0,0,1,18,5ZM0,10V0H10V10Z" transform="translate(306 7)" fill="rgba(255,255,255,0.38)"/>
+    </g>
+    <g id="Component_8_13" data-name="Component 8 – 13" transform="translate(0 24)">
+      <g id="Light_Elevation_00dp" data-name="Light 🌕/Elevation/00dp">
+        <g id="Shadow" style="mix-blend-mode: multiply;isolation: isolate">
+          <g transform="matrix(1, 0, 0, 1, 0, -24)" filter="url(#Rectangle)">
+            <rect id="Rectangle-11" data-name="Rectangle" width="360" height="56" transform="translate(0 24)" fill="#fff"/>
+          </g>
+          <g transform="matrix(1, 0, 0, 1, 0, -24)" filter="url(#Rectangle-2)">
+            <rect id="Rectangle-12" data-name="Rectangle" width="360" height="56" transform="translate(0 24)" fill="#fff"/>
+          </g>
+          <g transform="matrix(1, 0, 0, 1, 0, -24)" filter="url(#Rectangle-3)">
+            <rect id="Rectangle-13" data-name="Rectangle" width="360" height="56" transform="translate(0 24)" fill="#fff"/>
+          </g>
+        </g>
+      </g>
+      <rect id="Primary" width="360" height="56" fill="#6200ee"/>
+      <g id="Mask_Group" data-name="Mask Group" clip-path="url(#clip-path)">
+        <text id="_Page_Title" data-name="✏️ Page Title" transform="translate(16 35)" fill="#fff" font-size="20" font-family="Roboto-Medium, Roboto" font-weight="500" letter-spacing="0.008em"><tspan x="0" y="0">Sign In</tspan></text>
+      </g>
+    </g>
+    <g id="Component_106_2" data-name="Component 106 – 2" transform="translate(16 96)">
+      <g id="Shadow-2" data-name="Shadow" opacity="0.8" style="isolation: isolate">
+        <g transform="matrix(1, 0, 0, 1, -16, -96)" filter="url(#Rectangle-4)">
+          <rect id="Rectangle-14" data-name="Rectangle" width="328" height="56" rx="5" transform="translate(16 96)" fill="#fff"/>
+        </g>
+        <g transform="matrix(1, 0, 0, 1, -16, -96)" filter="url(#Rectangle-5)">
+          <rect id="Rectangle-15" data-name="Rectangle" width="328" height="56" rx="5" transform="translate(16 96)" fill="#fff"/>
+        </g>
+        <g transform="matrix(1, 0, 0, 1, -16, -96)" filter="url(#Rectangle-6)">
+          <rect id="Rectangle-16" data-name="Rectangle" width="328" height="56" rx="5" transform="translate(16 96)" fill="#fff"/>
+        </g>
+      </g>
+      <text id="_Page_Title-2" data-name="✏️ Page Title" transform="translate(56 33)" font-size="14" font-family="Roboto-Regular, Roboto" letter-spacing="0.007em"><tspan x="0" y="0">Sign in with Google</tspan></text>
+      <g id="Mask_Group_25" data-name="Mask Group 25" transform="translate(16 16)" clip-path="url(#clip-path-2)">
+        <g id="Google__G__Logo" data-name="Google_ G _Logo" transform="translate(0.255 0)">
+          <path id="Path_46" data-name="Path 46" d="M-3.264,51.509a13.9,13.9,0,0,0-.19-2.27h-11.3v4.51h6.47a5.571,5.571,0,0,1-2.4,3.58v3h3.86A11.733,11.733,0,0,0-3.264,51.509Z" transform="translate(26.754 -39.239)" fill="#4285f4"/>
+          <path id="Path_47" data-name="Path 47" d="M-14.754,63.239a11.431,11.431,0,0,0,7.93-2.91l-3.86-3a7.239,7.239,0,0,1-4.07,1.16,7.167,7.167,0,0,1-6.73-4.96h-3.98v3.09A11.982,11.982,0,0,0-14.754,63.239Z" transform="translate(26.754 -39.239)" fill="#34a853"/>
+          <path id="Path_48" data-name="Path 48" d="M-21.484,53.529a6.963,6.963,0,0,1-.38-2.29,7.234,7.234,0,0,1,.38-2.29v-3.09h-3.98a11.861,11.861,0,0,0-1.29,5.38,11.861,11.861,0,0,0,1.29,5.38Z" transform="translate(26.754 -39.239)" fill="#fbbc05"/>
+          <path id="Path_49" data-name="Path 49" d="M-14.754,43.989a6.511,6.511,0,0,1,4.6,1.8l3.42-3.42a11.473,11.473,0,0,0-8.02-3.13,11.982,11.982,0,0,0-10.71,6.62l3.98,3.09A7.167,7.167,0,0,1-14.754,43.989Z" transform="translate(26.754 -39.239)" fill="#ea4335"/>
+        </g>
+      </g>
+    </g>
+    <g id="Component_106_3" data-name="Component 106 – 3" transform="translate(16 168)">
+      <g id="Shadow-3" data-name="Shadow" opacity="0.8" style="isolation: isolate">
+        <g transform="matrix(1, 0, 0, 1, -16, -168)" filter="url(#Rectangle-7)">
+          <rect id="Rectangle-17" data-name="Rectangle" width="328" height="56" rx="5" transform="translate(16 168)" fill="#fff"/>
+        </g>
+        <g transform="matrix(1, 0, 0, 1, -16, -168)" filter="url(#Rectangle-8)">
+          <rect id="Rectangle-18" data-name="Rectangle" width="328" height="56" rx="5" transform="translate(16 168)" fill="#fff"/>
+        </g>
+        <g transform="matrix(1, 0, 0, 1, -16, -168)" filter="url(#Rectangle-9)">
+          <rect id="Rectangle-19" data-name="Rectangle" width="328" height="56" rx="5" transform="translate(16 168)" fill="#fff"/>
+        </g>
+      </g>
+      <text id="_Page_Title-3" data-name="✏️ Page Title" transform="translate(56 33)" font-size="14" font-family="Roboto-Regular, Roboto" letter-spacing="0.007em"><tspan x="0" y="0">Sign in with Email</tspan></text>
+      <g id="Mask_Group_26" data-name="Mask Group 26" opacity="0.8" clip-path="url(#clip-path-3)">
+        <g id="email_black_24dp" transform="translate(16 16)">
+          <path id="Path_50" data-name="Path 50" d="M0,0H24V24H0Z" fill="none"/>
+          <path id="Path_51" data-name="Path 51" d="M22,6a2.006,2.006,0,0,0-2-2H4A2.006,2.006,0,0,0,2,6V18a2.006,2.006,0,0,0,2,2H20a2.006,2.006,0,0,0,2-2ZM20,6l-8,5L4,6Zm0,12H4V8l8,5,8-5Z"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
