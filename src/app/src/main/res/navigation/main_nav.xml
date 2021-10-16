@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav"
+    app:startDestination="@id/main_nav_myday">
+    <fragment
+        android:id="@+id/main_nav_myday"
+        android:name="ca.cmput301f21t22.nabu.ui.my_day.MyDayFragment"
+        android:label="@string/fragment_myday_name"
+        tools:layout="@layout/fragment_myday" />
+    <fragment
+        android:id="@+id/main_nav_social"
+        android:name="ca.cmput301f21t22.nabu.ui.social.SocialFragment"
+        android:label="@string/fragment_social_name"
+        tools:layout="@layout/fragment_social" />
+    <fragment
+        android:id="@+id/main_nav_habits"
+        android:name="ca.cmput301f21t22.nabu.ui.habits.HabitsFragment"
+        android:label="@string/fragment_habits_name"
+        tools:layout="@layout/fragment_habits" />
+    <fragment
+        android:id="@+id/main_nav_settings"
+        android:name="ca.cmput301f21t22.nabu.ui.settings.SettingsFragment"
+        android:label="@string/fragment_settings_name"
+        tools:layout="@layout/fragment_settings" />
+</navigation>

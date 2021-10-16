@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Nabu</string>
+    <string name="fragment_myday_name">My Day</string>
+    <string name="fragment_social_name">Social</string>
+    <string name="fragment_habits_name">Habits</string>
+    <string name="fragment_settings_name">Settings</string>
+</resources>
