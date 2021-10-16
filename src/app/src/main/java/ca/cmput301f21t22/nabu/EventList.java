@@ -11,7 +11,7 @@ import java.util.NoSuchElementException;
 import java.util.TreeSet;
 
 /**
- * A collection object holding an arbitrary number of unique Events, with uniqueness determined by Event::getDate(). No
+ * A collection object holding an arbitrary number of unique Events, with uniqueness determined by event date. No
  * two Events in the EventList may have the same date.
  * <p>
  * EventList is bound to a Firestore collection, and is fully responsible for ensuring the consistency between the local
@@ -61,7 +61,7 @@ public class EventList {
      * @param event Event to add.
      * @return Whether or not the Event was successfully added.
      */
-    public boolean add(Event event) {
+    public boolean add(@NonNull Event event) {
         return this.events.add(event);
     }
 
@@ -78,7 +78,7 @@ public class EventList {
      * @param event Event to compare against.
      * @return Whether or not the list contains the Event.
      */
-    public boolean contains(Event event) {
+    public boolean contains(@NonNull Event event) {
         try {
             Event retrieved = this.events.tailSet(event).first();
             return event.equals(retrieved);
@@ -103,8 +103,24 @@ public class EventList {
      * @param event Event to remove.
      * @return Whether or not the Event was removed.
      */
-    public boolean remove(Event event) {
+    public boolean remove(@NonNull Event event) {
         return this.events.remove(event);
+    }
+
+    /**
+     * Replace a target Event with a replacement Event.
+     *
+     * @param target      Event to find to be replaced.
+     * @param replacement Event to replace with.
+     * @return Whether or not the Event was replaced.
+     */
+    public boolean replace(@NonNull Event target, @NonNull Event replacement) {
+        if (!this.events.remove(target)) {
+            return false;
+        }
+
+        this.events.add(replacement);
+        return true;
     }
 
     /**
@@ -130,7 +146,7 @@ public class EventList {
          * @see Date#compareTo(Date)
          */
         @Override
-        public int compare(Event e1, Event e2) {
+        public int compare(@NonNull Event e1, @NonNull Event e2) {
             return e1.getDate().compareTo(e2.getDate());
         }
     }

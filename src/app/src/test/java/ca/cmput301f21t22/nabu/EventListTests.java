@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Date;
 
 public class EventListTests {
@@ -87,6 +88,27 @@ public class EventListTests {
     public void removeNonExistentEvent() {
         EventList eventList = new EventList();
         assertFalse(eventList.remove(new Event(new Date())));
+    }
+
+    @Test
+    public void replaceEvent() {
+        Event e1 = new Event(new Date(3219));
+        Event e2 = new Event(new Date(6435543));
+        EventList eventList = new EventList(Collections.singletonList(e1));
+
+        assertEquals(1, eventList.events().size());
+        assertTrue(eventList.contains(e1));
+        assertFalse(eventList.contains(e2));
+        assertTrue(eventList.replace(e1, e2));
+        assertEquals(1, eventList.events().size());
+        assertFalse(eventList.contains(e1));
+        assertTrue(eventList.contains(e2));
+    }
+
+    @Test
+    public void replaceNonExistentEvent() {
+        EventList eventList = new EventList();
+        assertFalse(eventList.replace(new Event(new Date()), new Event(new Date())));
     }
 
     @Test
