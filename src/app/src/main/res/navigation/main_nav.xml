@@ -6,7 +6,7 @@
     app:startDestination="@id/main_nav_myday">
     <fragment
         android:id="@+id/main_nav_myday"
-        android:name="ca.cmput301f21t22.nabu.ui.myday.MyDayFragment"
+        android:name="ca.cmput301f21t22.nabu.ui.my_day.MyDayFragment"
         android:label="@string/fragment_myday_name"
         tools:layout="@layout/fragment_myday" />
     <fragment

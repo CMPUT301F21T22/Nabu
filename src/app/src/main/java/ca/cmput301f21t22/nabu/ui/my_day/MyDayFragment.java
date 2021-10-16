@@ -1,4 +1,4 @@
-package ca.cmput301f21t22.nabu.ui.myday;
+package ca.cmput301f21t22.nabu.ui.my_day;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
