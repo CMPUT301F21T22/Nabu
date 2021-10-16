@@ -6,12 +6,16 @@ import androidx.annotation.Nullable;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.Iterator;
+import java.util.Date;
+import java.util.NoSuchElementException;
 import java.util.TreeSet;
-import java.util.UUID;
 
 /**
- * A collection object holding an arbitrary number of uniquely identifiable Events.
+ * A collection object holding an arbitrary number of unique Events, with uniqueness determined by Event::getDate(). No
+ * two Events in the EventList may have the same date.
+ * <p>
+ * EventList is bound to a Firestore collection, and is fully responsible for ensuring the consistency between the local
+ * instance of the class, and the remote collection.
  */
 public class EventList {
     @NonNull
@@ -35,21 +39,30 @@ public class EventList {
     }
 
     /**
+     * Indicates whether another Object is equivalent to this one.
+     *
+     * @param obj Other object.
+     * @return Whether the Objects are equivalent.
+     */
+    @Override
+    public boolean equals(@Nullable Object obj) {
+        if (obj == null) {
+            return false;
+        } else if (!(obj instanceof EventList)) {
+            return false;
+        } else {
+            return this.equals((EventList) obj);
+        }
+    }
+
+    /**
      * Add an Event if it doesn't already exist within the list.
      *
      * @param event Event to add.
      * @return Whether or not the Event was successfully added.
      */
     public boolean add(Event event) {
-        // Try to get an item with the provided id.
-        Event e = this.get(event.getId());
-        // If no such item exists, we add.
-        if (e == null) {
-            this.events.add(event);
-            return true;
-        }
-        // If such an item exists, we maintain consistency with the TreeSet api and leave the set unchanged.
-        return false;
+        return this.events.add(event);
     }
 
     /**
@@ -60,7 +73,22 @@ public class EventList {
     }
 
     /**
-     * Retrieves a read-only wrapper for reading individual Events.
+     * Determines whether or not the list contains the provided Event.
+     *
+     * @param event Event to compare against.
+     * @return Whether or not the list contains the Event.
+     */
+    public boolean contains(Event event) {
+        try {
+            Event retrieved = this.events.tailSet(event).first();
+            return event.equals(retrieved);
+        } catch (NoSuchElementException e) {
+            return false;
+        }
+    }
+
+    /**
+     * Retrieves a read-only wrapper for reading Events.
      *
      * @return An unmodifiable Collection of Events.
      */
@@ -70,87 +98,40 @@ public class EventList {
     }
 
     /**
-     * Get the Event with the specified id.
+     * Remove the Event matching the provided Event.
      *
-     * @param id Id of the Event to get.
-     * @return The Event, or null if non-existent.
+     * @param event Event to remove.
+     * @return Whether or not the Event was removed.
      */
-    @Nullable
-    public Event get(UUID id) {
-        for (Event event : this.events) {
-            if (id.equals(event.getId())) {
-                return event;
-            }
-        }
-        return null;
+    public boolean remove(Event event) {
+        return this.events.remove(event);
     }
 
     /**
-     * Remove the Event with the specified id.
+     * Indicates whether another EventList is associated with the same Firestore collection as this one.
      *
-     * @param id Id of the Event to remove.
-     * @return The Event removed, or null if none was removed.
+     * @param eventList Other event list.
+     * @return Whether the EventLists are equivalent.
      */
-    @Nullable
-    public Event remove(UUID id) {
-        Iterator<Event> it = this.events.iterator();
-        while (it.hasNext()) {
-            Event event = it.next();
-            if (id.equals(event.getId())) {
-                it.remove();
-                return event;
-            }
-        }
-        return null;
+    public boolean equals(@NonNull EventList eventList) {
+        return this == eventList;
     }
 
     /**
-     * Replaces the contents of an existing Event within the list with the same id as a provided Event.
-     *
-     * @param newEvent Event from which the target id and content fields should be read.
-     * @return The contents of the previous Event, or null if nothing was replaced.
-     */
-    public Event replace(Event newEvent) {
-        Event removedEvent = this.remove(newEvent.getId());
-        // Only add the new event if something was actually removed.
-        if (removedEvent != null) {
-            this.events.add(newEvent);
-        }
-        return removedEvent;
-    }
-
-    /**
-     * Returns the number of Events in the list.
-     *
-     * @return The number of Events.
-     */
-    public int size() {
-        return this.events.size();
-    }
-
-    /**
-     * A comparator for comparing two events chronologically, based on their UUIDs.
+     * A comparator class for comparing two Events chronologically.
      */
     public static class EventComparator implements Comparator<Event> {
         /**
-         * Compare two Events, taking into account both natural order (id) and semantic order (chronology).
+         * Compare two events chronologically.
          *
-         * @param e1 The first Event to compare.
-         * @param e2 The second Event to compare.
-         * @return 0 iff the two objects are strictly equivalent in both id and date; non-zero otherwise.
+         * @param e1 First event to compare.
+         * @param e2 Second event to compare.
+         * @return 0 if the two events occured on the same date; non-zero otherwise.
+         * @see Date#compareTo(Date)
          */
         @Override
-        public int compare(@NonNull Event e1, @NonNull Event e2) {
-            int naturalOrder = e1.compareTo(e2);
-            int semanticOrder = e1.getDate().compareTo(e2.getDate());
-
-            if (naturalOrder == 0 && semanticOrder == 0) {
-                return 0;
-            } else if (semanticOrder == 0) {
-                return naturalOrder;
-            } else {
-                return semanticOrder;
-            }
+        public int compare(Event e1, Event e2) {
+            return e1.getDate().compareTo(e2.getDate());
         }
     }
 }

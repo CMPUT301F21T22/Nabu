@@ -5,14 +5,11 @@ import androidx.annotation.Nullable;
 
 import java.util.Date;
 import java.util.Objects;
-import java.util.UUID;
 
 /**
- * A data object storing details of a habit event, identifiable with a UUID.
+ * A data object storing details of a habit event.
  */
-public class Event implements Comparable<Event> {
-    @NonNull
-    private final UUID id;
+public class Event {
     @NonNull
     private Date date;
     @Nullable
@@ -28,24 +25,18 @@ public class Event implements Comparable<Event> {
      * @param date Date on which the event was created.
      */
     public Event(@NonNull Date date) {
-        this(UUID.randomUUID(), date, null, null, null);
+        this(date, null, null, null);
     }
 
     /**
      * Create an instance of Event.
      *
-     * @param id        Unique id for this event instance.
      * @param date      Date on which the event was created.
      * @param comment   Optional comment associated with the event.
      * @param photoPath Path to an optional photo associated with the event.
      * @param location  Optional location associated with the event.
      */
-    public Event(@NonNull UUID id,
-                 @NonNull Date date,
-                 @Nullable String comment,
-                 @Nullable String photoPath,
-                 @Nullable String location) {
-        this.id = id;
+    public Event(@NonNull Date date, @Nullable String comment, @Nullable String photoPath, @Nullable String location) {
         this.date = date;
         this.comment = comment;
         this.photoPath = photoPath;
@@ -67,19 +58,6 @@ public class Event implements Comparable<Event> {
         } else {
             return this.equals((Event) obj);
         }
-    }
-
-    /**
-     * Compares two Events <b>based on their id</b>.
-     * <p>
-     * This comparison function compares based on id, and not date, in order to maintain consistency with Event::equals.
-     *
-     * @param event Event to be compared.
-     * @return 0 if Events have the same id; non-zero if the events have different ids.
-     */
-    @Override
-    public int compareTo(@NonNull Event event) {
-        return this.id.compareTo(event.id);
     }
 
     /**
@@ -159,23 +137,13 @@ public class Event implements Comparable<Event> {
     }
 
     /**
-     * Indicates whether another Event is equivalent to this one. Two Events are considered equivalent, <em>not based on
-     * their fields</em> but based on the values of their uniquely-identifying ids.
+     * Indicates whether another Event is structurally equivalent to this one, with every field being the same.
      *
      * @param event Other event.
      * @return Whether the Events are equivalent.
      */
     public boolean equals(@NonNull Event event) {
-        return Objects.equals(this.id, event.id);
-    }
-
-    /**
-     * Gets the unique id for this event instance.
-     *
-     * @return The id.
-     */
-    @NonNull
-    public UUID getId() {
-        return this.id;
+        return Objects.equals(this.date, event.date) && Objects.equals(this.comment, event.comment) &&
+               Objects.equals(this.photoPath, event.photoPath) && Objects.equals(this.location, event.location);
     }
 }
