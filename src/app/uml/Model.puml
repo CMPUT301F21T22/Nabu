@@ -1,0 +1,68 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+interface Comparator<?>
+
+class Event {
+    date: Date
+    comment: String
+    photoPath: String
+    location: String
+}
+
+class EventList {
+    add(Event) : boolean
+    clear() : void
+    contains(Event) : boolean
+    events() : Collection<Event>
+    remove(Event) : boolean
+    replace(Event, Event) : boolean
+}
+
+class EventList.EventComparator implements Comparator {
+    compare(Event, Event) : int
+}
+
+class Habit {
+    title: String
+    reason: String
+    startDate: Date
+    occurrence: Occurrence
+    eventList: EventList
+}
+
+class HabitList {
+    add(Habit) : boolean
+    clear() : void
+    contains(Habit) : boolean
+    habits() : Collection<Habit>
+    remove(Habit) : boolean
+    replace(Habit, Habit) : boolean
+}
+
+class HabitList.HabitComparator implements Comparator {
+    compare(Habit, Habit) : int
+}
+
+class Occurrence {
+    sunday: boolean
+    monday: boolean
+    tuesday: boolean
+    wednesday: boolean
+    thursday: boolean
+    friday: boolean
+    saturday: boolean
+}
+
+
+Habit "1" *-- "1" Occurrence
+Habit "1" *-- "1" EventList
+
+HabitList "1" o-- "0..*" Habit
+EventList "1" o-- "0..*" Event
+Habit "1" --- "0..*" Event
+
+EventList "1" *-- "1" EventList.EventComparator
+HabitList "1" *-- "1" HabitList.HabitComparator
+
+@enduml
