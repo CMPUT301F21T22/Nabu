@@ -10,6 +10,11 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Date;
 
+import ca.cmput301f21t22.nabu.model.EventList;
+import ca.cmput301f21t22.nabu.model.Habit;
+import ca.cmput301f21t22.nabu.model.HabitList;
+import ca.cmput301f21t22.nabu.model.Occurrence;
+
 public class HabitListTests {
     public static Habit mockHabit1() {
         return new Habit("Run",

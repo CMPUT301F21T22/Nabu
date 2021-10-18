@@ -1,5 +1,3 @@
-package ca.cmput301f21t22.nabu;
-
 import android.os.Bundle;
 import android.util.Log;
 
@@ -11,6 +9,7 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import ca.cmput301f21t22.nabu.R;
 import ca.cmput301f21t22.nabu.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {

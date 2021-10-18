@@ -9,6 +9,8 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Date;
 
+import ca.cmput301f21t22.nabu.model.Event;
+
 public class EventTests {
     @Test
     public void construct() {

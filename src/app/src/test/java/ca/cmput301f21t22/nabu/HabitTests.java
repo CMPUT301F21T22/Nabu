@@ -8,6 +8,10 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Date;
 
+import ca.cmput301f21t22.nabu.model.EventList;
+import ca.cmput301f21t22.nabu.model.Habit;
+import ca.cmput301f21t22.nabu.model.Occurrence;
+
 public class HabitTests {
     @Test
     public void construct() {

@@ -10,6 +10,9 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Date;
 
+import ca.cmput301f21t22.nabu.model.Event;
+import ca.cmput301f21t22.nabu.model.EventList;
+
 public class EventListTests {
     @Test
     public void constructEmpty() {

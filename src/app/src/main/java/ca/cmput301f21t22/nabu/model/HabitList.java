@@ -1,4 +1,4 @@
-package ca.cmput301f21t22.nabu;
+package ca.cmput301f21t22.nabu.model;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
