@@ -60,7 +60,6 @@ Habit "1" *-- "1" EventList
 
 HabitList "1" o-- "0..*" Habit
 EventList "1" o-- "0..*" Event
-Habit "1" --- "0..*" Event
 
 EventList "1" *-- "1" EventList.EventComparator
 HabitList "1" *-- "1" HabitList.HabitComparator
