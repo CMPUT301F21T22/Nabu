@@ -1,3 +1,5 @@
+package ca.cmput301f21t22.nabu;
+
 import android.os.Bundle;
 import android.util.Log;
 
@@ -15,7 +17,7 @@ import ca.cmput301f21t22.nabu.databinding.ActivityMainBinding;
 public class MainActivity extends AppCompatActivity {
 
     @NonNull
-    private final static String TAG = "MainActivity";
+    private final static String TAG = "ca.cmput301f21t22.nabu.MainActivity";
     @Nullable
     private ActivityMainBinding binding;
 
