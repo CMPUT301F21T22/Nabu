@@ -6,6 +6,11 @@
 
 ## Contributors
 
+- Teng Liu
+- joshvuong
+- Mashiad-Hasan
+- wigandt-dot
+- LoveMia0
 - Aryan Malik <amalik2@ualberta.ca>
 
 ---
