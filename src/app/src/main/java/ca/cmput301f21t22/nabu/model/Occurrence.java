@@ -83,8 +83,52 @@ public class Occurrence {
         return this.friday;
     }
 
-    public boolean onSaturday() {
-        return this.saturday;
+    public boolean onSaturday() { return this.saturday; }
+
+    public String getStringRep() {
+        StringBuilder representation = new StringBuilder();
+        boolean first = true;
+        if (this.onSunday()) {
+            first = false;
+
+        }
+        if (this.onMonday()) {
+            if (!first) { representation.append(", "); }
+            else { first = false; }
+
+            representation.append("Mon");
+        }
+        if (this.onTuesday()) {
+            first = false;
+
+            representation.append("Tues");
+        }
+        if (this.onWednesday()) {
+            if (!first) { representation.append(", "); }
+            else { first = false; }
+
+            representation.append("Wed");
+
+        }
+        if (this.onThursday()) {
+            if (!first) { representation.append(", "); }
+            else { first = false; }
+
+            representation.append("Thu");
+
+        }
+        if (this.onFriday()) {
+            if (!first) { representation.append(", "); }
+            else { first = false; }
+
+            representation.append("Fri");
+        }
+        if (this.onSaturday()) {
+            if (!first) { representation.append(", "); }
+
+            representation.append("Sat");
+        }
+        return representation.toString();
     }
 
     /**
