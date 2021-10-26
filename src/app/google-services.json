@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "753140627318",
+    "project_id": "nabu-b9cdb",
+    "storage_bucket": "nabu-b9cdb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:753140627318:android:2242b9ce68143559526c57",
+        "android_client_info": {
+          "package_name": "ca.cmput301f21t22.nabu"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "753140627318-hecio1v8r5cd12bf9t0as8sth9qnvaog.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC_ZcjnAcuTDbYJgRbDe01itljJD2gjtQQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "753140627318-hecio1v8r5cd12bf9t0as8sth9qnvaog.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
