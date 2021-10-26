@@ -31,6 +31,7 @@ import ca.cmput301f21t22.nabu.model.EventList;
 import ca.cmput301f21t22.nabu.model.Habit;
 import ca.cmput301f21t22.nabu.model.HabitList;
 import ca.cmput301f21t22.nabu.model.HabitListAdapter;
+import ca.cmput301f21t22.nabu.model.HabitListView;
 import ca.cmput301f21t22.nabu.model.Occurrence;
 import ca.cmput301f21t22.nabu.ui.settings.SettingsViewModel;
 
@@ -45,7 +46,8 @@ public class HabitsFragment extends Fragment {
 
     //Variables for the listView of habits
     private ListView habitsList;
-    private ArrayAdapter<Habit> habitsAdapter;
+    private HabitListAdapter habitsAdapter;
+    private HabitListView habitListView;
 
     //Temporary
     private ArrayList<Habit> habitDataList;
@@ -83,6 +85,7 @@ public class HabitsFragment extends Fragment {
         habitsList = findViewById(R.id.habits_list);
         habitsAdapter = new HabitListAdapter(this, habitDataList);
         habitsList.setAdapter(habitsAdapter);
+        habitListView = new HabitListView(new HabitList(habitDataList), habitsAdapter);
 
         final FloatingActionButton addHabit = findViewById(R.id.add_habit_Button);
         addHabit.setOnClickListener(new View.OnClickListener() {
