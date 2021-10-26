@@ -20,13 +20,18 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Date;
 
 import ca.cmput301f21t22.nabu.databinding.FragmentHabitsBinding;
 import ca.cmput301f21t22.nabu.databinding.FragmentSettingsBinding;
 import ca.cmput301f21t22.nabu.dialogs.edit_habit.EditHabitFragment;
+import ca.cmput301f21t22.nabu.model.EventList;
 import ca.cmput301f21t22.nabu.model.Habit;
 import ca.cmput301f21t22.nabu.model.HabitList;
+import ca.cmput301f21t22.nabu.model.HabitListAdapter;
+import ca.cmput301f21t22.nabu.model.Occurrence;
 import ca.cmput301f21t22.nabu.ui.settings.SettingsViewModel;
 
 public class HabitsFragment extends Fragment {
@@ -36,17 +41,14 @@ public class HabitsFragment extends Fragment {
     @Nullable
     private FragmentHabitsBinding binding;
 
+    private PopupMenu popupMenu;
+
     //Variables for the listView of habits
     private ListView habitsList;
     private ArrayAdapter<Habit> habitsAdapter;
 
-    //Variables for the elements of the listView of habits
-    private TextView habitTitle;
-    private TextView datesON;
-    private TextView habitDescription;
-    private TextView dateStarted;
-    private PopupMenu popupMenu;
-
+    //Temporary
+    private ArrayList<Habit> habitDataList;
 
 
     @Nullable
@@ -74,14 +76,13 @@ public class HabitsFragment extends Fragment {
         View view = LayoutInflater.from(getActivity())
                 .inflate(R.layout.edit_medicine_fragment_layout, null);
 
-        habitTitle = findViewById(R.id.habit_title_Text);
-        datesON = findViewById(R.id.dates_on_Text);
-        habitDescription = findViewById(R.id.habit_description_Text);
-        dateStarted  = findViewById(R.id.date_started_Text);
+        habitDataList.add(new Habit("Work", "Making money", new Date(),
+                new Occurrence(true, false, true, false,
+                        true, false, true), new EventList()));
 
         habitsList = findViewById(R.id.habits_list);
-        habitsAdapter = new HabitList(this, habitDataList);
-        habitDataList.setAdapter(habitAdapter);
+        habitsAdapter = new HabitListAdapter(this, habitDataList);
+        habitsList.setAdapter(habitsAdapter);
 
         final FloatingActionButton addHabit = findViewById(R.id.add_habit_Button);
         addHabit.setOnClickListener(new View.OnClickListener() {
@@ -89,6 +90,7 @@ public class HabitsFragment extends Fragment {
             public void onClick(View v) {
                 // TODO: Add a way to create a edit_habit fragment
                 habitsAdapter.notifyDataSetChanged();
+
             }
         });
 
@@ -125,4 +127,5 @@ public class HabitsFragment extends Fragment {
         inflater.inflate(R.menu.actions, popupMenu.getMenu());
         popupMenu.show();
     }
+
 }
