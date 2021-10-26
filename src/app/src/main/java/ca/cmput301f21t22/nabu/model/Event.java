@@ -3,7 +3,11 @@ package ca.cmput301f21t22.nabu.model;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.google.firebase.Timestamp;
+
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 /**
@@ -41,6 +45,23 @@ public class Event {
         this.comment = comment;
         this.photoPath = photoPath;
         this.location = location;
+    }
+
+    /**
+     * Create an instance of Event from a Map returned by asMap.
+     *
+     * @param map Map returned by asMap.
+     */
+    public Event(@NonNull Map<String, Object> map) {
+        Timestamp d = (Timestamp) map.get("date");
+        if (d == null) {
+            throw new IllegalArgumentException();
+        }
+
+        this.date = d.toDate();
+        this.comment = (String) map.get("comment");
+        this.photoPath = (String) map.get("photoPath");
+        this.location = (String) map.get("location");
     }
 
     /**
@@ -145,5 +166,20 @@ public class Event {
     public boolean equals(@NonNull Event event) {
         return Objects.equals(this.date, event.date) && Objects.equals(this.comment, event.comment) &&
                Objects.equals(this.photoPath, event.photoPath) && Objects.equals(this.location, event.location);
+    }
+
+    /**
+     * Returns this object's data as a Map. Note the returned Map uses Firestore conventions for data types:
+     * https://firebase.google.com/docs/firestore/manage-data/add-data#data_types
+     *
+     * @return A Map in which string keys correspond with their respective data fields.
+     */
+    public Map<String, Object> asMap() {
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("date", new Timestamp(this.date));
+        map.put("comment", this.comment);
+        map.put("photoPath", this.photoPath);
+        map.put("location", this.location);
+        return map;
     }
 }
