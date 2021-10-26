@@ -10,15 +10,15 @@ A simple, and easy-to-use Android application which tracks your habits for the d
 
 #### Running in Android Studio
 
-> The project can be opened in Android Studio from the [/src](https://github.com/CMPUT301F21T22/Nabu/tree/main/src) directory.
+> The project can be opened in [Android Studio](https://github.com/CMPUT301F21T22/Nabu/tree/main/src) from the /src directory.
 
 #### Project Tests
 
-> The [project tests](https://github.com/CMPUT301F21T22/Nabu/tree/main/src/app/src/test/java/ca/cmput301f21t22/nabu) can be found in the test directory (/src/app/src/test)
+> The [project tests](https://github.com/CMPUT301F21T22/Nabu/tree/main/src/app/src/test/java/ca/cmput301f21t22/nabu) can be found in the test directory -> /src/app/src/test
 
 #### App Module
 
-> The [app module](https://github.com/CMPUT301F21T22/Nabu/tree/main/src/app/src/main) is in the main directory (/src/app/src/main)
+> The [app module](https://github.com/CMPUT301F21T22/Nabu/tree/main/src/app/src/main) is in the main directory -> /src/app/src/main
 
 #### Project Documentation
 
