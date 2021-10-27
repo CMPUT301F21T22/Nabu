@@ -17,7 +17,7 @@ import ca.cmput301f21t22.nabu.databinding.ActivityMainBinding;
 public class MainActivity extends AppCompatActivity {
 
     @NonNull
-    private final static String TAG = "ca.cmput301f21t22.nabu.MainActivity";
+    private final static String TAG = "MainActivity";
     @Nullable
     private ActivityMainBinding binding;
 
