@@ -2,9 +2,13 @@ package ca.cmput301f21t22.nabu.model;
 
 import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -12,12 +16,18 @@ import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
 
+import ca.cmput301f21t22.nabu.databinding.FragmentHabitsBinding;
+import ca.cmput301f21t22.nabu.databinding.HabitCardBinding;
 import ca.cmput301f21t22.nabu.model.Habit;
 
 public class HabitListAdapter extends ArrayAdapter {
 
     private ArrayList<Habit> habits;
     private Context context;
+    @Nullable
+    private HabitCardBinding binding;
+    @Nullable
+    ViewGroup container;
 
     public HabitListAdapter(Context context, ArrayList<Habit> habits) {
         super(context, 0, habits);
@@ -34,22 +44,52 @@ public class HabitListAdapter extends ArrayAdapter {
         View view = convertView;
 
         if(view == null){
-            view  = LayoutInflater.from(context).inflate(R.layout.content, parent,
-                    false);
+            this.binding = HabitCardBinding.inflate(LayoutInflater.from(context));
         }
 
         Habit habit = habits.get(position);
 
-        TextView habitTitle = view.findViewById((R.id.habit_title_Text);
-        TextView datesOn = view.findViewById(R.id.dates_on_Text);
-        TextView habitDescription = view.findViewById(R.id.habit_description_Text);
-        TextView dateStarted  = view.findViewById(R.id.date_started_Text);
+        TextView habitTitle = this.binding.habitTitleText;
+        TextView datesOn = this.binding.datesOnText;
+        TextView habitDescription = this.binding.habitDescriptionText;
+        TextView dateStarted  = this.binding.dateStartedText;
 
         habitTitle.setText(habit.getTitle());
-        datesOn.setText(habit.getOccurrence().getStringRep());
+        datesOn.setText(habit.getOccurrence().toString());
         habitDescription.setText(habit.getReason());
         dateStarted.setText(habit.getStartDate().toString());
 
-        return view;
+        final ImageButton habitsMenuButton = this.binding.habitsPopupImageButton;
+        habitsMenuButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                PopupMenu habitsPopupMenu = new PopupMenu(context, habitsMenuButton);
+                MenuInflater inflater = habitsPopupMenu.getMenuInflater();
+                inflater.inflate(R.menu.actions, habitsPopupMenu.getMenu());
+                habitsPopupMenu.show();
+
+                final PopupMenu menu = binding.habit_card_popup_menu;
+                menu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public void onMenuItemClick(MenuItem item) {
+                        switch (item.getItemId()) {
+                            case R.id.view_events:
+                                //TODO: Add a way to switch to view_events
+                                ;
+                            case R.id.edit_habit:
+                                //TODO: Add a way to create a edit_habit fragment
+                                ;
+                            case R.id.delete_habit:
+                                //TODO: Add a way to delete a habit;
+                                ;
+                        }
+                    }
+                });
+            }
+        });
+
+    }
+
+        return this.binding.getRoot();
     }
 }
