@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
@@ -42,15 +43,15 @@ public class HabitsFragment extends Fragment {
     @Nullable
     private FragmentHabitsBinding binding;
 
-    private PopupMenu popupMenu;
-
     //Variables for the listView of habits
-    private ListView habitsList;
+    private ListView habitsListView;
     private HabitListAdapter habitsAdapter;
     private HabitListView habitListView;
+    private ArrayList<Habit> habitDataList;
 
     //Temporary
-    private ArrayList<Habit> habitDataList;
+    private HabitList habitList;
+
 
 
     @Nullable
@@ -75,19 +76,17 @@ public class HabitsFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        View view = LayoutInflater.from(getActivity())
-                .inflate(R.layout.edit_medicine_fragment_layout, null);
 
         habitDataList.add(new Habit("Work", "Making money", new Date(),
                 new Occurrence(true, false, true, false,
                         true, false, true), new EventList()));
 
-        habitsList = findViewById(R.id.habits_list);
-        habitsAdapter = new HabitListAdapter(this, habitDataList);
-        habitsList.setAdapter(habitsAdapter);
-        habitListView = new HabitListView(new HabitList(habitDataList), habitsAdapter);
+        habitsListView = this.binding.habitsList;
+        habitsAdapter = new HabitListAdapter(this.requireContext(), habitDataList);
+        habitsListView.setAdapter(habitsAdapter);
+        habitListView = new HabitListView(habitList, habitsAdapter);
 
-        final FloatingActionButton addHabit = findViewById(R.id.add_habit_Button);
+        final FloatingActionButton addHabit = this.binding.addHabitButton;
         addHabit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -97,38 +96,6 @@ public class HabitsFragment extends Fragment {
             }
         });
 
-        final PopupMenu menu = findViewById(R.id.);
-        menu.setOnMenuItemClickListener(new View.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.view_events:
-                        //TODO: Add a way to switch to view_events
-                        return true;
-                    case R.id.edit_habit:
-                        //TODO: Add a way to create a edit_habit fragment
-                        return true;
-                    case R.id.delete_habit:
-                        //TODO: Add a way to delete a habit;
-                        return true;
-                    default:
-                        return false;
-                }
-            }
-        });
-
-    }
-
-    /**
-     * Shows a popup menu when the button on a habit card is clicked
-     * @param view
-     *  View of the button pressed
-     */
-    public void showPopup(View view) {
-        popupMenu = new PopupMenu(this, view);
-        MenuInflater inflater = popupMenu.getMenuInflater();
-        inflater.inflate(R.menu.actions, popupMenu.getMenu());
-        popupMenu.show();
     }
 
 }
