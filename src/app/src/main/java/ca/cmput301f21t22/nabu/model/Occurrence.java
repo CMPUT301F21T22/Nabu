@@ -85,7 +85,12 @@ public class Occurrence {
 
     public boolean onSaturday() { return this.saturday; }
 
-    public String getStringRep() {
+    /**
+     * Creates a string representation of the occurrence object
+     * @return a string representation of the occurence object constructed using the day values
+     */
+    @Override
+    public String toString() {
         StringBuilder representation = new StringBuilder();
         boolean first = true;
         if (this.onSunday()) {
