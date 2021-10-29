@@ -1,4 +1,4 @@
-package ca.cmput301f21t22.nabu;
+package ca.cmput301f21t22.nabu.documents;
 
 import static org.awaitility.Awaitility.await;
 import static org.junit.Assert.assertEquals;
