@@ -3,166 +3,110 @@ package ca.cmput301f21t22.nabu.model;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.google.firebase.Timestamp;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+
 import java.util.Date;
-import java.util.Objects;
+import java.util.List;
 
-/**
- * A data object storing details of a habit.
- */
-public class Habit {
-    @NonNull
+import ca.cmput301f21t22.nabu.data.Occurrence;
+
+public class Habit extends LiveDocument<Habit.Properties> {
+    @Nullable
+    private Boolean shared;
+    @Nullable
     private String title;
-    @NonNull
-    private String reason;
-    @NonNull
+    @Nullable
     private Date startDate;
-    @NonNull
+    @Nullable
     private Occurrence occurrence;
-    @NonNull
-    private EventList eventList;
+    @Nullable
+    private List<String> events;
 
-    /**
-     * Create an instance of Habit.
-     *
-     * @param title      Title of the habit.
-     * @param reason     Reason the habit was started.
-     * @param startDate  Date on which to start the habit.
-     * @param occurrence What days of the week the habit should be due.
-     * @param eventList  List of events associated with the habit.
-     */
-    public Habit(@NonNull String title,
-                 @NonNull String reason,
-                 @NonNull Date startDate,
-                 @NonNull Occurrence occurrence,
-                 @NonNull EventList eventList) {
-        this.title = title;
-        this.reason = reason;
-        this.startDate = startDate;
-        this.occurrence = occurrence;
-        this.eventList = eventList;
+    public Habit(@NonNull DocumentReference ref) {
+        super(ref);
     }
 
-    /**
-     * Indicates whether another Object is equivalent to this one.
-     *
-     * @param obj Other object.
-     * @return Whether the Objects are equivalent.
-     */
     @Override
-    public boolean equals(@Nullable Object obj) {
-        if (obj == null) {
-            return false;
-        } else if (!(obj instanceof Habit)) {
-            return false;
-        } else {
-            return this.equals((Habit) obj);
+    protected void readFields(@NonNull DocumentSnapshot snapshot) {
+        this.shared = snapshot.getBoolean("shared");
+        this.notifyPropertyChanged(Properties.SHARED);
+
+        this.title = snapshot.getString("title");
+        this.notifyPropertyChanged(Properties.TITLE);
+
+        this.startDate = snapshot.getDate("startDate");
+        this.notifyPropertyChanged(Properties.START_DATE);
+
+        this.occurrence = snapshot.get("occurrence", Occurrence.class);
+        this.notifyPropertyChanged(Properties.OCCURRENCE);
+
+        // noinspection unchecked
+        this.events = (List<String>) snapshot.get("events");
+        this.notifyPropertyChanged(Properties.EVENTS);
+    }
+
+    @Nullable
+    public Boolean getShared() {
+        return this.shared;
+    }
+
+    public void setShared(@Nullable Boolean shared) {
+        if (this.alive) {
+            this.ref.update("shared", shared);
         }
     }
 
-    /**
-     * Gets the title of the habit.
-     *
-     * @return The title.
-     */
-    @NonNull
+    @Nullable
     public String getTitle() {
         return this.title;
     }
 
-    /**
-     * Sets the title of the habit.
-     *
-     * @param title New title.
-     */
-    public void setTitle(@NonNull String title) {
-        this.title = title;
+    public void setTitle(@Nullable String title) {
+        if (this.alive) {
+            this.ref.update("title", title);
+        }
     }
 
-    /**
-     * Gets the reason the habit was started.
-     *
-     * @return The reason.
-     */
-    @NonNull
-    public String getReason() {
-        return this.reason;
-    }
-
-    /**
-     * Sets the reason the habit was started.
-     *
-     * @param reason New reason.
-     */
-    public void setReason(@NonNull String reason) {
-        this.reason = reason;
-    }
-
-    /**
-     * Gets the date on which to start the habit.
-     *
-     * @return The date.
-     */
-    @NonNull
+    @Nullable
     public Date getStartDate() {
         return this.startDate;
     }
 
-    /**
-     * Sets the date on which to start the habit.
-     *
-     * @param startDate New date.
-     */
-    public void setStartDate(@NonNull Date startDate) {
-        this.startDate = startDate;
+    public void setStartDate(@Nullable Date startDate) {
+        if (this.alive) {
+            if (startDate != null) {
+                this.ref.update("startDate", new Timestamp(startDate));
+            } else {
+                this.ref.update("startDate", null);
+            }
+        }
     }
 
-    /**
-     * Gets what days of the week the habit should be due.
-     *
-     * @return The days of the week.
-     */
-    @NonNull
+    @Nullable
     public Occurrence getOccurrence() {
         return this.occurrence;
     }
 
-    /**
-     * Sets what days of the week the habit should be due.
-     *
-     * @param occurrence New occurrence.
-     */
-    public void setOccurrence(@NonNull Occurrence occurrence) {
-        this.occurrence = occurrence;
+    public void setOccurrence(@Nullable Occurrence occurrence) {
+        if (this.alive) {
+            this.ref.update("occurrence", occurrence);
+        }
     }
 
-    /**
-     * Gets the list of events associated with the habit.
-     *
-     * @return The list of events.
-     */
-    @NonNull
-    public EventList getEventList() {
-        return this.eventList;
+    @Nullable
+    public List<String> getEvents() {
+        return this.events;
     }
 
-    /**
-     * Sets the list of events associated with the habit.
-     *
-     * @param eventList New event list.
-     */
-    public void setEventList(@NonNull EventList eventList) {
-        this.eventList = eventList;
+    public void setEvents(@Nullable List<String> events) {
+        if (this.alive) {
+            this.ref.update("events", events);
+        }
     }
 
-    /**
-     * Indicates whether another Habit is structurally equivalent to this one, with every field being the same.
-     *
-     * @param habit Other habit.
-     * @return Whether the Habits are equivalent.
-     */
-    public boolean equals(@NonNull Habit habit) {
-        return Objects.equals(this.title, habit.title) && Objects.equals(this.reason, habit.reason) &&
-               Objects.equals(this.startDate, habit.startDate) && Objects.equals(this.occurrence, habit.occurrence) &&
-               Objects.equals(this.eventList, habit.eventList);
+    public enum Properties {
+        SHARED, TITLE, START_DATE, OCCURRENCE, EVENTS
     }
 }
