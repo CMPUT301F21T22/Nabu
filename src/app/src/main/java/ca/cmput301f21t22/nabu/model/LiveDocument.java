@@ -16,6 +16,7 @@ import java.util.HashSet;
 
 public abstract class LiveDocument<TProperties extends Enum<TProperties>>
         implements EventListener<DocumentSnapshot>, PropertyObservable<TProperties>, LifetimeObservable {
+    @NonNull
     public static String TAG = "LiveDocument";
 
     @NonNull
@@ -86,6 +87,7 @@ public abstract class LiveDocument<TProperties extends Enum<TProperties>>
         this.lifetimeCallbacks.clear();
     }
 
+    @NonNull
     public String getId() {
         return this.ref.getId();
     }

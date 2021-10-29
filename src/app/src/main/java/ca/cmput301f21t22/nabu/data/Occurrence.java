@@ -1,5 +1,7 @@
 package ca.cmput301f21t22.nabu.data;
 
+import androidx.annotation.Nullable;
+
 import java.util.Objects;
 
 /**
@@ -48,7 +50,7 @@ public class Occurrence {
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(@Nullable Object o) {
         if (this == o) {
             return true;
         }

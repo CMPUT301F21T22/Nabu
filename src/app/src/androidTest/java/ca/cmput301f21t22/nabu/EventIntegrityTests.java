@@ -9,6 +9,8 @@ import static org.junit.Assert.fail;
 
 import android.location.Location;
 
+import androidx.annotation.NonNull;
+
 import com.google.firebase.firestore.DocumentSnapshot;
 
 import org.junit.Test;
@@ -20,6 +22,7 @@ import java.util.Objects;
 import ca.cmput301f21t22.nabu.model.Event;
 
 public class EventIntegrityTests extends IntegrityTests {
+    @NonNull
     private static Location makeLocation(double latitude, double longitude) {
         Location l = new Location("");
         l.setLatitude(latitude);
