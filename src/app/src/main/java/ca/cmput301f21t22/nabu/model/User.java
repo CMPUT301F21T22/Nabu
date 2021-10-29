@@ -7,6 +7,7 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 
 import java.util.List;
+import java.util.Objects;
 
 public class User extends LiveDocument<User.Properties> {
     @Nullable
@@ -19,13 +20,19 @@ public class User extends LiveDocument<User.Properties> {
     }
 
     @Override
-    protected void readFields(@NonNull DocumentSnapshot snapshot) {
-        this.userId = snapshot.getString("userId");
-        this.notifyPropertyChanged(Properties.USER_ID);
+    public void readFields(@NonNull DocumentSnapshot snapshot) {
+        String userId = snapshot.getString("userId");
+        if (!Objects.equals(this.userId, userId)) {
+            this.userId = userId;
+            this.notifyPropertyChanged(Properties.USER_ID);
+        }
 
         // noinspection unchecked
-        this.habits = (List<String>) snapshot.get("habits");
-        this.notifyPropertyChanged(Properties.HABITS);
+        List<String> habits = (List<String>) snapshot.get("habits");
+        if (!Objects.equals(this.habits, habits)) {
+            this.habits = habits;
+            this.notifyPropertyChanged(Properties.HABITS);
+        }
     }
 
     @Nullable

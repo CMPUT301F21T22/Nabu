@@ -9,6 +9,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 import ca.cmput301f21t22.nabu.data.Occurrence;
 
@@ -31,25 +32,43 @@ public class Habit extends LiveDocument<Habit.Properties> {
     }
 
     @Override
-    protected void readFields(@NonNull DocumentSnapshot snapshot) {
-        this.shared = snapshot.getBoolean("shared");
-        this.notifyPropertyChanged(Properties.SHARED);
+    public void readFields(@NonNull DocumentSnapshot snapshot) {
+        Boolean shared = snapshot.getBoolean("shared");
+        if (!Objects.equals(this.shared, shared)) {
+            this.shared = shared;
+            this.notifyPropertyChanged(Properties.SHARED);
+        }
 
-        this.title = snapshot.getString("title");
-        this.notifyPropertyChanged(Properties.TITLE);
+        String title = snapshot.getString("title");
+        if (!Objects.equals(this.title, title)) {
+            this.title = title;
+            this.notifyPropertyChanged(Properties.TITLE);
+        }
 
-        this.reason = snapshot.getString("reason");
-        this.notifyPropertyChanged(Properties.REASON);
+        String reason = snapshot.getString("reason");
+        if (!Objects.equals(this.reason, reason)) {
+            this.reason = reason;
+            this.notifyPropertyChanged(Properties.REASON);
+        }
 
-        this.startDate = snapshot.getDate("startDate");
-        this.notifyPropertyChanged(Properties.START_DATE);
+        Date startDate = snapshot.getDate("startDate");
+        if (!Objects.equals(this.startDate, startDate)) {
+            this.startDate = startDate;
+            this.notifyPropertyChanged(Properties.START_DATE);
+        }
 
-        this.occurrence = snapshot.get("occurrence", Occurrence.class);
-        this.notifyPropertyChanged(Properties.OCCURRENCE);
+        Occurrence occurrence = snapshot.get("occurrence", Occurrence.class);
+        if (!Objects.equals(this.occurrence, occurrence)) {
+            this.occurrence = occurrence;
+            this.notifyPropertyChanged(Properties.OCCURRENCE);
+        }
 
         // noinspection unchecked
-        this.events = (List<String>) snapshot.get("events");
-        this.notifyPropertyChanged(Properties.EVENTS);
+        List<String> events = (List<String>) snapshot.get("events");
+        if (!Objects.equals(this.events, events)) {
+            this.events = events;
+            this.notifyPropertyChanged(Properties.EVENTS);
+        }
     }
 
     @Nullable

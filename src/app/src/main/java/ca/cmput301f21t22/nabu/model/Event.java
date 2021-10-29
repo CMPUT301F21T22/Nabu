@@ -1,7 +1,5 @@
 package ca.cmput301f21t22.nabu.model;
 
-import android.location.Location;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
@@ -11,6 +9,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.GeoPoint;
 
 import java.util.Date;
+import java.util.Objects;
 
 public class Event extends LiveDocument<Event.Properties> {
     @Nullable
@@ -20,32 +19,37 @@ public class Event extends LiveDocument<Event.Properties> {
     @Nullable
     private String photoPath;
     @Nullable
-    private Location location;
+    private GeoPoint location;
 
     public Event(@NonNull DocumentReference ref) {
         super(ref);
     }
 
     @Override
-    protected void readFields(@NonNull DocumentSnapshot snapshot) {
-        this.date = snapshot.getDate("date");
-        this.notifyPropertyChanged(Properties.DATE);
-
-        this.comment = snapshot.getString("comment");
-        this.notifyPropertyChanged(Properties.COMMENT);
-
-        this.photoPath = snapshot.getString("photoPath");
-        this.notifyPropertyChanged(Properties.PHOTO_PATH);
-
-        GeoPoint gp = snapshot.getGeoPoint("location");
-        if (gp != null) {
-            this.location = new Location("");
-            this.location.setLatitude(gp.getLatitude());
-            this.location.setLongitude(gp.getLongitude());
-        } else {
-            this.location = null;
+    public void readFields(@NonNull DocumentSnapshot snapshot) {
+        Date date = snapshot.getDate("date");
+        if (!Objects.equals(this.date, date)) {
+            this.date = date;
+            this.notifyPropertyChanged(Properties.DATE);
         }
-        this.notifyPropertyChanged(Properties.LOCATION);
+
+        String comment = snapshot.getString("comment");
+        if (!Objects.equals(this.comment, comment)) {
+            this.comment = comment;
+            this.notifyPropertyChanged(Properties.COMMENT);
+        }
+
+        String photoPath = snapshot.getString("photoPath");
+        if (!Objects.equals(this.photoPath, photoPath)) {
+            this.photoPath = photoPath;
+            this.notifyPropertyChanged(Properties.PHOTO_PATH);
+        }
+
+        GeoPoint location = snapshot.getGeoPoint("location");
+        if (!Objects.equals(this.location, location)) {
+            this.location = location;
+            this.notifyPropertyChanged(Properties.LOCATION);
+        }
     }
 
     @Nullable
@@ -86,14 +90,14 @@ public class Event extends LiveDocument<Event.Properties> {
     }
 
     @Nullable
-    public Location getLocation() {
+    public GeoPoint getLocation() {
         return this.location;
     }
 
-    public void setLocation(@Nullable Location location) {
+    public void setLocation(@Nullable GeoPoint location) {
         if (this.isAlive()) {
             if (location != null) {
-                this.ref.update("location", new GeoPoint(location.getLatitude(), location.getLongitude()));
+                this.ref.update("location", location);
             } else {
                 this.ref.update("location", null);
             }

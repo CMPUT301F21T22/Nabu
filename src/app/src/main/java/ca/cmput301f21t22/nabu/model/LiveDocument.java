@@ -109,11 +109,11 @@ public abstract class LiveDocument<TProperties extends Enum<TProperties>>
         this.ref.delete();
     }
 
+    public abstract void readFields(@NonNull DocumentSnapshot snapshot);
+
     protected void notifyPropertyChanged(TProperties property) {
         for (PropertyChangeCallback<TProperties> callback : this.propertyCallbacks) {
             callback.onPropertyChanged(this, property);
         }
     }
-
-    protected abstract void readFields(@NonNull DocumentSnapshot snapshot);
 }

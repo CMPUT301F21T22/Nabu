@@ -7,11 +7,8 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
-import android.location.Location;
-
-import androidx.annotation.NonNull;
-
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.GeoPoint;
 
 import org.junit.Test;
 
@@ -22,18 +19,6 @@ import java.util.Objects;
 import ca.cmput301f21t22.nabu.model.Event;
 
 public class EventIntegrityTests extends IntegrityTests {
-    @NonNull
-    private static Location makeLocation(double latitude, double longitude) {
-        Location l = new Location("");
-        l.setLatitude(latitude);
-        l.setLongitude(longitude);
-        return l;
-    }
-
-    private static double distanceBetween(Location l1, Location l2) {
-        return Objects.requireNonNull(l1).distanceTo(l2);
-    }
-
     @Test
     public void WriteEvent() {
         Event event = new Event(this.ref);
@@ -56,9 +41,9 @@ public class EventIntegrityTests extends IntegrityTests {
         await().until(() -> event.getPhotoPath() != null);
         assertEquals("/home/default/photos/test.png", event.getPhotoPath());
 
-        event.setLocation(makeLocation(53.523187, -113.526313));
+        event.setLocation(new GeoPoint(53.523187, -113.526313));
         await().until(() -> event.getLocation() != null);
-        assertEquals(0.0, distanceBetween(event.getLocation(), makeLocation(53.523187, -113.526313)), 0.0);
+        assertEquals(new GeoPoint(53.523187, -113.526313), event.getLocation());
     }
 
     @Test
@@ -69,7 +54,7 @@ public class EventIntegrityTests extends IntegrityTests {
         write.setDate(new Date(409238093));
         write.setComment("Some comment");
         write.setPhotoPath("/home/default/photos/test.png");
-        write.setLocation(makeLocation(53.523187, -113.526313));
+        write.setLocation(new GeoPoint(53.523187, -113.526313));
 
         Event read = new Event(this.ref);
         await().until(read::isAlive);
@@ -84,7 +69,7 @@ public class EventIntegrityTests extends IntegrityTests {
         assertEquals("/home/default/photos/test.png", read.getPhotoPath());
 
         await().until(() -> read.getLocation() != null);
-        assertEquals(0.0, distanceBetween(read.getLocation(), makeLocation(53.523187, -113.526313)), 0.0);
+        assertEquals(new GeoPoint(53.523187, -113.526313), read.getLocation());
     }
 
     @Test
@@ -118,10 +103,10 @@ public class EventIntegrityTests extends IntegrityTests {
 
         assertNull(event1.getLocation());
         assertNull(event2.getLocation());
-        event2.setLocation(makeLocation(51.077562, -114.140687));
+        event2.setLocation(new GeoPoint(51.077562, -114.140687));
         await().until(() -> event1.getLocation() != null && event2.getLocation() != null);
-        assertEquals(0.0, distanceBetween(event1.getLocation(), makeLocation(51.077562, -114.140687)), 0.0);
-        assertEquals(0.0, distanceBetween(event2.getLocation(), makeLocation(51.077562, -114.140687)), 0.0);
+        assertEquals(new GeoPoint(51.077562, -114.140687), event1.getLocation());
+        assertEquals(new GeoPoint(51.077562, -114.140687), event2.getLocation());
     }
 
     @Test
@@ -132,7 +117,7 @@ public class EventIntegrityTests extends IntegrityTests {
         event.setDate(new Date(409238093));
         event.setComment("Some comment");
         event.setPhotoPath("/home/default/photos/test.png");
-        event.setLocation(makeLocation(53.523187, -113.526313));
+        event.setLocation(new GeoPoint(53.523187, -113.526313));
         await().until(() -> event.getDate() != null && event.getComment() != null && event.getPhotoPath() != null &&
                             event.getLocation() != null);
 
