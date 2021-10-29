@@ -18,6 +18,8 @@ public class Habit extends LiveDocument<Habit.Properties> {
     @Nullable
     private String title;
     @Nullable
+    private String reason;
+    @Nullable
     private Date startDate;
     @Nullable
     private Occurrence occurrence;
@@ -35,6 +37,9 @@ public class Habit extends LiveDocument<Habit.Properties> {
 
         this.title = snapshot.getString("title");
         this.notifyPropertyChanged(Properties.TITLE);
+
+        this.reason = snapshot.getString("reason");
+        this.notifyPropertyChanged(Properties.REASON);
 
         this.startDate = snapshot.getDate("startDate");
         this.notifyPropertyChanged(Properties.START_DATE);
@@ -66,6 +71,17 @@ public class Habit extends LiveDocument<Habit.Properties> {
     public void setTitle(@Nullable String title) {
         if (this.alive) {
             this.ref.update("title", title);
+        }
+    }
+
+    @Nullable
+    public String getReason() {
+        return this.reason;
+    }
+
+    public void setReason(@Nullable String reason) {
+        if (this.alive) {
+            this.ref.update("reason", reason);
         }
     }
 
@@ -107,6 +123,6 @@ public class Habit extends LiveDocument<Habit.Properties> {
     }
 
     public enum Properties {
-        SHARED, TITLE, START_DATE, OCCURRENCE, EVENTS
+        SHARED, TITLE, REASON, START_DATE, OCCURRENCE, EVENTS
     }
 }

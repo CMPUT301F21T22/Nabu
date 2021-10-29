@@ -27,6 +27,7 @@ public class HabitIntegrityTests extends IntegrityTests {
 
         assertNull(habit.getShared());
         assertNull(habit.getTitle());
+        assertNull(habit.getReason());
         assertNull(habit.getStartDate());
         assertNull(habit.getOccurrence());
         assertNull(habit.getEvents());
@@ -38,6 +39,10 @@ public class HabitIntegrityTests extends IntegrityTests {
         habit.setTitle("Go to Work");
         await().until(() -> habit.getTitle() != null);
         assertEquals("Go to Work", habit.getTitle());
+
+        habit.setReason("Need that money");
+        await().until(() -> habit.getReason() != null);
+        assertEquals("Need that money", habit.getReason());
 
         habit.setStartDate(new Date(4321098));
         await().until(() -> habit.getStartDate() != null);
@@ -59,6 +64,7 @@ public class HabitIntegrityTests extends IntegrityTests {
 
         write.setShared(true);
         write.setTitle("Go to Work");
+        write.setReason("Need that money");
         write.setStartDate(new Date(4321098));
         write.setOccurrence(new Occurrence(true, true, true, false, false, true, true));
         write.setEvents(Arrays.asList("Event1", "Event4", "Event2"));
@@ -71,6 +77,9 @@ public class HabitIntegrityTests extends IntegrityTests {
 
         await().until(() -> read.getTitle() != null);
         assertEquals("Go to Work", read.getTitle());
+
+        await().until(() -> read.getReason() != null);
+        assertEquals("Need that money", read.getReason());
 
         await().until(() -> read.getStartDate() != null);
         assertEquals(new Date(4321098), read.getStartDate());
@@ -104,23 +113,30 @@ public class HabitIntegrityTests extends IntegrityTests {
         assertEquals("Exercise", habit1.getTitle());
         assertEquals("Exercise", habit2.getTitle());
 
+        assertNull(habit1.getReason());
+        assertNull(habit2.getReason());
+        habit1.setReason("Need that healthy life");
+        await().until(() -> Objects.equals(habit1.getReason(), habit2.getReason()));
+        assertEquals("Need that healthy life", habit1.getReason());
+        assertEquals("Need that healthy life", habit2.getReason());
+
         assertNull(habit1.getStartDate());
         assertNull(habit2.getStartDate());
-        habit1.setStartDate(new Date(2138432));
+        habit2.setStartDate(new Date(2138432));
         await().until(() -> Objects.equals(habit1.getStartDate(), habit2.getStartDate()));
         assertEquals(new Date(2138432), habit1.getStartDate());
         assertEquals(new Date(2138432), habit2.getStartDate());
 
         assertNull(habit1.getOccurrence());
         assertNull(habit2.getOccurrence());
-        habit2.setOccurrence(new Occurrence());
+        habit1.setOccurrence(new Occurrence());
         await().until(() -> Objects.equals(habit1.getOccurrence(), habit2.getOccurrence()));
         assertEquals(new Occurrence(), habit1.getOccurrence());
         assertEquals(new Occurrence(), habit2.getOccurrence());
 
         assertNull(habit1.getEvents());
         assertNull(habit2.getEvents());
-        habit1.setEvents(Arrays.asList("Event3", "Event1"));
+        habit2.setEvents(Arrays.asList("Event3", "Event1"));
         await().until(() -> Objects.equals(habit1.getEvents(), habit2.getEvents()));
         assertEquals(Arrays.asList("Event3", "Event1"), habit1.getEvents());
         assertEquals(Arrays.asList("Event3", "Event1"), habit2.getEvents());
@@ -133,6 +149,7 @@ public class HabitIntegrityTests extends IntegrityTests {
 
         habit.setShared(true);
         habit.setTitle("Go to Work");
+        habit.setReason("Need that money");
         habit.setStartDate(new Date(4321098));
         habit.setOccurrence(new Occurrence(true, true, true, false, false, true, true));
         habit.setEvents(Arrays.asList("Event1", "Event4", "Event2"));
