@@ -100,7 +100,7 @@ public abstract class LiveDocument<TProperties extends Enum<TProperties>>
         if (this.alive != alive) {
             this.alive = alive;
             for (LifetimeChangeCallback callback : this.lifetimeCallbacks) {
-                callback.onLifetimeChanged(alive);
+                callback.onLifetimeChanged(this, alive);
             }
         }
     }
@@ -111,7 +111,7 @@ public abstract class LiveDocument<TProperties extends Enum<TProperties>>
 
     protected void notifyPropertyChanged(TProperties property) {
         for (PropertyChangeCallback<TProperties> callback : this.propertyCallbacks) {
-            callback.onPropertyChanged(property);
+            callback.onPropertyChanged(this, property);
         }
     }
 
