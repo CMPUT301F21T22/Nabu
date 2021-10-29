@@ -104,7 +104,7 @@ public class EventIntegrityTests extends IntegrityTests {
 
         assertNull(event1.getComment());
         assertNull(event2.getComment());
-        event1.setComment("What is this comment?");
+        event2.setComment("What is this comment?");
         await().until(() -> Objects.equals(event1.getComment(), event2.getComment()));
         assertEquals("What is this comment?", event1.getComment());
         assertEquals("What is this comment?", event2.getComment());
@@ -118,7 +118,7 @@ public class EventIntegrityTests extends IntegrityTests {
 
         assertNull(event1.getLocation());
         assertNull(event2.getLocation());
-        event1.setLocation(makeLocation(51.077562, -114.140687));
+        event2.setLocation(makeLocation(51.077562, -114.140687));
         await().until(() -> event1.getLocation() != null && event2.getLocation() != null);
         assertEquals(0.0, distanceBetween(event1.getLocation(), makeLocation(51.077562, -114.140687)), 0.0);
         assertEquals(0.0, distanceBetween(event2.getLocation(), makeLocation(51.077562, -114.140687)), 0.0);
