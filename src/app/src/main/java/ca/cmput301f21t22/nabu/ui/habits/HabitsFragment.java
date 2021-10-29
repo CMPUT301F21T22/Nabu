@@ -1,18 +1,10 @@
 package ca.cmput301f21t22.nabu.ui.habits;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.ImageButton;
 import android.widget.ListView;
-import android.widget.PopupMenu;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -21,20 +13,15 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Date;
 
 import ca.cmput301f21t22.nabu.databinding.FragmentHabitsBinding;
-import ca.cmput301f21t22.nabu.databinding.FragmentSettingsBinding;
-import ca.cmput301f21t22.nabu.dialogs.edit_habit.EditHabitFragment;
 import ca.cmput301f21t22.nabu.model.EventList;
 import ca.cmput301f21t22.nabu.model.Habit;
 import ca.cmput301f21t22.nabu.model.HabitList;
 import ca.cmput301f21t22.nabu.model.HabitListAdapter;
-import ca.cmput301f21t22.nabu.model.HabitListView;
 import ca.cmput301f21t22.nabu.model.Occurrence;
-import ca.cmput301f21t22.nabu.ui.settings.SettingsViewModel;
 
 public class HabitsFragment extends Fragment {
 
@@ -46,7 +33,6 @@ public class HabitsFragment extends Fragment {
     //Variables for the listView of habits
     private ListView habitsListView;
     private HabitListAdapter habitsAdapter;
-    private HabitListView habitListView;
     private ArrayList<Habit> habitDataList;
 
     //Temporary
@@ -72,7 +58,6 @@ public class HabitsFragment extends Fragment {
         super.onDestroyView();
     }
 
-    // TODO: Fix R and findViewById errors
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,15 +69,16 @@ public class HabitsFragment extends Fragment {
         habitsListView = this.binding.habitsList;
         habitsAdapter = new HabitListAdapter(this.requireContext(), habitDataList);
         habitsListView.setAdapter(habitsAdapter);
-        habitListView = new HabitListView(habitList, habitsAdapter);
 
         final FloatingActionButton addHabit = this.binding.addHabitButton;
         addHabit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO: Add a way to create a edit_habit fragment
+                Habit inputHabit = new Habit();
+                //TODO: Call to edit/add habit fragment
+                habitList.add(inputHabit);
+                habitsAdapter.add(inputHabit);
                 habitsAdapter.notifyDataSetChanged();
-
             }
         });
 
