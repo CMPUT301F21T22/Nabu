@@ -43,6 +43,18 @@ public class Habit {
     }
 
     /**
+     * Create a 'default' instance of Habit.
+     */
+    public Habit() {
+        this.title = "";
+        this.reason = "";
+        this.startDate = new Date();
+        this.occurrence = new Occurrence(true, true, true, true,
+                true, true, true);
+        this.eventList = new EventList();
+    }
+
+    /**
      * Indicates whether another Object is equivalent to this one.
      *
      * @param obj Other object.
