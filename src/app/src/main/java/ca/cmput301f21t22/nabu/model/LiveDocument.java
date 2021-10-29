@@ -85,6 +85,10 @@ public abstract class LiveDocument<TProperties extends Enum<TProperties>>
         this.lifetimeCallbacks.clear();
     }
 
+    public String getId() {
+        return this.ref.getId();
+    }
+
     public boolean isAlive() {
         return this.alive;
     }
@@ -96,10 +100,6 @@ public abstract class LiveDocument<TProperties extends Enum<TProperties>>
                 callback.onLifetimeChanged(alive);
             }
         }
-    }
-
-    public String getId() {
-        return this.ref.getId();
     }
 
     public void delete() {
