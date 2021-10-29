@@ -58,7 +58,7 @@ public class Habit extends LiveDocument<Habit.Properties> {
     }
 
     public void setShared(@Nullable Boolean shared) {
-        if (this.alive) {
+        if (this.isAlive()) {
             this.ref.update("shared", shared);
         }
     }
@@ -69,7 +69,7 @@ public class Habit extends LiveDocument<Habit.Properties> {
     }
 
     public void setTitle(@Nullable String title) {
-        if (this.alive) {
+        if (this.isAlive()) {
             this.ref.update("title", title);
         }
     }
@@ -80,7 +80,7 @@ public class Habit extends LiveDocument<Habit.Properties> {
     }
 
     public void setReason(@Nullable String reason) {
-        if (this.alive) {
+        if (this.isAlive()) {
             this.ref.update("reason", reason);
         }
     }
@@ -91,7 +91,7 @@ public class Habit extends LiveDocument<Habit.Properties> {
     }
 
     public void setStartDate(@Nullable Date startDate) {
-        if (this.alive) {
+        if (this.isAlive()) {
             if (startDate != null) {
                 this.ref.update("startDate", new Timestamp(startDate));
             } else {
@@ -106,7 +106,7 @@ public class Habit extends LiveDocument<Habit.Properties> {
     }
 
     public void setOccurrence(@Nullable Occurrence occurrence) {
-        if (this.alive) {
+        if (this.isAlive()) {
             this.ref.update("occurrence", occurrence);
         }
     }
@@ -117,7 +117,7 @@ public class Habit extends LiveDocument<Habit.Properties> {
     }
 
     public void setEvents(@Nullable List<String> events) {
-        if (this.alive) {
+        if (this.isAlive()) {
             this.ref.update("events", events);
         }
     }

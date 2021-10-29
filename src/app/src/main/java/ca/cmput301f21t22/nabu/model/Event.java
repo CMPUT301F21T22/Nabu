@@ -54,7 +54,7 @@ public class Event extends LiveDocument<Event.Properties> {
     }
 
     public void setDate(@Nullable Date date) {
-        if (this.alive) {
+        if (this.isAlive()) {
             if (date != null) {
                 this.ref.update("date", new Timestamp(date));
             } else {
@@ -69,7 +69,7 @@ public class Event extends LiveDocument<Event.Properties> {
     }
 
     public void setComment(@Nullable String comment) {
-        if (this.alive) {
+        if (this.isAlive()) {
             this.ref.update("comment", comment);
         }
     }
@@ -80,7 +80,7 @@ public class Event extends LiveDocument<Event.Properties> {
     }
 
     public void setPhotoPath(@Nullable String photoPath) {
-        if (this.alive) {
+        if (this.isAlive()) {
             this.ref.update("photoPath", photoPath);
         }
     }
@@ -91,7 +91,7 @@ public class Event extends LiveDocument<Event.Properties> {
     }
 
     public void setLocation(@Nullable Location location) {
-        if (this.alive) {
+        if (this.isAlive()) {
             if (location != null) {
                 this.ref.update("location", new GeoPoint(location.getLatitude(), location.getLongitude()));
             } else {

@@ -18,9 +18,10 @@ public abstract class LiveDocument<TProperties extends Enum<TProperties>>
         implements EventListener<DocumentSnapshot>, PropertyObservable<TProperties>, LifetimeObservable {
     public static String TAG = "LiveDocument";
 
-    protected boolean alive;
     @NonNull
     protected final DocumentReference ref;
+
+    private boolean alive;
     @NonNull
     private final HashSet<PropertyChangeCallback<TProperties>> propertyCallbacks;
     @NonNull
@@ -106,11 +107,11 @@ public abstract class LiveDocument<TProperties extends Enum<TProperties>>
         this.ref.delete();
     }
 
-    protected abstract void readFields(@NonNull DocumentSnapshot snapshot);
-
     protected void notifyPropertyChanged(TProperties property) {
         for (PropertyChangeCallback<TProperties> callback : this.propertyCallbacks) {
             callback.onPropertyChanged(property);
         }
     }
+
+    protected abstract void readFields(@NonNull DocumentSnapshot snapshot);
 }

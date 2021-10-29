@@ -34,7 +34,7 @@ public class User extends LiveDocument<User.Properties> {
     }
 
     public void setUserId(@Nullable String userId) {
-        if (this.alive) {
+        if (this.isAlive()) {
             this.ref.update("userId", userId);
         }
     }
@@ -45,7 +45,7 @@ public class User extends LiveDocument<User.Properties> {
     }
 
     public void setHabits(@Nullable List<String> habits) {
-        if (this.alive) {
+        if (this.isAlive()) {
             this.ref.update("habits", habits);
         }
     }
