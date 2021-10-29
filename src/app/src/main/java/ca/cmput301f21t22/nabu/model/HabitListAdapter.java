@@ -16,11 +16,10 @@ import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
 
-import ca.cmput301f21t22.nabu.databinding.FragmentHabitsBinding;
+import ca.cmput301f21t22.nabu.R;
 import ca.cmput301f21t22.nabu.databinding.HabitCardBinding;
-import ca.cmput301f21t22.nabu.model.Habit;
 
-public class HabitListAdapter extends ArrayAdapter {
+public class HabitListAdapter extends ArrayAdapter<Habit> {
 
     private ArrayList<Habit> habits;
     private Context context;
@@ -65,31 +64,55 @@ public class HabitListAdapter extends ArrayAdapter {
             public void onClick(View view) {
                 PopupMenu habitsPopupMenu = new PopupMenu(context, habitsMenuButton);
                 MenuInflater inflater = habitsPopupMenu.getMenuInflater();
-                inflater.inflate(R.menu.actions, habitsPopupMenu.getMenu());
+                inflater.inflate(R.menu.habit_card_popup_menu, habitsPopupMenu.getMenu());
                 habitsPopupMenu.show();
-
-                final PopupMenu menu = binding.habit_card_popup_menu;
+                final PopupMenu menu = habitsPopupMenu;
                 menu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     @Override
-                    public void onMenuItemClick(MenuItem item) {
-                        switch (item.getItemId()) {
-                            case R.id.view_events:
-                                //TODO: Add a way to switch to view_events
-                                ;
-                            case R.id.edit_habit:
-                                //TODO: Add a way to create a edit_habit fragment
-                                ;
-                            case R.id.delete_habit:
-                                //TODO: Add a way to delete a habit;
-                                ;
+                    public boolean onMenuItemClick(MenuItem item) {
+                        if (item.getItemId() == habitsPopupMenu.getMenu().getItem(0).getItemId()) {
+                            //TODO: Add call to switch to habit events fragment
+                            return true;
                         }
+                        else if (item.getItemId() == habitsPopupMenu.getMenu().getItem(1).getItemId()) {
+                            //Edit
+                            Habit inputHabit = new Habit();
+                            //TODO: Add call for edit habit fragment
+                            edit(position, inputHabit);
+                            return true;
+                        }
+                        else if (item.getItemId() == habitsPopupMenu.getMenu().getItem(2).getItemId()) {
+                            //remove
+                            remove(habits.get(position));
+                            return true;
+                        }
+                        else { return false; } //Default
                     }
                 });
             }
         });
 
+        return this.binding.getRoot();
     }
 
-        return this.binding.getRoot();
+    @Override
+    public void add(@Nullable Habit habit) {
+        super.add(habit);
+        this.habits.add(habit);
+        this.notifyDataSetChanged();
+    }
+
+    @Override
+    public void remove(@Nullable Habit habit) {
+        super.remove(habit);
+        this.habits.remove(habit);
+        this.notifyDataSetChanged();
+    }
+
+    public void edit(int position, @Nullable Habit habit) {
+        this.remove(this.getItem(position));
+        this.insert(habit, position);
+        this.habits.set(position, habit);
+        this.notifyDataSetChanged();
     }
 }
