@@ -61,7 +61,7 @@ public class HabitsFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        habitDataList = new ArrayList<Habit>();
         habitDataList.add(new Habit("Work", "Making money", new Date(),
                 new Occurrence(true, false, true, false,
                         true, false, true), new EventList()));
