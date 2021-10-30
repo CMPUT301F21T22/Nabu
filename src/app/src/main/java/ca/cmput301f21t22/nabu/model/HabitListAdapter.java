@@ -98,21 +98,21 @@ public class HabitListAdapter extends ArrayAdapter<Habit> {
     @Override
     public void add(@Nullable Habit habit) {
         super.add(habit);
-        this.habits.add(habit);
+        //this.habits.add(habit);
         this.notifyDataSetChanged();
     }
 
     @Override
     public void remove(@Nullable Habit habit) {
         super.remove(habit);
-        this.habits.remove(habit);
+        //this.habits.remove(habit);
         this.notifyDataSetChanged();
     }
 
     public void edit(int position, @Nullable Habit habit) {
         this.remove(this.getItem(position));
         this.insert(habit, position);
-        this.habits.set(position, habit);
+        //this.habits.set(position, habit);
         this.notifyDataSetChanged();
     }
 }

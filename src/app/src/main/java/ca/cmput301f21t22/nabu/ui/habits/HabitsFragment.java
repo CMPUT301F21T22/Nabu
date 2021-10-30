@@ -38,8 +38,6 @@ public class HabitsFragment extends Fragment {
     //Temporary
     private HabitList habitList;
 
-
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -48,16 +46,31 @@ public class HabitsFragment extends Fragment {
         this.viewModel = new ViewModelProvider(this).get(HabitsViewModel.class);
         this.binding = FragmentHabitsBinding.inflate(inflater, container, false);
 
+        habitDataList = new ArrayList<Habit>();
+        habitDataList.add(new Habit("Work", "Making money", new Date(),
+                new Occurrence(true, false, true, false,
+                        true, false, true), new EventList()));
+
+        habitsListView = this.binding.habitsList;
+        habitsAdapter = new HabitListAdapter(this.requireContext(), habitDataList);
+        habitsListView.setAdapter(habitsAdapter);
+
+        final FloatingActionButton addHabit = this.binding.addHabitButton;
+        addHabit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Habit inputHabit = new Habit();
+                //TODO: Call to edit/add habit fragment
+                //habitDataList.add(inputHabit);
+                habitsAdapter.add(inputHabit);
+                habitsAdapter.notifyDataSetChanged();
+            }
+        });
+
         return this.binding.getRoot();
     }
 
-    @Override
-    public void onDestroyView() {
-        this.viewModel = null;
-        this.binding = null;
-        super.onDestroyView();
-    }
-
+/*
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -82,6 +95,13 @@ public class HabitsFragment extends Fragment {
             }
         });
 
+    }
+*/
+    @Override
+    public void onDestroyView() {
+        this.viewModel = null;
+        this.binding = null;
+        super.onDestroyView();
     }
 
 }
