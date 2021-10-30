@@ -61,7 +61,6 @@ public class MainActivity extends AppCompatActivity {
         AppBarConfiguration configuration = new AppBarConfiguration.Builder(this.binding.mainNavView.getMenu()).build();
         NavigationUI.setupActionBarWithNavController(this, controller, configuration);
         NavigationUI.setupWithNavController(this.binding.mainNavView, controller);
-        this.binding.mainNavHost.requestFocus();
     }
 
     @Override
