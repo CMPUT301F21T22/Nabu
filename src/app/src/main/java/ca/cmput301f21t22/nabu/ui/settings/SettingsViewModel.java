@@ -6,28 +6,39 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import ca.cmput301f21t22.nabu.model.Collection;
+import ca.cmput301f21t22.nabu.model.User;
 
 public class SettingsViewModel extends ViewModel {
     @NonNull
     public final static String TAG = "SettingsViewModel";
 
     @NonNull
-    private final MutableLiveData<FirebaseUser> currentUser;
+    private final MutableLiveData<User> currentUser;
 
+    @NonNull
+    private final FirebaseFirestore db;
+    @NonNull
+    private final CollectionReference users;
     @NonNull
     private final FirebaseAuth auth;
 
     public SettingsViewModel() {
         this.currentUser = new MutableLiveData<>(null);
 
+        this.db = FirebaseFirestore.getInstance();
+        this.users = this.db.collection(Collection.USERS.getName());
         this.auth = FirebaseAuth.getInstance();
         this.auth.addAuthStateListener(this::onSignInChanged);
     }
 
-    public void onSignInChanged(FirebaseAuth firebaseAuth) {
+    public void onSignInChanged(@NonNull FirebaseAuth firebaseAuth) {
         if (firebaseAuth.getCurrentUser() != null) {
-            this.currentUser.setValue(firebaseAuth.getCurrentUser());
+            User currentUser = new User(this.users.document(firebaseAuth.getCurrentUser().getUid()));
+            this.currentUser.setValue(currentUser);
         } else {
             this.currentUser.setValue(null);
         }
@@ -41,7 +52,8 @@ public class SettingsViewModel extends ViewModel {
         // TODO: Implement Reset.
     }
 
-    public LiveData<FirebaseUser> getCurrentUser() {
+    @NonNull
+    public LiveData<User> getCurrentUser() {
         return this.currentUser;
     }
 }

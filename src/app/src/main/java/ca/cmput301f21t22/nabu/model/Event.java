@@ -22,7 +22,7 @@ public class Event extends Document<Event.Properties> {
     private GeoPoint location;
 
     public Event(@NonNull DocumentReference ref) {
-        super(ref);
+        super(Event.Properties.class, ref);
     }
 
     @Override

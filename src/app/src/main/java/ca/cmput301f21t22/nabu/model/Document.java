@@ -12,10 +12,10 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.SetOptions;
 
 import java.util.HashMap;
-import java.util.HashSet;
+import java.util.Objects;
+import java.util.WeakHashMap;
 
-public abstract class Document<TProperties extends Enum<TProperties>>
-        implements EventListener<DocumentSnapshot>, PropertyObservable<TProperties>, LifetimeObservable {
+public abstract class Document<TProperties extends Enum<TProperties>> implements EventListener<DocumentSnapshot> {
     @NonNull
     public static String TAG = "Document";
 
@@ -24,14 +24,17 @@ public abstract class Document<TProperties extends Enum<TProperties>>
 
     private boolean alive;
     @NonNull
-    private final HashSet<PropertyChangeCallback<TProperties>> propertyCallbacks;
+    private final WeakHashMap<PropertyChangedCallback<TProperties>, Boolean> propertyCallbacks;
     @NonNull
-    private final HashSet<LifetimeChangeCallback> lifetimeCallbacks;
+    private final WeakHashMap<LifeChangedCallback<TProperties>, Boolean> lifetimeCallbacks;
+    @NonNull
+    private final Class<TProperties> cls;
 
-    protected Document(@NonNull DocumentReference ref) {
+    protected Document(@NonNull Class<TProperties> cls, @NonNull DocumentReference ref) {
         this.alive = false;
-        this.propertyCallbacks = new HashSet<>();
-        this.lifetimeCallbacks = new HashSet<>();
+        this.propertyCallbacks = new WeakHashMap<>();
+        this.lifetimeCallbacks = new WeakHashMap<>();
+        this.cls = cls;
 
         this.ref = ref;
         this.ref.set(new HashMap<>(), SetOptions.merge());
@@ -57,34 +60,16 @@ public abstract class Document<TProperties extends Enum<TProperties>>
         }
     }
 
-    @Override
-    public void addPropertyChangeCallback(PropertyChangeCallback<TProperties> callback) {
-        this.propertyCallbacks.add(callback);
+    public void observeProperties(PropertyChangedCallback<TProperties> callback) {
+        this.propertyCallbacks.put(callback, true);
+        for (TProperties property : Objects.requireNonNull(this.cls.getEnumConstants())) {
+            this.notifyPropertyChanged(property);
+        }
     }
 
-    @Override
-    public void removePropertyChangeCallback(PropertyChangeCallback<TProperties> callback) {
-        this.propertyCallbacks.remove(callback);
-    }
-
-    @Override
-    public void clearPropertyChangeCallbacks() {
-        this.propertyCallbacks.clear();
-    }
-
-    @Override
-    public void addLifetimeChangeCallback(LifetimeChangeCallback callback) {
-        this.lifetimeCallbacks.add(callback);
-    }
-
-    @Override
-    public void removeLifetimeChangeCallback(LifetimeChangeCallback callback) {
-        this.lifetimeCallbacks.remove(callback);
-    }
-
-    @Override
-    public void clearLifetimeChangeCallbacks() {
-        this.lifetimeCallbacks.clear();
+    public void observeLife(@NonNull LifeChangedCallback<TProperties> callback) {
+        this.lifetimeCallbacks.put(callback, true);
+        callback.onLifeChanged(this, this.alive);
     }
 
     @NonNull
@@ -99,8 +84,8 @@ public abstract class Document<TProperties extends Enum<TProperties>>
     protected void setAlive(boolean alive) {
         if (this.alive != alive) {
             this.alive = alive;
-            for (LifetimeChangeCallback callback : this.lifetimeCallbacks) {
-                callback.onLifetimeChanged(this, alive);
+            for (LifeChangedCallback<TProperties> callback : this.lifetimeCallbacks.keySet()) {
+                callback.onLifeChanged(this, alive);
             }
         }
     }
@@ -112,8 +97,16 @@ public abstract class Document<TProperties extends Enum<TProperties>>
     public abstract void readFields(@NonNull DocumentSnapshot snapshot);
 
     protected void notifyPropertyChanged(TProperties property) {
-        for (PropertyChangeCallback<TProperties> callback : this.propertyCallbacks) {
+        for (PropertyChangedCallback<TProperties> callback : this.propertyCallbacks.keySet()) {
             callback.onPropertyChanged(this, property);
         }
+    }
+
+    public interface LifeChangedCallback<TProperties extends Enum<TProperties>> {
+        void onLifeChanged(Document<TProperties> sender, boolean alive);
+    }
+
+    public interface PropertyChangedCallback<TProperties extends Enum<TProperties>> {
+        void onPropertyChanged(Document<TProperties> sender, TProperties property);
     }
 }

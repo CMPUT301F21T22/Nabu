@@ -28,7 +28,7 @@ public class Habit extends Document<Habit.Properties> {
     private List<String> events;
 
     public Habit(@NonNull DocumentReference ref) {
-        super(ref);
+        super(Habit.Properties.class, ref);
     }
 
     @Override

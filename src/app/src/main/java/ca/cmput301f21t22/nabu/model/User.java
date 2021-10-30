@@ -16,7 +16,7 @@ public class User extends Document<User.Properties> {
     private List<String> habits;
 
     public User(@NonNull DocumentReference ref) {
-        super(ref);
+        super(User.Properties.class, ref);
     }
 
     @Override

@@ -14,6 +14,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import ca.cmput301f21t22.nabu.R;
 import ca.cmput301f21t22.nabu.databinding.FragmentSettingsBinding;
+import ca.cmput301f21t22.nabu.model.User;
 
 public class SettingsFragment extends Fragment {
     @NonNull
@@ -34,7 +35,10 @@ public class SettingsFragment extends Fragment {
 
         this.viewModel.getCurrentUser().observe(this.getViewLifecycleOwner(), (currentUser) -> {
             if (currentUser != null) {
-                this.binding.labelCurrentUserEmail.setText(currentUser.getEmail());
+                currentUser.observeProperties((sender, property) -> {
+                    User user = (User) sender;
+                    this.binding.labelCurrentUserEmail.setText(user.getEmail());
+                });
             } else {
                 this.binding.labelCurrentUserEmail.setText(null);
             }

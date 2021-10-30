@@ -11,6 +11,12 @@ import androidx.lifecycle.ViewModel;
 import com.firebase.ui.auth.IdpResponse;
 import com.firebase.ui.auth.data.model.FirebaseAuthUIAuthenticationResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import ca.cmput301f21t22.nabu.model.Collection;
+import ca.cmput301f21t22.nabu.model.User;
 
 public class MainViewModel extends ViewModel {
     @NonNull
@@ -20,19 +26,33 @@ public class MainViewModel extends ViewModel {
     private final MutableLiveData<Boolean> showSignIn;
 
     @NonNull
+    private final FirebaseFirestore db;
+    @NonNull
+    private final CollectionReference users;
+    @NonNull
     private final FirebaseAuth auth;
 
     public MainViewModel() {
         this.showSignIn = new MutableLiveData<>(false);
 
+        this.db = FirebaseFirestore.getInstance();
+        this.users = this.db.collection(Collection.USERS.getName());
         this.auth = FirebaseAuth.getInstance();
         this.auth.addAuthStateListener(this::onSignInChanged);
     }
 
-    public void onSignIn(FirebaseAuthUIAuthenticationResult result) {
+    public void onSignIn(@NonNull FirebaseAuthUIAuthenticationResult result) {
         IdpResponse response = result.getIdpResponse();
         if (result.getResultCode() == Activity.RESULT_OK && this.auth.getCurrentUser() != null) {
-            Log.d(TAG, "User logged in with id: " + this.auth.getCurrentUser().getUid());
+            FirebaseUser firebaseUser = this.auth.getCurrentUser();
+            Log.d(TAG, "User logged in with id: " + firebaseUser.getUid());
+            User currentUser = new User(this.users.document(firebaseUser.getUid()));
+            currentUser.observeLife((sender, alive) -> {
+                User user = (User) sender;
+                if (alive) {
+                    user.setEmail(firebaseUser.getEmail());
+                }
+            });
             this.showSignIn.setValue(false);
         } else {
             if (response != null) {
@@ -44,7 +64,7 @@ public class MainViewModel extends ViewModel {
         }
     }
 
-    public void onSignInChanged(FirebaseAuth auth) {
+    public void onSignInChanged(@NonNull FirebaseAuth auth) {
         this.showSignIn.setValue(auth.getCurrentUser() == null);
     }
 
