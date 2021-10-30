@@ -24,7 +24,7 @@ public class User extends Document<User.Properties> {
         String email = snapshot.getString("email");
         if (!Objects.equals(this.email, email)) {
             this.email = email;
-            this.notifyPropertyChanged(Properties.USER_ID);
+            this.notifyPropertyChanged(Properties.EMAIL);
         }
 
         // noinspection unchecked
@@ -33,6 +33,23 @@ public class User extends Document<User.Properties> {
             this.habits = habits;
             this.notifyPropertyChanged(Properties.HABITS);
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || this.getClass() != o.getClass()) {
+            return false;
+        }
+        User user = (User) o;
+        return Objects.equals(this.email, user.email) && Objects.equals(this.habits, user.habits);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(this.email, this.habits);
     }
 
     @Nullable
@@ -58,6 +75,6 @@ public class User extends Document<User.Properties> {
     }
 
     public enum Properties {
-        USER_ID, HABITS
+        EMAIL, HABITS
     }
 }

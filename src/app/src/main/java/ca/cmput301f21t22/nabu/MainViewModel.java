@@ -64,8 +64,8 @@ public class MainViewModel extends ViewModel {
         }
     }
 
-    public void onSignInChanged(@NonNull FirebaseAuth auth) {
-        this.showSignIn.setValue(auth.getCurrentUser() == null);
+    public void onSignInChanged(@NonNull FirebaseAuth newAuth) {
+        this.showSignIn.setValue(newAuth.getCurrentUser() == null);
     }
 
     @NonNull

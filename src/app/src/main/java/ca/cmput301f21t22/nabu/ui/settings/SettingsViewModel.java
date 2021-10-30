@@ -35,12 +35,10 @@ public class SettingsViewModel extends ViewModel {
         this.auth.addAuthStateListener(this::onSignInChanged);
     }
 
-    public void onSignInChanged(@NonNull FirebaseAuth firebaseAuth) {
-        if (firebaseAuth.getCurrentUser() != null) {
-            User currentUser = new User(this.users.document(firebaseAuth.getCurrentUser().getUid()));
+    public void onSignInChanged(@NonNull FirebaseAuth newAuth) {
+        if (newAuth.getCurrentUser() != null) {
+            User currentUser = new User(this.users.document(newAuth.getCurrentUser().getUid()));
             this.currentUser.setValue(currentUser);
-        } else {
-            this.currentUser.setValue(null);
         }
     }
 

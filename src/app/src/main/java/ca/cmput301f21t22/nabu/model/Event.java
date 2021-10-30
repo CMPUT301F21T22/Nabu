@@ -52,6 +52,24 @@ public class Event extends Document<Event.Properties> {
         }
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || this.getClass() != o.getClass()) {
+            return false;
+        }
+        Event event = (Event) o;
+        return Objects.equals(this.date, event.date) && Objects.equals(this.comment, event.comment) &&
+               Objects.equals(this.photoPath, event.photoPath) && Objects.equals(this.location, event.location);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(this.date, this.comment, this.photoPath, this.location);
+    }
+
     @Nullable
     public Date getDate() {
         return this.date;

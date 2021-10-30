@@ -71,6 +71,25 @@ public class Habit extends Document<Habit.Properties> {
         }
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || this.getClass() != o.getClass()) {
+            return false;
+        }
+        Habit habit = (Habit) o;
+        return Objects.equals(this.shared, habit.shared) && Objects.equals(this.title, habit.title) &&
+               Objects.equals(this.reason, habit.reason) && Objects.equals(this.startDate, habit.startDate) &&
+               Objects.equals(this.occurrence, habit.occurrence) && Objects.equals(this.events, habit.events);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(this.shared, this.title, this.reason, this.startDate, this.occurrence, this.events);
+    }
+
     @Nullable
     public Boolean getShared() {
         return this.shared;
