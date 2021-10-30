@@ -32,8 +32,6 @@ public class MyDayFragment extends Fragment {
 
     @Override
     public void onDestroyView() {
-        this.viewModel = null;
-        this.binding = null;
         super.onDestroyView();
     }
 }

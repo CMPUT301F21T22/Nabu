@@ -10,9 +10,14 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+
+import ca.cmput301f21t22.nabu.R;
 import ca.cmput301f21t22.nabu.databinding.FragmentSettingsBinding;
 
 public class SettingsFragment extends Fragment {
+    @NonNull
+    public final static String TAG = "SettingsFragment";
 
     @Nullable
     private SettingsViewModel viewModel;
@@ -27,13 +32,34 @@ public class SettingsFragment extends Fragment {
         this.viewModel = new ViewModelProvider(this).get(SettingsViewModel.class);
         this.binding = FragmentSettingsBinding.inflate(inflater, container, false);
 
+        this.viewModel.getCurrentUser().observe(this.getViewLifecycleOwner(), (currentUser) -> {
+            if (currentUser != null) {
+                this.binding.labelCurrentUserEmail.setText(currentUser.getEmail());
+            } else {
+                this.binding.labelCurrentUserEmail.setText(null);
+            }
+        });
+
+        this.binding.cardLogout.setOnClickListener(
+                view -> new MaterialAlertDialogBuilder(this.requireContext()).setMessage(
+                        R.string.dialog_sign_out_message)
+                        .setNegativeButton(R.string.button_cancel, (dialogInterface, i) -> {
+                        })
+                        .setPositiveButton(R.string.button_sign_out, (dialogInterface, i) -> this.viewModel.doSignOut())
+                        .show());
+
+        this.binding.cardReset.setOnClickListener(
+                view -> new MaterialAlertDialogBuilder(this.requireContext()).setMessage(R.string.dialog_reset_message)
+                        .setNegativeButton(R.string.button_cancel, (dialogInterface, i) -> {
+                        })
+                        .setPositiveButton(R.string.button_reset, (dialogInterface, i) -> this.viewModel.doReset())
+                        .show());
+
         return this.binding.getRoot();
     }
 
     @Override
     public void onDestroyView() {
-        this.viewModel = null;
-        this.binding = null;
         super.onDestroyView();
     }
 }

@@ -13,7 +13,7 @@ import java.util.Objects;
 
 import ca.cmput301f21t22.nabu.data.Occurrence;
 
-public class Habit extends LiveDocument<Habit.Properties> {
+public class Habit extends Document<Habit.Properties> {
     @Nullable
     private Boolean shared;
     @Nullable

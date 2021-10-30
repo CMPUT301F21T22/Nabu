@@ -9,9 +9,9 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import java.util.List;
 import java.util.Objects;
 
-public class User extends LiveDocument<User.Properties> {
+public class User extends Document<User.Properties> {
     @Nullable
-    private String userId;
+    private String email;
     @Nullable
     private List<String> habits;
 
@@ -21,9 +21,9 @@ public class User extends LiveDocument<User.Properties> {
 
     @Override
     public void readFields(@NonNull DocumentSnapshot snapshot) {
-        String userId = snapshot.getString("userId");
-        if (!Objects.equals(this.userId, userId)) {
-            this.userId = userId;
+        String email = snapshot.getString("email");
+        if (!Objects.equals(this.email, email)) {
+            this.email = email;
             this.notifyPropertyChanged(Properties.USER_ID);
         }
 
@@ -36,13 +36,13 @@ public class User extends LiveDocument<User.Properties> {
     }
 
     @Nullable
-    public String getUserId() {
-        return this.userId;
+    public String getEmail() {
+        return this.email;
     }
 
-    public void setUserId(@Nullable String userId) {
+    public void setEmail(@Nullable String email) {
         if (this.isAlive()) {
-            this.ref.update("userId", userId);
+            this.ref.update("email", email);
         }
     }
 

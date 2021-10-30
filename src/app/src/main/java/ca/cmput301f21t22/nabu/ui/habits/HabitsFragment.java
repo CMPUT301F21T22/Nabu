@@ -11,8 +11,6 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import ca.cmput301f21t22.nabu.databinding.FragmentHabitsBinding;
-import ca.cmput301f21t22.nabu.databinding.FragmentSettingsBinding;
-import ca.cmput301f21t22.nabu.ui.settings.SettingsViewModel;
 
 public class HabitsFragment extends Fragment {
 
@@ -34,8 +32,6 @@ public class HabitsFragment extends Fragment {
 
     @Override
     public void onDestroyView() {
-        this.viewModel = null;
-        this.binding = null;
         super.onDestroyView();
     }
 }

@@ -23,12 +23,12 @@ public class UserIntegrityTests extends IntegrityTests {
         User user = new User(this.ref);
         await().until(user::isAlive);
 
-        assertNull(user.getUserId());
+        assertNull(user.getEmail());
         assertNull(user.getHabits());
 
-        user.setUserId("Writing a User ID");
-        await().until(() -> user.getUserId() != null);
-        assertEquals("Writing a User ID", user.getUserId());
+        user.setEmail("user@gmail.com");
+        await().until(() -> user.getEmail() != null);
+        assertEquals("user@gmail.com", user.getEmail());
 
         user.setHabits(Arrays.asList("Habit1", "Habit3", "Habit2"));
         await().until(() -> user.getHabits() != null);
@@ -40,14 +40,14 @@ public class UserIntegrityTests extends IntegrityTests {
         User write = new User(this.ref);
         await().until(write::isAlive);
 
-        write.setUserId("User ID");
+        write.setEmail("write@gmail.com");
         write.setHabits(Arrays.asList("Habit1", "Habit3", "Habit2"));
 
         User read = new User(this.ref);
         await().until(read::isAlive);
 
-        await().until(() -> read.getUserId() != null);
-        assertEquals("User ID", read.getUserId());
+        await().until(() -> read.getEmail() != null);
+        assertEquals("write@gmail.com", read.getEmail());
 
         await().until(() -> read.getHabits() != null);
         assertEquals(Arrays.asList("Habit1", "Habit3", "Habit2"), read.getHabits());
@@ -61,12 +61,12 @@ public class UserIntegrityTests extends IntegrityTests {
         User user2 = new User(this.ref);
         await().until(user2::isAlive);
 
-        assertNull(user1.getUserId());
-        assertNull(user2.getUserId());
-        user1.setUserId("User ID 1");
-        await().until(() -> Objects.equals(user1.getUserId(), user2.getUserId()));
-        assertEquals("User ID 1", user1.getUserId());
-        assertEquals("User ID 1", user2.getUserId());
+        assertNull(user1.getEmail());
+        assertNull(user2.getEmail());
+        user1.setEmail("first_user@gmail.com");
+        await().until(() -> Objects.equals(user1.getEmail(), user2.getEmail()));
+        assertEquals("first_user@gmail.com", user1.getEmail());
+        assertEquals("first_user@gmail.com", user2.getEmail());
 
         assertNull(user1.getHabits());
         assertNull(user2.getHabits());
@@ -75,12 +75,12 @@ public class UserIntegrityTests extends IntegrityTests {
         assertEquals(Arrays.asList("Habit4", "Habit8"), user1.getHabits());
         assertEquals(Arrays.asList("Habit4", "Habit8"), user2.getHabits());
 
-        assertEquals("User ID 1", user1.getUserId());
-        assertEquals("User ID 1", user2.getUserId());
-        user2.setUserId("User ID 2");
-        await().until(() -> Objects.equals(user1.getUserId(), user2.getUserId()));
-        assertEquals("User ID 2", user1.getUserId());
-        assertEquals("User ID 2", user2.getUserId());
+        assertEquals("first_user@gmail.com", user1.getEmail());
+        assertEquals("first_user@gmail.com", user2.getEmail());
+        user2.setEmail("second_user@gmail.com");
+        await().until(() -> Objects.equals(user1.getEmail(), user2.getEmail()));
+        assertEquals("second_user@gmail.com", user1.getEmail());
+        assertEquals("second_user@gmail.com", user2.getEmail());
 
         assertEquals(Arrays.asList("Habit4", "Habit8"), user1.getHabits());
         assertEquals(Arrays.asList("Habit4", "Habit8"), user2.getHabits());
@@ -95,9 +95,9 @@ public class UserIntegrityTests extends IntegrityTests {
         User user = new User(this.ref);
         await().until(user::isAlive);
 
-        user.setUserId("User ID");
+        user.setEmail("user@gmail.com");
         user.setHabits(Arrays.asList("Habit1", "Habit3", "Habit2"));
-        await().until(() -> user.getUserId() != null && user.getHabits() != null);
+        await().until(() -> user.getEmail() != null && user.getHabits() != null);
 
         user.delete();
         await().until(() -> !user.isAlive());

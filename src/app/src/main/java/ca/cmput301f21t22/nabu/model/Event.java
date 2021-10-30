@@ -11,7 +11,7 @@ import com.google.firebase.firestore.GeoPoint;
 import java.util.Date;
 import java.util.Objects;
 
-public class Event extends LiveDocument<Event.Properties> {
+public class Event extends Document<Event.Properties> {
     @Nullable
     private Date date;
     @Nullable

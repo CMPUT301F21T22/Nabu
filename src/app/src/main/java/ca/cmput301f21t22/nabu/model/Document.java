@@ -14,10 +14,10 @@ import com.google.firebase.firestore.SetOptions;
 import java.util.HashMap;
 import java.util.HashSet;
 
-public abstract class LiveDocument<TProperties extends Enum<TProperties>>
+public abstract class Document<TProperties extends Enum<TProperties>>
         implements EventListener<DocumentSnapshot>, PropertyObservable<TProperties>, LifetimeObservable {
     @NonNull
-    public static String TAG = "LiveDocument";
+    public static String TAG = "Document";
 
     @NonNull
     protected final DocumentReference ref;
@@ -28,7 +28,7 @@ public abstract class LiveDocument<TProperties extends Enum<TProperties>>
     @NonNull
     private final HashSet<LifetimeChangeCallback> lifetimeCallbacks;
 
-    protected LiveDocument(@NonNull DocumentReference ref) {
+    protected Document(@NonNull DocumentReference ref) {
         this.alive = false;
         this.propertyCallbacks = new HashSet<>();
         this.lifetimeCallbacks = new HashSet<>();
