@@ -27,6 +27,14 @@ public class MyDayFragment extends Fragment {
         this.viewModel = new ViewModelProvider(this).get(MyDayViewModel.class);
         this.binding = FragmentMydayBinding.inflate(inflater, container, false);
 
+        this.viewModel.getUserHabits().observe(this.getViewLifecycleOwner(), (userHabits) -> {
+            if (userHabits != null) {
+                // Notify list change.
+            } else {
+                // Clear list.
+            }
+        });
+
         return this.binding.getRoot();
     }
 
