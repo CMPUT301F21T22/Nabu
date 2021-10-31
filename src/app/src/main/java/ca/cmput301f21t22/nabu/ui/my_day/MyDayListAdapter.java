@@ -14,13 +14,13 @@ import com.example.examplecitylist.R;
 
 import java.util.List;
 
-public class MyAdapter extends BaseAdapter implements View.OnClickListener {
+public class MyDayListAdapter extends BaseAdapter implements View.OnClickListener {
 
     //上下文
     private Context context;
     //数据项
     private List<String> data;
-    public MyAdapter(List<String> data){
+    public MyDayListAdapter(List<String> data){
         this.data = data;
     }
     @Override
