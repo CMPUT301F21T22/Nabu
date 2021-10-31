@@ -9,7 +9,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import java.util.List;
 import java.util.Objects;
 
-public class LiveUser extends LiveDocument<LiveUser.Properties> {
+public class LiveUser extends LiveDocument<LiveUser.Properties> implements User {
     @Nullable
     private String email;
     @Nullable
@@ -36,7 +36,7 @@ public class LiveUser extends LiveDocument<LiveUser.Properties> {
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(@Nullable Object o) {
         if (this == o) {
             return true;
         }
@@ -52,22 +52,26 @@ public class LiveUser extends LiveDocument<LiveUser.Properties> {
         return Objects.hash(this.email, this.habits);
     }
 
+    @Override
     @Nullable
     public String getEmail() {
         return this.email;
     }
 
+    @Override
     public void setEmail(@Nullable String email) {
         if (this.isAlive()) {
             this.ref.update("email", email);
         }
     }
 
+    @Override
     @Nullable
     public List<String> getHabits() {
         return this.habits;
     }
 
+    @Override
     public void setHabits(@Nullable List<String> habits) {
         if (this.isAlive()) {
             this.ref.update("habits", habits);

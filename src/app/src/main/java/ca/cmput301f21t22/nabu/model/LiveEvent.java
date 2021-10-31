@@ -11,7 +11,7 @@ import com.google.firebase.firestore.GeoPoint;
 import java.util.Date;
 import java.util.Objects;
 
-public class LiveEvent extends LiveDocument<LiveEvent.Properties> {
+public class LiveEvent extends LiveDocument<LiveEvent.Properties> implements Event {
     @Nullable
     private Date date;
     @Nullable
@@ -53,7 +53,7 @@ public class LiveEvent extends LiveDocument<LiveEvent.Properties> {
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(@Nullable Object o) {
         if (this == o) {
             return true;
         }
@@ -70,11 +70,13 @@ public class LiveEvent extends LiveDocument<LiveEvent.Properties> {
         return Objects.hash(this.date, this.comment, this.photoPath, this.location);
     }
 
+    @Override
     @Nullable
     public Date getDate() {
         return this.date;
     }
 
+    @Override
     public void setDate(@Nullable Date date) {
         if (this.isAlive()) {
             if (date != null) {
@@ -85,33 +87,39 @@ public class LiveEvent extends LiveDocument<LiveEvent.Properties> {
         }
     }
 
+    @Override
     @Nullable
     public String getComment() {
         return this.comment;
     }
 
+    @Override
     public void setComment(@Nullable String comment) {
         if (this.isAlive()) {
             this.ref.update("comment", comment);
         }
     }
 
+    @Override
     @Nullable
     public String getPhotoPath() {
         return this.photoPath;
     }
 
+    @Override
     public void setPhotoPath(@Nullable String photoPath) {
         if (this.isAlive()) {
             this.ref.update("photoPath", photoPath);
         }
     }
 
+    @Override
     @Nullable
     public GeoPoint getLocation() {
         return this.location;
     }
 
+    @Override
     public void setLocation(@Nullable GeoPoint location) {
         if (this.isAlive()) {
             if (location != null) {

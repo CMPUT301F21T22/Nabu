@@ -13,7 +13,7 @@ import java.util.Objects;
 
 import ca.cmput301f21t22.nabu.data.Occurrence;
 
-public class LiveHabit extends LiveDocument<LiveHabit.Properties> {
+public class LiveHabit extends LiveDocument<LiveHabit.Properties> implements Habit {
     @Nullable
     private Boolean shared;
     @Nullable
@@ -72,7 +72,7 @@ public class LiveHabit extends LiveDocument<LiveHabit.Properties> {
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(@Nullable Object o) {
         if (this == o) {
             return true;
         }
@@ -90,44 +90,52 @@ public class LiveHabit extends LiveDocument<LiveHabit.Properties> {
         return Objects.hash(this.shared, this.title, this.reason, this.startDate, this.occurrence, this.events);
     }
 
+    @Override
     @Nullable
     public Boolean getShared() {
         return this.shared;
     }
 
+    @Override
     public void setShared(@Nullable Boolean shared) {
         if (this.isAlive()) {
             this.ref.update("shared", shared);
         }
     }
 
+    @Override
     @Nullable
     public String getTitle() {
         return this.title;
     }
 
+    @Override
     public void setTitle(@Nullable String title) {
         if (this.isAlive()) {
             this.ref.update("title", title);
         }
     }
 
+    @Override
     @Nullable
     public String getReason() {
         return this.reason;
     }
 
+    @Override
     public void setReason(@Nullable String reason) {
         if (this.isAlive()) {
             this.ref.update("reason", reason);
         }
     }
 
+    @Override
     @Nullable
     public Date getStartDate() {
         return this.startDate;
     }
 
+    @Override
     public void setStartDate(@Nullable Date startDate) {
         if (this.isAlive()) {
             if (startDate != null) {
@@ -138,22 +146,26 @@ public class LiveHabit extends LiveDocument<LiveHabit.Properties> {
         }
     }
 
+    @Override
     @Nullable
     public Occurrence getOccurrence() {
         return this.occurrence;
     }
 
+    @Override
     public void setOccurrence(@Nullable Occurrence occurrence) {
         if (this.isAlive()) {
             this.ref.update("occurrence", occurrence);
         }
     }
 
+    @Override
     @Nullable
     public List<String> getEvents() {
         return this.events;
     }
 
+    @Override
     public void setEvents(@Nullable List<String> events) {
         if (this.isAlive()) {
             this.ref.update("events", events);
