@@ -20,8 +20,6 @@ public class SettingsViewModel extends ViewModel {
     private final MutableLiveData<LiveUser> currentUser;
 
     @NonNull
-    private final FirebaseFirestore db;
-    @NonNull
     private final CollectionReference users;
     @NonNull
     private final FirebaseAuth auth;
@@ -29,8 +27,8 @@ public class SettingsViewModel extends ViewModel {
     public SettingsViewModel() {
         this.currentUser = new MutableLiveData<>(null);
 
-        this.db = FirebaseFirestore.getInstance();
-        this.users = this.db.collection(Collections.USERS.getName());
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        this.users = db.collection(Collections.USERS.getName());
         this.auth = FirebaseAuth.getInstance();
         this.auth.addAuthStateListener(this::onSignInChanged);
     }

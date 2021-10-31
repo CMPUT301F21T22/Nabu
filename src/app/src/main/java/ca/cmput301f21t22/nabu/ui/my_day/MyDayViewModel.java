@@ -1,6 +1,7 @@
 package ca.cmput301f21t22.nabu.ui.my_day;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -12,17 +13,15 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.ArrayList;
 import java.util.List;
 
-import ca.cmput301f21t22.nabu.model.Collection;
-import ca.cmput301f21t22.nabu.model.Habit;
-import ca.cmput301f21t22.nabu.model.User;
+import ca.cmput301f21t22.nabu.model.Collections;
+import ca.cmput301f21t22.nabu.model.LiveHabit;
+import ca.cmput301f21t22.nabu.model.LiveUser;
 
 public class MyDayViewModel extends ViewModel {
     @NonNull
     public final static String TAG = "MyDayViewModel";
     @NonNull
-    private final MutableLiveData<List<Habit>> userHabits;
-    @NonNull
-    private final FirebaseFirestore db;
+    private final MutableLiveData<List<LiveHabit>> userHabits;
     @NonNull
     private final CollectionReference users;
     @NonNull
@@ -35,35 +34,35 @@ public class MyDayViewModel extends ViewModel {
     public MyDayViewModel() {
         this.userHabits = new MutableLiveData<>();
 
-        this.db = FirebaseFirestore.getInstance();
-        this.users = this.db.collection(Collection.USERS.getName());
-        this.habits = this.db.collection(Collection.HABITS.getName());
-        this.events = this.db.collection(Collection.EVENTS.getName());
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        this.users = db.collection(Collections.USERS.getName());
+        this.habits = db.collection(Collections.HABITS.getName());
+        this.events = db.collection(Collections.EVENTS.getName());
         this.auth = FirebaseAuth.getInstance();
         this.auth.addAuthStateListener(this::onSignInChanged);
     }
 
     @NonNull
-    public LiveData<List<Habit>> getUserHabits() {
+    public LiveData<List<LiveHabit>> getUserHabits() {
         return this.userHabits;
     }
 
     public void onSignInChanged(@NonNull FirebaseAuth newAuth) {
         if (newAuth.getCurrentUser() != null) {
-            User currentUser = new User(this.users.document(newAuth.getCurrentUser().getUid()));
+            LiveUser currentUser = new LiveUser(this.users.document(newAuth.getCurrentUser().getUid()));
             currentUser.observeProperties((sender, property) -> {
-                if (property == User.Properties.HABITS) {
-                    this.onCurrentUserHabitsChanged(((User) sender).getHabits());
+                if (property == LiveUser.Properties.HABITS) {
+                    this.onCurrentUserHabitsChanged(((LiveUser) sender).getHabits());
                 }
             });
         }
     }
 
-    public void onCurrentUserHabitsChanged(List<String> newHabitIds) {
-        List<Habit> newHabits = new ArrayList<>();
+    public void onCurrentUserHabitsChanged(@Nullable List<String> newHabitIds) {
+        List<LiveHabit> newHabits = new ArrayList<>();
         if (newHabitIds != null) {
             for (String id : newHabitIds) {
-                Habit habit = new Habit(this.habits.document(id));
+                LiveHabit habit = new LiveHabit(this.habits.document(id));
                 newHabits.add(habit);
             }
         }
