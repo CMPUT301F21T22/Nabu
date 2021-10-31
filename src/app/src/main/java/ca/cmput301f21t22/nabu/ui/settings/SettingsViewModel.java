@@ -9,15 +9,15 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import ca.cmput301f21t22.nabu.model.Collection;
-import ca.cmput301f21t22.nabu.model.User;
+import ca.cmput301f21t22.nabu.model.Collections;
+import ca.cmput301f21t22.nabu.model.LiveUser;
 
 public class SettingsViewModel extends ViewModel {
     @NonNull
     public final static String TAG = "SettingsViewModel";
 
     @NonNull
-    private final MutableLiveData<User> currentUser;
+    private final MutableLiveData<LiveUser> currentUser;
 
     @NonNull
     private final FirebaseFirestore db;
@@ -30,14 +30,14 @@ public class SettingsViewModel extends ViewModel {
         this.currentUser = new MutableLiveData<>(null);
 
         this.db = FirebaseFirestore.getInstance();
-        this.users = this.db.collection(Collection.USERS.getName());
+        this.users = this.db.collection(Collections.USERS.getName());
         this.auth = FirebaseAuth.getInstance();
         this.auth.addAuthStateListener(this::onSignInChanged);
     }
 
     public void onSignInChanged(@NonNull FirebaseAuth newAuth) {
         if (newAuth.getCurrentUser() != null) {
-            User currentUser = new User(this.users.document(newAuth.getCurrentUser().getUid()));
+            LiveUser currentUser = new LiveUser(this.users.document(newAuth.getCurrentUser().getUid()));
             this.currentUser.setValue(currentUser);
         }
     }
@@ -51,7 +51,7 @@ public class SettingsViewModel extends ViewModel {
     }
 
     @NonNull
-    public LiveData<User> getCurrentUser() {
+    public LiveData<LiveUser> getCurrentUser() {
         return this.currentUser;
     }
 }

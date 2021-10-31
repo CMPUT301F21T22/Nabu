@@ -11,7 +11,7 @@ import com.google.firebase.firestore.GeoPoint;
 import java.util.Date;
 import java.util.Objects;
 
-public class Event extends Document<Event.Properties> {
+public class LiveEvent extends LiveDocument<LiveEvent.Properties> {
     @Nullable
     private Date date;
     @Nullable
@@ -21,8 +21,8 @@ public class Event extends Document<Event.Properties> {
     @Nullable
     private GeoPoint location;
 
-    public Event(@NonNull DocumentReference ref) {
-        super(Event.Properties.class, ref);
+    public LiveEvent(@NonNull DocumentReference ref) {
+        super(LiveEvent.Properties.class, ref);
     }
 
     @Override
@@ -60,7 +60,7 @@ public class Event extends Document<Event.Properties> {
         if (o == null || this.getClass() != o.getClass()) {
             return false;
         }
-        Event event = (Event) o;
+        LiveEvent event = (LiveEvent) o;
         return Objects.equals(this.date, event.date) && Objects.equals(this.comment, event.comment) &&
                Objects.equals(this.photoPath, event.photoPath) && Objects.equals(this.location, event.location);
     }

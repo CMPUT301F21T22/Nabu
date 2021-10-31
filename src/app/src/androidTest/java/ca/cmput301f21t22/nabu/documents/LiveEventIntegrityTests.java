@@ -16,12 +16,12 @@ import java.util.Date;
 import java.util.Map;
 import java.util.Objects;
 
-import ca.cmput301f21t22.nabu.model.Event;
+import ca.cmput301f21t22.nabu.model.LiveEvent;
 
-public class EventIntegrityTests extends IntegrityTests {
+public class LiveEventIntegrityTests extends IntegrityTests {
     @Test
     public void WriteEvent() {
-        Event event = new Event(this.ref);
+        LiveEvent event = new LiveEvent(this.ref);
         await().until(event::isAlive);
 
         assertNull(event.getDate());
@@ -48,7 +48,7 @@ public class EventIntegrityTests extends IntegrityTests {
 
     @Test
     public void WriteThenReadEvent() {
-        Event write = new Event(this.ref);
+        LiveEvent write = new LiveEvent(this.ref);
         await().until(write::isAlive);
 
         write.setDate(new Date(409238093));
@@ -56,7 +56,7 @@ public class EventIntegrityTests extends IntegrityTests {
         write.setPhotoPath("/home/default/photos/test.png");
         write.setLocation(new GeoPoint(53.523187, -113.526313));
 
-        Event read = new Event(this.ref);
+        LiveEvent read = new LiveEvent(this.ref);
         await().until(read::isAlive);
 
         await().until(() -> read.getDate() != null);
@@ -74,10 +74,10 @@ public class EventIntegrityTests extends IntegrityTests {
 
     @Test
     public void LiveUpdateEvent() {
-        Event event1 = new Event(this.ref);
+        LiveEvent event1 = new LiveEvent(this.ref);
         await().until(event1::isAlive);
 
-        Event event2 = new Event(this.ref);
+        LiveEvent event2 = new LiveEvent(this.ref);
         await().until(event2::isAlive);
 
         assertNull(event1.getDate());
@@ -111,7 +111,7 @@ public class EventIntegrityTests extends IntegrityTests {
 
     @Test
     public void WriteThenDeleteEvent() {
-        Event event = new Event(this.ref);
+        LiveEvent event = new LiveEvent(this.ref);
         await().until(event::isAlive);
 
         event.setDate(new Date(409238093));

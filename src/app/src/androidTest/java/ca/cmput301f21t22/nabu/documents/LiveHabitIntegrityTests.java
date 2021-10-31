@@ -17,12 +17,12 @@ import java.util.Map;
 import java.util.Objects;
 
 import ca.cmput301f21t22.nabu.data.Occurrence;
-import ca.cmput301f21t22.nabu.model.Habit;
+import ca.cmput301f21t22.nabu.model.LiveHabit;
 
-public class HabitIntegrityTests extends IntegrityTests {
+public class LiveHabitIntegrityTests extends IntegrityTests {
     @Test
     public void WriteHabit() {
-        Habit habit = new Habit(this.ref);
+        LiveHabit habit = new LiveHabit(this.ref);
         await().until(habit::isAlive);
 
         assertNull(habit.getShared());
@@ -59,7 +59,7 @@ public class HabitIntegrityTests extends IntegrityTests {
 
     @Test
     public void WriteThenReadHabit() {
-        Habit write = new Habit(this.ref);
+        LiveHabit write = new LiveHabit(this.ref);
         await().until(write::isAlive);
 
         write.setShared(true);
@@ -69,7 +69,7 @@ public class HabitIntegrityTests extends IntegrityTests {
         write.setOccurrence(new Occurrence(true, true, true, false, false, true, true));
         write.setEvents(Arrays.asList("Event1", "Event4", "Event2"));
 
-        Habit read = new Habit(this.ref);
+        LiveHabit read = new LiveHabit(this.ref);
         await().until(read::isAlive);
 
         await().until(() -> read.getShared() != null);
@@ -93,10 +93,10 @@ public class HabitIntegrityTests extends IntegrityTests {
 
     @Test
     public void LiveUpdateHabit() {
-        Habit habit1 = new Habit(this.ref);
+        LiveHabit habit1 = new LiveHabit(this.ref);
         await().until(habit1::isAlive);
 
-        Habit habit2 = new Habit(this.ref);
+        LiveHabit habit2 = new LiveHabit(this.ref);
         await().until(habit2::isAlive);
 
         assertNull(habit1.getShared());
@@ -144,7 +144,7 @@ public class HabitIntegrityTests extends IntegrityTests {
 
     @Test
     public void WriteThenDeleteHabit() {
-        Habit habit = new Habit(this.ref);
+        LiveHabit habit = new LiveHabit(this.ref);
         await().until(habit::isAlive);
 
         habit.setShared(true);

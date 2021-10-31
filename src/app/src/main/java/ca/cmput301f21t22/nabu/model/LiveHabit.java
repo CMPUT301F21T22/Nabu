@@ -13,7 +13,7 @@ import java.util.Objects;
 
 import ca.cmput301f21t22.nabu.data.Occurrence;
 
-public class Habit extends Document<Habit.Properties> {
+public class LiveHabit extends LiveDocument<LiveHabit.Properties> {
     @Nullable
     private Boolean shared;
     @Nullable
@@ -27,8 +27,8 @@ public class Habit extends Document<Habit.Properties> {
     @Nullable
     private List<String> events;
 
-    public Habit(@NonNull DocumentReference ref) {
-        super(Habit.Properties.class, ref);
+    public LiveHabit(@NonNull DocumentReference ref) {
+        super(LiveHabit.Properties.class, ref);
     }
 
     @Override
@@ -79,7 +79,7 @@ public class Habit extends Document<Habit.Properties> {
         if (o == null || this.getClass() != o.getClass()) {
             return false;
         }
-        Habit habit = (Habit) o;
+        LiveHabit habit = (LiveHabit) o;
         return Objects.equals(this.shared, habit.shared) && Objects.equals(this.title, habit.title) &&
                Objects.equals(this.reason, habit.reason) && Objects.equals(this.startDate, habit.startDate) &&
                Objects.equals(this.occurrence, habit.occurrence) && Objects.equals(this.events, habit.events);

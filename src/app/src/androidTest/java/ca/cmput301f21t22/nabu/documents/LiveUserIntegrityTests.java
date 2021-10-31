@@ -15,12 +15,12 @@ import java.util.Arrays;
 import java.util.Map;
 import java.util.Objects;
 
-import ca.cmput301f21t22.nabu.model.User;
+import ca.cmput301f21t22.nabu.model.LiveUser;
 
-public class UserIntegrityTests extends IntegrityTests {
+public class LiveUserIntegrityTests extends IntegrityTests {
     @Test
     public void WriteUser() {
-        User user = new User(this.ref);
+        LiveUser user = new LiveUser(this.ref);
         await().until(user::isAlive);
 
         assertNull(user.getEmail());
@@ -37,13 +37,13 @@ public class UserIntegrityTests extends IntegrityTests {
 
     @Test
     public void WriteThenReadUser() {
-        User write = new User(this.ref);
+        LiveUser write = new LiveUser(this.ref);
         await().until(write::isAlive);
 
         write.setEmail("write@gmail.com");
         write.setHabits(Arrays.asList("Habit1", "Habit3", "Habit2"));
 
-        User read = new User(this.ref);
+        LiveUser read = new LiveUser(this.ref);
         await().until(read::isAlive);
 
         await().until(() -> read.getEmail() != null);
@@ -55,10 +55,10 @@ public class UserIntegrityTests extends IntegrityTests {
 
     @Test
     public void LiveUpdateUser() {
-        User user1 = new User(this.ref);
+        LiveUser user1 = new LiveUser(this.ref);
         await().until(user1::isAlive);
 
-        User user2 = new User(this.ref);
+        LiveUser user2 = new LiveUser(this.ref);
         await().until(user2::isAlive);
 
         assertNull(user1.getEmail());
@@ -92,7 +92,7 @@ public class UserIntegrityTests extends IntegrityTests {
 
     @Test
     public void WriteThenDeleteUser() {
-        User user = new User(this.ref);
+        LiveUser user = new LiveUser(this.ref);
         await().until(user::isAlive);
 
         user.setEmail("user@gmail.com");

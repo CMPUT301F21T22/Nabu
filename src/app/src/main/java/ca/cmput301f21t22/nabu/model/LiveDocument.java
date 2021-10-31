@@ -15,7 +15,7 @@ import java.util.HashMap;
 import java.util.Objects;
 import java.util.WeakHashMap;
 
-public abstract class Document<TProperties extends Enum<TProperties>> implements EventListener<DocumentSnapshot> {
+public abstract class LiveDocument<TProperties extends Enum<TProperties>> implements EventListener<DocumentSnapshot> {
     @NonNull
     public static String TAG = "Document";
 
@@ -30,7 +30,7 @@ public abstract class Document<TProperties extends Enum<TProperties>> implements
     @NonNull
     private final Class<TProperties> cls;
 
-    protected Document(@NonNull Class<TProperties> cls, @NonNull DocumentReference ref) {
+    protected LiveDocument(@NonNull Class<TProperties> cls, @NonNull DocumentReference ref) {
         this.alive = false;
         this.propertyCallbacks = new WeakHashMap<>();
         this.lifetimeCallbacks = new WeakHashMap<>();
@@ -103,10 +103,10 @@ public abstract class Document<TProperties extends Enum<TProperties>> implements
     }
 
     public interface LifeChangedCallback<TProperties extends Enum<TProperties>> {
-        void onLifeChanged(Document<TProperties> sender, boolean alive);
+        void onLifeChanged(LiveDocument<TProperties> sender, boolean alive);
     }
 
     public interface PropertyChangedCallback<TProperties extends Enum<TProperties>> {
-        void onPropertyChanged(Document<TProperties> sender, TProperties property);
+        void onPropertyChanged(LiveDocument<TProperties> sender, TProperties property);
     }
 }

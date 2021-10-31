@@ -9,14 +9,14 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import java.util.List;
 import java.util.Objects;
 
-public class User extends Document<User.Properties> {
+public class LiveUser extends LiveDocument<LiveUser.Properties> {
     @Nullable
     private String email;
     @Nullable
     private List<String> habits;
 
-    public User(@NonNull DocumentReference ref) {
-        super(User.Properties.class, ref);
+    public LiveUser(@NonNull DocumentReference ref) {
+        super(LiveUser.Properties.class, ref);
     }
 
     @Override
@@ -43,7 +43,7 @@ public class User extends Document<User.Properties> {
         if (o == null || this.getClass() != o.getClass()) {
             return false;
         }
-        User user = (User) o;
+        LiveUser user = (LiveUser) o;
         return Objects.equals(this.email, user.email) && Objects.equals(this.habits, user.habits);
     }
 

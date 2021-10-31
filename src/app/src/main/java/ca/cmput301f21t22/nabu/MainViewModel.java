@@ -15,8 +15,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import ca.cmput301f21t22.nabu.model.Collection;
-import ca.cmput301f21t22.nabu.model.User;
+import ca.cmput301f21t22.nabu.model.Collections;
+import ca.cmput301f21t22.nabu.model.LiveUser;
 
 public class MainViewModel extends ViewModel {
     @NonNull
@@ -36,7 +36,7 @@ public class MainViewModel extends ViewModel {
         this.showSignIn = new MutableLiveData<>(false);
 
         this.db = FirebaseFirestore.getInstance();
-        this.users = this.db.collection(Collection.USERS.getName());
+        this.users = this.db.collection(Collections.USERS.getName());
         this.auth = FirebaseAuth.getInstance();
         this.auth.addAuthStateListener(this::onSignInChanged);
     }
@@ -46,9 +46,9 @@ public class MainViewModel extends ViewModel {
         if (result.getResultCode() == Activity.RESULT_OK && this.auth.getCurrentUser() != null) {
             FirebaseUser firebaseUser = this.auth.getCurrentUser();
             Log.d(TAG, "User logged in with id: " + firebaseUser.getUid());
-            User currentUser = new User(this.users.document(firebaseUser.getUid()));
+            LiveUser currentUser = new LiveUser(this.users.document(firebaseUser.getUid()));
             currentUser.observeLife((sender, alive) -> {
-                User user = (User) sender;
+                LiveUser user = (LiveUser) sender;
                 if (alive) {
                     user.setEmail(firebaseUser.getEmail());
                 }
