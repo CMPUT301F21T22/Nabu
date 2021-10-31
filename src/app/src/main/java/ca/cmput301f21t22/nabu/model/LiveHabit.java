@@ -13,7 +13,7 @@ import java.util.Objects;
 
 import ca.cmput301f21t22.nabu.data.Occurrence;
 
-public class LiveHabit extends LiveDocument<LiveHabit.Properties> implements Habit {
+public class LiveHabit extends LiveDocument<Habit.Properties> implements Habit {
     @Nullable
     private Boolean shared;
     @Nullable
@@ -28,11 +28,11 @@ public class LiveHabit extends LiveDocument<LiveHabit.Properties> implements Hab
     private List<String> events;
 
     public LiveHabit(@NonNull DocumentReference ref) {
-        super(LiveHabit.Properties.class, ref);
+        super(Habit.Properties.class, ref);
     }
 
     public LiveHabit(@NonNull DocumentReference ref, @NonNull Habit habit) {
-        super(LiveHabit.Properties.class, ref);
+        super(Habit.Properties.class, ref);
 
         this.setShared(habit.getShared());
         this.setTitle(habit.getTitle());
@@ -78,6 +78,39 @@ public class LiveHabit extends LiveDocument<LiveHabit.Properties> implements Hab
         List<String> events = (List<String>) snapshot.get("events");
         if (!Objects.equals(this.events, events)) {
             this.events = events;
+            this.notifyPropertyChanged(Properties.EVENTS);
+        }
+    }
+
+    @Override
+    public void clearFields() {
+        if (this.shared != null) {
+            this.shared = null;
+            this.notifyPropertyChanged(Properties.SHARED);
+        }
+
+        if (this.title != null) {
+            this.title = null;
+            this.notifyPropertyChanged(Properties.TITLE);
+        }
+
+        if (this.reason != null) {
+            this.reason = null;
+            this.notifyPropertyChanged(Properties.REASON);
+        }
+
+        if (this.startDate != null) {
+            this.startDate = null;
+            this.notifyPropertyChanged(Properties.START_DATE);
+        }
+
+        if (this.occurrence != null) {
+            this.occurrence = null;
+            this.notifyPropertyChanged(Properties.OCCURRENCE);
+        }
+
+        if (this.events != null) {
+            this.events = null;
             this.notifyPropertyChanged(Properties.EVENTS);
         }
     }
@@ -169,9 +202,5 @@ public class LiveHabit extends LiveDocument<LiveHabit.Properties> implements Hab
     @Override
     public void setEvents(@Nullable List<String> events) {
         this.ref.update("events", events);
-    }
-
-    public enum Properties {
-        SHARED, TITLE, REASON, START_DATE, OCCURRENCE, EVENTS
     }
 }

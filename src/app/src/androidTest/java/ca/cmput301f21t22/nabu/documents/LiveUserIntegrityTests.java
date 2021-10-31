@@ -93,7 +93,7 @@ public class LiveUserIntegrityTests extends IntegrityTests {
         await().until(() -> user.getEmail() != null && user.getHabits() != null);
 
         user.delete();
-        await().until(() -> !user.isAlive());
+        await().until(() -> user.getEmail() == null && user.getHabits() == null);
         this.ref.get().addOnCompleteListener(task -> {
             DocumentSnapshot snapshot = task.getResult();
             assertTrue(task.isSuccessful());

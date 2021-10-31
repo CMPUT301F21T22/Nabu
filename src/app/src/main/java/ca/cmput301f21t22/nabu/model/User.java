@@ -4,7 +4,7 @@ import androidx.annotation.Nullable;
 
 import java.util.List;
 
-public interface User {
+public interface User extends Observable<User.Properties> {
     @Nullable
     String getEmail();
 
@@ -14,4 +14,8 @@ public interface User {
     List<String> getHabits();
 
     void setHabits(@Nullable List<String> habits);
+
+    enum Properties {
+        EMAIL, HABITS
+    }
 }

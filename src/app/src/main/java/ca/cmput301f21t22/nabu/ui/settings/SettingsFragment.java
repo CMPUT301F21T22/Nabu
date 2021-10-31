@@ -35,7 +35,7 @@ public class SettingsFragment extends Fragment {
 
         this.viewModel.getCurrentUser().observe(this.getViewLifecycleOwner(), (currentUser) -> {
             if (currentUser != null) {
-                currentUser.observeProperties((sender, property) -> {
+                currentUser.observe((sender, property) -> {
                     LiveUser user = (LiveUser) sender;
                     this.binding.labelCurrentUserEmail.setText(user.getEmail());
                 });

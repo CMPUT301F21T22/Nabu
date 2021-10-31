@@ -6,7 +6,7 @@ import com.google.firebase.firestore.GeoPoint;
 
 import java.util.Date;
 
-public interface Event {
+public interface Event extends Observable<Event.Properties> {
     @Nullable
     Date getDate();
 
@@ -26,4 +26,8 @@ public interface Event {
     GeoPoint getLocation();
 
     void setLocation(@Nullable GeoPoint location);
+
+    enum Properties {
+        DATE, COMMENT, PHOTO_PATH, LOCATION
+    }
 }

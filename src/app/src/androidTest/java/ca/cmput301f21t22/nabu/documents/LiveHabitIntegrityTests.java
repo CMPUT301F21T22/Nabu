@@ -151,7 +151,8 @@ public class LiveHabitIntegrityTests extends IntegrityTests {
                             habit.getOccurrence() != null && habit.getEvents() != null);
 
         habit.delete();
-        await().until(() -> !habit.isAlive());
+        await().until(() -> habit.getShared() == null && habit.getTitle() == null && habit.getStartDate() == null &&
+                            habit.getOccurrence() == null && habit.getEvents() == null);
         this.ref.get().addOnCompleteListener(task -> {
             DocumentSnapshot snapshot = task.getResult();
             assertTrue(task.isSuccessful());

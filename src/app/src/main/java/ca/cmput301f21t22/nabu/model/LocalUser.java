@@ -6,21 +6,26 @@ import androidx.annotation.Nullable;
 import java.util.List;
 import java.util.Objects;
 
-public class LocalUser implements User {
+public class LocalUser extends BaseObservable<User.Properties> implements User {
     @Nullable
     private String email;
     @Nullable
     private List<String> habits;
 
     public LocalUser() {
+        super(User.Properties.class);
     }
 
     public LocalUser(@Nullable String email, @Nullable List<String> habits) {
+        super(User.Properties.class);
+
         this.email = email;
         this.habits = habits;
     }
 
     public LocalUser(@NonNull User user) {
+        super(User.Properties.class);
+
         this.email = user.getEmail();
         this.habits = user.getHabits();
     }
@@ -50,7 +55,10 @@ public class LocalUser implements User {
 
     @Override
     public void setEmail(@Nullable String email) {
-        this.email = email;
+        if (!Objects.equals(this.email, email)) {
+            this.email = email;
+            this.notifyPropertyChanged(Properties.EMAIL);
+        }
     }
 
     @Override
@@ -61,6 +69,9 @@ public class LocalUser implements User {
 
     @Override
     public void setHabits(@Nullable List<String> habits) {
-        this.habits = habits;
+        if (!Objects.equals(this.habits, habits)) {
+            this.habits = habits;
+            this.notifyPropertyChanged(Properties.HABITS);
+        }
     }
 }

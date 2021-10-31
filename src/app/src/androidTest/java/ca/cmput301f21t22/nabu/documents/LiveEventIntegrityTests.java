@@ -116,7 +116,8 @@ public class LiveEventIntegrityTests extends IntegrityTests {
                             event.getLocation() != null);
 
         event.delete();
-        await().until(() -> !event.isAlive());
+        await().until(() -> event.getDate() == null && event.getComment() == null && event.getPhotoPath() == null &&
+                            event.getLocation() == null);
         this.ref.get().addOnCompleteListener(task -> {
             DocumentSnapshot snapshot = task.getResult();
             assertTrue(task.isSuccessful());

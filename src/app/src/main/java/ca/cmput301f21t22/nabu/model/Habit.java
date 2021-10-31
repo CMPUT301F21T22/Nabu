@@ -7,7 +7,7 @@ import java.util.List;
 
 import ca.cmput301f21t22.nabu.data.Occurrence;
 
-public interface Habit {
+public interface Habit extends Observable<Habit.Properties> {
     @Nullable
     Boolean getShared();
 
@@ -37,4 +37,8 @@ public interface Habit {
     List<String> getEvents();
 
     void setEvents(@Nullable List<String> events);
+
+    enum Properties {
+        SHARED, TITLE, REASON, START_DATE, OCCURRENCE, EVENTS
+    }
 }

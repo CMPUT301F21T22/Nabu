@@ -11,7 +11,7 @@ import com.google.firebase.firestore.GeoPoint;
 import java.util.Date;
 import java.util.Objects;
 
-public class LiveEvent extends LiveDocument<LiveEvent.Properties> implements Event {
+public class LiveEvent extends LiveDocument<Event.Properties> implements Event {
     @Nullable
     private Date date;
     @Nullable
@@ -22,11 +22,11 @@ public class LiveEvent extends LiveDocument<LiveEvent.Properties> implements Eve
     private GeoPoint location;
 
     public LiveEvent(@NonNull DocumentReference ref) {
-        super(LiveEvent.Properties.class, ref);
+        super(Event.Properties.class, ref);
     }
 
     public LiveEvent(@NonNull DocumentReference ref, @NonNull Event event) {
-        super(LiveEvent.Properties.class, ref);
+        super(Event.Properties.class, ref);
 
         this.setDate(event.getDate());
         this.setComment(event.getComment());
@@ -57,6 +57,29 @@ public class LiveEvent extends LiveDocument<LiveEvent.Properties> implements Eve
         GeoPoint location = snapshot.getGeoPoint("location");
         if (!Objects.equals(this.location, location)) {
             this.location = location;
+            this.notifyPropertyChanged(Properties.LOCATION);
+        }
+    }
+
+    @Override
+    public void clearFields() {
+        if (this.date != null) {
+            this.date = null;
+            this.notifyPropertyChanged(Properties.DATE);
+        }
+
+        if (this.comment != null) {
+            this.comment = null;
+            this.notifyPropertyChanged(Properties.COMMENT);
+        }
+
+        if (this.photoPath != null) {
+            this.photoPath = null;
+            this.notifyPropertyChanged(Properties.PHOTO_PATH);
+        }
+
+        if (this.location != null) {
+            this.location = null;
             this.notifyPropertyChanged(Properties.LOCATION);
         }
     }
@@ -129,9 +152,5 @@ public class LiveEvent extends LiveDocument<LiveEvent.Properties> implements Eve
         } else {
             this.ref.update("location", null);
         }
-    }
-
-    public enum Properties {
-        DATE, COMMENT, PHOTO_PATH, LOCATION
     }
 }

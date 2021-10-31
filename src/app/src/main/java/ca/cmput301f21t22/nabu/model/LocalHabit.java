@@ -9,7 +9,7 @@ import java.util.Objects;
 
 import ca.cmput301f21t22.nabu.data.Occurrence;
 
-public class LocalHabit implements Habit {
+public class LocalHabit extends BaseObservable<Habit.Properties> implements Habit {
     @Nullable
     private Boolean shared;
     @Nullable
@@ -24,6 +24,7 @@ public class LocalHabit implements Habit {
     private List<String> events;
 
     public LocalHabit() {
+        super(Habit.Properties.class);
     }
 
     public LocalHabit(@Nullable Boolean shared,
@@ -32,6 +33,8 @@ public class LocalHabit implements Habit {
                       @Nullable Date startDate,
                       @Nullable Occurrence occurrence,
                       @Nullable List<String> events) {
+        super(Habit.Properties.class);
+
         this.shared = shared;
         this.title = title;
         this.reason = reason;
@@ -41,6 +44,8 @@ public class LocalHabit implements Habit {
     }
 
     public LocalHabit(@NonNull Habit habit) {
+        super(Habit.Properties.class);
+
         this.shared = habit.getShared();
         this.title = habit.getTitle();
         this.reason = habit.getReason();
@@ -76,7 +81,10 @@ public class LocalHabit implements Habit {
 
     @Override
     public void setShared(@Nullable Boolean shared) {
-        this.shared = shared;
+        if (!Objects.equals(this.shared, shared)) {
+            this.shared = shared;
+            this.notifyPropertyChanged(Properties.SHARED);
+        }
     }
 
     @Override
@@ -87,7 +95,10 @@ public class LocalHabit implements Habit {
 
     @Override
     public void setTitle(@Nullable String title) {
-        this.title = title;
+        if (!Objects.equals(this.title, title)) {
+            this.title = title;
+            this.notifyPropertyChanged(Properties.TITLE);
+        }
     }
 
     @Override
@@ -98,7 +109,10 @@ public class LocalHabit implements Habit {
 
     @Override
     public void setReason(@Nullable String reason) {
-        this.reason = reason;
+        if (!Objects.equals(this.reason, reason)) {
+            this.reason = reason;
+            this.notifyPropertyChanged(Properties.REASON);
+        }
     }
 
     @Override
@@ -109,7 +123,10 @@ public class LocalHabit implements Habit {
 
     @Override
     public void setStartDate(@Nullable Date startDate) {
-        this.startDate = startDate;
+        if (!Objects.equals(this.startDate, startDate)) {
+            this.startDate = startDate;
+            this.notifyPropertyChanged(Properties.START_DATE);
+        }
     }
 
     @Override
@@ -120,7 +137,10 @@ public class LocalHabit implements Habit {
 
     @Override
     public void setOccurrence(@Nullable Occurrence occurrence) {
-        this.occurrence = occurrence;
+        if (!Objects.equals(this.occurrence, occurrence)) {
+            this.occurrence = occurrence;
+            this.notifyPropertyChanged(Properties.OCCURRENCE);
+        }
     }
 
     @Override
@@ -131,6 +151,9 @@ public class LocalHabit implements Habit {
 
     @Override
     public void setEvents(@Nullable List<String> events) {
-        this.events = events;
+        if (!Objects.equals(this.events, events)) {
+            this.events = events;
+            this.notifyPropertyChanged(Properties.EVENTS);
+        }
     }
 }

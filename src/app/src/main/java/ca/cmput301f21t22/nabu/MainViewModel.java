@@ -17,6 +17,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import ca.cmput301f21t22.nabu.model.Collections;
 import ca.cmput301f21t22.nabu.model.LiveUser;
+import ca.cmput301f21t22.nabu.model.User;
 
 public class MainViewModel extends ViewModel {
     @NonNull
@@ -45,12 +46,12 @@ public class MainViewModel extends ViewModel {
             FirebaseUser firebaseUser = this.auth.getCurrentUser();
             Log.d(TAG, "User logged in with id: " + firebaseUser.getUid());
             LiveUser currentUser = new LiveUser(this.users.document(firebaseUser.getUid()));
-            currentUser.observeLife((sender, alive) -> {
+            currentUser.observe(((sender, property) -> {
                 LiveUser user = (LiveUser) sender;
-                if (alive) {
+                if (property == User.Properties.EMAIL) {
                     user.setEmail(firebaseUser.getEmail());
                 }
-            });
+            }));
             this.showSignIn.setValue(false);
         } else {
             if (response != null) {

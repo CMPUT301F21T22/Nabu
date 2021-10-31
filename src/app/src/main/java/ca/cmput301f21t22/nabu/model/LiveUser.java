@@ -9,18 +9,18 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import java.util.List;
 import java.util.Objects;
 
-public class LiveUser extends LiveDocument<LiveUser.Properties> implements User {
+public class LiveUser extends LiveDocument<User.Properties> implements User {
     @Nullable
     private String email;
     @Nullable
     private List<String> habits;
 
     public LiveUser(@NonNull DocumentReference ref) {
-        super(LiveUser.Properties.class, ref);
+        super(User.Properties.class, ref);
     }
 
     public LiveUser(@NonNull DocumentReference ref, @NonNull User user) {
-        super(LiveUser.Properties.class, ref);
+        super(User.Properties.class, ref);
 
         this.setEmail(user.getEmail());
         this.setHabits(user.getHabits());
@@ -38,6 +38,19 @@ public class LiveUser extends LiveDocument<LiveUser.Properties> implements User 
         List<String> habits = (List<String>) snapshot.get("habits");
         if (!Objects.equals(this.habits, habits)) {
             this.habits = habits;
+            this.notifyPropertyChanged(Properties.HABITS);
+        }
+    }
+
+    @Override
+    public void clearFields() {
+        if (this.email != null) {
+            this.email = null;
+            this.notifyPropertyChanged(Properties.EMAIL);
+        }
+
+        if (this.habits != null) {
+            this.habits = null;
             this.notifyPropertyChanged(Properties.HABITS);
         }
     }
@@ -79,9 +92,5 @@ public class LiveUser extends LiveDocument<LiveUser.Properties> implements User 
     @Override
     public void setHabits(@Nullable List<String> habits) {
         this.ref.update("habits", habits);
-    }
-
-    public enum Properties {
-        EMAIL, HABITS
     }
 }

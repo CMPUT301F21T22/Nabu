@@ -8,7 +8,7 @@ import com.google.firebase.firestore.GeoPoint;
 import java.util.Date;
 import java.util.Objects;
 
-public class LocalEvent implements Event {
+public class LocalEvent extends BaseObservable<Event.Properties> implements Event {
     @Nullable
     private Date date;
     @Nullable
@@ -19,12 +19,15 @@ public class LocalEvent implements Event {
     private GeoPoint location;
 
     public LocalEvent() {
+        super(Event.Properties.class);
     }
 
     public LocalEvent(@Nullable Date date,
                       @Nullable String comment,
                       @Nullable String photoPath,
                       @Nullable GeoPoint location) {
+        super(Event.Properties.class);
+
         this.date = date;
         this.comment = comment;
         this.photoPath = photoPath;
@@ -32,6 +35,8 @@ public class LocalEvent implements Event {
     }
 
     public LocalEvent(@NonNull Event event) {
+        super(Event.Properties.class);
+
         this.date = event.getDate();
         this.comment = event.getComment();
         this.photoPath = event.getPhotoPath();
@@ -64,7 +69,10 @@ public class LocalEvent implements Event {
 
     @Override
     public void setDate(@Nullable Date date) {
-        this.date = date;
+        if (!Objects.equals(this.date, date)) {
+            this.date = date;
+            this.notifyPropertyChanged(Properties.DATE);
+        }
     }
 
     @Override
@@ -75,7 +83,10 @@ public class LocalEvent implements Event {
 
     @Override
     public void setComment(@Nullable String comment) {
-        this.comment = comment;
+        if (!Objects.equals(this.comment, comment)) {
+            this.comment = comment;
+            this.notifyPropertyChanged(Properties.COMMENT);
+        }
     }
 
     @Override
@@ -86,7 +97,10 @@ public class LocalEvent implements Event {
 
     @Override
     public void setPhotoPath(@Nullable String photoPath) {
-        this.photoPath = photoPath;
+        if (!Objects.equals(this.photoPath, photoPath)) {
+            this.photoPath = photoPath;
+            this.notifyPropertyChanged(Properties.PHOTO_PATH);
+        }
     }
 
     @Override
@@ -97,6 +111,9 @@ public class LocalEvent implements Event {
 
     @Override
     public void setLocation(@Nullable GeoPoint location) {
-        this.location = location;
+        if (!Objects.equals(this.location, location)) {
+            this.location = location;
+            this.notifyPropertyChanged(Properties.LOCATION);
+        }
     }
 }
