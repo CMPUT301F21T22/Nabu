@@ -1,5 +1,6 @@
 package ca.cmput301f21t22.nabu.model;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.google.firebase.firestore.GeoPoint;
@@ -28,6 +29,13 @@ public class LocalEvent implements Event {
         this.comment = comment;
         this.photoPath = photoPath;
         this.location = location;
+    }
+
+    public LocalEvent(@NonNull Event event) {
+        this.date = event.getDate();
+        this.comment = event.getComment();
+        this.photoPath = event.getPhotoPath();
+        this.location = event.getLocation();
     }
 
     @Override

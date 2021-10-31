@@ -31,6 +31,17 @@ public class LiveHabit extends LiveDocument<LiveHabit.Properties> implements Hab
         super(LiveHabit.Properties.class, ref);
     }
 
+    public LiveHabit(@NonNull DocumentReference ref, @NonNull Habit habit) {
+        super(LiveHabit.Properties.class, ref);
+
+        this.setShared(habit.getShared());
+        this.setTitle(habit.getTitle());
+        this.setReason(habit.getReason());
+        this.setStartDate(habit.getStartDate());
+        this.setOccurrence(habit.getOccurrence());
+        this.setEvents(habit.getEvents());
+    }
+
     @Override
     public void readFields(@NonNull DocumentSnapshot snapshot) {
         Boolean shared = snapshot.getBoolean("shared");
@@ -98,9 +109,7 @@ public class LiveHabit extends LiveDocument<LiveHabit.Properties> implements Hab
 
     @Override
     public void setShared(@Nullable Boolean shared) {
-        if (this.isAlive()) {
-            this.ref.update("shared", shared);
-        }
+        this.ref.update("shared", shared);
     }
 
     @Override
@@ -111,9 +120,7 @@ public class LiveHabit extends LiveDocument<LiveHabit.Properties> implements Hab
 
     @Override
     public void setTitle(@Nullable String title) {
-        if (this.isAlive()) {
-            this.ref.update("title", title);
-        }
+        this.ref.update("title", title);
     }
 
     @Override
@@ -124,9 +131,7 @@ public class LiveHabit extends LiveDocument<LiveHabit.Properties> implements Hab
 
     @Override
     public void setReason(@Nullable String reason) {
-        if (this.isAlive()) {
-            this.ref.update("reason", reason);
-        }
+        this.ref.update("reason", reason);
     }
 
     @Override
@@ -137,12 +142,10 @@ public class LiveHabit extends LiveDocument<LiveHabit.Properties> implements Hab
 
     @Override
     public void setStartDate(@Nullable Date startDate) {
-        if (this.isAlive()) {
-            if (startDate != null) {
-                this.ref.update("startDate", new Timestamp(startDate));
-            } else {
-                this.ref.update("startDate", null);
-            }
+        if (startDate != null) {
+            this.ref.update("startDate", new Timestamp(startDate));
+        } else {
+            this.ref.update("startDate", null);
         }
     }
 
@@ -154,9 +157,7 @@ public class LiveHabit extends LiveDocument<LiveHabit.Properties> implements Hab
 
     @Override
     public void setOccurrence(@Nullable Occurrence occurrence) {
-        if (this.isAlive()) {
-            this.ref.update("occurrence", occurrence);
-        }
+        this.ref.update("occurrence", occurrence);
     }
 
     @Override
@@ -167,9 +168,7 @@ public class LiveHabit extends LiveDocument<LiveHabit.Properties> implements Hab
 
     @Override
     public void setEvents(@Nullable List<String> events) {
-        if (this.isAlive()) {
-            this.ref.update("events", events);
-        }
+        this.ref.update("events", events);
     }
 
     public enum Properties {

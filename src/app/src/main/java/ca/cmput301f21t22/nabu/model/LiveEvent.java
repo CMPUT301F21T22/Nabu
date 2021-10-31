@@ -25,6 +25,15 @@ public class LiveEvent extends LiveDocument<LiveEvent.Properties> implements Eve
         super(LiveEvent.Properties.class, ref);
     }
 
+    public LiveEvent(@NonNull DocumentReference ref, @NonNull Event event) {
+        super(LiveEvent.Properties.class, ref);
+
+        this.setDate(event.getDate());
+        this.setComment(event.getComment());
+        this.setPhotoPath(event.getPhotoPath());
+        this.setLocation(event.getLocation());
+    }
+
     @Override
     public void readFields(@NonNull DocumentSnapshot snapshot) {
         Date date = snapshot.getDate("date");
@@ -78,12 +87,10 @@ public class LiveEvent extends LiveDocument<LiveEvent.Properties> implements Eve
 
     @Override
     public void setDate(@Nullable Date date) {
-        if (this.isAlive()) {
-            if (date != null) {
-                this.ref.update("date", new Timestamp(date));
-            } else {
-                this.ref.update("date", null);
-            }
+        if (date != null) {
+            this.ref.update("date", new Timestamp(date));
+        } else {
+            this.ref.update("date", null);
         }
     }
 
@@ -95,9 +102,7 @@ public class LiveEvent extends LiveDocument<LiveEvent.Properties> implements Eve
 
     @Override
     public void setComment(@Nullable String comment) {
-        if (this.isAlive()) {
-            this.ref.update("comment", comment);
-        }
+        this.ref.update("comment", comment);
     }
 
     @Override
@@ -108,9 +113,7 @@ public class LiveEvent extends LiveDocument<LiveEvent.Properties> implements Eve
 
     @Override
     public void setPhotoPath(@Nullable String photoPath) {
-        if (this.isAlive()) {
-            this.ref.update("photoPath", photoPath);
-        }
+        this.ref.update("photoPath", photoPath);
     }
 
     @Override
@@ -121,12 +124,10 @@ public class LiveEvent extends LiveDocument<LiveEvent.Properties> implements Eve
 
     @Override
     public void setLocation(@Nullable GeoPoint location) {
-        if (this.isAlive()) {
-            if (location != null) {
-                this.ref.update("location", location);
-            } else {
-                this.ref.update("location", null);
-            }
+        if (location != null) {
+            this.ref.update("location", location);
+        } else {
+            this.ref.update("location", null);
         }
     }
 

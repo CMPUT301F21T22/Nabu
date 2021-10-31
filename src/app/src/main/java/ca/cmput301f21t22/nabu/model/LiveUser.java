@@ -19,6 +19,13 @@ public class LiveUser extends LiveDocument<LiveUser.Properties> implements User 
         super(LiveUser.Properties.class, ref);
     }
 
+    public LiveUser(@NonNull DocumentReference ref, @NonNull User user) {
+        super(LiveUser.Properties.class, ref);
+
+        this.setEmail(user.getEmail());
+        this.setHabits(user.getHabits());
+    }
+
     @Override
     public void readFields(@NonNull DocumentSnapshot snapshot) {
         String email = snapshot.getString("email");
@@ -60,9 +67,7 @@ public class LiveUser extends LiveDocument<LiveUser.Properties> implements User 
 
     @Override
     public void setEmail(@Nullable String email) {
-        if (this.isAlive()) {
-            this.ref.update("email", email);
-        }
+        this.ref.update("email", email);
     }
 
     @Override
@@ -73,9 +78,7 @@ public class LiveUser extends LiveDocument<LiveUser.Properties> implements User 
 
     @Override
     public void setHabits(@Nullable List<String> habits) {
-        if (this.isAlive()) {
-            this.ref.update("habits", habits);
-        }
+        this.ref.update("habits", habits);
     }
 
     public enum Properties {

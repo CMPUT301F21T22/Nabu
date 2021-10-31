@@ -21,7 +21,6 @@ public class LiveUserIntegrityTests extends IntegrityTests {
     @Test
     public void WriteUser() {
         LiveUser user = new LiveUser(this.ref);
-        await().until(user::isAlive);
 
         assertNull(user.getEmail());
         assertNull(user.getHabits());
@@ -38,13 +37,11 @@ public class LiveUserIntegrityTests extends IntegrityTests {
     @Test
     public void WriteThenReadUser() {
         LiveUser write = new LiveUser(this.ref);
-        await().until(write::isAlive);
 
         write.setEmail("write@gmail.com");
         write.setHabits(Arrays.asList("Habit1", "Habit3", "Habit2"));
 
         LiveUser read = new LiveUser(this.ref);
-        await().until(read::isAlive);
 
         await().until(() -> read.getEmail() != null);
         assertEquals("write@gmail.com", read.getEmail());
@@ -56,10 +53,7 @@ public class LiveUserIntegrityTests extends IntegrityTests {
     @Test
     public void LiveUpdateUser() {
         LiveUser user1 = new LiveUser(this.ref);
-        await().until(user1::isAlive);
-
         LiveUser user2 = new LiveUser(this.ref);
-        await().until(user2::isAlive);
 
         assertNull(user1.getEmail());
         assertNull(user2.getEmail());
@@ -93,7 +87,6 @@ public class LiveUserIntegrityTests extends IntegrityTests {
     @Test
     public void WriteThenDeleteUser() {
         LiveUser user = new LiveUser(this.ref);
-        await().until(user::isAlive);
 
         user.setEmail("user@gmail.com");
         user.setHabits(Arrays.asList("Habit1", "Habit3", "Habit2"));

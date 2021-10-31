@@ -23,7 +23,6 @@ public class LiveHabitIntegrityTests extends IntegrityTests {
     @Test
     public void WriteHabit() {
         LiveHabit habit = new LiveHabit(this.ref);
-        await().until(habit::isAlive);
 
         assertNull(habit.getShared());
         assertNull(habit.getTitle());
@@ -60,7 +59,6 @@ public class LiveHabitIntegrityTests extends IntegrityTests {
     @Test
     public void WriteThenReadHabit() {
         LiveHabit write = new LiveHabit(this.ref);
-        await().until(write::isAlive);
 
         write.setShared(true);
         write.setTitle("Go to Work");
@@ -70,7 +68,6 @@ public class LiveHabitIntegrityTests extends IntegrityTests {
         write.setEvents(Arrays.asList("Event1", "Event4", "Event2"));
 
         LiveHabit read = new LiveHabit(this.ref);
-        await().until(read::isAlive);
 
         await().until(() -> read.getShared() != null);
         assertEquals(true, read.getShared());
@@ -94,10 +91,8 @@ public class LiveHabitIntegrityTests extends IntegrityTests {
     @Test
     public void LiveUpdateHabit() {
         LiveHabit habit1 = new LiveHabit(this.ref);
-        await().until(habit1::isAlive);
 
         LiveHabit habit2 = new LiveHabit(this.ref);
-        await().until(habit2::isAlive);
 
         assertNull(habit1.getShared());
         assertNull(habit2.getShared());
@@ -145,7 +140,6 @@ public class LiveHabitIntegrityTests extends IntegrityTests {
     @Test
     public void WriteThenDeleteHabit() {
         LiveHabit habit = new LiveHabit(this.ref);
-        await().until(habit::isAlive);
 
         habit.setShared(true);
         habit.setTitle("Go to Work");

@@ -1,5 +1,6 @@
 package ca.cmput301f21t22.nabu.model;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.util.Date;
@@ -37,6 +38,15 @@ public class LocalHabit implements Habit {
         this.startDate = startDate;
         this.occurrence = occurrence;
         this.events = events;
+    }
+
+    public LocalHabit(@NonNull Habit habit) {
+        this.shared = habit.getShared();
+        this.title = habit.getTitle();
+        this.reason = habit.getReason();
+        this.startDate = habit.getStartDate();
+        this.occurrence = habit.getOccurrence();
+        this.events = habit.getEvents();
     }
 
     @Override

@@ -1,5 +1,6 @@
 package ca.cmput301f21t22.nabu.model;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.util.List;
@@ -17,6 +18,11 @@ public class LocalUser implements User {
     public LocalUser(@Nullable String email, @Nullable List<String> habits) {
         this.email = email;
         this.habits = habits;
+    }
+
+    public LocalUser(@NonNull User user) {
+        this.email = user.getEmail();
+        this.habits = user.getHabits();
     }
 
     @Override

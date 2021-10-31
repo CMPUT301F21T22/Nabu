@@ -22,7 +22,6 @@ public class LiveEventIntegrityTests extends IntegrityTests {
     @Test
     public void WriteEvent() {
         LiveEvent event = new LiveEvent(this.ref);
-        await().until(event::isAlive);
 
         assertNull(event.getDate());
         assertNull(event.getComment());
@@ -49,7 +48,6 @@ public class LiveEventIntegrityTests extends IntegrityTests {
     @Test
     public void WriteThenReadEvent() {
         LiveEvent write = new LiveEvent(this.ref);
-        await().until(write::isAlive);
 
         write.setDate(new Date(409238093));
         write.setComment("Some comment");
@@ -57,7 +55,6 @@ public class LiveEventIntegrityTests extends IntegrityTests {
         write.setLocation(new GeoPoint(53.523187, -113.526313));
 
         LiveEvent read = new LiveEvent(this.ref);
-        await().until(read::isAlive);
 
         await().until(() -> read.getDate() != null);
         assertEquals(new Date(409238093), read.getDate());
@@ -75,10 +72,8 @@ public class LiveEventIntegrityTests extends IntegrityTests {
     @Test
     public void LiveUpdateEvent() {
         LiveEvent event1 = new LiveEvent(this.ref);
-        await().until(event1::isAlive);
 
         LiveEvent event2 = new LiveEvent(this.ref);
-        await().until(event2::isAlive);
 
         assertNull(event1.getDate());
         assertNull(event2.getDate());
@@ -112,7 +107,6 @@ public class LiveEventIntegrityTests extends IntegrityTests {
     @Test
     public void WriteThenDeleteEvent() {
         LiveEvent event = new LiveEvent(this.ref);
-        await().until(event::isAlive);
 
         event.setDate(new Date(409238093));
         event.setComment("Some comment");
