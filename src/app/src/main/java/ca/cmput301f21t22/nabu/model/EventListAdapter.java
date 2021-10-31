@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 
@@ -17,6 +18,7 @@ import androidx.annotation.Nullable;
 import java.util.ArrayList;
 
 import ca.cmput301f21t22.nabu.R;
+import ca.cmput301f21t22.nabu.databinding.EventCardBinding;
 import ca.cmput301f21t22.nabu.databinding.HabitCardBinding;
 
 public class EventListAdapter extends ArrayAdapter<Event> {
@@ -24,7 +26,7 @@ public class EventListAdapter extends ArrayAdapter<Event> {
     private ArrayList<Event> events;
     private Context context;
     @Nullable
-    private HabitCardBinding binding;
+    private EventCardBinding binding;
     @Nullable
     ViewGroup container;
 
@@ -49,17 +51,17 @@ public class EventListAdapter extends ArrayAdapter<Event> {
         Event event = events.get(position);
 
         TextView eventComment = this.binding.eventCommentText;
-        TextView dates = this.binding.eventdatesText;
-        TextView eventPhoto = this.binding.eventPhoto;
+        TextView dates = this.binding.eventDatesText;
+        ImageView eventPhoto = this.binding.eventPhoto;
         TextView eventLocation  = this.binding.eventLocation;
 
         eventComment.setText(event.getComment());
         dates.setText(event.getDate().toString());
-        eventPhoto.setText(event.getPhotoPath());
+        eventPhoto.set(event.getPhotoPath());
         eventLocation.setText(event.getLocation());
 
         final ImageButton eventsMenuButton = this.binding.eventsPopupImageButton;
-        eventssMenuButton.setOnClickListener(new View.OnClickListener() {
+        eventsMenuButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 PopupMenu eventsPopupMenu = new PopupMenu(context, eventsMenuButton);
