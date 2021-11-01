@@ -48,9 +48,7 @@ public class EventsFragment extends Fragment {
         this.binding = FragmentEventsBinding.inflate(inflater, container, false);
 
         eventDataList = new ArrayList<Event>();
-        eventDataList.add(new Event("Work", "Making money", new Date(),
-                new Occurrence(true, false, true, false,
-                        true, false, true), new EventList()));
+        eventDataList.add(new Event(new Date()));
 
         eventsListView = this.binding.eventsList;
         eventsAdapter = new EventListAdapter(this.requireContext(), eventDataList);
@@ -60,7 +58,7 @@ public class EventsFragment extends Fragment {
         addHabit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Event inputEvent = new Event();
+                Event inputEvent = new Event(new Date());
                 //TODO: Call to edit/add habit fragment
                 //habitDataList.add(inputHabit);
                 eventsAdapter.add(inputEvent);

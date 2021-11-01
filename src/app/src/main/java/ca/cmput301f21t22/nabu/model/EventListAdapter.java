@@ -16,6 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import ca.cmput301f21t22.nabu.R;
 import ca.cmput301f21t22.nabu.databinding.EventCardBinding;
@@ -53,12 +54,12 @@ public class EventListAdapter extends ArrayAdapter<Event> {
         TextView eventComment = this.binding.eventCommentText;
         TextView dates = this.binding.eventDatesText;
         ImageView eventPhoto = this.binding.eventPhoto;
-        TextView eventLocation  = this.binding.eventLocation;
+        //TextView eventLocation  = this.binding.eventLocation;
 
         eventComment.setText(event.getComment());
         dates.setText(event.getDate().toString());
-        eventPhoto.set(event.getPhotoPath());
-        eventLocation.setText(event.getLocation());
+        /*eventPhoto.(event.getPhotoPath());
+        eventLocation.setText(event.getLocation());*/
 
         final ImageButton eventsMenuButton = this.binding.eventsPopupImageButton;
         eventsMenuButton.setOnClickListener(new View.OnClickListener() {
@@ -74,7 +75,7 @@ public class EventListAdapter extends ArrayAdapter<Event> {
                     public boolean onMenuItemClick(MenuItem item) {
                         if (item.getItemId() == eventsPopupMenu.getMenu().getItem(0).getItemId()) {
                             //Edit
-                            Event inputEvent = new Event();
+                            Event inputEvent = new Event(new Date());
                             //TODO: Add call for edit habit fragment
                             edit(position, inputEvent);
                             return true;
