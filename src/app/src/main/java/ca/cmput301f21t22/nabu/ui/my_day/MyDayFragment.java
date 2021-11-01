@@ -4,20 +4,35 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
+import java.time.LocalDate;
+import java.time.format.TextStyle;
+import java.util.Locale;
+
+import ca.cmput301f21t22.nabu.R;
 import ca.cmput301f21t22.nabu.databinding.FragmentMydayBinding;
+import ca.cmput301f21t22.nabu.databinding.HeaderCalendarBinding;
+import ca.cmput301f21t22.nabu.model.EventRepository;
+import ca.cmput301f21t22.nabu.model.HabitRepository;
+import ca.cmput301f21t22.nabu.model.UserRepository;
+import ca.cmput301f21t22.nabu.ui.ExtendedToolbarFragment;
 
-public class MyDayFragment extends Fragment {
+public class MyDayFragment extends ExtendedToolbarFragment {
+    @NonNull
+    public final static String TAG = "MyDayFragment";
 
     @Nullable
     private MyDayViewModel viewModel;
     @Nullable
     private FragmentMydayBinding binding;
+    @Nullable
+    private MyDayCardAdapter adapter;
 
     @Nullable
     @Override
@@ -26,14 +41,66 @@ public class MyDayFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         this.viewModel = new ViewModelProvider(this).get(MyDayViewModel.class);
         this.binding = FragmentMydayBinding.inflate(inflater, container, false);
+        this.adapter = new MyDayCardAdapter();
 
+        UserRepository.getInstance()
+                .getCurrentUser()
+                .observe(this.getViewLifecycleOwner(), user -> this.viewModel.setCurrentUser(user));
+
+        HabitRepository.getInstance()
+                .getHabits()
+                .observe(this.getViewLifecycleOwner(), habits -> this.viewModel.setCurrentHabits(habits));
+
+        EventRepository.getInstance()
+                .getEvents()
+                .observe(this.getViewLifecycleOwner(), events -> this.viewModel.setCurrentEvents(events));
+
+        this.viewModel.getCards().observe(this.getViewLifecycleOwner(), cards -> this.adapter.setCards(cards));
+
+        this.binding.listIncomplete.setLayoutManager(new LinearLayoutManager(this.requireContext()));
+        this.binding.listIncomplete.setAdapter(this.adapter);
         return this.binding.getRoot();
     }
 
     @Override
     public void onDestroyView() {
-        this.viewModel = null;
-        this.binding = null;
         super.onDestroyView();
+    }
+
+    @Nullable
+    @Override
+    public View getToolbarView() {
+        HeaderCalendarBinding toolbar = HeaderCalendarBinding.inflate(LayoutInflater.from(this.getContext()));
+
+        // Set title.
+        toolbar.title.setText(R.string.fragment_myday_name);
+
+        // Set calendar.
+        TextView[] daysOfWeek = {
+                toolbar.labelDayOfWeek0,
+                toolbar.labelDayOfWeek1,
+                toolbar.labelDayOfWeek2,
+                toolbar.labelDayOfWeek3,
+                toolbar.labelDayOfWeek4,
+                toolbar.labelDayOfWeek5,
+                toolbar.labelDayOfWeek6,
+                };
+        TextView[] dates = {
+                toolbar.labelDate0,
+                toolbar.labelDate1,
+                toolbar.labelDate2,
+                toolbar.labelDate3,
+                toolbar.labelDate4,
+                toolbar.labelDate5,
+                toolbar.labelDate6,
+                };
+        LocalDate day = LocalDate.now();
+        for (int i = 0; i < 7; i++) {
+            daysOfWeek[i].setText(day.getDayOfWeek().getDisplayName(TextStyle.SHORT, Locale.getDefault()));
+            dates[i].setText(String.format(Locale.getDefault(), "%d", day.getDayOfMonth()));
+            day = day.minusDays(1);
+        }
+
+        return toolbar.getRoot();
     }
 }

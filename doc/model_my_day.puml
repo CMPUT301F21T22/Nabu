@@ -1,0 +1,24 @@
+@startuml
+
+class MyDayCard {
+    +<<get/set>> Habit habit
+    +<<get/set>> Event[] events
+
+    + Icon getIcon(int pos)
+}
+
+enum MyDayCard.Icon {
+    INCOMPLETE
+    COMPLETE
+    FAILED
+    NOT_DUE
+
+    +<<get>> int resource
+}
+
+Event "7" - "1" MyDayCard : \t
+MyDayCard "1" -- "1" Habit : \t
+MyDayCard "1" *- "7" MyDayCard.Icon : \t
+Event "1" - "1" MyDayCard.Icon : \t
+
+@enduml

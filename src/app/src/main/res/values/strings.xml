@@ -4,4 +4,13 @@
     <string name="fragment_social_name">Social</string>
     <string name="fragment_habits_name">Habits</string>
     <string name="fragment_settings_name">Settings</string>
+    <string name="icon_account_label">Account</string>
+    <string name="label_logged_in_as">Signed in as:</string>
+    <string name="label_log_out">Sign out</string>
+    <string name="label_reset">Reset user data</string>
+    <string name="button_cancel">@android:string/cancel</string>
+    <string name="button_sign_out">Sign out</string>
+    <string name="button_reset">Reset</string>
+    <string name="dialog_sign_out_message">Are you sure you want to sign out?</string>
+    <string name="dialog_reset_message">Are you sure you want to reset all user data?</string>
 </resources>
