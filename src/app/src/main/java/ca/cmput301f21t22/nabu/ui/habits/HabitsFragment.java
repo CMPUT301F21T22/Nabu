@@ -7,12 +7,14 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import ca.cmput301f21t22.nabu.R;
 import ca.cmput301f21t22.nabu.databinding.FragmentHabitsBinding;
+import ca.cmput301f21t22.nabu.databinding.HeaderDefaultBinding;
+import ca.cmput301f21t22.nabu.ui.ExtendedToolbarFragment;
 
-public class HabitsFragment extends Fragment {
+public class HabitsFragment extends ExtendedToolbarFragment {
 
     @Nullable
     private HabitsViewModel viewModel;
@@ -33,5 +35,13 @@ public class HabitsFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+    }
+
+    @NonNull
+    @Override
+    public View getToolbarView() {
+        HeaderDefaultBinding view = HeaderDefaultBinding.inflate(LayoutInflater.from(this.getContext()));
+        view.title.setText(R.string.fragment_habits_name);
+        return view.getRoot();
     }
 }

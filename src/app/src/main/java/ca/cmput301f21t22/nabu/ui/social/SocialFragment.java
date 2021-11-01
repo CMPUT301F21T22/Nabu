@@ -7,12 +7,14 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import ca.cmput301f21t22.nabu.R;
 import ca.cmput301f21t22.nabu.databinding.FragmentSocialBinding;
+import ca.cmput301f21t22.nabu.databinding.HeaderDefaultBinding;
+import ca.cmput301f21t22.nabu.ui.ExtendedToolbarFragment;
 
-public class SocialFragment extends Fragment {
+public class SocialFragment extends ExtendedToolbarFragment {
 
     @Nullable
     private SocialViewModel viewModel;
@@ -33,5 +35,13 @@ public class SocialFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+    }
+
+    @NonNull
+    @Override
+    public View getToolbarView() {
+        HeaderDefaultBinding header = HeaderDefaultBinding.inflate(LayoutInflater.from(this.getContext()));
+        header.title.setText(R.string.fragment_social_name);
+        return header.getRoot();
     }
 }

@@ -8,7 +8,7 @@ android {
 
     defaultConfig {
         applicationId 'ca.cmput301f21t22.nabu'
-        minSdk 21
+        minSdk 26
         targetSdk 31
         versionCode 1
         versionName '1.0'
@@ -49,6 +49,7 @@ dependencies {
     implementation platform('com.google.firebase:firebase-bom:28.4.2')
     implementation 'com.google.firebase:firebase-firestore'
     implementation 'com.firebaseui:firebase-ui-auth:7.2.0'
+    implementation 'androidx.databinding:library:3.2.0-alpha11'
 
     testImplementation 'junit:junit:4.13.2'
 

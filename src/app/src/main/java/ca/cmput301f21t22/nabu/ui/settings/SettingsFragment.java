@@ -7,16 +7,17 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import ca.cmput301f21t22.nabu.R;
 import ca.cmput301f21t22.nabu.databinding.FragmentSettingsBinding;
+import ca.cmput301f21t22.nabu.databinding.HeaderDefaultBinding;
 import ca.cmput301f21t22.nabu.model.LiveUser;
+import ca.cmput301f21t22.nabu.ui.ExtendedToolbarFragment;
 
-public class SettingsFragment extends Fragment {
+public class SettingsFragment extends ExtendedToolbarFragment {
     @NonNull
     public final static String TAG = "SettingsFragment";
 
@@ -65,5 +66,13 @@ public class SettingsFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+    }
+
+    @NonNull
+    @Override
+    public View getToolbarView() {
+        HeaderDefaultBinding view = HeaderDefaultBinding.inflate(LayoutInflater.from(this.getContext()));
+        view.title.setText(R.string.fragment_settings_name);
+        return view.getRoot();
     }
 }

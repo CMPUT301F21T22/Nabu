@@ -2,7 +2,10 @@ package ca.cmput301f21t22.nabu.data;
 
 import androidx.annotation.Nullable;
 
+import java.time.DayOfWeek;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  * A data object storing the days of the week on which an event occurs.
@@ -65,14 +68,8 @@ public class Occurrence {
 
     @Override
     public int hashCode() {
-        return Objects.hash(
-                this.onSunday,
-                this.onMonday,
-                this.onTuesday,
-                this.onWednesday,
-                this.onThursday,
-                this.onFriday,
-                this.onSaturday);
+        return Objects.hash(this.onSunday, this.onMonday, this.onTuesday, this.onWednesday, this.onThursday,
+                            this.onFriday, this.onSaturday);
     }
 
     public boolean isOnSunday() {
@@ -129,5 +126,31 @@ public class Occurrence {
 
     public void setOnSaturday(boolean onSaturday) {
         this.onSaturday = onSaturday;
+    }
+
+    public Set<DayOfWeek> asSetOfDaysOfWeek() {
+        Set<DayOfWeek> set = new HashSet<>();
+        if (this.onSunday) {
+            set.add(DayOfWeek.SUNDAY);
+        }
+        if (this.onMonday) {
+            set.add(DayOfWeek.MONDAY);
+        }
+        if (this.onTuesday) {
+            set.add(DayOfWeek.TUESDAY);
+        }
+        if (this.onWednesday) {
+            set.add(DayOfWeek.WEDNESDAY);
+        }
+        if (this.onThursday) {
+            set.add(DayOfWeek.THURSDAY);
+        }
+        if (this.onFriday) {
+            set.add(DayOfWeek.FRIDAY);
+        }
+        if (this.onSaturday) {
+            set.add(DayOfWeek.SATURDAY);
+        }
+        return set;
     }
 }

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
@@ -55,6 +56,11 @@ public class MainActivity extends AppCompatActivity {
                                                    .build());
             }
         });
+
+        ActionBar actionBar = this.getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM | ActionBar.DISPLAY_SHOW_TITLE);
+        }
 
         NavHostFragment host = (NavHostFragment) this.getSupportFragmentManager().findFragmentById(R.id.main_nav_host);
         NavController controller = Objects.requireNonNull(host).getNavController();
