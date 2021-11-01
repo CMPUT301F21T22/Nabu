@@ -45,7 +45,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         this.viewModel = new ViewModelProvider(this).get(MainViewModel.class);
         this.binding = ActivityMainBinding.inflate(this.getLayoutInflater());
-        this.setContentView(this.binding.getRoot());
 
         this.viewModel.getShowSignIn().observe(this, showSignIn -> {
             if (showSignIn) {
@@ -67,6 +66,8 @@ public class MainActivity extends AppCompatActivity {
         AppBarConfiguration configuration = new AppBarConfiguration.Builder(this.binding.mainNavView.getMenu()).build();
         NavigationUI.setupActionBarWithNavController(this, controller, configuration);
         NavigationUI.setupWithNavController(this.binding.mainNavView, controller);
+
+        this.setContentView(this.binding.getRoot());
     }
 
     @Override

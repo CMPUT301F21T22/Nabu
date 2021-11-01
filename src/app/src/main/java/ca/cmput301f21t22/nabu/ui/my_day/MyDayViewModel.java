@@ -198,28 +198,34 @@ public class MyDayViewModel extends ViewModel {
                     MyDayCard card = iterator.next();
                     Occurrence occurrence = card.getOccurrence();
                     if (habitId.equals(card.getId()) && occurrence != null) {
-                        Date date = event.getDate();
-                        if (date != null) {
-                            LocalDate eventDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-                            LocalDate today = this.dateReceiver.getNow();
-                            int index = (int) ChronoUnit.DAYS.between(eventDate, today);
+                        Date eventDate = event.getDate();
+                        MyDayCardMarker[] markers = card.getMarkers();
+                        Set<DayOfWeek> dueOn = occurrence.asSetOfDaysOfWeek();
 
-                            MyDayCardMarker[] markers = card.getMarkers();
-                            boolean due = occurrence.asSetOfDaysOfWeek().contains(eventDate.getDayOfWeek());
-
-                            markers[index] = new MyDayCardMarker(eventId, true, due ? MyDayCardMarker.Icon.COMPLETE :
-                                                                                (index == 0 ?
-                                                                                 MyDayCardMarker.Icon.INCOMPLETE :
-                                                                                 MyDayCardMarker.Icon.FAILED));
-
-                            for (int i = 0; i < 7; i++) {
-                                if (eventId.equals(markers[i].getId()) && i != index) {
-                                    markers[i] = new MyDayCardMarker(null, null, due ? MyDayCardMarker.Icon.FAILED :
-                                                                                 MyDayCardMarker.Icon.NOT_DUE);
-                                }
+                        LocalDate day = this.dateReceiver.getNow();
+                        for (int i = 0; i < 7; i++) {
+                            boolean due = dueOn.contains(day.getDayOfWeek());
+                            if (eventId.equals(markers[i].getId())) {
+                                markers[i] = new MyDayCardMarker(null, null, due ? MyDayCardMarker.Icon.FAILED :
+                                                                             MyDayCardMarker.Icon.NOT_DUE);
                             }
+                            day = day.minusDays(1);
+                        }
 
-                            iterator.set(new MyDayCard(habitId, card.getTitle(), card.getOccurrence(), markers));
+                        if (eventDate != null) {
+                            LocalDate eventLocalDate =
+                                    eventDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+                            LocalDate today = this.dateReceiver.getNow();
+                            if (!(eventLocalDate.isBefore(today.minusDays(6)) || eventLocalDate.isAfter(today))) {
+                                int index = (int) ChronoUnit.DAYS.between(eventLocalDate, today);
+                                boolean due = dueOn.contains(eventLocalDate.getDayOfWeek());
+                                markers[index] =
+                                        new MyDayCardMarker(eventId, true, due ? MyDayCardMarker.Icon.COMPLETE :
+                                                                           (index == 0 ?
+                                                                            MyDayCardMarker.Icon.INCOMPLETE :
+                                                                            MyDayCardMarker.Icon.FAILED));
+                                iterator.set(new MyDayCard(habitId, card.getTitle(), card.getOccurrence(), markers));
+                            }
                         }
                     }
                 }
