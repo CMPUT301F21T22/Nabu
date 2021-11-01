@@ -14,7 +14,6 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import ca.cmput301f21t22.nabu.R;
 import ca.cmput301f21t22.nabu.databinding.FragmentSettingsBinding;
 import ca.cmput301f21t22.nabu.databinding.HeaderDefaultBinding;
-import ca.cmput301f21t22.nabu.model.LiveUser;
 import ca.cmput301f21t22.nabu.ui.ExtendedToolbarFragment;
 
 public class SettingsFragment extends ExtendedToolbarFragment {
@@ -34,14 +33,9 @@ public class SettingsFragment extends ExtendedToolbarFragment {
         this.viewModel = new ViewModelProvider(this).get(SettingsViewModel.class);
         this.binding = FragmentSettingsBinding.inflate(inflater, container, false);
 
-        this.viewModel.getCurrentUser().observe(this.getViewLifecycleOwner(), (currentUser) -> {
-            if (currentUser != null) {
-                currentUser.observe((sender, property) -> {
-                    LiveUser user = (LiveUser) sender;
-                    this.binding.labelCurrentUserEmail.setText(user.getEmail());
-                });
-            } else {
-                this.binding.labelCurrentUserEmail.setText(null);
+        this.viewModel.getCurrentUser().observe(this.getViewLifecycleOwner(), (user) -> {
+            if (user != null) {
+                this.binding.labelCurrentUserEmail.setText(user.getEmail());
             }
         });
 

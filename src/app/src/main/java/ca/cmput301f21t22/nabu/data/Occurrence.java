@@ -1,11 +1,10 @@
-package ca.cmput301f21t22.nabu.model;
+package ca.cmput301f21t22.nabu.data;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.time.DayOfWeek;
-import java.util.HashSet;
 import java.util.Objects;
-import java.util.Set;
 
 /**
  * A data object storing the days of the week on which an event occurs.
@@ -128,29 +127,24 @@ public class Occurrence {
         this.onSaturday = onSaturday;
     }
 
-    public Set<DayOfWeek> asSetOfDaysOfWeek() {
-        Set<DayOfWeek> set = new HashSet<>();
-        if (this.onSunday) {
-            set.add(DayOfWeek.SUNDAY);
+    public boolean isOnDayOfWeek(@NonNull DayOfWeek dayOfWeek) {
+        switch (dayOfWeek) {
+            case MONDAY:
+                return this.onMonday;
+            case TUESDAY:
+                return this.onTuesday;
+            case WEDNESDAY:
+                return this.onWednesday;
+            case THURSDAY:
+                return this.onThursday;
+            case FRIDAY:
+                return this.onFriday;
+            case SATURDAY:
+                return this.onSaturday;
+            case SUNDAY:
+                return this.onSunday;
+            default:
+                return false;
         }
-        if (this.onMonday) {
-            set.add(DayOfWeek.MONDAY);
-        }
-        if (this.onTuesday) {
-            set.add(DayOfWeek.TUESDAY);
-        }
-        if (this.onWednesday) {
-            set.add(DayOfWeek.WEDNESDAY);
-        }
-        if (this.onThursday) {
-            set.add(DayOfWeek.THURSDAY);
-        }
-        if (this.onFriday) {
-            set.add(DayOfWeek.FRIDAY);
-        }
-        if (this.onSaturday) {
-            set.add(DayOfWeek.SATURDAY);
-        }
-        return set;
     }
 }

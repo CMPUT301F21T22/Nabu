@@ -1,7 +1,5 @@
 package ca.cmput301f21t22.nabu.ui.my_day;
 
-import android.content.Intent;
-import android.content.IntentFilter;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +18,9 @@ import java.util.Locale;
 import ca.cmput301f21t22.nabu.R;
 import ca.cmput301f21t22.nabu.databinding.FragmentMydayBinding;
 import ca.cmput301f21t22.nabu.databinding.HeaderCalendarBinding;
+import ca.cmput301f21t22.nabu.model.EventRepository;
+import ca.cmput301f21t22.nabu.model.HabitRepository;
+import ca.cmput301f21t22.nabu.model.UserRepository;
 import ca.cmput301f21t22.nabu.ui.ExtendedToolbarFragment;
 
 public class MyDayFragment extends ExtendedToolbarFragment {
@@ -31,8 +32,6 @@ public class MyDayFragment extends ExtendedToolbarFragment {
     @Nullable
     private FragmentMydayBinding binding;
     @Nullable
-    private HeaderCalendarBinding toolbar;
-    @Nullable
     private MyDayCardAdapter adapter;
 
     @Nullable
@@ -42,65 +41,66 @@ public class MyDayFragment extends ExtendedToolbarFragment {
                              @Nullable Bundle savedInstanceState) {
         this.viewModel = new ViewModelProvider(this).get(MyDayViewModel.class);
         this.binding = FragmentMydayBinding.inflate(inflater, container, false);
-        this.toolbar = HeaderCalendarBinding.inflate(LayoutInflater.from(this.getContext()));
-        this.adapter = new MyDayCardAdapter(this.viewModel.getCards());
+        this.adapter = new MyDayCardAdapter();
 
-        IntentFilter filter = new IntentFilter();
-        filter.addAction(Intent.ACTION_DATE_CHANGED);
-        filter.addAction(Intent.ACTION_TIME_CHANGED);
-        filter.addAction(Intent.ACTION_TIMEZONE_CHANGED);
-        this.requireContext().registerReceiver(this.viewModel.getDateReceiver(), filter);
+        UserRepository.getInstance()
+                .getCurrentUser()
+                .observe(this.getViewLifecycleOwner(), user -> this.viewModel.setCurrentUser(user));
 
-        this.viewModel.getNow().observe(this.getViewLifecycleOwner(), (now) -> {
-            TextView[] daysOfWeek = {
-                    this.toolbar.labelDayOfWeek0,
-                    this.toolbar.labelDayOfWeek1,
-                    this.toolbar.labelDayOfWeek2,
-                    this.toolbar.labelDayOfWeek3,
-                    this.toolbar.labelDayOfWeek4,
-                    this.toolbar.labelDayOfWeek5,
-                    this.toolbar.labelDayOfWeek6,
-                    };
-            TextView[] dates = {
-                    this.toolbar.labelDate0,
-                    this.toolbar.labelDate1,
-                    this.toolbar.labelDate2,
-                    this.toolbar.labelDate3,
-                    this.toolbar.labelDate4,
-                    this.toolbar.labelDate5,
-                    this.toolbar.labelDate6,
-                    };
+        HabitRepository.getInstance()
+                .getHabits()
+                .observe(this.getViewLifecycleOwner(), habits -> this.viewModel.setCurrentHabits(habits));
 
-            LocalDate day = now;
-            for (int i = 0; i < 7; i++) {
-                daysOfWeek[i].setText(day.getDayOfWeek().getDisplayName(TextStyle.SHORT, Locale.getDefault()));
-                dates[i].setText(String.format(Locale.getDefault(), "%d", day.getDayOfMonth()));
-                day = day.minusDays(1);
-            }
-        });
+        EventRepository.getInstance()
+                .getEvents()
+                .observe(this.getViewLifecycleOwner(), events -> this.viewModel.setCurrentEvents(events));
+
+        this.viewModel.getCards().observe(this.getViewLifecycleOwner(), cards -> this.adapter.setCards(cards));
 
         this.binding.listIncomplete.setLayoutManager(new LinearLayoutManager(this.requireContext()));
         this.binding.listIncomplete.setAdapter(this.adapter);
-
         return this.binding.getRoot();
     }
 
     @Override
     public void onDestroyView() {
-        if (this.viewModel != null) {
-            this.requireContext().unregisterReceiver(this.viewModel.getDateReceiver());
-        }
-
         super.onDestroyView();
     }
 
     @Nullable
     @Override
     public View getToolbarView() {
-        if (this.toolbar != null) {
-            this.toolbar.title.setText(R.string.fragment_myday_name);
-            return this.toolbar.getRoot();
+        HeaderCalendarBinding toolbar = HeaderCalendarBinding.inflate(LayoutInflater.from(this.getContext()));
+
+        // Set title.
+        toolbar.title.setText(R.string.fragment_myday_name);
+
+        // Set calendar.
+        TextView[] daysOfWeek = {
+                toolbar.labelDayOfWeek0,
+                toolbar.labelDayOfWeek1,
+                toolbar.labelDayOfWeek2,
+                toolbar.labelDayOfWeek3,
+                toolbar.labelDayOfWeek4,
+                toolbar.labelDayOfWeek5,
+                toolbar.labelDayOfWeek6,
+                };
+        TextView[] dates = {
+                toolbar.labelDate0,
+                toolbar.labelDate1,
+                toolbar.labelDate2,
+                toolbar.labelDate3,
+                toolbar.labelDate4,
+                toolbar.labelDate5,
+                toolbar.labelDate6,
+                };
+        LocalDate day = LocalDate.now();
+        for (int i = 0; i < 7; i++) {
+            daysOfWeek[i].setText(day.getDayOfWeek().getDisplayName(TextStyle.SHORT, Locale.getDefault()));
+            dates[i].setText(String.format(Locale.getDefault(), "%d", day.getDayOfMonth()));
+            day = day.minusDays(1);
         }
-        return null;
+
+        return toolbar.getRoot();
     }
 }
