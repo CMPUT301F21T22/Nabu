@@ -16,7 +16,7 @@ import java.util.Date;
 import java.util.Map;
 import java.util.Objects;
 
-import ca.cmput301f21t22.nabu.data.Occurrence;
+import ca.cmput301f21t22.nabu.model.Occurrence;
 import ca.cmput301f21t22.nabu.model.LiveHabit;
 
 public class LiveHabitIntegrityTests extends IntegrityTests {

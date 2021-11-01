@@ -3,7 +3,7 @@ package ca.cmput301f21t22.nabu.ui.my_day;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import ca.cmput301f21t22.nabu.data.Occurrence;
+import ca.cmput301f21t22.nabu.model.Occurrence;
 
 public class MyDayCard {
     @NonNull

@@ -5,8 +5,6 @@ import androidx.annotation.Nullable;
 import java.util.Date;
 import java.util.List;
 
-import ca.cmput301f21t22.nabu.data.Occurrence;
-
 public interface Habit extends Observable<Habit.Properties> {
     @Nullable
     Boolean getShared();

@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.ListIterator;
 import java.util.Set;
 
-import ca.cmput301f21t22.nabu.data.Occurrence;
+import ca.cmput301f21t22.nabu.model.Occurrence;
 import ca.cmput301f21t22.nabu.model.Collections;
 import ca.cmput301f21t22.nabu.model.Event;
 import ca.cmput301f21t22.nabu.model.Habit;
