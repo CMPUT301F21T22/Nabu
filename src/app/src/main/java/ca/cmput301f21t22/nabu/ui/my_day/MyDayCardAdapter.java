@@ -1,22 +1,26 @@
 package ca.cmput301f21t22.nabu.ui.my_day;
 
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
-import androidx.databinding.ObservableList;
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import ca.cmput301f21t22.nabu.data.MyDayCard;
 import ca.cmput301f21t22.nabu.databinding.CardMyDayBinding;
 
 public class MyDayCardAdapter extends RecyclerView.Adapter<MyDayCardAdapter.ViewHolder> {
     @NonNull
-    private final ObservableList<MyDayCard> cards;
+    private List<MyDayCard> cards;
 
-    public MyDayCardAdapter(@NonNull ObservableList<MyDayCard> items) {
-        this.cards = items;
-        this.cards.addOnListChangedCallback(new MyDayCardAdapterObserver(this));
+    public MyDayCardAdapter() {
+        this.cards = new ArrayList<>();
     }
 
     @NonNull
@@ -35,7 +39,15 @@ public class MyDayCardAdapter extends RecyclerView.Adapter<MyDayCardAdapter.View
         return this.cards.size();
     }
 
+    @SuppressLint("NotifyDataSetChanged")
+    public void setCards(@Nullable List<MyDayCard> cards) {
+        cards = cards != null ? cards : new ArrayList<>();
+        this.cards = cards;
+        this.notifyDataSetChanged();
+    }
+
     public static class ViewHolder extends RecyclerView.ViewHolder {
+        @NonNull
         private final CardMyDayBinding binding;
 
         public ViewHolder(@NonNull CardMyDayBinding binding) {
@@ -43,8 +55,8 @@ public class MyDayCardAdapter extends RecyclerView.Adapter<MyDayCardAdapter.View
             this.binding = binding;
         }
 
-        public void onBindView(MyDayCard card) {
-            this.binding.labelHabitName.setText(card.getTitle());
+        public void onBindView(@NonNull MyDayCard card) {
+            this.binding.labelHabitName.setText(card.getHabit().getTitle());
 
             ImageView[] icons = {
                     this.binding.iconComplete0,
@@ -55,9 +67,8 @@ public class MyDayCardAdapter extends RecyclerView.Adapter<MyDayCardAdapter.View
                     this.binding.iconComplete5,
                     this.binding.iconComplete6,
                     };
-            MyDayCardMarker[] markers = card.getMarkers();
-            for (int i = 0; i < markers.length; i++) {
-                icons[i].setImageResource(markers[i].getIcon().getRes());
+            for (int i = 0; i < 7; i++) {
+                icons[i].setImageResource(card.getIcon(i).getResource());
             }
         }
     }

@@ -38,21 +38,24 @@ public class MainActivity extends AppCompatActivity {
     @NonNull
     private final ActivityResultLauncher<Intent> signInLauncher =
             this.registerForActivityResult(new FirebaseAuthUIActivityResultContract(),
-                                           (result) -> this.viewModel.onSignIn(result));
+                                           result -> this.viewModel.onSignIn(result));
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.viewModel = new ViewModelProvider(this).get(MainViewModel.class);
         this.binding = ActivityMainBinding.inflate(this.getLayoutInflater());
+        this.setContentView(this.binding.getRoot());
 
-        this.viewModel.getShowSignIn().observe(this, showSignIn -> {
-            if (showSignIn) {
+        this.viewModel.getSignedIn().observe(this, signedIn -> {
+            if (!signedIn) {
                 this.signInLauncher.launch(AuthUI.getInstance()
                                                    .createSignInIntentBuilder()
                                                    .setIsSmartLockEnabled(false)
                                                    .setAvailableProviders(this.signInProviders)
                                                    .build());
+            } else {
+                this.navigateTo(R.id.main_nav_myday);
             }
         });
 
@@ -66,12 +69,19 @@ public class MainActivity extends AppCompatActivity {
         AppBarConfiguration configuration = new AppBarConfiguration.Builder(this.binding.mainNavView.getMenu()).build();
         NavigationUI.setupActionBarWithNavController(this, controller, configuration);
         NavigationUI.setupWithNavController(this.binding.mainNavView, controller);
-
-        this.setContentView(this.binding.getRoot());
     }
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
+    protected void onStart() {
+        super.onStart();
+        this.navigateTo(R.id.main_nav_myday);
+    }
+
+    private void navigateTo(int id) {
+        NavHostFragment host = (NavHostFragment) this.getSupportFragmentManager().findFragmentById(R.id.main_nav_host);
+        if (host != null) {
+            NavController controller = host.getNavController();
+            controller.navigate(R.id.main_nav_myday);
+        }
     }
 }
