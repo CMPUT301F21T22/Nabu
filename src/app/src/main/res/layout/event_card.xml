@@ -17,25 +17,25 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:padding="5dp"
+            android:padding="10dp"
             android:text="Habit Title"
-            android:textSize="10sp"
+            android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
         </TextView>
 
+
         <TextView
             android:id="@+id/event_dates_Text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:padding="5dp"
+            android:layout_marginStart="16dp"
+            android:padding="10dp"
             android:text="Date's On"
-            android:textSize="10sp"
-            app:layout_constraintEnd_toEndOf="parent">
-        </TextView>
-
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/event_comment_Text"></TextView>
 
         <ImageButton
             android:id="@+id/events_popup_ImageButton"
@@ -51,9 +51,11 @@
             android:id="@+id/event_Photo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/ic_launcher_foreground"
-            tools:layout_editor_absoluteX="104dp"
-            tools:layout_editor_absoluteY="111dp" />
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/event_dates_Text"
+            app:srcCompat="@drawable/ic_launcher_foreground" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
