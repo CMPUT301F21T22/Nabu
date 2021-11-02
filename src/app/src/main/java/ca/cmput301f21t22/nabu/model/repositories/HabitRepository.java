@@ -1,4 +1,4 @@
-package ca.cmput301f21t22.nabu.model;
+package ca.cmput301f21t22.nabu.model.repositories;
 
 import android.util.Log;
 
@@ -20,6 +20,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
+import java.util.function.Predicate;
 
 import ca.cmput301f21t22.nabu.data.Habit;
 import ca.cmput301f21t22.nabu.data.Occurrence;
@@ -48,7 +50,7 @@ public class HabitRepository {
     }
 
     @NonNull
-    public static synchronized HabitRepository getInstance() {
+    public static HabitRepository getInstance() {
         if (INSTANCE == null) {
             INSTANCE = new HabitRepository();
         }
@@ -71,6 +73,11 @@ public class HabitRepository {
     @NonNull
     public LiveData<Map<String, Habit>> getHabits() {
         return this.habits;
+    }
+
+    @NonNull
+    public Optional<Habit> findHabit(Predicate<Habit> predicate) {
+        return this.habitsMap.values().stream().filter(predicate).findFirst();
     }
 
     private void onHabitsChanged(@Nullable QuerySnapshot snapshots, @Nullable FirebaseFirestoreException e) {

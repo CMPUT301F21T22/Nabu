@@ -22,6 +22,15 @@ public class Habit {
     private List<String> events;
     private boolean shared;
 
+    public Habit(@NonNull String title,
+                 @NonNull String reason,
+                 @NonNull Date startDate,
+                 @NonNull Occurrence occurrence,
+                 @NonNull List<String> events,
+                 boolean shared) {
+        this("", title, reason, startDate, occurrence, events, shared);
+    }
+
     public Habit(@NonNull String id,
                  @NonNull String title,
                  @NonNull String reason,

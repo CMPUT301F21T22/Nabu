@@ -11,7 +11,7 @@ import androidx.lifecycle.ViewModel;
 import com.firebase.ui.auth.IdpResponse;
 import com.firebase.ui.auth.data.model.FirebaseAuthUIAuthenticationResult;
 
-import ca.cmput301f21t22.nabu.model.UserRepository;
+import ca.cmput301f21t22.nabu.model.repositories.UserRepository;
 
 public class MainViewModel extends ViewModel {
     @NonNull

@@ -9,7 +9,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.ConcatAdapter;
 import androidx.recyclerview.widget.LinearLayoutManager;
+
+import com.google.android.material.snackbar.BaseTransientBottomBar;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.time.LocalDate;
 import java.time.format.TextStyle;
@@ -18,9 +22,9 @@ import java.util.Locale;
 import ca.cmput301f21t22.nabu.R;
 import ca.cmput301f21t22.nabu.databinding.FragmentMydayBinding;
 import ca.cmput301f21t22.nabu.databinding.HeaderCalendarBinding;
-import ca.cmput301f21t22.nabu.model.EventRepository;
-import ca.cmput301f21t22.nabu.model.HabitRepository;
-import ca.cmput301f21t22.nabu.model.UserRepository;
+import ca.cmput301f21t22.nabu.model.repositories.EventRepository;
+import ca.cmput301f21t22.nabu.model.repositories.HabitRepository;
+import ca.cmput301f21t22.nabu.model.repositories.UserRepository;
 import ca.cmput301f21t22.nabu.ui.ExtendedToolbarFragment;
 
 public class MyDayFragment extends ExtendedToolbarFragment {
@@ -32,7 +36,9 @@ public class MyDayFragment extends ExtendedToolbarFragment {
     @Nullable
     private FragmentMydayBinding binding;
     @Nullable
-    private MyDayCardAdapter adapter;
+    private IncompleteCardAdapter incompleteAdapter;
+    @Nullable
+    private CompleteCardAdapter completeAdapter;
 
     @Nullable
     @Override
@@ -41,24 +47,39 @@ public class MyDayFragment extends ExtendedToolbarFragment {
                              @Nullable Bundle savedInstanceState) {
         this.viewModel = new ViewModelProvider(this).get(MyDayViewModel.class);
         this.binding = FragmentMydayBinding.inflate(inflater, container, false);
-        this.adapter = new MyDayCardAdapter();
+        this.incompleteAdapter = new IncompleteCardAdapter();
+        this.completeAdapter = new CompleteCardAdapter();
 
         UserRepository.getInstance()
                 .getCurrentUser()
                 .observe(this.getViewLifecycleOwner(), user -> this.viewModel.setCurrentUser(user));
-
         HabitRepository.getInstance()
                 .getHabits()
                 .observe(this.getViewLifecycleOwner(), habits -> this.viewModel.setCurrentHabits(habits));
-
         EventRepository.getInstance()
                 .getEvents()
                 .observe(this.getViewLifecycleOwner(), events -> this.viewModel.setCurrentEvents(events));
 
-        this.viewModel.getCards().observe(this.getViewLifecycleOwner(), cards -> this.adapter.setCards(cards));
+        this.incompleteAdapter.setClickListener((adapter, item) -> this.viewModel.onCardClicked(item));
+        this.completeAdapter.setClickListener((adapter, item) -> this.viewModel.onCardClicked(item));
 
-        this.binding.listIncomplete.setLayoutManager(new LinearLayoutManager(this.requireContext()));
-        this.binding.listIncomplete.setAdapter(this.adapter);
+        this.viewModel.getIncompleteCards()
+                .observe(this.getViewLifecycleOwner(), cards -> this.incompleteAdapter.setCards(cards));
+        this.viewModel.getCompleteCards()
+                .observe(this.getViewLifecycleOwner(), cards -> this.completeAdapter.setCards(cards));
+        this.viewModel.getInstantShowEdit().observe(this.getViewLifecycleOwner(), show -> {
+            if (show != null && show) {
+                Snackbar.make(this.requireActivity().findViewById(android.R.id.content),
+                              R.string.prompt_habit_completed, BaseTransientBottomBar.LENGTH_LONG)
+                        .setAnchorView(this.requireActivity().findViewById(R.id.main_nav_view))
+                        .setAction(R.string.button_edit_event, view -> this.viewModel.onEditMostRecentEvent())
+                        .show();
+            }
+        });
+
+        this.binding.listCard.setLayoutManager(new LinearLayoutManager(this.requireContext()));
+        this.binding.listCard.setAdapter(new ConcatAdapter(this.incompleteAdapter, this.completeAdapter));
+
         return this.binding.getRoot();
     }
 
@@ -85,6 +106,7 @@ public class MyDayFragment extends ExtendedToolbarFragment {
                 toolbar.labelDayOfWeek5,
                 toolbar.labelDayOfWeek6,
                 };
+
         TextView[] dates = {
                 toolbar.labelDate0,
                 toolbar.labelDate1,
@@ -94,6 +116,7 @@ public class MyDayFragment extends ExtendedToolbarFragment {
                 toolbar.labelDate5,
                 toolbar.labelDate6,
                 };
+
         LocalDate day = LocalDate.now();
         for (int i = 0; i < 7; i++) {
             daysOfWeek[i].setText(day.getDayOfWeek().getDisplayName(TextStyle.SHORT, Locale.getDefault()));

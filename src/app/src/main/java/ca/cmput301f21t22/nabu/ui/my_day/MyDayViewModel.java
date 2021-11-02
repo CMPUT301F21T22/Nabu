@@ -10,17 +10,17 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.Date;
 import java.util.List;
-import java.util.ListIterator;
 import java.util.Map;
 import java.util.Objects;
-import java.util.Set;
 
 import ca.cmput301f21t22.nabu.data.Event;
 import ca.cmput301f21t22.nabu.data.Habit;
 import ca.cmput301f21t22.nabu.data.MyDayCard;
 import ca.cmput301f21t22.nabu.data.User;
+import ca.cmput301f21t22.nabu.model.commands.AddEventCommand;
+import ca.cmput301f21t22.nabu.model.commands.DeleteEventCommand;
 
 public class MyDayViewModel extends ViewModel {
     @NonNull
@@ -29,7 +29,14 @@ public class MyDayViewModel extends ViewModel {
     @NonNull
     private final List<MyDayCard> cardsList;
     @NonNull
-    private final MutableLiveData<List<MyDayCard>> cards;
+    private final MutableLiveData<List<MyDayCard>> incompleteCards;
+    @NonNull
+    private final MutableLiveData<List<MyDayCard>> completeCards;
+
+    @Nullable
+    private Event mostRecentEvent;
+    @NonNull
+    private final MutableLiveData<Boolean> instantShowEdit;
 
     @Nullable
     private User currentUser;
@@ -40,12 +47,26 @@ public class MyDayViewModel extends ViewModel {
 
     public MyDayViewModel() {
         this.cardsList = new ArrayList<>();
-        this.cards = new MutableLiveData<>();
+        this.incompleteCards = new MutableLiveData<>();
+        this.completeCards = new MutableLiveData<>();
+
+        this.mostRecentEvent = null;
+        this.instantShowEdit = new MutableLiveData<>();
     }
 
     @NonNull
-    public LiveData<List<MyDayCard>> getCards() {
-        return this.cards;
+    public LiveData<List<MyDayCard>> getIncompleteCards() {
+        return this.incompleteCards;
+    }
+
+    @NonNull
+    public MutableLiveData<List<MyDayCard>> getCompleteCards() {
+        return this.completeCards;
+    }
+
+    @NonNull
+    public MutableLiveData<Boolean> getInstantShowEdit() {
+        return this.instantShowEdit;
     }
 
     public void setCurrentUser(@Nullable User currentUser) {
@@ -63,36 +84,37 @@ public class MyDayViewModel extends ViewModel {
         this.onDataChanged();
     }
 
+    public void onCardClicked(@NonNull MyDayCard card) {
+        Event todayEvent = card.getEvents()[0];
+        boolean complete = todayEvent != null;
+        if (complete) {
+            new DeleteEventCommand(todayEvent).execute();
+        } else {
+            new AddEventCommand(card.getHabit(), new Event(new Date())).execute().thenAccept(event -> {
+                this.mostRecentEvent = event;
+                this.instantShowEdit.setValue(true);
+            });
+        }
+    }
+
+    public void onEditMostRecentEvent() {
+        if (this.mostRecentEvent != null) {
+            // Spawn editor.
+        }
+    }
+
     private void onDataChanged() {
-        if (this.currentUser == null || this.currentHabits == null || this.currentUser.getHabits().size() == 0 ||
-            this.currentHabits.size() == 0) {
-            this.cardsList.clear();
-            this.cards.setValue(this.cardsList);
-            return;
-        }
+        this.cardsList.clear();
 
-        Set<String> habitIds = new HashSet<>(this.currentUser.getHabits());
-        ListIterator<MyDayCard> cardIterator = this.cardsList.listIterator();
-        while (cardIterator.hasNext()) {
-            Habit habit = cardIterator.next().getHabit();
-            // Replace.
-            if (habitIds.contains(habit.getId())) {
-                cardIterator.set(this.processHabit(habit));
-                // Remove the id from the set to indicate we've processed it.
-                habitIds.remove(habit.getId());
-            }
-            // Remove.
-            else {
-                cardIterator.remove();
+        if (this.currentUser != null && this.currentHabits != null) {
+            List<String> habitIds = this.currentUser.getHabits();
+            // Process new habits.
+            for (String habitId : habitIds) {
+                this.cardsList.add(this.processHabit(Objects.requireNonNull(this.currentHabits.get(habitId))));
             }
         }
 
-        // Process new habits.
-        for (String habitId : habitIds) {
-            this.cardsList.add(this.processHabit(Objects.requireNonNull(this.currentHabits.get(habitId))));
-        }
-
-        this.cards.setValue(this.cardsList);
+        this.updateLists();
     }
 
     @NonNull
@@ -111,5 +133,24 @@ public class MyDayViewModel extends ViewModel {
             }
         }
         return new MyDayCard(habit, relevantEvents);
+    }
+
+    private void updateLists() {
+        List<MyDayCard> incomplete = new ArrayList<>();
+        List<MyDayCard> complete = new ArrayList<>();
+
+        LocalDate today = LocalDate.now();
+        for (MyDayCard card : this.cardsList) {
+            Habit habit = card.getHabit();
+            boolean due = habit.getOccurrence().isOnDayOfWeek(today.getDayOfWeek());
+            if (card.getEvents()[0] != null && due) {
+                complete.add(card);
+            } else if (due) {
+                incomplete.add(card);
+            }
+        }
+
+        this.incompleteCards.setValue(incomplete);
+        this.completeCards.setValue(complete);
     }
 }

@@ -1,4 +1,4 @@
-package ca.cmput301f21t22.nabu.model;
+package ca.cmput301f21t22.nabu.model.repositories;
 
 import android.util.Log;
 
@@ -59,7 +59,7 @@ public class UserRepository {
     }
 
     @NonNull
-    public static synchronized UserRepository getInstance() {
+    public static UserRepository getInstance() {
         if (INSTANCE == null) {
             INSTANCE = new UserRepository();
         }
