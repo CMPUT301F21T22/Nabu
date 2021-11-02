@@ -18,6 +18,8 @@ import ca.cmput301f21t22.nabu.databinding.CardMyDayIncompleteBinding;
 public class IncompleteCardAdapter extends RecyclerView.Adapter<IncompleteCardAdapter.ViewHolder> {
     @NonNull
     private List<MyDayCard> cards;
+    @Nullable
+    private CardClickListener<IncompleteCardAdapter> clickListener;
 
     public IncompleteCardAdapter() {
         this.cards = new ArrayList<>();
@@ -32,7 +34,13 @@ public class IncompleteCardAdapter extends RecyclerView.Adapter<IncompleteCardAd
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.onBindView(this.cards.get(position));
+        MyDayCard card = this.cards.get(position);
+        holder.onBindView(card);
+        holder.binding.card.setOnClickListener((view) -> {
+            if (this.clickListener != null) {
+                this.clickListener.onItemClicked(this, card);
+            }
+        });
     }
 
     @Override
@@ -45,6 +53,10 @@ public class IncompleteCardAdapter extends RecyclerView.Adapter<IncompleteCardAd
         cards = cards != null ? cards : new ArrayList<>();
         this.cards = cards;
         this.notifyDataSetChanged();
+    }
+
+    public void setClickListener(@Nullable CardClickListener<IncompleteCardAdapter> clickListener) {
+        this.clickListener = clickListener;
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {

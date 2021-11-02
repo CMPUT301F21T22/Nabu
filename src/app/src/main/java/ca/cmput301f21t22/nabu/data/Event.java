@@ -20,6 +20,17 @@ public class Event {
     @Nullable
     private GeoPoint location;
 
+    public Event(@NonNull Date date) {
+        this("", date);
+    }
+
+    public Event(@NonNull Date date,
+                 @Nullable String comment,
+                 @Nullable String photoPath,
+                 @Nullable GeoPoint location) {
+        this("", date, comment, photoPath, location);
+    }
+
     public Event(@NonNull String id, @NonNull Date date) {
         this(id, date, null, null, null);
     }

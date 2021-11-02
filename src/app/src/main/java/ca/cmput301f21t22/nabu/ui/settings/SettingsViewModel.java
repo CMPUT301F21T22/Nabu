@@ -8,7 +8,7 @@ import androidx.lifecycle.ViewModel;
 import com.google.firebase.auth.FirebaseAuth;
 
 import ca.cmput301f21t22.nabu.data.User;
-import ca.cmput301f21t22.nabu.model.UserRepository;
+import ca.cmput301f21t22.nabu.model.repositories.UserRepository;
 
 public class SettingsViewModel extends ViewModel {
     @NonNull

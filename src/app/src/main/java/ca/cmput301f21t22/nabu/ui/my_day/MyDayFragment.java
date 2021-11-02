@@ -19,9 +19,9 @@ import java.util.Locale;
 import ca.cmput301f21t22.nabu.R;
 import ca.cmput301f21t22.nabu.databinding.FragmentMydayBinding;
 import ca.cmput301f21t22.nabu.databinding.HeaderCalendarBinding;
-import ca.cmput301f21t22.nabu.model.EventRepository;
-import ca.cmput301f21t22.nabu.model.HabitRepository;
-import ca.cmput301f21t22.nabu.model.UserRepository;
+import ca.cmput301f21t22.nabu.model.repositories.EventRepository;
+import ca.cmput301f21t22.nabu.model.repositories.HabitRepository;
+import ca.cmput301f21t22.nabu.model.repositories.UserRepository;
 import ca.cmput301f21t22.nabu.ui.ExtendedToolbarFragment;
 
 public class MyDayFragment extends ExtendedToolbarFragment {
@@ -50,18 +50,18 @@ public class MyDayFragment extends ExtendedToolbarFragment {
         UserRepository.getInstance()
                 .getCurrentUser()
                 .observe(this.getViewLifecycleOwner(), user -> this.viewModel.setCurrentUser(user));
-
         HabitRepository.getInstance()
                 .getHabits()
                 .observe(this.getViewLifecycleOwner(), habits -> this.viewModel.setCurrentHabits(habits));
-
         EventRepository.getInstance()
                 .getEvents()
                 .observe(this.getViewLifecycleOwner(), events -> this.viewModel.setCurrentEvents(events));
 
+        this.incompleteAdapter.setClickListener((adapter, item) -> this.viewModel.onCardClicked(item));
+        this.completeAdapter.setClickListener((adapter, item) -> this.viewModel.onCardClicked(item));
+
         this.viewModel.getIncompleteCards()
                 .observe(this.getViewLifecycleOwner(), cards -> this.incompleteAdapter.setCards(cards));
-
         this.viewModel.getCompleteCards()
                 .observe(this.getViewLifecycleOwner(), cards -> this.completeAdapter.setCards(cards));
 
@@ -94,6 +94,7 @@ public class MyDayFragment extends ExtendedToolbarFragment {
                 toolbar.labelDayOfWeek5,
                 toolbar.labelDayOfWeek6,
                 };
+
         TextView[] dates = {
                 toolbar.labelDate0,
                 toolbar.labelDate1,
@@ -103,6 +104,7 @@ public class MyDayFragment extends ExtendedToolbarFragment {
                 toolbar.labelDate5,
                 toolbar.labelDate6,
                 };
+
         LocalDate day = LocalDate.now();
         for (int i = 0; i < 7; i++) {
             daysOfWeek[i].setText(day.getDayOfWeek().getDisplayName(TextStyle.SHORT, Locale.getDefault()));

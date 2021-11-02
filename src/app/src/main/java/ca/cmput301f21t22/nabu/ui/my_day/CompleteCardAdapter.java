@@ -19,6 +19,8 @@ import ca.cmput301f21t22.nabu.databinding.CardMyDayCompleteBinding;
 public class CompleteCardAdapter extends RecyclerView.Adapter<CompleteCardAdapter.ViewHolder> {
     @NonNull
     private List<MyDayCard> cards;
+    @Nullable
+    private CardClickListener<CompleteCardAdapter> clickListener;
 
     public CompleteCardAdapter() {
         this.cards = new ArrayList<>();
@@ -33,7 +35,13 @@ public class CompleteCardAdapter extends RecyclerView.Adapter<CompleteCardAdapte
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.onBindView(this.cards.get(position));
+        MyDayCard card = this.cards.get(position);
+        holder.onBindView(card);
+        holder.binding.card.setOnClickListener((view) -> {
+            if (this.clickListener != null) {
+                this.clickListener.onItemClicked(this, card);
+            }
+        });
     }
 
     @Override
@@ -46,6 +54,10 @@ public class CompleteCardAdapter extends RecyclerView.Adapter<CompleteCardAdapte
         cards = cards != null ? cards : new ArrayList<>();
         this.cards = cards;
         this.notifyDataSetChanged();
+    }
+
+    public void setClickListener(@Nullable CardClickListener<CompleteCardAdapter> clickListener) {
+        this.clickListener = clickListener;
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {

@@ -1,4 +1,4 @@
-package ca.cmput301f21t22.nabu.model;
+package ca.cmput301f21t22.nabu.model.repositories;
 
 import android.util.Log;
 
@@ -47,7 +47,7 @@ public class EventRepository {
     }
 
     @NonNull
-    public static synchronized EventRepository getInstance() {
+    public static EventRepository getInstance() {
         if (INSTANCE == null) {
             INSTANCE = new EventRepository();
         }

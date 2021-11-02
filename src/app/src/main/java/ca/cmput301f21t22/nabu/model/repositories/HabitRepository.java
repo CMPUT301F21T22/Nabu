@@ -1,4 +1,4 @@
-package ca.cmput301f21t22.nabu.model;
+package ca.cmput301f21t22.nabu.model.repositories;
 
 import android.util.Log;
 
@@ -48,7 +48,7 @@ public class HabitRepository {
     }
 
     @NonNull
-    public static synchronized HabitRepository getInstance() {
+    public static HabitRepository getInstance() {
         if (INSTANCE == null) {
             INSTANCE = new HabitRepository();
         }
