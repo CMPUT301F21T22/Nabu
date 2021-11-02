@@ -13,10 +13,10 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
         <item name="colorControlNormal">@color/body</item>
-        <item name="android:textViewStyle">@style/Widget.Nabu.TextView</item>
+        <item name="android:textViewStyle">@style/Theme.Nabu.TextView</item>
     </style>
 
-    <style name="Widget.Nabu.TextView" parent="android:Widget.TextView">
+    <style name="Theme.Nabu.TextView" parent="android:Widget.TextView">
         <item name="android:textColor">@color/body</item>
     </style>
 </resources>

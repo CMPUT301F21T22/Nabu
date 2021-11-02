@@ -39,31 +39,55 @@ public class EventController {
     }
 
     @NonNull
-    public CompletableFuture<Boolean> delete(@NonNull String id) {
-        if (id.equals("")) {
+    private static Map<String, Object> createFromEvent(Event event) {
+        Map<String, Object> map = new HashMap<>();
+        map.put("date", new Timestamp(event.getDate()));
+        map.put("comment", event.getComment());
+        map.put("photoPath", event.getPhotoPath());
+        map.put("location", event.getLocation());
+        return map;
+    }
+
+    @NonNull
+    public CompletableFuture<Boolean> delete(@NonNull String eventId) {
+        if (eventId.equals("")) {
             throw new IllegalArgumentException();
         }
 
         CompletableFuture<Boolean> future = new CompletableFuture<>();
-        this.eventsCollection.document(id).delete().addOnCompleteListener(task -> {
-            Log.d(TAG, "Event deleted with id: " + id);
+        this.eventsCollection.document(eventId).delete().addOnSuccessListener(task -> {
+            Log.d(TAG, "Event deleted with id: " + eventId);
             future.complete(true);
         }).addOnFailureListener(e -> {
-            Log.w(TAG, "Failed to delete event with id: " + id, e);
+            Log.w(TAG, "Failed to delete event with id: " + eventId, e);
             future.complete(false);
         });
         return future;
     }
 
     @NonNull
+    public CompletableFuture<String> update(@NonNull String eventId, @NonNull Event event) {
+        if (eventId.equals("")) {
+            throw new IllegalArgumentException();
+        }
+
+        CompletableFuture<String> future = new CompletableFuture<>();
+        this.eventsCollection.document(eventId)
+                .update(createFromEvent(event))
+                .addOnCompleteListener(unused -> future.complete(eventId))
+                .addOnSuccessListener(unused -> {
+                    Log.d(TAG, "Event with id: " + eventId + " updated.");
+                })
+                .addOnFailureListener(unused -> {
+                    Log.d(TAG, "Failed to update event with id: " + eventId);
+                });
+        return future;
+    }
+
+    @NonNull
     public CompletableFuture<String> add(@NonNull Event event) {
         CompletableFuture<String> future = new CompletableFuture<>();
-        Map<String, Object> map = new HashMap<>();
-        map.put("date", new Timestamp(event.getDate()));
-        map.put("comment", event.getComment());
-        map.put("photoPath", event.getPhotoPath());
-        map.put("location", event.getLocation());
-        this.eventsCollection.add(map).addOnSuccessListener(doc -> {
+        this.eventsCollection.add(createFromEvent(event)).addOnSuccessListener(doc -> {
             Log.d(TAG, "New event added.");
             future.complete(doc.getId());
         }).addOnFailureListener(e -> {

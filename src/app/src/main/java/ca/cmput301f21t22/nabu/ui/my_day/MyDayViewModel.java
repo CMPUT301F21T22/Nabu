@@ -1,5 +1,7 @@
 package ca.cmput301f21t22.nabu.ui.my_day;
 
+import android.os.Bundle;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.LiveData;
@@ -19,8 +21,10 @@ import ca.cmput301f21t22.nabu.data.Event;
 import ca.cmput301f21t22.nabu.data.Habit;
 import ca.cmput301f21t22.nabu.data.MyDayCard;
 import ca.cmput301f21t22.nabu.data.User;
+import ca.cmput301f21t22.nabu.dialogs.edit_event.EditEventFragment;
 import ca.cmput301f21t22.nabu.model.commands.AddEventCommand;
 import ca.cmput301f21t22.nabu.model.commands.DeleteEventCommand;
+import ca.cmput301f21t22.nabu.model.commands.UpdateEventCommand;
 
 public class MyDayViewModel extends ViewModel {
     @NonNull
@@ -60,12 +64,17 @@ public class MyDayViewModel extends ViewModel {
     }
 
     @NonNull
-    public MutableLiveData<List<MyDayCard>> getCompleteCards() {
+    public LiveData<List<MyDayCard>> getCompleteCards() {
         return this.completeCards;
     }
 
     @NonNull
-    public MutableLiveData<Boolean> getInstantShowEdit() {
+    public Event getMostRecentEvent() {
+        return Objects.requireNonNull(this.mostRecentEvent);
+    }
+
+    @NonNull
+    public LiveData<Boolean> getInstantShowEdit() {
         return this.instantShowEdit;
     }
 
@@ -97,9 +106,10 @@ public class MyDayViewModel extends ViewModel {
         }
     }
 
-    public void onEditMostRecentEvent() {
-        if (this.mostRecentEvent != null) {
-            // Spawn editor.
+    public void onEventEdited(@Nullable Bundle result) {
+        if (result != null) {
+            Event event = (Event) result.getSerializable(EditEventFragment.ARG_EVENT);
+            new UpdateEventCommand(event).execute();
         }
     }
 

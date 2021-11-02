@@ -3,13 +3,14 @@ package ca.cmput301f21t22.nabu.data;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import java.io.Serializable;
 import java.time.DayOfWeek;
 import java.util.Objects;
 
 /**
  * A data object storing the days of the week on which an event occurs.
  */
-public class Occurrence {
+public class Occurrence implements Serializable {
     private boolean onSunday;
     private boolean onMonday;
     private boolean onTuesday;

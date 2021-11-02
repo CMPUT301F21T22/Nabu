@@ -15,4 +15,9 @@
     <string name="dialog_sign_out_message">Are you sure you want to sign out?</string>
     <string name="dialog_reset_message">Are you sure you want to reset all user data?</string>
     <string name="prompt_habit_completed">Habit marked as complete.</string>
+    <string name="hint_date_completed">Date Completed</string>
+    <string name="hint_comment">Comment</string>
+    <string name="title_add_event">Add Event</string>
+    <string name="title_edit_event">Edit Event</string>
+    <string name="error_comment_too_long">Comment can only have up to 20 characters.</string>
 </resources>

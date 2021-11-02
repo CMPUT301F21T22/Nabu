@@ -22,6 +22,7 @@ import java.util.Locale;
 import ca.cmput301f21t22.nabu.R;
 import ca.cmput301f21t22.nabu.databinding.FragmentMydayBinding;
 import ca.cmput301f21t22.nabu.databinding.HeaderCalendarBinding;
+import ca.cmput301f21t22.nabu.dialogs.edit_event.EditEventFragment;
 import ca.cmput301f21t22.nabu.model.repositories.EventRepository;
 import ca.cmput301f21t22.nabu.model.repositories.HabitRepository;
 import ca.cmput301f21t22.nabu.model.repositories.UserRepository;
@@ -50,6 +51,9 @@ public class MyDayFragment extends ExtendedToolbarFragment {
         this.incompleteAdapter = new IncompleteCardAdapter();
         this.completeAdapter = new CompleteCardAdapter();
 
+        this.getChildFragmentManager()
+                .setFragmentResultListener("EditResult", this, (key, result) -> this.viewModel.onEventEdited(result));
+
         UserRepository.getInstance()
                 .getCurrentUser()
                 .observe(this.getViewLifecycleOwner(), user -> this.viewModel.setCurrentUser(user));
@@ -72,7 +76,9 @@ public class MyDayFragment extends ExtendedToolbarFragment {
                 Snackbar.make(this.requireActivity().findViewById(android.R.id.content),
                               R.string.prompt_habit_completed, BaseTransientBottomBar.LENGTH_LONG)
                         .setAnchorView(this.requireActivity().findViewById(R.id.main_nav_view))
-                        .setAction(R.string.button_edit_event, view -> this.viewModel.onEditMostRecentEvent())
+                        .setAction(R.string.button_edit_event,
+                                   view -> EditEventFragment.newInstance(this.viewModel.getMostRecentEvent())
+                                           .show(this.getChildFragmentManager(), "EditEvent"))
                         .show();
             }
         });
