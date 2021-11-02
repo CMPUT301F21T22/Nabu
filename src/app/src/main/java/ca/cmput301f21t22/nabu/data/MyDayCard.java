@@ -3,13 +3,14 @@ package ca.cmput301f21t22.nabu.data;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Objects;
 
 import ca.cmput301f21t22.nabu.R;
 
-public class MyDayCard {
+public class MyDayCard implements Serializable {
     @NonNull
     private final Habit habit;
     @NonNull

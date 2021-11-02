@@ -3,10 +3,11 @@ package ca.cmput301f21t22.nabu.data;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 
-public class User {
+public class User implements Serializable {
     @NonNull
     private final String id;
     @NonNull

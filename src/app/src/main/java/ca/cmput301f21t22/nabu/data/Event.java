@@ -5,10 +5,11 @@ import androidx.annotation.Nullable;
 
 import com.google.firebase.firestore.GeoPoint;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
-public class Event {
+public class Event implements Serializable {
     @NonNull
     private final String id;
     @NonNull
