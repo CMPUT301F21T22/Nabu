@@ -12,6 +12,9 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.ConcatAdapter;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.google.android.material.snackbar.BaseTransientBottomBar;
+import com.google.android.material.snackbar.Snackbar;
+
 import java.time.LocalDate;
 import java.time.format.TextStyle;
 import java.util.Locale;
@@ -64,6 +67,15 @@ public class MyDayFragment extends ExtendedToolbarFragment {
                 .observe(this.getViewLifecycleOwner(), cards -> this.incompleteAdapter.setCards(cards));
         this.viewModel.getCompleteCards()
                 .observe(this.getViewLifecycleOwner(), cards -> this.completeAdapter.setCards(cards));
+        this.viewModel.getInstantShowEdit().observe(this.getViewLifecycleOwner(), show -> {
+            if (show != null && show) {
+                Snackbar.make(this.requireActivity().findViewById(android.R.id.content),
+                              R.string.prompt_habit_completed, BaseTransientBottomBar.LENGTH_LONG)
+                        .setAnchorView(this.requireActivity().findViewById(R.id.main_nav_view))
+                        .setAction(R.string.button_edit_event, view -> this.viewModel.onEditMostRecentEvent())
+                        .show();
+            }
+        });
 
         this.binding.listCard.setLayoutManager(new LinearLayoutManager(this.requireContext()));
         this.binding.listCard.setAdapter(new ConcatAdapter(this.incompleteAdapter, this.completeAdapter));

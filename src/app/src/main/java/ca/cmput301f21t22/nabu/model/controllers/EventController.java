@@ -38,16 +38,24 @@ public class EventController {
         return INSTANCE;
     }
 
-    public void delete(@NonNull String id) {
+    @NonNull
+    public CompletableFuture<Boolean> delete(@NonNull String id) {
         if (id.equals("")) {
             throw new IllegalArgumentException();
         }
 
-        this.eventsCollection.document(id)
-                .delete()
-                .addOnCompleteListener(task -> Log.d(TAG, "Event deleted with id: " + id));
+        CompletableFuture<Boolean> future = new CompletableFuture<>();
+        this.eventsCollection.document(id).delete().addOnCompleteListener(task -> {
+            Log.d(TAG, "Event deleted with id: " + id);
+            future.complete(true);
+        }).addOnFailureListener(e -> {
+            Log.w(TAG, "Failed to delete event with id: " + id, e);
+            future.complete(false);
+        });
+        return future;
     }
 
+    @NonNull
     public CompletableFuture<String> add(@NonNull Event event) {
         CompletableFuture<String> future = new CompletableFuture<>();
         Map<String, Object> map = new HashMap<>();
@@ -58,7 +66,10 @@ public class EventController {
         this.eventsCollection.add(map).addOnSuccessListener(doc -> {
             Log.d(TAG, "New event added.");
             future.complete(doc.getId());
-        }).addOnFailureListener(e -> Log.e(TAG, "Failed to add new event.", e));
+        }).addOnFailureListener(e -> {
+            Log.e(TAG, "Failed to add new event.", e);
+            future.complete(null);
+        });
         return future;
     }
 }

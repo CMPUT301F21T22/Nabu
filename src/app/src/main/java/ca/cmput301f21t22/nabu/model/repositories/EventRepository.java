@@ -19,7 +19,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
+import java.util.concurrent.CompletableFuture;
 
 import ca.cmput301f21t22.nabu.data.Event;
 
@@ -57,10 +57,14 @@ public class EventRepository {
 
     @NonNull
     private static Event createFromSnapshot(@NonNull DocumentSnapshot snapshot) {
-        Date date = Objects.requireNonNull(snapshot.getDate("date"));
+        Date date = snapshot.getDate("date");
         String comment = snapshot.getString("comment");
         String photoPath = snapshot.getString("photoPath");
         GeoPoint location = snapshot.getGeoPoint("location");
+
+        if (date == null) {
+            throw new IllegalArgumentException();
+        }
 
         return new Event(snapshot.getId(), date, comment, photoPath, location);
     }
@@ -68,6 +72,22 @@ public class EventRepository {
     @NonNull
     public LiveData<Map<String, Event>> getEvents() {
         return this.events;
+    }
+
+    @NonNull
+    public CompletableFuture<Event> retrieveEvent(@NonNull String id) {
+        CompletableFuture<Event> future = new CompletableFuture<>();
+        this.eventsCollection.document(id).get().addOnSuccessListener(snapshot -> {
+            try {
+                future.complete(createFromSnapshot(snapshot));
+            } catch (IllegalArgumentException e) {
+                future.complete(null);
+            }
+        }).addOnFailureListener(e -> {
+            Log.e(TAG, "Failed to retrieve event.", e);
+            future.complete(null);
+        });
+        return future;
     }
 
     private void onEventsChanged(@Nullable QuerySnapshot snapshots, @Nullable FirebaseFirestoreException e) {

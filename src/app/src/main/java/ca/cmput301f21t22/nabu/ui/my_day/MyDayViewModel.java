@@ -34,6 +34,11 @@ public class MyDayViewModel extends ViewModel {
     private final MutableLiveData<List<MyDayCard>> completeCards;
 
     @Nullable
+    private Event mostRecentEvent;
+    @NonNull
+    private final MutableLiveData<Boolean> instantShowEdit;
+
+    @Nullable
     private User currentUser;
     @Nullable
     private Map<String, Habit> currentHabits;
@@ -44,6 +49,9 @@ public class MyDayViewModel extends ViewModel {
         this.cardsList = new ArrayList<>();
         this.incompleteCards = new MutableLiveData<>();
         this.completeCards = new MutableLiveData<>();
+
+        this.mostRecentEvent = null;
+        this.instantShowEdit = new MutableLiveData<>();
     }
 
     @NonNull
@@ -54,6 +62,11 @@ public class MyDayViewModel extends ViewModel {
     @NonNull
     public MutableLiveData<List<MyDayCard>> getCompleteCards() {
         return this.completeCards;
+    }
+
+    @NonNull
+    public MutableLiveData<Boolean> getInstantShowEdit() {
+        return this.instantShowEdit;
     }
 
     public void setCurrentUser(@Nullable User currentUser) {
@@ -77,7 +90,16 @@ public class MyDayViewModel extends ViewModel {
         if (complete) {
             new DeleteEventCommand(todayEvent).execute();
         } else {
-            new AddEventCommand(card.getHabit(), new Event(new Date())).execute();
+            new AddEventCommand(card.getHabit(), new Event(new Date())).execute().thenAccept(event -> {
+                this.mostRecentEvent = event;
+                this.instantShowEdit.setValue(true);
+            });
+        }
+    }
+
+    public void onEditMostRecentEvent() {
+        if (this.mostRecentEvent != null) {
+            // Spawn editor.
         }
     }
 

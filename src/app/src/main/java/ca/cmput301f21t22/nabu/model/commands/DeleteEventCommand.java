@@ -2,8 +2,8 @@ package ca.cmput301f21t22.nabu.model.commands;
 
 import androidx.annotation.NonNull;
 
-import java.util.Map;
 import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
 
 import ca.cmput301f21t22.nabu.data.Event;
 import ca.cmput301f21t22.nabu.data.Habit;
@@ -12,7 +12,7 @@ import ca.cmput301f21t22.nabu.model.controllers.EventController;
 import ca.cmput301f21t22.nabu.model.controllers.HabitController;
 import ca.cmput301f21t22.nabu.model.repositories.HabitRepository;
 
-public class DeleteEventCommand implements Command {
+public class DeleteEventCommand implements Command<CompletableFuture<Boolean>> {
     @NonNull
     private final HabitRepository habitRepository;
 
@@ -34,20 +34,13 @@ public class DeleteEventCommand implements Command {
     }
 
     @Override
-    public void execute() {
-        Map<String, Habit> habitsMap = this.habitRepository.getHabits().getValue();
-        if (habitsMap != null) {
-            Optional<Habit> parent = habitsMap.values()
-                    .stream()
-                    .filter(habit -> habit.getEvents().contains(this.event.getId()))
-                    .findFirst();
-            if (parent.isPresent()) {
-                this.habitController.deleteEvent(parent.get().getId(), this.event.getId());
-            } else {
-                this.eventController.delete(this.event.getId());
-            }
-        } else {
-            this.eventController.delete(this.event.getId());
+    public CompletableFuture<Boolean> execute() {
+        Optional<Habit> parent =
+                this.habitRepository.findHabit(habit -> habit.getEvents().contains(this.event.getId()));
+        if (parent.isPresent()) {
+            return this.habitController.deleteEvent(parent.get().getId(), this.event.getId())
+                    .thenCompose(habitId -> this.eventController.delete(this.event.getId()));
         }
+        return this.eventController.delete(this.event.getId());
     }
 }

@@ -11,6 +11,8 @@
     <string name="button_cancel">@android:string/cancel</string>
     <string name="button_sign_out">Sign out</string>
     <string name="button_reset">Reset</string>
+    <string name="button_edit_event">Edit Event</string>
     <string name="dialog_sign_out_message">Are you sure you want to sign out?</string>
     <string name="dialog_reset_message">Are you sure you want to reset all user data?</string>
+    <string name="prompt_habit_completed">Habit marked as complete.</string>
 </resources>

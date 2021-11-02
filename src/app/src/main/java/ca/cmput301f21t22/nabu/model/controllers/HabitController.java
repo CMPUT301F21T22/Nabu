@@ -11,8 +11,6 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.concurrent.CompletableFuture;
 
-import ca.cmput301f21t22.nabu.data.Habit;
-
 public class HabitController {
     @NonNull
     public final static String TAG = "HabitController";
@@ -36,9 +34,7 @@ public class HabitController {
         return INSTANCE;
     }
 
-    private static void guard(Habit habit) {
-    }
-
+    @NonNull
     public CompletableFuture<String> addEvent(@NonNull String habitId, @NonNull String eventId) {
         if (habitId.equals("") || eventId.equals("")) {
             throw new IllegalArgumentException();
@@ -47,13 +43,17 @@ public class HabitController {
         CompletableFuture<String> future = new CompletableFuture<>();
         this.habitsCollection.document(habitId)
                 .update("events", FieldValue.arrayUnion(eventId))
+                .addOnCompleteListener(unused -> future.complete(habitId))
                 .addOnSuccessListener(unused -> {
                     Log.d(TAG, "Event with id: " + eventId + " added to habit with id: " + habitId);
-                    future.complete(habitId);
+                })
+                .addOnFailureListener(unused -> {
+                    Log.w(TAG, "Failed to add event with id: " + eventId + " to habit with id: " + habitId);
                 });
         return future;
     }
 
+    @NonNull
     public CompletableFuture<String> deleteEvent(@NonNull String habitId, @NonNull String eventId) {
         if (habitId.equals("") || eventId.equals("")) {
             throw new IllegalArgumentException();
@@ -62,9 +62,12 @@ public class HabitController {
         CompletableFuture<String> future = new CompletableFuture<>();
         this.habitsCollection.document(habitId)
                 .update("events", FieldValue.arrayRemove(eventId))
+                .addOnCompleteListener(unused -> future.complete(habitId))
                 .addOnSuccessListener(unused -> {
                     Log.d(TAG, "Event with id: " + habitId + " removed from habit with id: " + eventId);
-                    future.complete(habitId);
+                })
+                .addOnFailureListener(unused -> {
+                    Log.w(TAG, "Failed to remove Event with id: " + habitId + " from habit with id: " + eventId);
                 });
         return future;
     }
