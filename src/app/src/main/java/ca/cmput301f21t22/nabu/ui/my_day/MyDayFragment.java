@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.ConcatAdapter;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import java.time.LocalDate;
@@ -32,7 +33,9 @@ public class MyDayFragment extends ExtendedToolbarFragment {
     @Nullable
     private FragmentMydayBinding binding;
     @Nullable
-    private MyDayCardAdapter adapter;
+    private IncompleteCardAdapter incompleteAdapter;
+    @Nullable
+    private CompleteCardAdapter completeAdapter;
 
     @Nullable
     @Override
@@ -41,7 +44,8 @@ public class MyDayFragment extends ExtendedToolbarFragment {
                              @Nullable Bundle savedInstanceState) {
         this.viewModel = new ViewModelProvider(this).get(MyDayViewModel.class);
         this.binding = FragmentMydayBinding.inflate(inflater, container, false);
-        this.adapter = new MyDayCardAdapter();
+        this.incompleteAdapter = new IncompleteCardAdapter();
+        this.completeAdapter = new CompleteCardAdapter();
 
         UserRepository.getInstance()
                 .getCurrentUser()
@@ -55,10 +59,15 @@ public class MyDayFragment extends ExtendedToolbarFragment {
                 .getEvents()
                 .observe(this.getViewLifecycleOwner(), events -> this.viewModel.setCurrentEvents(events));
 
-        this.viewModel.getCards().observe(this.getViewLifecycleOwner(), cards -> this.adapter.setCards(cards));
+        this.viewModel.getIncompleteCards()
+                .observe(this.getViewLifecycleOwner(), cards -> this.incompleteAdapter.setCards(cards));
 
-        this.binding.listIncomplete.setLayoutManager(new LinearLayoutManager(this.requireContext()));
-        this.binding.listIncomplete.setAdapter(this.adapter);
+        this.viewModel.getCompleteCards()
+                .observe(this.getViewLifecycleOwner(), cards -> this.completeAdapter.setCards(cards));
+
+        this.binding.listCard.setLayoutManager(new LinearLayoutManager(this.requireContext()));
+        this.binding.listCard.setAdapter(new ConcatAdapter(this.incompleteAdapter, this.completeAdapter));
+
         return this.binding.getRoot();
     }
 

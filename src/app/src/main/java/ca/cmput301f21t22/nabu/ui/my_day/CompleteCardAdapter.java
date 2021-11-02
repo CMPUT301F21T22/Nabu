@@ -1,6 +1,7 @@
 package ca.cmput301f21t22.nabu.ui.my_day;
 
 import android.annotation.SuppressLint;
+import android.graphics.Paint;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -13,20 +14,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ca.cmput301f21t22.nabu.data.MyDayCard;
-import ca.cmput301f21t22.nabu.databinding.CardMyDayBinding;
+import ca.cmput301f21t22.nabu.databinding.CardMyDayCompleteBinding;
 
-public class MyDayCardAdapter extends RecyclerView.Adapter<MyDayCardAdapter.ViewHolder> {
+public class CompleteCardAdapter extends RecyclerView.Adapter<CompleteCardAdapter.ViewHolder> {
     @NonNull
     private List<MyDayCard> cards;
 
-    public MyDayCardAdapter() {
+    public CompleteCardAdapter() {
         this.cards = new ArrayList<>();
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new ViewHolder(CardMyDayBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false));
+        return new ViewHolder(
+                CardMyDayCompleteBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false));
     }
 
     @Override
@@ -48,14 +50,16 @@ public class MyDayCardAdapter extends RecyclerView.Adapter<MyDayCardAdapter.View
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         @NonNull
-        private final CardMyDayBinding binding;
+        private final CardMyDayCompleteBinding binding;
 
-        public ViewHolder(@NonNull CardMyDayBinding binding) {
+        public ViewHolder(@NonNull CardMyDayCompleteBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
         }
 
         public void onBindView(@NonNull MyDayCard card) {
+            this.binding.labelHabitName.setPaintFlags(
+                    this.binding.labelHabitName.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
             this.binding.labelHabitName.setText(card.getHabit().getTitle());
 
             ImageView[] icons = {

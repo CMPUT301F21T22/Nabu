@@ -10,12 +10,9 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.ListIterator;
 import java.util.Map;
 import java.util.Objects;
-import java.util.Set;
 
 import ca.cmput301f21t22.nabu.data.Event;
 import ca.cmput301f21t22.nabu.data.Habit;
@@ -29,7 +26,9 @@ public class MyDayViewModel extends ViewModel {
     @NonNull
     private final List<MyDayCard> cardsList;
     @NonNull
-    private final MutableLiveData<List<MyDayCard>> cards;
+    private final MutableLiveData<List<MyDayCard>> incompleteCards;
+    @NonNull
+    private final MutableLiveData<List<MyDayCard>> completeCards;
 
     @Nullable
     private User currentUser;
@@ -40,12 +39,18 @@ public class MyDayViewModel extends ViewModel {
 
     public MyDayViewModel() {
         this.cardsList = new ArrayList<>();
-        this.cards = new MutableLiveData<>();
+        this.incompleteCards = new MutableLiveData<>();
+        this.completeCards = new MutableLiveData<>();
     }
 
     @NonNull
-    public LiveData<List<MyDayCard>> getCards() {
-        return this.cards;
+    public LiveData<List<MyDayCard>> getIncompleteCards() {
+        return this.incompleteCards;
+    }
+
+    @NonNull
+    public MutableLiveData<List<MyDayCard>> getCompleteCards() {
+        return this.completeCards;
     }
 
     public void setCurrentUser(@Nullable User currentUser) {
@@ -63,36 +68,56 @@ public class MyDayViewModel extends ViewModel {
         this.onDataChanged();
     }
 
+    private void updateLists() {
+        List<MyDayCard> incomplete = new ArrayList<>();
+        List<MyDayCard> complete = new ArrayList<>();
+
+        LocalDate today = LocalDate.now();
+        for (MyDayCard card : this.cardsList) {
+            Habit habit = card.getHabit();
+            boolean due = habit.getOccurrence().isOnDayOfWeek(today.getDayOfWeek());
+            if (card.getEvents()[0] != null && due) {
+                complete.add(card);
+            } else if (due) {
+                incomplete.add(card);
+            }
+        }
+
+        this.incompleteCards.setValue(incomplete);
+        this.completeCards.setValue(complete);
+    }
+
     private void onDataChanged() {
-        if (this.currentUser == null || this.currentHabits == null || this.currentUser.getHabits().size() == 0 ||
-            this.currentHabits.size() == 0) {
-            this.cardsList.clear();
-            this.cards.setValue(this.cardsList);
+        if (this.currentUser == null || this.currentHabits == null) {
+            this.updateLists();
             return;
         }
 
-        Set<String> habitIds = new HashSet<>(this.currentUser.getHabits());
+        this.cardsList.clear();
+        List<String> habitIds = this.currentUser.getHabits();
+        // Process new habits.
+        for (String habitId : habitIds) {
+            this.cardsList.add(this.processHabit(Objects.requireNonNull(this.currentHabits.get(habitId))));
+        }
+
+        /* This is commented out because it doesn't preserve user habit order.
         ListIterator<MyDayCard> cardIterator = this.cardsList.listIterator();
         while (cardIterator.hasNext()) {
-            Habit habit = cardIterator.next().getHabit();
+            String habitId = cardIterator.next().getHabit().getId();
             // Replace.
-            if (habitIds.contains(habit.getId())) {
-                cardIterator.set(this.processHabit(habit));
+            if (habitIds.contains(habitId)) {
+                cardIterator.set(this.processHabit(Objects.requireNonNull(this.currentHabits.get(habitId))));
                 // Remove the id from the set to indicate we've processed it.
-                habitIds.remove(habit.getId());
+                habitIds.remove(habitId);
             }
             // Remove.
             else {
                 cardIterator.remove();
             }
         }
+         */
 
-        // Process new habits.
-        for (String habitId : habitIds) {
-            this.cardsList.add(this.processHabit(Objects.requireNonNull(this.currentHabits.get(habitId))));
-        }
-
-        this.cards.setValue(this.cardsList);
+        this.updateLists();
     }
 
     @NonNull
