@@ -1,4 +1,4 @@
-package ca.cmput301f21t22.nabu.model;
+package ca.cmput301f21t22.nabu.ui.habits;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -17,16 +17,17 @@ import androidx.annotation.Nullable;
 import java.util.ArrayList;
 
 import ca.cmput301f21t22.nabu.R;
+import ca.cmput301f21t22.nabu.data.Habit;
 import ca.cmput301f21t22.nabu.databinding.HabitCardBinding;
 
 public class HabitListAdapter extends ArrayAdapter<Habit> {
 
-    private ArrayList<Habit> habits;
-    private Context context;
-    @Nullable
-    private HabitCardBinding binding;
     @Nullable
     ViewGroup container;
+    private final ArrayList<Habit> habits;
+    private final Context context;
+    @Nullable
+    private HabitCardBinding binding;
 
     public HabitListAdapter(Context context, ArrayList<Habit> habits) {
         super(context, 0, habits);
@@ -42,16 +43,16 @@ public class HabitListAdapter extends ArrayAdapter<Habit> {
         //return super.getView(position, convertView, parent);
         View view = convertView;
 
-        if(view == null){
-            this.binding = HabitCardBinding.inflate(LayoutInflater.from(context));
+        if (view == null) {
+            this.binding = HabitCardBinding.inflate(LayoutInflater.from(this.context));
         }
 
-        Habit habit = habits.get(position);
+        Habit habit = this.habits.get(position);
 
         TextView habitTitle = this.binding.habitTitleText;
         TextView datesOn = this.binding.datesOnText;
         TextView habitDescription = this.binding.habitDescriptionText;
-        TextView dateStarted  = this.binding.dateStartedText;
+        TextView dateStarted = this.binding.dateStartedText;
 
         habitTitle.setText(habit.getTitle());
         datesOn.setText(habit.getOccurrence().toString());
@@ -62,7 +63,7 @@ public class HabitListAdapter extends ArrayAdapter<Habit> {
         habitsMenuButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                PopupMenu habitsPopupMenu = new PopupMenu(context, habitsMenuButton);
+                PopupMenu habitsPopupMenu = new PopupMenu(HabitListAdapter.this.context, habitsMenuButton);
                 MenuInflater inflater = habitsPopupMenu.getMenuInflater();
                 inflater.inflate(R.menu.habit_card_popup_menu, habitsPopupMenu.getMenu());
                 habitsPopupMenu.show();
@@ -73,20 +74,17 @@ public class HabitListAdapter extends ArrayAdapter<Habit> {
                         if (item.getItemId() == habitsPopupMenu.getMenu().getItem(0).getItemId()) {
                             //TODO: Add call to switch to habit events fragment
                             return true;
-                        }
-                        else if (item.getItemId() == habitsPopupMenu.getMenu().getItem(1).getItemId()) {
+                        } else if (item.getItemId() == habitsPopupMenu.getMenu().getItem(1).getItemId()) {
                             //Edit
-                            Habit inputHabit = new Habit();
                             //TODO: Add call for edit habit fragment
-                            edit(position, inputHabit);
                             return true;
-                        }
-                        else if (item.getItemId() == habitsPopupMenu.getMenu().getItem(2).getItemId()) {
+                        } else if (item.getItemId() == habitsPopupMenu.getMenu().getItem(2).getItemId()) {
                             //remove
-                            remove(habits.get(position));
+                            HabitListAdapter.this.remove(HabitListAdapter.this.habits.get(position));
                             return true;
-                        }
-                        else { return false; } //Default
+                        } else {
+                            return false;
+                        } //Default
                     }
                 });
             }

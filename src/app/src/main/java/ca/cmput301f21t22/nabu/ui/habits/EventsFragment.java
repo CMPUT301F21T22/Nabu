@@ -16,13 +16,8 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
 import java.util.Date;
 
+import ca.cmput301f21t22.nabu.data.Event;
 import ca.cmput301f21t22.nabu.databinding.FragmentEventsBinding;
-import ca.cmput301f21t22.nabu.model.Event;
-import ca.cmput301f21t22.nabu.model.EventList;
-import ca.cmput301f21t22.nabu.model.EventListAdapter;
-import ca.cmput301f21t22.nabu.model.Habit;
-import ca.cmput301f21t22.nabu.model.HabitList;
-import ca.cmput301f21t22.nabu.model.Occurrence;
 
 public class EventsFragment extends Fragment {
 
@@ -37,7 +32,7 @@ public class EventsFragment extends Fragment {
     private ArrayList<Event> eventDataList;
 
     //Temporary
-    private HabitList habitList;
+    //private HabitList habitList;
 
     @Nullable
     @Override
@@ -47,12 +42,12 @@ public class EventsFragment extends Fragment {
         this.viewModel = new ViewModelProvider(this).get(HabitsViewModel.class);
         this.binding = FragmentEventsBinding.inflate(inflater, container, false);
 
-        eventDataList = new ArrayList<Event>();
-        eventDataList.add(new Event(new Date()));
+        this.eventDataList = new ArrayList<Event>();
+        this.eventDataList.add(new Event(new Date()));
 
-        eventsListView = this.binding.eventsList;
-        eventsAdapter = new EventListAdapter(this.requireContext(), eventDataList);
-        eventsListView.setAdapter(eventsAdapter);
+        this.eventsListView = this.binding.eventsList;
+        this.eventsAdapter = new EventListAdapter(this.requireContext(), this.eventDataList);
+        this.eventsListView.setAdapter(this.eventsAdapter);
 
         final FloatingActionButton addHabit = this.binding.addEventButton;
         addHabit.setOnClickListener(new View.OnClickListener() {
@@ -61,8 +56,8 @@ public class EventsFragment extends Fragment {
                 Event inputEvent = new Event(new Date());
                 //TODO: Call to edit/add habit fragment
                 //habitDataList.add(inputHabit);
-                eventsAdapter.add(inputEvent);
-                eventsAdapter.notifyDataSetChanged();
+                EventsFragment.this.eventsAdapter.add(inputEvent);
+                EventsFragment.this.eventsAdapter.notifyDataSetChanged();
             }
         });
 
@@ -75,5 +70,4 @@ public class EventsFragment extends Fragment {
         this.binding = null;
         super.onDestroyView();
     }
-
 }

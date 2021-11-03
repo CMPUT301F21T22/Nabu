@@ -1,4 +1,4 @@
-package ca.cmput301f21t22.nabu.model;
+package ca.cmput301f21t22.nabu.ui.habits;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 
@@ -19,17 +18,17 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import ca.cmput301f21t22.nabu.R;
+import ca.cmput301f21t22.nabu.data.Event;
 import ca.cmput301f21t22.nabu.databinding.EventCardBinding;
-import ca.cmput301f21t22.nabu.databinding.HabitCardBinding;
 
 public class EventListAdapter extends ArrayAdapter<Event> {
 
+    @Nullable
+    ViewGroup container;
     private ArrayList<Event> events;
     private Context context;
     @Nullable
     private EventCardBinding binding;
-    @Nullable
-    ViewGroup container;
 
     public EventListAdapter(Context context, ArrayList<Event> events) {
         super(context, 0, events);
@@ -45,7 +44,7 @@ public class EventListAdapter extends ArrayAdapter<Event> {
         //return super.getView(position, convertView, parent);
         View view = convertView;
 
-        if(view == null){
+        if (view == null) {
             this.binding = EventCardBinding.inflate(LayoutInflater.from(context));
         }
 
@@ -79,13 +78,13 @@ public class EventListAdapter extends ArrayAdapter<Event> {
                             //TODO: Add call for edit habit fragment
                             edit(position, inputEvent);
                             return true;
-                        }
-                        else if (item.getItemId() == eventsPopupMenu.getMenu().getItem(1).getItemId()) {
+                        } else if (item.getItemId() == eventsPopupMenu.getMenu().getItem(1).getItemId()) {
                             //remove
                             remove(events.get(position));
                             return true;
-                        }
-                        else { return false; } //Default
+                        } else {
+                            return false;
+                        } //Default
                     }
                 });
             }

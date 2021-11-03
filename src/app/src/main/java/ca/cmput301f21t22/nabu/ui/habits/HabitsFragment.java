@@ -10,21 +10,17 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.ViewModelProvider;
 
-import ca.cmput301f21t22.nabu.R;
-import ca.cmput301f21t22.nabu.databinding.FragmentHabitsBinding;
-import ca.cmput301f21t22.nabu.databinding.HeaderDefaultBinding;
-import ca.cmput301f21t22.nabu.ui.ExtendedToolbarFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.Date;
 
+import ca.cmput301f21t22.nabu.R;
+import ca.cmput301f21t22.nabu.data.Habit;
+import ca.cmput301f21t22.nabu.data.Occurrence;
 import ca.cmput301f21t22.nabu.databinding.FragmentHabitsBinding;
-import ca.cmput301f21t22.nabu.model.EventList;
-import ca.cmput301f21t22.nabu.model.Habit;
-import ca.cmput301f21t22.nabu.model.HabitList;
-import ca.cmput301f21t22.nabu.model.HabitListAdapter;
-import ca.cmput301f21t22.nabu.model.Occurrence;
+import ca.cmput301f21t22.nabu.databinding.HeaderDefaultBinding;
+import ca.cmput301f21t22.nabu.ui.ExtendedToolbarFragment;
 
 public class HabitsFragment extends ExtendedToolbarFragment {
 
@@ -39,7 +35,7 @@ public class HabitsFragment extends ExtendedToolbarFragment {
     private ArrayList<Habit> habitDataList;
 
     //Temporary
-    private HabitList habitList;
+    //private HabitList habitList;
 
     @Nullable
     @Override
@@ -49,24 +45,22 @@ public class HabitsFragment extends ExtendedToolbarFragment {
         this.viewModel = new ViewModelProvider(this).get(HabitsViewModel.class);
         this.binding = FragmentHabitsBinding.inflate(inflater, container, false);
 
-        habitDataList = new ArrayList<Habit>();
-        habitDataList.add(new Habit("Work", "Making money", new Date(),
-                new Occurrence(true, false, true, false,
-                        true, false, true), new EventList()));
+        this.habitDataList = new ArrayList<Habit>();
+        this.habitDataList.add(new Habit("Work", "Making money", new Date(),
+                                         new Occurrence(true, false, true, false, true, false, true), new ArrayList<>(),
+                                         true));
 
-        habitsListView = this.binding.habitsList;
-        habitsAdapter = new HabitListAdapter(this.requireContext(), habitDataList);
-        habitsListView.setAdapter(habitsAdapter);
+        this.habitsListView = this.binding.habitsList;
+        this.habitsAdapter = new HabitListAdapter(this.requireContext(), this.habitDataList);
+        this.habitsListView.setAdapter(this.habitsAdapter);
 
         final FloatingActionButton addHabit = this.binding.addHabitButton;
         addHabit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Habit inputHabit = new Habit();
                 //TODO: Call to edit/add habit fragment
                 //habitDataList.add(inputHabit);
-                habitsAdapter.add(inputHabit);
-                habitsAdapter.notifyDataSetChanged();
+                HabitsFragment.this.habitsAdapter.notifyDataSetChanged();
             }
         });
 
