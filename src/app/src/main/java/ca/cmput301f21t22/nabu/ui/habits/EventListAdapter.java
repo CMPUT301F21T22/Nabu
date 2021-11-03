@@ -19,7 +19,7 @@ import java.util.Date;
 
 import ca.cmput301f21t22.nabu.R;
 import ca.cmput301f21t22.nabu.data.Event;
-import ca.cmput301f21t22.nabu.databinding.EventCardBinding;
+import ca.cmput301f21t22.nabu.databinding.CardEventBinding;
 
 public class EventListAdapter extends ArrayAdapter<Event> {
 
@@ -28,7 +28,7 @@ public class EventListAdapter extends ArrayAdapter<Event> {
     private ArrayList<Event> events;
     private Context context;
     @Nullable
-    private EventCardBinding binding;
+    private CardEventBinding binding;
 
     public EventListAdapter(Context context, ArrayList<Event> events) {
         super(context, 0, events);
@@ -45,13 +45,13 @@ public class EventListAdapter extends ArrayAdapter<Event> {
         View view = convertView;
 
         if (view == null) {
-            this.binding = EventCardBinding.inflate(LayoutInflater.from(context));
+            this.binding = CardEventBinding.inflate(LayoutInflater.from(context));
         }
 
         Event event = events.get(position);
 
-        TextView eventComment = this.binding.eventCommentText;
-        TextView dates = this.binding.eventDatesText;
+        TextView eventComment = this.binding.labelComment;
+        TextView dates = this.binding.labelDate;
         //ImageView eventPhoto = this.binding.eventPhoto;
         //TextView eventLocation  = this.binding.eventLocation;
 
@@ -60,7 +60,7 @@ public class EventListAdapter extends ArrayAdapter<Event> {
         //eventPhoto.(event.getPhotoPath());
         //eventLocation.setText(event.getLocation());
 
-        final ImageButton eventsMenuButton = this.binding.eventsPopupImageButton;
+        final ImageButton eventsMenuButton = this.binding.buttonOverflowMenu;
         eventsMenuButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

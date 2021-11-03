@@ -12,11 +12,11 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
-        <item name="colorControlNormal">@color/body</item>
+        <item name="colorControlNormal">@color/black</item>
         <item name="android:textViewStyle">@style/Theme.Nabu.TextView</item>
     </style>
 
     <style name="Theme.Nabu.TextView" parent="android:Widget.TextView">
-        <item name="android:textColor">@color/body</item>
+        <item name="android:textColor">@color/black</item>
     </style>
 </resources>

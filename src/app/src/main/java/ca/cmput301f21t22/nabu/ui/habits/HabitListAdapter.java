@@ -18,7 +18,7 @@ import java.util.ArrayList;
 
 import ca.cmput301f21t22.nabu.R;
 import ca.cmput301f21t22.nabu.data.Habit;
-import ca.cmput301f21t22.nabu.databinding.HabitCardBinding;
+import ca.cmput301f21t22.nabu.databinding.CardHabitBinding;
 
 public class HabitListAdapter extends ArrayAdapter<Habit> {
 
@@ -27,7 +27,7 @@ public class HabitListAdapter extends ArrayAdapter<Habit> {
     private final ArrayList<Habit> habits;
     private final Context context;
     @Nullable
-    private HabitCardBinding binding;
+    private CardHabitBinding binding;
 
     public HabitListAdapter(Context context, ArrayList<Habit> habits) {
         super(context, 0, habits);
@@ -44,22 +44,22 @@ public class HabitListAdapter extends ArrayAdapter<Habit> {
         View view = convertView;
 
         if (view == null) {
-            this.binding = HabitCardBinding.inflate(LayoutInflater.from(this.context));
+            this.binding = CardHabitBinding.inflate(LayoutInflater.from(this.context));
         }
 
         Habit habit = this.habits.get(position);
 
-        TextView habitTitle = this.binding.habitTitleText;
-        TextView datesOn = this.binding.datesOnText;
-        TextView habitDescription = this.binding.habitDescriptionText;
-        TextView dateStarted = this.binding.dateStartedText;
+        TextView habitTitle = this.binding.labelHabitTitle;
+        TextView datesOn = this.binding.labelOccurrence;
+        TextView habitDescription = this.binding.labelReason;
+        TextView dateStarted = this.binding.labelStartDate;
 
         habitTitle.setText(habit.getTitle());
         datesOn.setText(habit.getOccurrence().toString());
         habitDescription.setText(habit.getReason());
         dateStarted.setText(habit.getStartDate().toString());
 
-        final ImageButton habitsMenuButton = this.binding.habitsPopupImageButton;
+        final ImageButton habitsMenuButton = this.binding.buttonOverflowMenu;
         habitsMenuButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
