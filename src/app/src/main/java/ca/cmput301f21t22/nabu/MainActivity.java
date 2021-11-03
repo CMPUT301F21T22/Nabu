@@ -54,8 +54,6 @@ public class MainActivity extends AppCompatActivity {
                                                    .setIsSmartLockEnabled(false)
                                                    .setAvailableProviders(this.signInProviders)
                                                    .build());
-            } else {
-                this.navigateTo(R.id.main_nav_myday);
             }
         });
 
@@ -69,19 +67,5 @@ public class MainActivity extends AppCompatActivity {
         AppBarConfiguration configuration = new AppBarConfiguration.Builder(this.binding.mainNavView.getMenu()).build();
         NavigationUI.setupActionBarWithNavController(this, controller, configuration);
         NavigationUI.setupWithNavController(this.binding.mainNavView, controller);
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        this.navigateTo(R.id.main_nav_myday);
-    }
-
-    private void navigateTo(int id) {
-        NavHostFragment host = (NavHostFragment) this.getSupportFragmentManager().findFragmentById(R.id.main_nav_host);
-        if (host != null) {
-            NavController controller = host.getNavController();
-            controller.navigate(R.id.main_nav_myday);
-        }
     }
 }

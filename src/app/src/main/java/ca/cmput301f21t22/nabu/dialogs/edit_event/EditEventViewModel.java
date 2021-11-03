@@ -11,16 +11,15 @@ import com.google.firebase.firestore.GeoPoint;
 import java.util.Date;
 
 import ca.cmput301f21t22.nabu.data.Event;
+import ca.cmput301f21t22.nabu.model.commands.UpdateEventCommand;
 
 public class EditEventViewModel extends ViewModel {
     private boolean saveable;
-    @Nullable
-    private Event savedEvent;
     @NonNull
     private final MutableLiveData<Boolean> saved;
 
     @NonNull
-    private final MutableLiveData<String> id;
+    private String id;
     @NonNull
     private final MutableLiveData<Date> date;
     @NonNull
@@ -33,25 +32,15 @@ public class EditEventViewModel extends ViewModel {
     public EditEventViewModel() {
         this.saved = new MutableLiveData<>();
 
-        this.id = new MutableLiveData<>();
+        this.id = "";
         this.date = new MutableLiveData<>();
         this.comment = new MutableLiveData<>();
         this.photoPath = new MutableLiveData<>();
         this.location = new MutableLiveData<>();
     }
 
-    @NonNull
-    public LiveData<String> getId() {
-        return this.id;
-    }
-
     public void setSaveable(boolean saveable) {
         this.saveable = saveable;
-    }
-
-    @Nullable
-    public Event getSavedEvent() {
-        return this.savedEvent;
     }
 
     @NonNull
@@ -100,8 +89,7 @@ public class EditEventViewModel extends ViewModel {
     }
 
     public void loadEvent(@NonNull Event event) {
-        this.id.setValue(event.getId());
-
+        this.id = event.getId();
         this.date.setValue(event.getDate());
         this.comment.setValue(event.getComment());
         this.photoPath.setValue(event.getPhotoPath());
@@ -111,14 +99,17 @@ public class EditEventViewModel extends ViewModel {
     }
 
     public void saveEvent() {
-        String id = this.id.getValue();
         Date date = this.date.getValue();
-        if (!this.saveable || id == null || date == null) {
+        if (!this.saveable || date == null) {
             return;
         }
 
-        this.savedEvent =
-                new Event(id, date, this.comment.getValue(), this.photoPath.getValue(), this.location.getValue());
-        this.saved.setValue(true);
+        new UpdateEventCommand(new Event(this.id, date, this.comment.getValue(), this.photoPath.getValue(),
+                                         this.location.getValue())).execute()
+                .thenAccept(event -> {
+                    if (event != null) {
+                        this.saved.setValue(true);
+                    }
+                });
     }
 }

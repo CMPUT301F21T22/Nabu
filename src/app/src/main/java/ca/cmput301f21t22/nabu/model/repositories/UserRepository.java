@@ -22,6 +22,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
+import java.util.function.Predicate;
 
 import ca.cmput301f21t22.nabu.data.User;
 
@@ -83,6 +85,11 @@ public class UserRepository {
     @NonNull
     public LiveData<Map<String, User>> getUsers() {
         return this.users;
+    }
+
+    @NonNull
+    public Optional<User> findUser(Predicate<User> predicate) {
+        return this.usersMap.values().stream().filter(predicate).findFirst();
     }
 
     private void onSignInChanged() {

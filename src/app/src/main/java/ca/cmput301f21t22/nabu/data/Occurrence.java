@@ -72,6 +72,81 @@ public class Occurrence implements Serializable {
                             this.onFriday, this.onSaturday);
     }
 
+    /**
+     * Creates a string representation of the occurrence object
+     *
+     * @return a string representation of the occurence object constructed using the day values
+     */
+    @NonNull
+    @Override
+    public String toString() {
+        if (this.isOnSunday() && this.isOnMonday() && this.isOnTuesday() && this.isOnWednesday() &&
+            this.isOnThursday() && this.isOnFriday() && this.isOnSaturday()) {
+            return "Every Day";
+        }
+
+        StringBuilder representation = new StringBuilder();
+        boolean first = true;
+        if (this.isOnSunday()) {
+            first = false;
+
+            representation.append("Sun");
+        }
+        if (this.isOnMonday()) {
+            if (!first) {
+                representation.append(", ");
+            } else {
+                first = false;
+            }
+
+            representation.append("Mon");
+        }
+        if (this.isOnTuesday()) {
+            if (!first) {
+                representation.append(", ");
+            } else {
+                first = false;
+            }
+
+            representation.append("Tues");
+        }
+        if (this.isOnWednesday()) {
+            if (!first) {
+                representation.append(", ");
+            } else {
+                first = false;
+            }
+
+            representation.append("Wed");
+        }
+        if (this.isOnThursday()) {
+            if (!first) {
+                representation.append(", ");
+            } else {
+                first = false;
+            }
+
+            representation.append("Thu");
+        }
+        if (this.isOnFriday()) {
+            if (!first) {
+                representation.append(", ");
+            } else {
+                first = false;
+            }
+
+            representation.append("Fri");
+        }
+        if (this.isOnSaturday()) {
+            if (!first) {
+                representation.append(", ");
+            }
+
+            representation.append("Sat");
+        }
+        return representation.toString();
+    }
+
     public boolean isOnSunday() {
         return this.onSunday;
     }

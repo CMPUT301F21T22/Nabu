@@ -1,7 +1,5 @@
 package ca.cmput301f21t22.nabu.ui.my_day;
 
-import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.LiveData;
@@ -12,7 +10,6 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -21,10 +18,8 @@ import ca.cmput301f21t22.nabu.data.Event;
 import ca.cmput301f21t22.nabu.data.Habit;
 import ca.cmput301f21t22.nabu.data.MyDayCard;
 import ca.cmput301f21t22.nabu.data.User;
-import ca.cmput301f21t22.nabu.dialogs.edit_event.EditEventFragment;
 import ca.cmput301f21t22.nabu.model.commands.AddEventCommand;
 import ca.cmput301f21t22.nabu.model.commands.DeleteEventCommand;
-import ca.cmput301f21t22.nabu.model.commands.UpdateEventCommand;
 
 public class MyDayViewModel extends ViewModel {
     @NonNull
@@ -99,17 +94,10 @@ public class MyDayViewModel extends ViewModel {
         if (complete) {
             new DeleteEventCommand(todayEvent).execute();
         } else {
-            new AddEventCommand(card.getHabit(), new Event(new Date())).execute().thenAccept(event -> {
+            new AddEventCommand(card.getHabit(), new Event()).execute().thenAccept(event -> {
                 this.mostRecentEvent = event;
                 this.instantShowEdit.setValue(true);
             });
-        }
-    }
-
-    public void onEventEdited(@Nullable Bundle result) {
-        if (result != null) {
-            Event event = (Event) result.getSerializable(EditEventFragment.ARG_EVENT);
-            new UpdateEventCommand(event).execute();
         }
     }
 
@@ -130,7 +118,7 @@ public class MyDayViewModel extends ViewModel {
     @NonNull
     private MyDayCard processHabit(@NonNull Habit habit) {
         Event[] relevantEvents = new Event[7];
-        List<String> eventIds = Objects.requireNonNull(habit).getEvents();
+        List<String> eventIds = habit.getEvents();
         if (this.currentEvents != null) {
             for (String eventId : eventIds) {
                 Event event = Objects.requireNonNull(this.currentEvents.get(eventId));
