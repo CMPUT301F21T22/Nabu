@@ -21,7 +21,7 @@ import ca.cmput301f21t22.nabu.R;
 import ca.cmput301f21t22.nabu.data.Event;
 import ca.cmput301f21t22.nabu.databinding.CardEventBinding;
 
-public class EventListAdapter extends ArrayAdapter<Event> {
+public class EventCardAdapter extends ArrayAdapter<Event> {
 
     @Nullable
     ViewGroup container;
@@ -30,7 +30,7 @@ public class EventListAdapter extends ArrayAdapter<Event> {
     @Nullable
     private CardEventBinding binding;
 
-    public EventListAdapter(Context context, ArrayList<Event> events) {
+    public EventCardAdapter(Context context, ArrayList<Event> events) {
         super(context, 0, events);
 
         this.events = events;

@@ -20,7 +20,7 @@ import ca.cmput301f21t22.nabu.R;
 import ca.cmput301f21t22.nabu.data.Habit;
 import ca.cmput301f21t22.nabu.databinding.CardHabitBinding;
 
-public class HabitListAdapter extends ArrayAdapter<Habit> {
+public class HabitCardAdapter extends ArrayAdapter<Habit> {
 
     @Nullable
     ViewGroup container;
@@ -29,7 +29,7 @@ public class HabitListAdapter extends ArrayAdapter<Habit> {
     @Nullable
     private CardHabitBinding binding;
 
-    public HabitListAdapter(Context context, ArrayList<Habit> habits) {
+    public HabitCardAdapter(Context context, ArrayList<Habit> habits) {
         super(context, 0, habits);
 
         this.habits = habits;
@@ -63,7 +63,7 @@ public class HabitListAdapter extends ArrayAdapter<Habit> {
         habitsMenuButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                PopupMenu habitsPopupMenu = new PopupMenu(HabitListAdapter.this.context, habitsMenuButton);
+                PopupMenu habitsPopupMenu = new PopupMenu(HabitCardAdapter.this.context, habitsMenuButton);
                 MenuInflater inflater = habitsPopupMenu.getMenuInflater();
                 inflater.inflate(R.menu.habit_card_popup_menu, habitsPopupMenu.getMenu());
                 habitsPopupMenu.show();
@@ -80,7 +80,7 @@ public class HabitListAdapter extends ArrayAdapter<Habit> {
                             return true;
                         } else if (item.getItemId() == habitsPopupMenu.getMenu().getItem(2).getItemId()) {
                             //remove
-                            HabitListAdapter.this.remove(HabitListAdapter.this.habits.get(position));
+                            HabitCardAdapter.this.remove(HabitCardAdapter.this.habits.get(position));
                             return true;
                         } else {
                             return false;

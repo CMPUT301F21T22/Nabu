@@ -31,7 +31,7 @@ public class HabitsFragment extends ExtendedToolbarFragment {
 
     //Variables for the listView of habits
     private ListView habitsListView;
-    private HabitListAdapter habitsAdapter;
+    private HabitCardAdapter habitsAdapter;
     private ArrayList<Habit> habitDataList;
 
     //Temporary
@@ -51,7 +51,7 @@ public class HabitsFragment extends ExtendedToolbarFragment {
                                          true));
 
         this.habitsListView = this.binding.habitsList;
-        this.habitsAdapter = new HabitListAdapter(this.requireContext(), this.habitDataList);
+        this.habitsAdapter = new HabitCardAdapter(this.requireContext(), this.habitDataList);
         this.habitsListView.setAdapter(this.habitsAdapter);
 
         final FloatingActionButton addHabit = this.binding.addHabitButton;
