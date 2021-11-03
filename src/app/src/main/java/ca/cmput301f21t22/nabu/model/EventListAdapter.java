@@ -53,13 +53,13 @@ public class EventListAdapter extends ArrayAdapter<Event> {
 
         TextView eventComment = this.binding.eventCommentText;
         TextView dates = this.binding.eventDatesText;
-        ImageView eventPhoto = this.binding.eventPhoto;
+        //ImageView eventPhoto = this.binding.eventPhoto;
         //TextView eventLocation  = this.binding.eventLocation;
 
         eventComment.setText(event.getComment());
         dates.setText(event.getDate().toString());
-        /*eventPhoto.(event.getPhotoPath());
-        eventLocation.setText(event.getLocation());*/
+        //eventPhoto.(event.getPhotoPath());
+        //eventLocation.setText(event.getLocation());
 
         final ImageButton eventsMenuButton = this.binding.eventsPopupImageButton;
         eventsMenuButton.setOnClickListener(new View.OnClickListener() {
@@ -92,13 +92,6 @@ public class EventListAdapter extends ArrayAdapter<Event> {
         });
 
         return this.binding.getRoot();
-    }
-
-    @Override
-    public void add(@Nullable Event event) {
-        super.add(event);
-        //this.habits.add(habit);
-        this.notifyDataSetChanged();
     }
 
     @Override

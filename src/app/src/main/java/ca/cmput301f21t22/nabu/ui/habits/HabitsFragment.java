@@ -70,33 +70,6 @@ public class HabitsFragment extends Fragment {
         return this.binding.getRoot();
     }
 
-/*
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        habitDataList = new ArrayList<Habit>();
-        habitDataList.add(new Habit("Work", "Making money", new Date(),
-                new Occurrence(true, false, true, false,
-                        true, false, true), new EventList()));
-
-        habitsListView = this.binding.habitsList;
-        habitsAdapter = new HabitListAdapter(this.requireContext(), habitDataList);
-        habitsListView.setAdapter(habitsAdapter);
-
-        final FloatingActionButton addHabit = this.binding.addHabitButton;
-        addHabit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Habit inputHabit = new Habit();
-                //TODO: Call to edit/add habit fragment
-                habitList.add(inputHabit);
-                habitsAdapter.add(inputHabit);
-                habitsAdapter.notifyDataSetChanged();
-            }
-        });
-
-    }
-*/
     @Override
     public void onDestroyView() {
         this.viewModel = null;

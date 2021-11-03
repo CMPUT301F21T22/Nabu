@@ -96,13 +96,6 @@ public class HabitListAdapter extends ArrayAdapter<Habit> {
     }
 
     @Override
-    public void add(@Nullable Habit habit) {
-        super.add(habit);
-        //this.habits.add(habit);
-        this.notifyDataSetChanged();
-    }
-
-    @Override
     public void remove(@Nullable Habit habit) {
         super.remove(habit);
         //this.habits.remove(habit);
