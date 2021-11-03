@@ -139,8 +139,11 @@ public class UserRepository {
         // If there's a non-null logged in user, but they're not in Firestore, it's a new user, and we should
         // add it to the database.
         if (!snapshot.exists()) {
-            snapshot.getReference().update("email", fbUser.getEmail());
-            snapshot.getReference().update("habits", new ArrayList<>());
+            // TODO: This belongs in a UserController
+            Map<String, Object> map = new HashMap<>();
+            map.put("email", fbUser.getEmail());
+            map.put("habits", new ArrayList<>());
+            snapshot.getReference().set(map);
         } else {
             User user = createFromSnapshot(snapshot);
             this.currentUser.setValue(user);

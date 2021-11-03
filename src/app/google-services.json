@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "753140627318",
-    "project_id": "nabu-b9cdb",
-    "storage_bucket": "nabu-b9cdb.appspot.com"
+    "project_number": "802749114187",
+    "project_id": "nabu-94833",
+    "storage_bucket": "nabu-94833.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:753140627318:android:2242b9ce68143559526c57",
+        "mobilesdk_app_id": "1:802749114187:android:62166adc1d283e22052ace",
         "android_client_info": {
           "package_name": "ca.cmput301f21t22.nabu"
         }
       },
       "oauth_client": [
         {
-          "client_id": "753140627318-hecio1v8r5cd12bf9t0as8sth9qnvaog.apps.googleusercontent.com",
+          "client_id": "802749114187-q49qb1acvisn6j4d0g23ca4tk1jfcmvm.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyC_ZcjnAcuTDbYJgRbDe01itljJD2gjtQQ"
+          "current_key": "AIzaSyBv0rf6J_mNCAHSd3wFSNwk_LFEcEn7J-s"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "753140627318-hecio1v8r5cd12bf9t0as8sth9qnvaog.apps.googleusercontent.com",
+              "client_id": "802749114187-q49qb1acvisn6j4d0g23ca4tk1jfcmvm.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
