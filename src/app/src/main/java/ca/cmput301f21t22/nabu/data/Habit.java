@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -22,6 +23,10 @@ public class Habit implements Serializable {
     @NonNull
     private List<String> events;
     private boolean shared;
+
+    public Habit() {
+        this("", "", new Date(), new Occurrence(), new ArrayList<>(), false);
+    }
 
     public Habit(@NonNull String title,
                  @NonNull String reason,

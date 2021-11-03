@@ -14,12 +14,13 @@ import java.util.List;
 
 import ca.cmput301f21t22.nabu.data.MyDayCard;
 import ca.cmput301f21t22.nabu.databinding.CardMyDayIncompleteBinding;
+import ca.cmput301f21t22.nabu.ui.ItemClickListener;
 
 public class IncompleteCardAdapter extends RecyclerView.Adapter<IncompleteCardAdapter.ViewHolder> {
     @NonNull
     private List<MyDayCard> cards;
     @Nullable
-    private CardClickListener<IncompleteCardAdapter> clickListener;
+    private ItemClickListener<IncompleteCardAdapter, MyDayCard> clickListener;
 
     public IncompleteCardAdapter() {
         this.cards = new ArrayList<>();
@@ -55,7 +56,7 @@ public class IncompleteCardAdapter extends RecyclerView.Adapter<IncompleteCardAd
         this.notifyDataSetChanged();
     }
 
-    public void setClickListener(@Nullable CardClickListener<IncompleteCardAdapter> clickListener) {
+    public void setClickListener(@Nullable ItemClickListener<IncompleteCardAdapter, MyDayCard> clickListener) {
         this.clickListener = clickListener;
     }
 

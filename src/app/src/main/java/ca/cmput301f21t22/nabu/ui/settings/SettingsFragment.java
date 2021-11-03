@@ -44,14 +44,14 @@ public class SettingsFragment extends ExtendedToolbarFragment {
                         R.string.dialog_sign_out_message)
                         .setNegativeButton(R.string.button_cancel, (dialogInterface, i) -> {
                         })
-                        .setPositiveButton(R.string.button_sign_out, (dialogInterface, i) -> this.viewModel.doSignOut())
+                        .setPositiveButton(R.string.button_sign_out, (dialogInterface, i) -> this.viewModel.signOut())
                         .show());
 
         this.binding.cardReset.setOnClickListener(
                 view -> new MaterialAlertDialogBuilder(this.requireContext()).setMessage(R.string.dialog_reset_message)
                         .setNegativeButton(R.string.button_cancel, (dialogInterface, i) -> {
                         })
-                        .setPositiveButton(R.string.button_reset, (dialogInterface, i) -> this.viewModel.doReset())
+                        .setPositiveButton(R.string.button_reset, (dialogInterface, i) -> this.viewModel.reset())
                         .show());
 
         return this.binding.getRoot();

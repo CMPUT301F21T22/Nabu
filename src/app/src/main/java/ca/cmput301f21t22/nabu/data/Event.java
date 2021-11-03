@@ -21,6 +21,10 @@ public class Event implements Serializable {
     @Nullable
     private GeoPoint location;
 
+    public Event() {
+        this(new Date());
+    }
+
     public Event(@NonNull Date date) {
         this("", date);
     }

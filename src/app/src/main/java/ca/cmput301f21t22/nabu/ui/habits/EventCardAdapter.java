@@ -1,28 +1,77 @@
 package ca.cmput301f21t22.nabu.ui.habits;
 
-import android.content.Context;
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.ImageButton;
-import android.widget.PopupMenu;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.DateFormat;
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.List;
 
-import ca.cmput301f21t22.nabu.R;
 import ca.cmput301f21t22.nabu.data.Event;
 import ca.cmput301f21t22.nabu.databinding.CardEventBinding;
+import ca.cmput301f21t22.nabu.ui.ItemClickListener;
+import ca.cmput301f21t22.nabu.ui.ItemMenuClickListener;
 
-public class EventCardAdapter extends ArrayAdapter<Event> {
+public class EventCardAdapter extends RecyclerView.Adapter<EventCardAdapter.ViewHolder> {
+    @NonNull
+    private List<Event> events;
+    @Nullable
+    private ItemClickListener<EventCardAdapter, Event> clickListener;
+    @Nullable
+    private ItemMenuClickListener<Event> menuClickListener;
 
+    public EventCardAdapter() {
+        this.events = new ArrayList<>();
+    }
+
+    @NonNull
+    @Override
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return new ViewHolder(CardEventBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false));
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        Event event = this.events.get(position);
+        holder.onBindView(event);
+        holder.binding.card.setOnClickListener((view) -> {
+            if (this.clickListener != null) {
+                this.clickListener.onItemClicked(this, event);
+            }
+        });
+        holder.binding.buttonOverflowMenu.setOnClickListener((view) -> {
+            if (this.menuClickListener != null) {
+                this.menuClickListener.onItemMenuClicked(view, event);
+            }
+        });
+    }
+
+    @Override
+    public int getItemCount() {
+        return this.events.size();
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    public void setEvents(@Nullable List<Event> events) {
+        events = events != null ? events : new ArrayList<>();
+        this.events = events;
+        this.notifyDataSetChanged();
+    }
+
+    public void setClickListener(@Nullable ItemClickListener<EventCardAdapter, Event> clickListener) {
+        this.clickListener = clickListener;
+    }
+
+    public void setMenuClickListener(@Nullable ItemMenuClickListener<Event> menuClickListener) {
+        this.menuClickListener = menuClickListener;
+    }
+    /*
     @Nullable
     ViewGroup container;
     private ArrayList<Event> events;
@@ -105,5 +154,27 @@ public class EventCardAdapter extends ArrayAdapter<Event> {
         this.insert(event, position);
         //this.habits.set(position, habit);
         this.notifyDataSetChanged();
+    }
+     */
+
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+        @NonNull
+        private final DateFormat dateFormat;
+        @NonNull
+        private final CardEventBinding binding;
+
+        public ViewHolder(@NonNull CardEventBinding binding) {
+            super(binding.getRoot());
+            this.dateFormat = DateFormat.getDateInstance();
+            this.binding = binding;
+        }
+
+        public void onBindView(@NonNull Event event) {
+            this.binding.labelDate.setText(this.dateFormat.format(event.getDate()));
+            if (event.getComment() != null && !event.getComment().equals("")) {
+                this.binding.labelComment.setText(event.getComment());
+                this.binding.labelComment.setVisibility(View.VISIBLE);
+            }
+        }
     }
 }

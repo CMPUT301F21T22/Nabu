@@ -51,9 +51,6 @@ public class MyDayFragment extends ExtendedToolbarFragment {
         this.incompleteAdapter = new IncompleteCardAdapter();
         this.completeAdapter = new CompleteCardAdapter();
 
-        this.getChildFragmentManager()
-                .setFragmentResultListener("EditResult", this, (key, result) -> this.viewModel.onEventEdited(result));
-
         UserRepository.getInstance()
                 .getCurrentUser()
                 .observe(this.getViewLifecycleOwner(), user -> this.viewModel.setCurrentUser(user));

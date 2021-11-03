@@ -9,7 +9,11 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.CompletableFuture;
+
+import ca.cmput301f21t22.nabu.data.Habit;
 
 public class HabitController {
     @NonNull
@@ -32,6 +36,54 @@ public class HabitController {
         }
 
         return INSTANCE;
+    }
+
+    @NonNull
+    private static Map<String, Object> createFromHabit(Habit habit) {
+        Map<String, Object> map = new HashMap<>();
+        map.put("title", habit.getTitle());
+        map.put("reason", habit.getReason());
+        map.put("startDate", habit.getStartDate());
+        map.put("occurrence", habit.getOccurrence());
+        map.put("events", habit.getEvents());
+        map.put("shared", habit.isShared());
+        return map;
+    }
+
+    @NonNull
+    public CompletableFuture<Boolean> delete(@NonNull String habitId) {
+        if (habitId.equals("")) {
+            throw new IllegalArgumentException();
+        }
+
+        CompletableFuture<Boolean> future = new CompletableFuture<>();
+        this.habitsCollection.document(habitId).delete().addOnSuccessListener(task -> {
+            Log.d(TAG, "Habit deleted with id: " + habitId);
+            future.complete(true);
+        }).addOnFailureListener(e -> {
+            Log.w(TAG, "Failed to delete habit with id: " + habitId, e);
+            future.complete(false);
+        });
+        return future;
+    }
+
+    @NonNull
+    public CompletableFuture<String> update(@NonNull String habitId, @NonNull Habit habit) {
+        if (habitId.equals("")) {
+            throw new IllegalArgumentException();
+        }
+
+        CompletableFuture<String> future = new CompletableFuture<>();
+        this.habitsCollection.document(habitId)
+                .update(createFromHabit(habit))
+                .addOnCompleteListener(unused -> future.complete(habitId))
+                .addOnSuccessListener(unused -> {
+                    Log.d(TAG, "Habit with id: " + habitId + " updated.");
+                })
+                .addOnFailureListener(unused -> {
+                    Log.d(TAG, "Failed to update habit with id: " + habitId);
+                });
+        return future;
     }
 
     @NonNull
@@ -69,6 +121,19 @@ public class HabitController {
                 .addOnFailureListener(unused -> {
                     Log.w(TAG, "Failed to remove Event with id: " + habitId + " from habit with id: " + eventId);
                 });
+        return future;
+    }
+
+    @NonNull
+    public CompletableFuture<String> add(@NonNull Habit habit) {
+        CompletableFuture<String> future = new CompletableFuture<>();
+        this.habitsCollection.add(createFromHabit(habit)).addOnSuccessListener(doc -> {
+            Log.d(TAG, "New habit added.");
+            future.complete(doc.getId());
+        }).addOnFailureListener(e -> {
+            Log.e(TAG, "Failed to add new habit.", e);
+            future.complete(null);
+        });
         return future;
     }
 }

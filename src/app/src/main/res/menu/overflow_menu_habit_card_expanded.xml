@@ -3,14 +3,11 @@
     android:id="@+id/habit_card_popup_Menu">
     <item
         android:id="@+id/view_events"
-        android:title="View Habit Events" />
-
+        android:title="@string/menu_hide_events" />
     <item
         android:id="@+id/edit_habit"
-        android:title="Edit Habit" />
-
+        android:title="@string/menu_edit_habit" />
     <item
         android:id="@+id/delete_habit"
-        android:title="Delete Habit" />
-
+        android:title="@string/menu_delete_habit" />
 </menu>

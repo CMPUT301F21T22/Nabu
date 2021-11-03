@@ -29,11 +29,11 @@ public class SettingsViewModel extends ViewModel {
         repoUsers.getCurrentUser().observeForever(this.currentUser::setValue);
     }
 
-    public void doSignOut() {
+    public void signOut() {
         this.auth.signOut();
     }
 
-    public void doReset() {
+    public void reset() {
         // TODO: Implement Reset.
     }
 

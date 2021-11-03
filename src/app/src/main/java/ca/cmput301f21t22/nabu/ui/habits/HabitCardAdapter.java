@@ -1,109 +1,127 @@
 package ca.cmput301f21t22.nabu.ui.habits;
 
-import android.content.Context;
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.ImageButton;
-import android.widget.PopupMenu;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.List;
 
-import ca.cmput301f21t22.nabu.R;
+import ca.cmput301f21t22.nabu.data.Event;
 import ca.cmput301f21t22.nabu.data.Habit;
+import ca.cmput301f21t22.nabu.data.HabitCard;
 import ca.cmput301f21t22.nabu.databinding.CardHabitBinding;
+import ca.cmput301f21t22.nabu.ui.ItemClickListener;
+import ca.cmput301f21t22.nabu.ui.ItemMenuClickListener;
 
-public class HabitCardAdapter extends ArrayAdapter<Habit> {
-
+public class HabitCardAdapter extends RecyclerView.Adapter<HabitCardAdapter.ViewHolder> {
+    @NonNull
+    private List<HabitCard> cards;
     @Nullable
-    ViewGroup container;
-    private final ArrayList<Habit> habits;
-    private final Context context;
+    private ItemClickListener<HabitCardAdapter, HabitCard> habitCardClickListener;
     @Nullable
-    private CardHabitBinding binding;
+    private ItemMenuClickListener<HabitCard> habitCardMenuClickListener;
+    @Nullable
+    private ItemClickListener<EventCardAdapter, Event> eventCardClickListener;
+    @Nullable
+    private ItemMenuClickListener<Event> eventCardMenuClickListener;
 
-    public HabitCardAdapter(Context context, ArrayList<Habit> habits) {
-        super(context, 0, habits);
-
-        this.habits = habits;
-        this.context = context;
+    public HabitCardAdapter() {
+        this.cards = new ArrayList<>();
     }
 
-    //Set up views for list objects
     @NonNull
     @Override
-    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        //return super.getView(position, convertView, parent);
-        View view = convertView;
-
-        if (view == null) {
-            this.binding = CardHabitBinding.inflate(LayoutInflater.from(this.context));
-        }
-
-        Habit habit = this.habits.get(position);
-
-        TextView habitTitle = this.binding.labelHabitTitle;
-        TextView datesOn = this.binding.labelOccurrence;
-        TextView habitDescription = this.binding.labelReason;
-        TextView dateStarted = this.binding.labelStartDate;
-
-        habitTitle.setText(habit.getTitle());
-        datesOn.setText(habit.getOccurrence().toString());
-        habitDescription.setText(habit.getReason());
-        dateStarted.setText(habit.getStartDate().toString());
-
-        final ImageButton habitsMenuButton = this.binding.buttonOverflowMenu;
-        habitsMenuButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                PopupMenu habitsPopupMenu = new PopupMenu(HabitCardAdapter.this.context, habitsMenuButton);
-                MenuInflater inflater = habitsPopupMenu.getMenuInflater();
-                inflater.inflate(R.menu.habit_card_popup_menu, habitsPopupMenu.getMenu());
-                habitsPopupMenu.show();
-                final PopupMenu menu = habitsPopupMenu;
-                menu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-                    @Override
-                    public boolean onMenuItemClick(MenuItem item) {
-                        if (item.getItemId() == habitsPopupMenu.getMenu().getItem(0).getItemId()) {
-                            //TODO: Add call to switch to habit events fragment
-                            return true;
-                        } else if (item.getItemId() == habitsPopupMenu.getMenu().getItem(1).getItemId()) {
-                            //Edit
-                            //TODO: Add call for edit habit fragment
-                            return true;
-                        } else if (item.getItemId() == habitsPopupMenu.getMenu().getItem(2).getItemId()) {
-                            //remove
-                            HabitCardAdapter.this.remove(HabitCardAdapter.this.habits.get(position));
-                            return true;
-                        } else {
-                            return false;
-                        } //Default
-                    }
-                });
-            }
-        });
-
-        return this.binding.getRoot();
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        CardHabitBinding binding = CardHabitBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
+        binding.listEvents.setLayoutManager(new LinearLayoutManager(parent.getContext()));
+        return new ViewHolder(binding, new EventCardAdapter());
     }
 
     @Override
-    public void remove(@Nullable Habit habit) {
-        super.remove(habit);
-        //this.habits.remove(habit);
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        HabitCard card = this.cards.get(position);
+
+        holder.adapter.setEvents(card.getEvents());
+        holder.adapter.setClickListener(this.eventCardClickListener);
+        holder.adapter.setMenuClickListener(this.eventCardMenuClickListener);
+
+        holder.onBindView(card);
+        holder.binding.card.setOnClickListener((view) -> {
+            if (this.habitCardClickListener != null) {
+                this.habitCardClickListener.onItemClicked(this, card);
+            }
+        });
+        holder.binding.buttonOverflowMenu.setOnClickListener((view) -> {
+            if (this.habitCardMenuClickListener != null) {
+                this.habitCardMenuClickListener.onItemMenuClicked(view, card);
+            }
+        });
+    }
+
+    @Override
+    public int getItemCount() {
+        return this.cards.size();
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    public void setCards(@Nullable List<HabitCard> cards) {
+        cards = cards != null ? cards : new ArrayList<>();
+        this.cards = cards;
         this.notifyDataSetChanged();
     }
 
-    public void edit(int position, @Nullable Habit habit) {
-        this.remove(this.getItem(position));
-        this.insert(habit, position);
-        //this.habits.set(position, habit);
-        this.notifyDataSetChanged();
+    public void setHabitCardClickListener(@Nullable ItemClickListener<HabitCardAdapter, HabitCard> habitCardClickListener) {
+        this.habitCardClickListener = habitCardClickListener;
+    }
+
+    public void setHabitCardMenuClickListener(@Nullable ItemMenuClickListener<HabitCard> habitCardMenuClickListener) {
+        this.habitCardMenuClickListener = habitCardMenuClickListener;
+    }
+
+    public void setEventCardClickListener(@Nullable ItemClickListener<EventCardAdapter, Event> eventCardClickListener) {
+        this.eventCardClickListener = eventCardClickListener;
+    }
+
+    public void setEventCardMenuClickListener(@Nullable ItemMenuClickListener<Event> eventCardMenuClickListener) {
+        this.eventCardMenuClickListener = eventCardMenuClickListener;
+    }
+
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+        @NonNull
+        private final DateFormat dateFormat;
+        @NonNull
+        private final CardHabitBinding binding;
+        @NonNull
+        private final EventCardAdapter adapter;
+
+        public ViewHolder(@NonNull CardHabitBinding binding, @NonNull EventCardAdapter adapter) {
+            super(binding.getRoot());
+            this.dateFormat = DateFormat.getDateInstance();
+            this.binding = binding;
+            this.adapter = adapter;
+        }
+
+        public void onBindView(@NonNull HabitCard card) {
+            Habit habit = card.getHabit();
+            this.binding.labelHabitTitle.setText(habit.getTitle());
+            this.binding.labelOccurrence.setText(habit.getOccurrence().toString());
+            this.binding.labelReason.setText(habit.getReason());
+            this.binding.labelStartDate.setText(this.dateFormat.format(habit.getStartDate()));
+
+            if (card.isExpanded() && card.getEvents().size() > 0) {
+                this.binding.listEvents.setAdapter(this.adapter);
+                this.binding.layoutEvents.setVisibility(View.VISIBLE);
+            } else {
+                this.binding.layoutEvents.setVisibility(View.GONE);
+            }
+        }
     }
 }

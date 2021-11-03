@@ -19,8 +19,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
 import java.util.function.Predicate;
 
 import ca.cmput301f21t22.nabu.data.Habit;
@@ -60,13 +60,18 @@ public class HabitRepository {
 
     @NonNull
     private static Habit createFromSnapshot(@NonNull DocumentSnapshot snapshot) {
-        String title = Objects.requireNonNull(snapshot.getString("title"));
-        String reason = Objects.requireNonNull(snapshot.getString("reason"));
-        Date startDate = Objects.requireNonNull(snapshot.getDate("startDate"));
-        Occurrence occurrence = Objects.requireNonNull(snapshot.get("occurrence", Occurrence.class));
-        @SuppressWarnings("unchecked") List<String> events =
-                Objects.requireNonNull((List<String>) snapshot.get("events"));
-        Boolean shared = Objects.requireNonNull(snapshot.getBoolean("shared"));
+        String title = snapshot.getString("title");
+        String reason = snapshot.getString("reason");
+        Date startDate = snapshot.getDate("startDate");
+        Occurrence occurrence = snapshot.get("occurrence", Occurrence.class);
+        @SuppressWarnings("unchecked") List<String> events = (List<String>) snapshot.get("events");
+        Boolean shared = snapshot.getBoolean("shared");
+
+        if (title == null || reason == null || startDate == null || occurrence == null || events == null ||
+            shared == null) {
+            throw new IllegalArgumentException();
+        }
+
         return new Habit(snapshot.getId(), title, reason, startDate, occurrence, events, shared);
     }
 
@@ -78,6 +83,22 @@ public class HabitRepository {
     @NonNull
     public Optional<Habit> findHabit(Predicate<Habit> predicate) {
         return this.habitsMap.values().stream().filter(predicate).findFirst();
+    }
+
+    @NonNull
+    public CompletableFuture<Habit> retrieveHabit(@NonNull String id) {
+        CompletableFuture<Habit> future = new CompletableFuture<>();
+        this.habitsCollection.document(id).get().addOnSuccessListener(snapshot -> {
+            try {
+                future.complete(createFromSnapshot(snapshot));
+            } catch (IllegalArgumentException e) {
+                future.complete(null);
+            }
+        }).addOnFailureListener(e -> {
+            Log.e(TAG, "Failed to retrieve habit.", e);
+            future.complete(null);
+        });
+        return future;
     }
 
     private void onHabitsChanged(@Nullable QuerySnapshot snapshots, @Nullable FirebaseFirestoreException e) {

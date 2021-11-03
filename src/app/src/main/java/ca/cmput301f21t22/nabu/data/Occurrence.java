@@ -77,12 +77,20 @@ public class Occurrence implements Serializable {
      *
      * @return a string representation of the occurence object constructed using the day values
      */
+    @NonNull
     @Override
     public String toString() {
+        if (this.isOnSunday() && this.isOnMonday() && this.isOnTuesday() && this.isOnWednesday() &&
+            this.isOnThursday() && this.isOnFriday() && this.isOnSaturday()) {
+            return "Every Day";
+        }
+
         StringBuilder representation = new StringBuilder();
         boolean first = true;
         if (this.isOnSunday()) {
             first = false;
+
+            representation.append("Sun");
         }
         if (this.isOnMonday()) {
             if (!first) {
@@ -94,7 +102,11 @@ public class Occurrence implements Serializable {
             representation.append("Mon");
         }
         if (this.isOnTuesday()) {
-            first = false;
+            if (!first) {
+                representation.append(", ");
+            } else {
+                first = false;
+            }
 
             representation.append("Tues");
         }
