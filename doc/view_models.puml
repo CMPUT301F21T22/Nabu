@@ -1,0 +1,149 @@
+@startuml
+
+frame Views {
+    Fragment <|- DialogFragment
+
+    DialogFragment <|-- EditEventFragment
+    DialogFragment <|-- EditHabitFragment
+
+    Activity <|-- MainActivity
+    Fragment <|-- SocialFragment
+    Fragment <|-- SettingsFragment
+    Fragment <|-- MyDayFragment
+    Fragment <|-- HabitsFragment
+}
+
+frame ViewModels {
+    class MainViewModel {
+        + <<event>> Boolean signedIn
+
+        + void onSignIn()
+    }
+
+    MainActivity -- "1" MainViewModel
+
+    class EditEventViewModel {
+        - String id
+
+        + <<set>> Boolean saveable
+
+        + <<event>> Boolean saved
+        + <<event/set>> Date date
+        + <<event/set>> String comment
+        + <<event/set>> String photoPath
+        + <<event/set>> GeoPoint location
+
+        + void loadEvent(Event)
+        + void saveEvent()
+    }
+
+    EditEventFragment -- "1" EditEventViewModel
+
+    class EditHabitViewModel {
+        - String id
+        - List<String> events
+
+        + <<set>> Boolean saveable
+        + <<set>> User currentUser
+
+        + <<event>> Boolean saved
+        + <<event/set>> String title
+        + <<event/set>> String reason
+        + <<event/set>> Date startDate
+        + <<event/set>> Boolean onSunday
+        + <<event/set>> Boolean onMonday
+        ... repeat for days of the week
+        + <<event/set>> Boolean onSaturday
+        + <<event/set>> Boolean shared
+
+        + void loadHabit(Habit)
+        + void saveHabit()
+    }
+
+    EditHabitFragment -- "1" EditHabitViewModel
+
+    class HabitsViewModel {
+        - List<HabitCard> cardsList
+
+        + <<get/set>> User currentUser
+        + <<set>> Map<String, Habit> currentHabits
+        + <<set>> Map<String, Event> currentEvents
+
+        + <<event>> List<HabitCard> cards
+
+        + void onCardClicked(HabitCard)
+        + void deleteHabit(Habit)
+        + void deleteEvent(Event)
+    }
+
+    HabitsFragment -- "1" HabitsViewModel
+
+    class MyDayViewModel {
+        - List<MyDayCard> cardsList
+
+        + <<get>> Event mostRecentEvent
+        + <<set>> User currentUser
+        + <<set>> Map<String, Habit> currentHabits
+        + <<set>> Map<String, Event> currentEvents
+
+        + <<event>> List<MyDayCard> incompleteCards
+        + <<event>> List<MyDayCard> completeCards
+        + <<event>> Boolean showEdit
+
+        + void onCardClicked(MyDayCard)
+    }
+
+    MyDayFragment -- "1" MyDayViewModel
+
+    class SettingsViewModel {
+        + <<event/set>> User currentUser
+
+        + void signOut()
+        + void reset()
+    }
+
+    SettingsFragment -- "1" SettingsViewModel
+
+    SocialFragment -- "1" SocialViewModel
+
+    class HabitCard {
+        - Habit habit
+        - List<Event> events
+
+        + <<get/set>> boolean expanded
+        + <<get>> Habit habit
+        + <<get>> List<Event> events
+    }
+
+    HabitCard "1" o- "0..*" Event : \t
+    HabitCard "1" o-- "1" Habit
+
+    HabitsViewModel "1" *-- "0..*" HabitCard
+
+    class MyDayCard {
+        - Habit habit
+        - Event[] events
+
+        + <<get>> Habit habit
+        + <<get>> Event[] events
+
+        + Icon getIcon(int pos)
+    }
+
+    enum MyDayCard.Icon {
+        INCOMPLETE
+        COMPLETE
+        FAILED
+        NOT_DUE
+
+        +<<get>> int resource
+    }
+
+    Event "7" -o "1" MyDayCard : \t
+    MyDayCard "1" o- "1" Habit : \t
+    MyDayCard "1" *- "7" MyDayCard.Icon : \t
+    Event "1" - "1" MyDayCard.Icon : \t
+
+    MyDayViewModel "1" *-- "0..*" MyDayCard
+}
+@enduml
