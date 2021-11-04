@@ -30,7 +30,7 @@ public class EventTest {
         //Tests to assert the hash code of the elements is preserved
         @Test
         void testHashCode() {
-            String id = "555"
+            String id = "555";
             Date date = new Date();
             String comment = "1st time jogging along the river";
             String photoPath = "Photo/events/event57";
@@ -53,7 +53,6 @@ public class EventTest {
             Date date = new Date(2021, 1, 19);
             Event event = new Event(date);
             assertEquals(date, event.getDate());
-
         }
 
         //Tests if date is properly set
@@ -68,24 +67,33 @@ public class EventTest {
         //Tests if comment value is correctly returned
         @Test
         void testGetComment() {
-            Event event = new Event(new Date());
+            String comment = "Just bought some yellows for my next canvas!";
+            Event event = new Event(new Date(), comment, "", new GeoPoint(22,33));
+            assertEquals(comment, event.getComment());
         }
 
         //Tests if the photo path value is correctly returned
         @Test
         void testGetPhotopath() {
-
+            String photoPath = "user/events/event233";
+            Event event = new Event(new Date(), "Lowered my sugar intake by half", photoPath, new GeoPoint(30,50));
+            assertEquals(photoPath, event.getPhotoPath());
         }
 
         //Tests if the location value is correctly returned
         @Test
         void testGetLocation() {
-
+            GeoPoint geoPoint = new GeoPoint(3500, 2673);
+            Event event = new Event(new Date(), "", "", geoPoint);
+            assertEquals(geoPoint, event.getLocation());
         }
 
         //Tests if the Id value is properly set
         @Test
         void testSetLocation() {
-
+            GeoPoint geoPoint = new GeoPoint(3500, 2673);
+            Event event = new Event(new Date(), "", "", new GeoPoint(5766, 4768));
+            event.setLocation(geoPoint);
+            assertEquals(geoPoint, event.getLocation());
         }
 }
