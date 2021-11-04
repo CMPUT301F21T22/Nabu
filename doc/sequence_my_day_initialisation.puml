@@ -13,18 +13,16 @@ activate MyDay
 
 MyDay -> UserRepository : Observes
 activate UserRepository
-UserRepository -> MyDay : Updates
-deactivate UserRepository
 
 MyDay -> HabitRepository : Observes
 activate HabitRepository
-HabitRepository -> MyDay : Updates
-deactivate HabitRepository
 
 MyDay -> EventRepository : Observes
 activate EventRepository
-EventRepository -> MyDay : Updates
-deactivate EventRepository
+
+UserRepository -> MyDay : Changes to the current user
+HabitRepository -> MyDay : Changes to the habits
+EventRepository -> MyDay : Changes to the events
 
 MyDay -> User : Show UI
 deactivate MyDay
