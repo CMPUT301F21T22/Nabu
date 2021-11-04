@@ -9,6 +9,7 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Objects;
 
@@ -20,14 +21,18 @@ import ca.cmput301f21t22.nabu.data.Occurrence;
 public class HabitCardTest {
 
     private HabitCard mockHabitCard() {
-        Habit habit = new Habit("Pet Dog", "They're a good boy", new Date(1989,
-                12, 13),
-                new Occurrence(), new ArrayList<>(), false);
+        Habit habit = new Habit("Pet Dog", "They're a good boy", new GregorianCalendar(
+                1989+1900, 12, 13).getTime(), new Occurrence(),
+                new ArrayList<>(), false);
+
         List<Event> events = new ArrayList<>();
-        events.add(new Event(new Date(2022, 18, 8), "Lost 30 pounds",
-                "Photo/events/event202", new GeoPoint(506, 200)));
-        events.add(new Event(new Date(2021, 11, 3), "Lost 20 pounds",
-                "Photo/events/event204", new GeoPoint(596, 210)));
+        events.add(new Event(new GregorianCalendar(2011+1900, 11, 11).getTime(),
+                "Lost 30 pounds", "Photo/events/event202", new GeoPoint(
+                        506, 200)));
+
+        events.add(new Event(new GregorianCalendar(2021+1900, 11, 3)
+                .getTime(), "Lost 20 pounds", "Photo/events/event204",
+                new GeoPoint(596, 210)));
         return new HabitCard(habit, events);
     }
 
@@ -71,8 +76,8 @@ public class HabitCardTest {
         List<Event> changedList = new ArrayList<>();
         changedList.add(new Event());
         HabitCard habitCard4 = new HabitCard(new Habit("Pet Dog", "They're a good boy",
-                new Date(1989, 12, 13), new Occurrence(), new ArrayList<>(),
-                false), changedList);
+                new GregorianCalendar(1989+1900, 12, 13).getTime(),
+                new Occurrence(), new ArrayList<>(), false), changedList);
 
         assertEquals(this.mockHabitCard(), habitCard1);
         assertNotEquals(habitCard1, habitCard2);
