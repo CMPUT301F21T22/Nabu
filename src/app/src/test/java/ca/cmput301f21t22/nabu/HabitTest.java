@@ -18,7 +18,7 @@ import ca.cmput301f21t22.nabu.data.Occurrence;
 public class HabitTest {
 
     @Test
-    void testCreate() {
+    public void testCreate() {
         List<String> events = new ArrayList<>();
         Habit habit1 = new Habit();
         Habit habit2 = new Habit("Pet Dog", "They're a good boy", new Date(),
@@ -29,7 +29,7 @@ public class HabitTest {
 
     //Tests to assert the hash code of the elements is preserved
     @Test
-    void testHashCode() {
+    public void testHashCode() {
         String id = "555";
         String title = "Hug Opossum";
         String reason = "Soft";
@@ -45,7 +45,7 @@ public class HabitTest {
 
     //Tests if the Id value is correctly returned
     @Test
-    void testGetId() {
+    public void testGetId() {
         String id = "601";
         Habit habit = new Habit(id,"Eat food", "Sustenance", new Date(),
                 new Occurrence(), new ArrayList<>(), false);
@@ -53,7 +53,7 @@ public class HabitTest {
     }
 
     @Test
-    void testGetTitle() {
+    public void testGetTitle() {
         String title = "Count fireflies";
         Habit habit = new Habit(title, "You would not believe your eyes...", new Date(),
                 new Occurrence(), new ArrayList<>(), false);
@@ -61,7 +61,7 @@ public class HabitTest {
     }
 
     @Test
-    void testSetTitle() {
+    public void testSetTitle() {
         String title = "Stop Counting Fireflies";
         Habit habit = new Habit("Count fireflies", "You would not believe your eyes...",
                 new Date(), new Occurrence(), new ArrayList<>(), false);
@@ -70,7 +70,7 @@ public class HabitTest {
     }
 
     @Test
-    void testGetReason() {
+    public void testGetReason() {
         String reason = "find lost teeth for tooth fairy";
         Habit habit = new Habit("count teeth",  reason, new Date(), new Occurrence(),
                 new ArrayList<>(), false);
@@ -78,16 +78,16 @@ public class HabitTest {
     }
 
     @Test
-    void testSetReason() {
+    public void testSetReason() {
         String reason = "pass the time";
         Habit habit = new Habit("Count fireflies", "You would not believe your eyes...",
                 new Date(), new Occurrence(), new ArrayList<>(), false);
         habit.setReason(reason);
-        assertEquals(reason, habit.getTitle());
+        assertEquals(reason, habit.getReason());
     }
 
     @Test
-    void testGetStartDate() {
+    public void testGetStartDate() {
         Date date = new Date(2021, 1, 19);
         Habit habit = new Habit("Acquire stocks", "money", date, new Occurrence(),
                 new ArrayList<>(), false);
@@ -95,7 +95,7 @@ public class HabitTest {
     }
 
     @Test
-    void testStartDate() {
+    public void testStartDate() {
         Date date = new Date(2006, 13, 12);
         Habit habit = new Habit("Count fireflies", "You would not believe your eyes...",
                 new Date(2001, 12, 13), new Occurrence(), new ArrayList<>(), false);
@@ -104,7 +104,7 @@ public class HabitTest {
     }
 
     @Test
-    void testGetOccurrence() {
+    public void testGetOccurrence() {
         Occurrence occurrence = new Occurrence(true, true, true,
                 false, false, true, true);
         Habit habit = new Habit("Go to work", "get funds for more dice", new Date(),
@@ -113,7 +113,7 @@ public class HabitTest {
     }
 
     @Test
-    void testSetOccurrence() {
+    public void testSetOccurrence() {
         Occurrence occurrence = new Occurrence(false, false, true,
                 true, false, true, false);
         Habit habit = new Habit("Count fireflies", "You would not believe your eyes...",
@@ -123,7 +123,7 @@ public class HabitTest {
     }
 
     @Test
-    void testGetEvents() {
+    public void testGetEvents() {
         List<String> events = new ArrayList<>();
         events.add("First Drink Mixed!!");
         events.add("Getting the hang of it!");
@@ -133,7 +133,7 @@ public class HabitTest {
     }
 
     @Test
-    void testSetEvents() {
+    public void testSetEvents() {
         List<String> events1 = new ArrayList<>();
         events1.add("first of a million");
         List<String> events2 = new ArrayList<>();
@@ -145,7 +145,7 @@ public class HabitTest {
     }
 
     @Test
-    void testIsShared() {
+    public void testIsShared() {
         Boolean shared = true;
         Habit habit1 = new Habit("Drink less energy drinks", "Can't sleep", new Date(),
                 new Occurrence(), new ArrayList<>(), shared);
@@ -157,16 +157,16 @@ public class HabitTest {
     }
 
     @Test
-    void testSetShared() {
+    public void testSetShared() {
         Boolean shared = true;
         Habit habit = new Habit("Count fireflies", "You would not believe your eyes...",
                 new Date(), new Occurrence(), new ArrayList<>(), false);
         habit.setShared(shared);
-        assertEquals(shared, habit.getTitle());
+        assertEquals(shared, habit.isShared());
     }
 
     @Test
-    void testEquals() {
+    public void testEquals() {
         List<String> listChanged = new ArrayList<>();
         listChanged.add("wet food");
         Habit habit1 = new Habit("104","Feed Cat", "They are hungry",
