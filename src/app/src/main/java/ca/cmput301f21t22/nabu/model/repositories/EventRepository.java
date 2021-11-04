@@ -23,6 +23,13 @@ import java.util.concurrent.CompletableFuture;
 
 import ca.cmput301f21t22.nabu.data.Event;
 
+/**
+ * Retrieves event data from database
+ * Deposit event data within proper event lists
+ * Ensure consistency between database & local data
+ * Inform listening objects of changes to the data
+ */
+
 public class EventRepository {
     @NonNull
     public final static String TAG = "EventRepository";
