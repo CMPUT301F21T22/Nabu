@@ -13,10 +13,6 @@ import ca.cmput301f21t22.nabu.data.Event;
 
 public class EventTest {
 
-        private Event mockEvent() {
-            return new Event();
-        }
-
         //Makes sure the different ways of creating an event all work
         @Test
         void testCreate() {
