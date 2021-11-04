@@ -37,18 +37,18 @@ public class HabitCardTest {
     }
 
     @Test
-    void testCreate() {
+    public void testCreate() {
         HabitCard habitCard = new HabitCard(new Habit(), new ArrayList<Event>());
     }
 
     @Test
-    void testHashCode() {
+    public void testHashCode() {
         assertEquals(this.mockHabitCard().hashCode(), Objects.hash(
                 this.mockHabitCard().getHabit(), this.mockHabitCard().getEvents()));
     }
 
     @Test
-    void testGetHabit() {
+    public void testGetHabit() {
         Habit habit = new Habit("105","Feed Cat", "They are hungry", new Date(),
                 new Occurrence(), new ArrayList<>(), true);
         HabitCard habitCard = new HabitCard(habit, new ArrayList<>());
@@ -56,7 +56,7 @@ public class HabitCardTest {
     }
 
     @Test
-    void testGetEvents() {
+    public void testGetEvents() {
         Habit habit = new Habit("Drink less energy drinks", "Can't sleep", new Date(),
                 new Occurrence(), new ArrayList<>(), false);
         List<Event> events = new ArrayList<>();
@@ -67,7 +67,7 @@ public class HabitCardTest {
     }
 
     @Test
-    void testEquals() {
+    public void testEquals() {
         HabitCard habitCard1 = this.mockHabitCard();
         HabitCard habitCard2 = new HabitCard(new Habit(), new ArrayList<>());
         HabitCard habitCard3 = this.mockHabitCard();
@@ -86,13 +86,7 @@ public class HabitCardTest {
     }
 
     @Test
-    void testIsExpanded() {
-        HabitCard habitCard = this.mockHabitCard();
-        assertEquals(null, habitCard.isExpanded());
-    }
-
-    @Test
-    void testsetExpanded() {
+    public void testSetExpanded() {
         HabitCard habitCard = this.mockHabitCard();
         habitCard.setExpanded(true);
         assertEquals(true, habitCard.isExpanded());
