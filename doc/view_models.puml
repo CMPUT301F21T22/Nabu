@@ -105,6 +105,45 @@ frame ViewModels {
     SettingsFragment -- "1" SettingsViewModel
 
     SocialFragment -- "1" SocialViewModel
-}
 
+    class HabitCard {
+        - Habit habit
+        - List<Event> events
+
+        + <<get/set>> boolean expanded
+        + <<get>> Habit habit
+        + <<get>> List<Event> events
+    }
+
+    HabitCard "1" o- "0..*" Event : \t
+    HabitCard "1" o-- "1" Habit
+
+    HabitsViewModel "1" *-- "0..*" HabitCard
+
+    class MyDayCard {
+        - Habit habit
+        - Event[] events
+
+        + <<get>> Habit habit
+        + <<get>> Event[] events
+
+        + Icon getIcon(int pos)
+    }
+
+    enum MyDayCard.Icon {
+        INCOMPLETE
+        COMPLETE
+        FAILED
+        NOT_DUE
+
+        +<<get>> int resource
+    }
+
+    Event "7" -o "1" MyDayCard : \t
+    MyDayCard "1" o- "1" Habit : \t
+    MyDayCard "1" *- "7" MyDayCard.Icon : \t
+    Event "1" - "1" MyDayCard.Icon : \t
+
+    MyDayViewModel "1" *-- "0..*" MyDayCard
+}
 @enduml

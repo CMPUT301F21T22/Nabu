@@ -1,0 +1,43 @@
+@startuml
+
+actor User
+
+participant ":MyDay\n(View/ViewModel)" as MyDay
+
+participant ":DeleteEventCommand" as DeleteEventCommand
+
+participant ":HabitRepository" as HabitRepository
+participant ":HabitController" as HabitController
+participant ":EventController" as EventController
+
+User -> MyDay : Tap on complete card
+activate MyDay
+
+MyDay -> DeleteEventCommand : Create and execute command
+activate DeleteEventCommand
+
+DeleteEventCommand -> HabitRepository : Find parent habit of given event
+activate HabitRepository
+
+HabitRepository -> DeleteEventCommand
+deactivate HabitRepository
+
+DeleteEventCommand -> HabitController : Detach event from parent habit
+activate HabitController
+
+HabitController -> DeleteEventCommand
+deactivate HabitController
+
+DeleteEventCommand -> EventController : Delete event
+activate EventController
+
+EventController -> DeleteEventCommand
+deactivate EventController
+
+DeleteEventCommand -> MyDay
+destroy DeleteEventCommand
+
+MyDay -> User : Display changes
+deactivate MyDay
+
+@enduml

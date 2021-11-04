@@ -1,0 +1,32 @@
+@startuml
+
+actor User
+
+participant ":MyDay\n(View/ViewModel)" as MyDay
+
+participant ":UserRepository" as UserRepository
+participant ":HabitRepository" as HabitRepository
+participant ":EventRepository" as EventRepository
+
+User -> MyDay : Navigates to
+activate MyDay
+
+MyDay -> UserRepository : Observes
+activate UserRepository
+UserRepository -> MyDay : Updates
+deactivate UserRepository
+
+MyDay -> HabitRepository : Observes
+activate HabitRepository
+HabitRepository -> MyDay : Updates
+deactivate HabitRepository
+
+MyDay -> EventRepository : Observes
+activate EventRepository
+EventRepository -> MyDay : Updates
+deactivate EventRepository
+
+MyDay -> User : Show UI
+deactivate MyDay
+
+@enduml
