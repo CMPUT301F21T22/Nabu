@@ -45,7 +45,7 @@ class Event {
     +<<get/set>> Date date
     +<<get/set>> String comment
     +<<get/set>> String photoPath
-    +<<get/set>> Location location
+    +<<get/set>> GeoPoint location
 }
 
 class Occurrence {
