@@ -12,6 +12,10 @@ import ca.cmput301f21t22.nabu.model.controllers.EventController;
 import ca.cmput301f21t22.nabu.model.controllers.HabitController;
 import ca.cmput301f21t22.nabu.model.repositories.HabitRepository;
 
+/**
+ * Used to call on controllers to delete and event from the database of habit events
+ */
+
 public class DeleteEventCommand implements Command<CompletableFuture<Boolean>> {
     @NonNull
     private final HabitRepository habitRepository;
