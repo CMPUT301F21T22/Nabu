@@ -73,9 +73,12 @@ public class Occurrence implements Serializable {
     }
 
     /**
-     * Creates a string representation of the occurrence object
+     * Creates a string representation of the occurrence object in short,
+     * North-American style order. For example, if the event occurs on
+     * Monday and Saturday, it would return "Mon, Sat".
      *
-     * @return a string representation of the occurence object constructed using the day values
+     * @return String representation of the occurrence object
+     * constructed using the day values
      */
     @NonNull
     @Override
@@ -147,62 +150,111 @@ public class Occurrence implements Serializable {
         return representation.toString();
     }
 
+    /**
+     * @return Whether or not the event occurs on a Sunday.
+     */
     public boolean isOnSunday() {
         return this.onSunday;
     }
 
+    /**
+     * @param onSunday Whether or not the event should occur on a Sunday.
+     */
     public void setOnSunday(boolean onSunday) {
         this.onSunday = onSunday;
     }
 
+    /**
+     * @return Whether or not the event occurs on a Monday.
+     */
     public boolean isOnMonday() {
         return this.onMonday;
     }
 
+    /**
+     * @param onMonday Whether or not the event should occur on a Monday.
+     */
     public void setOnMonday(boolean onMonday) {
         this.onMonday = onMonday;
     }
 
+    /**
+     * @return Whether or not the event occurs on a Tuesday.
+     */
     public boolean isOnTuesday() {
         return this.onTuesday;
     }
 
+    /**
+     * @param onTuesday Whether or not the event should occur on a Tuesday.
+     */
     public void setOnTuesday(boolean onTuesday) {
         this.onTuesday = onTuesday;
     }
 
+    /**
+     * @return Whether or not the event occurs on a Wednesday.
+     */
     public boolean isOnWednesday() {
         return this.onWednesday;
     }
 
+    /**
+     * @param onWednesday Whether or not the event should occur on a Wednesday.
+     */
     public void setOnWednesday(boolean onWednesday) {
         this.onWednesday = onWednesday;
     }
 
+    /**
+     * @return Whether or not the event occurs on a Thursday
+     */
     public boolean isOnThursday() {
         return this.onThursday;
     }
 
+    /**
+     * @param onThursday Whether or not the event should occur on a Thursday.
+     */
     public void setOnThursday(boolean onThursday) {
         this.onThursday = onThursday;
     }
 
+    /**
+     * @return Whether or not the event occurs on a Friday
+     */
     public boolean isOnFriday() {
         return this.onFriday;
     }
 
+    /**
+     * @param onFriday Whether or not the event should occur on a Friday.
+     */
     public void setOnFriday(boolean onFriday) {
         this.onFriday = onFriday;
     }
 
+    /**
+     * @return Whether or not the event occurs on a Saturday
+     */
     public boolean isOnSaturday() {
         return this.onSaturday;
     }
 
+    /**
+     * @param onSaturday Whether or not the event should occur on a Saturday.
+     */
     public void setOnSaturday(boolean onSaturday) {
         this.onSaturday = onSaturday;
     }
 
+    /**
+     * Determine whether or not this occurrence encapsulates the day of week
+     * provided.
+     *
+     * @param dayOfWeek The day of week to check against.
+     * @return true if the event occurs on the given day of week, false otherwise.
+     */
     public boolean isOnDayOfWeek(@NonNull DayOfWeek dayOfWeek) {
         switch (dayOfWeek) {
             case MONDAY:
