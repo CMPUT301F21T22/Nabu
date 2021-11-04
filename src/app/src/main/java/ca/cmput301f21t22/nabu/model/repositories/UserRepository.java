@@ -28,8 +28,8 @@ import java.util.function.Predicate;
 import ca.cmput301f21t22.nabu.data.User;
 
 /**
- * Retrieves event data from database
- * Deposit event data within proper event lists
+ * Retrieves user data from database
+ * Deposit user data within proper event lists
  * Ensure consistency between database & local data
  * Inform listening objects of changes to the data
  */
