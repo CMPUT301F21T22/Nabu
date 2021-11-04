@@ -11,6 +11,10 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.concurrent.CompletableFuture;
 
+/**
+ * Used to update or write user data to userbase
+ */
+
 public class UserController {
     @NonNull
     public final static String TAG = "UserController";
