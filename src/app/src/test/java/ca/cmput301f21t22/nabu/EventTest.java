@@ -23,8 +23,10 @@ public class EventTest {
             GeoPoint geopoint = new GeoPoint(66, 4);
             Event event1 = new Event(new Date());
             Event event2 = new Event("501", new Date());
-            Event event3 = new Event(new Date(), "Lost 30 pounds", "Photo/events/event202", geopoint);
-            Event event4 = new Event("503", new Date(), "Flowers are blooming", "Photo/events/event202", geopoint);
+            Event event3 = new Event(new Date(), "Lost 30 pounds",
+                    "Photo/events/event202", geopoint);
+            Event event4 = new Event("503", new Date(), "Flowers are blooming",
+                    "Photo/events/event202", geopoint);
         }
 
         //Tests to assert the hash code of the elements is preserved
@@ -68,7 +70,8 @@ public class EventTest {
         @Test
         void testGetComment() {
             String comment = "Just bought some yellows for my next canvas!";
-            Event event = new Event(new Date(), comment, "", new GeoPoint(22,33));
+            Event event = new Event(new Date(), comment, "", new GeoPoint(22,
+                    33));
             assertEquals(comment, event.getComment());
         }
 
@@ -76,7 +79,8 @@ public class EventTest {
         @Test
         void testGetPhotopath() {
             String photoPath = "user/events/event233";
-            Event event = new Event(new Date(), "Lowered my sugar intake by half", photoPath, new GeoPoint(30,50));
+            Event event = new Event(new Date(), "Lowered my sugar intake by half",
+                    photoPath, new GeoPoint(30,50));
             assertEquals(photoPath, event.getPhotoPath());
         }
 
@@ -92,7 +96,8 @@ public class EventTest {
         @Test
         void testSetLocation() {
             GeoPoint geoPoint = new GeoPoint(3500, 2673);
-            Event event = new Event(new Date(), "", "", new GeoPoint(5766, 4768));
+            Event event = new Event(new Date(), "", "",
+                    new GeoPoint(5766, 4768));
             event.setLocation(geoPoint);
             assertEquals(geoPoint, event.getLocation());
         }
