@@ -15,6 +15,10 @@ import java.util.concurrent.CompletableFuture;
 
 import ca.cmput301f21t22.nabu.data.Habit;
 
+/**
+ * Used to update or write habit data to userbase
+ */
+
 public class HabitController {
     @NonNull
     public final static String TAG = "HabitController";
