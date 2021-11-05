@@ -69,7 +69,7 @@ public class EventRepository {
 
     /**
      * Create user/habit/event from a snapshot as returned by Firestore
-     * @param snapshot of current event data from snapshot by Firestore database
+     * @param snapshot -> current event data from snapshot by Firestore database
      * @return Event details
      */
     @NonNull
@@ -93,7 +93,7 @@ public class EventRepository {
 
     /**
      * Retrieves event from Firestore database
-     * @param id current event snapshot document ID
+     * @param id -> current event snapshot document ID
      * @return Retrieved event where the futures are asynchronous
      */
     @NonNull
@@ -114,8 +114,8 @@ public class EventRepository {
 
     /**
      * Checks whether an event has been changed and update changing to event hashmap
-     * @param snapshots Zero or more DocumentSnapshot for current event
-     * @param e A class of exceptions thrown by Cloud Firestore
+     * @param snapshots -> Zero or more DocumentSnapshot for current event
+     * @param e -> A class of exceptions thrown by Cloud Firestore
      */
     private void onEventsChanged(@Nullable QuerySnapshot snapshots, @Nullable FirebaseFirestoreException e) {
         if (e != null || snapshots == null) {

@@ -30,8 +30,8 @@ public class AddEventCommand implements Command<CompletableFuture<Event>> {
 
     /**
      * Add the event to current habit
-     * @param habit the current habit that user edits
-     * @param event the event that user wants to add
+     * @param habit -> current habit that user edits
+     * @param event -> event that user wants to add
      */
 
     public AddEventCommand(@NonNull Habit habit, @NonNull Event event) {
