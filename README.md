@@ -22,13 +22,11 @@ A simple, and easy-to-use Android application which tracks your habits for the d
 
 #### Project Documentation
 
-> The [documentation](https://github.com/CMPUT301F21T22/Nabu/tree/main/doc) can be found in the /doc directory.
+> The [UML documentation](https://github.com/CMPUT301F21T22/Nabu/tree/main/doc) can be found in the /doc directory.
 
 ## Contributors
 
 - Teng Liu
-- Joshua Vuong
-- Mashiad Hasan
 - Wigandt De Klerk
 - Hao Lan
 - Aryan Malik 
