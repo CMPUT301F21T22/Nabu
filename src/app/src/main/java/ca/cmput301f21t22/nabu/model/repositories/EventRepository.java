@@ -25,9 +25,9 @@ import ca.cmput301f21t22.nabu.data.Event;
 
 /**
  * Retrieves event data from database
- * Deposit event data within proper event lists
- * Ensure consistency between database & local data
- * Inform listening objects of changes to the data
+ * Deposits event data within proper event lists
+ * Ensures consistency between database & local data
+ * Informs listening objects of changes to the data
  */
 
 public class EventRepository {
@@ -55,7 +55,8 @@ public class EventRepository {
 
     /**
      * getInstance from EventRepository
-     * @return Event Instance
+     * Used to return a single object instance and creates a new Instance if it's null
+     * @return Controller/Repositroy object Instance
      */
     @NonNull
     public static EventRepository getInstance() {
@@ -67,9 +68,9 @@ public class EventRepository {
     }
 
     /**
-     * Create snapshot to get event details
-     * @param snapshot Current event data from snapshot by Firestore database
-     * @return Event detils
+     * Create user/habit/event from a snapshot as returned by Firestore
+     * @param snapshot of current event data from snapshot by Firestore database
+     * @return Event details
      */
     @NonNull
     private static Event createFromSnapshot(@NonNull DocumentSnapshot snapshot) {
@@ -91,9 +92,9 @@ public class EventRepository {
     }
 
     /**
-     * Retrieve event in Firestore database
+     * Retrieves event from Firestore database
      * @param id current event snapshot document ID
-     * @return Retrieved event
+     * @return Retrieved event where the futures are asynchronous
      */
     @NonNull
     public CompletableFuture<Event> retrieveEvent(@NonNull String id) {
@@ -112,7 +113,7 @@ public class EventRepository {
     }
 
     /**
-     * Check whether event has been changed and update changing to event hashmap
+     * Checks whether an event has been changed and update changing to event hashmap
      * @param snapshots Zero or more DocumentSnapshot for current event
      * @param e A class of exceptions thrown by Cloud Firestore
      */
