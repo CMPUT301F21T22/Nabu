@@ -11,10 +11,13 @@ import ca.cmput301f21t22.nabu.model.controllers.EventController;
 import ca.cmput301f21t22.nabu.model.controllers.HabitController;
 import ca.cmput301f21t22.nabu.model.repositories.EventRepository;
 
+/**
+ *  Used to call on controllers to add an event to the database of habit events
+ */
+
 public class AddEventCommand implements Command<CompletableFuture<Event>> {
     @NonNull
     private final EventRepository eventRepository;
-
     @NonNull
     private final EventController eventController;
     @NonNull
@@ -25,9 +28,14 @@ public class AddEventCommand implements Command<CompletableFuture<Event>> {
     @NonNull
     private final Event event;
 
+    /**
+     * Add the event to current habit
+     * @param habit the current habit that user edits
+     * @param event the event that user wants to add
+     */
+
     public AddEventCommand(@NonNull Habit habit, @NonNull Event event) {
         this.eventRepository = EventRepository.getInstance();
-
         this.eventController = EventController.getInstance();
         this.habitController = HabitController.getInstance();
 

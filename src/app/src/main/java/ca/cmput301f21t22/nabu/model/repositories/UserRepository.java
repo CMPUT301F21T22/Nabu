@@ -47,6 +47,7 @@ public class UserRepository {
     @NonNull
     private final FirebaseAuth auth;
 
+
     private UserRepository() {
         this.currentUser = new MutableLiveData<>();
 
@@ -60,6 +61,10 @@ public class UserRepository {
         this.auth.addAuthStateListener(auth -> this.onSignInChanged());
     }
 
+    /**
+     * getInstance from Firestore
+     * @return User Instance
+     */
     @NonNull
     public static UserRepository getInstance() {
         if (INSTANCE == null) {
@@ -69,6 +74,11 @@ public class UserRepository {
         return INSTANCE;
     }
 
+    /**
+     * Create snapshot to get user details
+     * @param snapshot Current user data in Firestore database from  a document
+     * @return User details
+     */
     @NonNull
     private static User createFromSnapshot(@NonNull DocumentSnapshot snapshot) {
         String email = Objects.requireNonNull(snapshot.getString("email"));
@@ -92,6 +102,9 @@ public class UserRepository {
         return this.usersMap.values().stream().filter(predicate).findFirst();
     }
 
+    /**
+     * Set up current User, gets user information
+     */
     private void onSignInChanged() {
         FirebaseUser user = this.auth.getCurrentUser();
         if (user == null) {
@@ -106,6 +119,11 @@ public class UserRepository {
                         e -> Log.e(TAG, "Could not retrieve currently logged in user from collection.", e));
     }
 
+    /**
+     * * Check whether user has been changed and update changing to user hashmap
+     * @param snapshots Zero or more DocumentSnapshot for current user
+     * @param e A class of exceptions thrown by Cloud Firestore
+     */
     private void onUsersChanged(@Nullable QuerySnapshot snapshots, @Nullable FirebaseFirestoreException e) {
         if (e != null || snapshots == null) {
             Log.e(TAG, "Failed to listen to collection updates.", e);
@@ -143,8 +161,9 @@ public class UserRepository {
             return;
         }
 
-        // If there's a non-null logged in user, but they're not in Firestore, it's a new user, and we should
-        // add it to the database.
+        /**
+         * If there's a non-null logged in user, but they're not in Firestore, it's a new user, and we should add it to the database.
+         */
         if (!snapshot.exists()) {
             // TODO: This belongs in a UserController
             Map<String, Object> map = new HashMap<>();

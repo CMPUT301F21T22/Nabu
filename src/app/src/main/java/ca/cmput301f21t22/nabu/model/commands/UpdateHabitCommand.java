@@ -9,6 +9,9 @@ import ca.cmput301f21t22.nabu.model.Command;
 import ca.cmput301f21t22.nabu.model.controllers.HabitController;
 import ca.cmput301f21t22.nabu.model.repositories.HabitRepository;
 
+/**
+ * Calls on controllers to update a habit in the database
+ */
 public class UpdateHabitCommand implements Command<CompletableFuture<Habit>> {
     @NonNull
     private final HabitRepository habitRepository;

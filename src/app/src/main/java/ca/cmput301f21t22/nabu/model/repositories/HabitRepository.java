@@ -26,6 +26,12 @@ import java.util.function.Predicate;
 import ca.cmput301f21t22.nabu.data.Habit;
 import ca.cmput301f21t22.nabu.data.Occurrence;
 
+/**
+ * Retrieves habit data from database
+ * Deposit habit data within proper event lists
+ * Ensure consistency between database & local data
+ * Inform listening objects of changes to the data
+ */
 public class HabitRepository {
     @NonNull
     public final static String TAG = "HabitRepository";
@@ -49,6 +55,10 @@ public class HabitRepository {
         this.habitsCollection.addSnapshotListener(this::onHabitsChanged);
     }
 
+    /**
+     * getInstance from Firestore
+     * @return Habit Instance
+     */
     @NonNull
     public static HabitRepository getInstance() {
         if (INSTANCE == null) {
@@ -58,6 +68,11 @@ public class HabitRepository {
         return INSTANCE;
     }
 
+    /**
+     * Create snapshot to get habit details
+     * @param snapshot Current Habit data in Firestore database from document
+     * @return habit details
+     */
     @NonNull
     private static Habit createFromSnapshot(@NonNull DocumentSnapshot snapshot) {
         String title = snapshot.getString("title");
@@ -85,6 +100,11 @@ public class HabitRepository {
         return this.habitsMap.values().stream().filter(predicate).findFirst();
     }
 
+    /**
+     * Retrieve Habit in Firestore database
+     * @param id current Habit snapshot document ID
+     * @return Retrieved Habit
+     */
     @NonNull
     public CompletableFuture<Habit> retrieveHabit(@NonNull String id) {
         CompletableFuture<Habit> future = new CompletableFuture<>();
@@ -101,6 +121,11 @@ public class HabitRepository {
         return future;
     }
 
+    /**
+     * Check whether habit has been changed and update changing to habit hashmap
+     * @param snapshots Zero or more DocumentSnapshot for current habit
+     * @param e A class of exceptions thrown by Cloud Firestore
+     */
     private void onHabitsChanged(@Nullable QuerySnapshot snapshots, @Nullable FirebaseFirestoreException e) {
         if (e != null || snapshots == null) {
             Log.e(TAG, "Failed to listen to collection updates.", e);

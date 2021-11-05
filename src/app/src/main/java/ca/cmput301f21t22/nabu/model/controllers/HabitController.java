@@ -15,6 +15,9 @@ import java.util.concurrent.CompletableFuture;
 
 import ca.cmput301f21t22.nabu.data.Habit;
 
+/**
+ * Add,delete and update habit data to userbase
+ */
 public class HabitController {
     @NonNull
     public final static String TAG = "HabitController";
@@ -50,6 +53,10 @@ public class HabitController {
         return map;
     }
 
+    /**
+     * Delete habit in database and feedback
+     * @param habitId Current habit ID
+     */
     @NonNull
     public CompletableFuture<Boolean> delete(@NonNull String habitId) {
         if (habitId.equals("")) {
@@ -67,6 +74,11 @@ public class HabitController {
         return future;
     }
 
+    /**
+     *  Update habit to database and feedback
+     * @param habitId Current Habit ID
+     * @param habit habit object
+     */
     @NonNull
     public CompletableFuture<String> update(@NonNull String habitId, @NonNull Habit habit) {
         if (habitId.equals("")) {
@@ -86,6 +98,11 @@ public class HabitController {
         return future;
     }
 
+    /**
+     * Adds event from the list of events inside a habit
+     * @param habitId Current habit unique ID
+     * @param eventId Event user wants to edit
+     */
     @NonNull
     public CompletableFuture<String> addEvent(@NonNull String habitId, @NonNull String eventId) {
         if (habitId.equals("") || eventId.equals("")) {
@@ -105,6 +122,11 @@ public class HabitController {
         return future;
     }
 
+    /**
+     * Delete event from the list of events in habit
+     * @param habitId Current habit ID
+     * @param eventId Event user would like delete
+     */
     @NonNull
     public CompletableFuture<String> deleteEvent(@NonNull String habitId, @NonNull String eventId) {
         if (habitId.equals("") || eventId.equals("")) {
@@ -124,6 +146,10 @@ public class HabitController {
         return future;
     }
 
+    /**
+     * Add habit in database and feedback
+     * @param habit habit object
+     */
     @NonNull
     public CompletableFuture<String> add(@NonNull Habit habit) {
         CompletableFuture<String> future = new CompletableFuture<>();

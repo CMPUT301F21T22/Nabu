@@ -23,6 +23,12 @@ import java.util.concurrent.CompletableFuture;
 
 import ca.cmput301f21t22.nabu.data.Event;
 
+/**
+ * Retrieves event data from database
+ * Deposit event data within proper event lists
+ * Ensure consistency between database & local data
+ * Inform listening objects of changes to the data
+ */
 public class EventRepository {
     @NonNull
     public final static String TAG = "EventRepository";
@@ -46,6 +52,10 @@ public class EventRepository {
         this.eventsCollection.addSnapshotListener(this::onEventsChanged);
     }
 
+    /**
+     * getInstance from Firestore
+     * @return Event Instance
+     */
     @NonNull
     public static EventRepository getInstance() {
         if (INSTANCE == null) {
@@ -55,6 +65,11 @@ public class EventRepository {
         return INSTANCE;
     }
 
+    /**
+     * Create snapshot to get event details
+     * @param snapshot Current event data in Firestore database from  a document
+     * @return Event detils
+     */
     @NonNull
     private static Event createFromSnapshot(@NonNull DocumentSnapshot snapshot) {
         Date date = snapshot.getDate("date");
@@ -74,6 +89,11 @@ public class EventRepository {
         return this.events;
     }
 
+    /**
+     * Retrieve event in Firestore database
+     * @param id current event snapshot document ID
+     * @return Retrieved event
+     */
     @NonNull
     public CompletableFuture<Event> retrieveEvent(@NonNull String id) {
         CompletableFuture<Event> future = new CompletableFuture<>();
@@ -90,6 +110,11 @@ public class EventRepository {
         return future;
     }
 
+    /**
+     * Check whether event has been changed and update changing to event hashmap
+     * @param snapshots Zero or more DocumentSnapshot for current event
+     * @param e A class of exceptions thrown by Cloud Firestore
+     */
     private void onEventsChanged(@Nullable QuerySnapshot snapshots, @Nullable FirebaseFirestoreException e) {
         if (e != null || snapshots == null) {
             Log.e(TAG, "Failed to listen to collection updates.", e);

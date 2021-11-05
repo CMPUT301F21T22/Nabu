@@ -11,6 +11,10 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.concurrent.CompletableFuture;
 
+/**
+ * Add,delete and update user data to userbase
+ */
+
 public class UserController {
     @NonNull
     public final static String TAG = "UserController";
@@ -34,6 +38,11 @@ public class UserController {
         return INSTANCE;
     }
 
+    /**
+     * Add habit and User ID in habit
+     * @param userId Current user ID
+     * @param habitId habit object ID
+     */
     @NonNull
     public CompletableFuture<String> addHabit(@NonNull String userId, @NonNull String habitId) {
         if (userId.equals("") || habitId.equals("")) {
@@ -53,6 +62,11 @@ public class UserController {
         return future;
     }
 
+    /**
+     * Delet habit and user iD in habit
+     * @param userId Current User unique ID
+     * @param habitId habit object ID
+     */
     @NonNull
     public CompletableFuture<String> deleteHabit(@NonNull String userId, @NonNull String habitId) {
         if (userId.equals("") || habitId.equals("")) {
