@@ -14,6 +14,7 @@ import ca.cmput301f21t22.nabu.model.repositories.HabitRepository;
 /**
  * Used to call on controllers to add a habit to the database of user's habits
  */
+
 public class AddHabitCommand implements Command<CompletableFuture<Habit>> {
     @NonNull
     private final HabitRepository habitRepository;

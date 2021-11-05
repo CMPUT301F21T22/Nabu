@@ -19,25 +19,22 @@ activate AddEventCommand
 AddEventCommand -> EventController : Add event
 activate EventController
 
-EventController -> AddEventCommand : ID of new event
+EventController -[dashed]-> AddEventCommand : ID of new event
 deactivate EventController
 
 AddEventCommand -> HabitController : Add event to parent habit
 activate HabitController
 
-HabitController -> AddEventCommand
+HabitController -[dashed]-> AddEventCommand
 deactivate HabitController
 
 AddEventCommand -> EventRepository : Retrieve event based on ID
 activate EventRepository
 
-EventRepository -> AddEventCommand : Created event
+EventRepository -[dashed]-> AddEventCommand : Created event
 deactivate EventRepository
 
-AddEventCommand -> MyDay : Created event
+AddEventCommand -[dashed]-> MyDay : Created event
 destroy AddEventCommand
-
-MyDay -> User : Display changes
-deactivate MyDay
 
 @enduml

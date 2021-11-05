@@ -27,6 +27,13 @@ import java.util.function.Predicate;
 
 import ca.cmput301f21t22.nabu.data.User;
 
+/**
+ * Retrieves user data from database
+ * Deposit user data within proper event lists
+ * Ensure consistency between database & local data
+ * Inform listening objects of changes to the data
+ */
+
 public class UserRepository {
     @NonNull
     public final static String TAG = "UserRepository";

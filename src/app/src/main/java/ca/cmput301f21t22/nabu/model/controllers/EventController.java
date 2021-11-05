@@ -16,8 +16,9 @@ import java.util.concurrent.CompletableFuture;
 import ca.cmput301f21t22.nabu.data.Event;
 
 /**
- * Add,delete and update event data to userbase
+ * Add,delete and update event data to Database
  */
+
 public class EventController {
     @NonNull
     public final static String TAG = "EventController";
@@ -52,7 +53,7 @@ public class EventController {
     }
 
     /**
-     * Delete event in database and feeback
+     * Delete event in database and feedback
      * @param eventId Current Event ID
      */
 
@@ -74,7 +75,7 @@ public class EventController {
     }
 
     /**
-     * Update event to database and feeback
+     * Update event to database and feedback
      * @param eventId Current Event ID
      * @param event Event Object
      */
@@ -98,7 +99,7 @@ public class EventController {
     }
 
     /**
-     * Adding event to database and feeback
+     * Adding event to database and feedback
      * @param event New Event object
      */
     @NonNull
