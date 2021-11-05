@@ -11,6 +11,10 @@ import ca.cmput301f21t22.nabu.model.controllers.EventController;
 import ca.cmput301f21t22.nabu.model.controllers.HabitController;
 import ca.cmput301f21t22.nabu.model.repositories.EventRepository;
 
+/**
+ * Used to call on controllers to add an event to the database of habit events
+ */
+
 public class AddEventCommand implements Command<CompletableFuture<Event>> {
     @NonNull
     private final EventRepository eventRepository;

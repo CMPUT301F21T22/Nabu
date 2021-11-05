@@ -15,6 +15,10 @@ import java.util.concurrent.CompletableFuture;
 
 import ca.cmput301f21t22.nabu.data.Event;
 
+/**
+ * Used to update or write event data to userbase
+ */
+
 public class EventController {
     @NonNull
     public final static String TAG = "EventController";
