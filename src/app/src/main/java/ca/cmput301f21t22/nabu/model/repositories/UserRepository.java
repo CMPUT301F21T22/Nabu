@@ -69,7 +69,7 @@ public class UserRepository {
     }
 
     /**
-     * getInstance from Firestore
+     * getInstance from UserRepository
      * @return User Instance
      */
     @NonNull
@@ -83,7 +83,7 @@ public class UserRepository {
 
     /**
      * Create snapshot to get user details
-     * @param snapshot Current user data in Firestore database from  a document
+     * @param snapshot Current user data from snapshot by Firestore database
      * @return User details
      */
     @NonNull

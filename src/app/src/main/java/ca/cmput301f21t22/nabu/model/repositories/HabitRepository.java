@@ -57,7 +57,7 @@ public class HabitRepository {
     }
 
     /**
-     * getInstance from Firestore
+     * getInstance from HabitRepository
      * @return Habit Instance
      */
     @NonNull
@@ -71,7 +71,7 @@ public class HabitRepository {
 
     /**
      * Create snapshot to get habit details
-     * @param snapshot Current Habit data in Firestore database from document
+     * @param snapshot Current Habit data  from snapshot by Firestore database
      * @return habit details
      */
     @NonNull

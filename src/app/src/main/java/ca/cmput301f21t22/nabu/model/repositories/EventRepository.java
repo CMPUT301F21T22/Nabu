@@ -54,7 +54,7 @@ public class EventRepository {
     }
 
     /**
-     * getInstance from Firestore
+     * getInstance from EventRepository
      * @return Event Instance
      */
     @NonNull
@@ -68,7 +68,7 @@ public class EventRepository {
 
     /**
      * Create snapshot to get event details
-     * @param snapshot Current event data in Firestore database from  a document
+     * @param snapshot Current event data from snapshot by Firestore database
      * @return Event detils
      */
     @NonNull
