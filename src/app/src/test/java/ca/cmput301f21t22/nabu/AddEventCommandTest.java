@@ -37,4 +37,5 @@ public class AddEventCommandTest {
         //TODO: add process for checking database
     }
 
+
 }
