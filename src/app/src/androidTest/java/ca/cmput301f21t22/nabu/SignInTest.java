@@ -16,6 +16,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.robotium.solo.Solo;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -58,12 +59,41 @@ public class SignInTest {
      * Creates an account
      * Checks settings to make sure you are in that account
      */
+    @Ignore("As there is no way within the code to remove a user from the database, this test " +
+            "should only be used with express intent. Also, whenever this test is run, a new email "
+            + "must be used")
     @Test
     public void checkSignUp() {
         //Asserts that the current activity is the MainActivity. Otherwise, show “Wrong Activity”
         solo.assertCurrentActivity("Wrong Activity", MainActivity.class);
 
+        String email = "test3@pleasedelete.del";
+        //Signs up for account
+        solo.enterText((EditText) solo.getView(R.id.email), email);
+        solo.clickOnButton("Next");
+        solo.enterText((EditText) solo.getView(R.id.password), "password123");
+        solo.enterText((EditText) solo.getView(R.id.name), "John Smith");
+        solo.clickOnButton("Save");
 
+        //Logs Out
+        solo.clickOnMenuItem("Settings");
+        solo.clickOnText("Sign out");
+        solo.clickOnText("Sign", 3);
+
+        //Logs into account
+        solo.enterText((EditText) solo.getView(R.id.email), email);
+        solo.clickOnButton("Next");
+        solo.enterText((EditText) solo.getView(R.id.password), "password123");
+        solo.clickOnButton("Sign in");
+
+        //Checks that user is logged in
+        solo.clickOnMenuItem("Settings");
+        assertTrue(solo.waitForText(email, 1,
+                2000));
+
+        //Logs Out
+        solo.clickOnText("Sign out");
+        solo.clickOnText("Sign", 3);
     }
 
     /**
