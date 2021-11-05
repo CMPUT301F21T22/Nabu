@@ -219,7 +219,6 @@ public class HabitsFragmentTest {
      * Creates an Event
      * Deletes the Event
      * Checks if the Event is deleted
-     * @throws Exception
      */
     @Test
     public void checkDeleteEvent() {
@@ -254,7 +253,7 @@ public class HabitsFragmentTest {
         solo.setDatePicker(0,2021,
                 10, 9);
         solo.clickOnText("OK");
-        solo.enterText((EditText) solo.getView(R.id.edit_text_comment), "Drank");
+        solo.enterText((EditText) solo.getView(R.id.edit_text_comment), "Bought Bees");
         solo.clickOnView((FloatingActionButton) solo.getView(R.id.button_save));
         solo.goBack();
 
@@ -271,7 +270,8 @@ public class HabitsFragmentTest {
         solo.clickOnView((ImageButton) solo.getView(R.id.button_overflow_menu));
         solo.clickOnMenuItem("View Events");
         //TODO: Issue, text not on screen but solo still returns as true
-        assertFalse(solo.waitForText("Drank", 1, 2000));
+        assertFalse(solo.waitForText("Bought Bees", 1, 2000));
+        assertFalse(solo.waitForText("Nov 9, 2021", 1, 2000));
 
         solo.clickOnView((ImageButton) solo.getView(R.id.button_overflow_menu));
         solo.clickOnMenuItem("Delete Habit");
@@ -281,7 +281,6 @@ public class HabitsFragmentTest {
      * Creates a Habit
      * Edits a Habit
      * Checks if the Habit is updated
-     * @throws Exception
      */
     @Test
     public void checkEdit(){
@@ -344,7 +343,6 @@ public class HabitsFragmentTest {
      * Creates an Event
      * Edits the Event
      * Checks if the Event is updated
-     * @throws Exception
      */
     @Test
     public void checkEditEvent() {
