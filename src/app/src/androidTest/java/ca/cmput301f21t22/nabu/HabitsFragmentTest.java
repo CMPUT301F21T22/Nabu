@@ -267,6 +267,8 @@ public class HabitsFragmentTest {
         solo.clickOnText("Delete");
 
         //Checks if Event deleted
+        solo.clickOnMenuItem("My Day");
+        solo.clickOnMenuItem("Habits");
         solo.clickOnView((ImageButton) solo.getView(R.id.button_overflow_menu));
         solo.clickOnMenuItem("View Events");
         //TODO: Issue, text not on screen but solo still returns as true
