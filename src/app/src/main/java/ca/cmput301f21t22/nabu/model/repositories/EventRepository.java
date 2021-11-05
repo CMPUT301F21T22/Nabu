@@ -29,7 +29,6 @@ import ca.cmput301f21t22.nabu.data.Event;
  * Ensures consistency between database & local data
  * Informs listening objects of changes to the data
  */
-
 public class EventRepository {
     @NonNull
     public final static String TAG = "EventRepository";
@@ -54,9 +53,7 @@ public class EventRepository {
     }
 
     /**
-     * getInstance from EventRepository
-     * Used to return a single object instance and creates a new Instance if it's null
-     * @return Controller/Repositroy object Instance
+     * @return Singleton instance of the EventRepository.
      */
     @NonNull
     public static EventRepository getInstance() {
@@ -67,11 +64,6 @@ public class EventRepository {
         return INSTANCE;
     }
 
-    /**
-     * Create user/habit/event from a snapshot as returned by Firestore
-     * @param snapshot -> current event data from snapshot by Firestore database
-     * @return Event details
-     */
     @NonNull
     private static Event createFromSnapshot(@NonNull DocumentSnapshot snapshot) {
         Date date = snapshot.getDate("date");
@@ -86,15 +78,19 @@ public class EventRepository {
         return new Event(snapshot.getId(), date, comment, photoPath, location);
     }
 
+    /**
+     * @return Handle to a live-updating copy of the events in the database.
+     */
     @NonNull
     public LiveData<Map<String, Event>> getEvents() {
         return this.events;
     }
 
     /**
-     * Retrieves event from Firestore database
-     * @param id -> current event snapshot document ID
-     * @return Retrieved event where the futures are asynchronous
+     * Retrieves an event from the database by ID.
+     *
+     * @param id The ID of the event to retrieve.
+     * @return Future for the retrieved event.
      */
     @NonNull
     public CompletableFuture<Event> retrieveEvent(@NonNull String id) {
@@ -112,11 +108,6 @@ public class EventRepository {
         return future;
     }
 
-    /**
-     * Checks whether an event has been changed and update changing to event hashmap
-     * @param snapshots -> Zero or more DocumentSnapshot for current event
-     * @param e -> A class of exceptions thrown by Cloud Firestore
-     */
     private void onEventsChanged(@Nullable QuerySnapshot snapshots, @Nullable FirebaseFirestoreException e) {
         if (e != null || snapshots == null) {
             Log.e(TAG, "Failed to listen to collection updates.", e);

@@ -15,9 +15,9 @@ import ca.cmput301f21t22.nabu.model.controllers.UserController;
 import ca.cmput301f21t22.nabu.model.repositories.UserRepository;
 
 /**
- * Used to call on controllers to delete a habit to the database of user's habits
+ * Used to call on controllers to delete a habit from the database of habits, delete any events it owns, and remove any
+ * references to it held by users.
  */
-
 public class DeleteHabitCommand implements Command<CompletableFuture<Boolean>> {
     @NonNull
     private final UserRepository userRepository;
@@ -33,11 +33,11 @@ public class DeleteHabitCommand implements Command<CompletableFuture<Boolean>> {
     private final Habit habit;
 
     /**
-     * Delete the habit from current user
-     * @param user -> current user
-     * @param habit -> habit that user wants to delete
+     * Create an instance of DeleteHabitCommand.
+     *
+     * @param habit The habit to be deleted. This must be a remote-linked instance.
+     * @see Habit
      */
-
     public DeleteHabitCommand(@NonNull Habit habit) {
         this.userRepository = UserRepository.getInstance();
 
@@ -48,19 +48,29 @@ public class DeleteHabitCommand implements Command<CompletableFuture<Boolean>> {
         this.habit = habit;
     }
 
+    /**
+     * Execute the command.
+     *
+     * @return A future indicating whether the operation succeeded.
+     */
     @Override
     public CompletableFuture<Boolean> execute() {
+        // The user that owns this habit.
         Optional<User> parent = this.userRepository.findUser(user -> user.getHabits().contains(this.habit.getId()));
+        // The children events of the habit.
         Stream<String> children = this.habit.getEvents().stream();
 
+        // This future deletes all events owned by this habit.
         CompletableFuture<?>[] deleteChildrenFutures = children.map(
                 eventId -> this.habitController.deleteEvent(this.habit.getId(), eventId)
                         .thenCompose(habitId -> this.eventController.delete(eventId)))
                 .toArray(CompletableFuture[]::new);
 
+        // This future first deletes child events, then the habit itself.
         CompletableFuture<Boolean> deleteFuture = CompletableFuture.allOf(deleteChildrenFutures)
                 .thenCompose(v -> this.habitController.delete(this.habit.getId()));
 
+        // If the parent exists, we first detach it from the parent, before deleting.
         if (parent.isPresent()) {
             return this.userController.deleteHabit(parent.get().getId(), this.habit.getId())
                     .thenCompose(userId -> deleteFuture);

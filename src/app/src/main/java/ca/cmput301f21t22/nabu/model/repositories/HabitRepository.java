@@ -32,7 +32,6 @@ import ca.cmput301f21t22.nabu.data.Occurrence;
  * Ensures consistency between database & local data
  * Informs listening objects of changes to the data
  */
-
 public class HabitRepository {
     @NonNull
     public final static String TAG = "HabitRepository";
@@ -57,8 +56,7 @@ public class HabitRepository {
     }
 
     /**
-     * getInstance from HabitRepository
-     * @return Habit Instance
+     * @return Singleton instance of the HabitRepository.
      */
     @NonNull
     public static HabitRepository getInstance() {
@@ -69,11 +67,6 @@ public class HabitRepository {
         return INSTANCE;
     }
 
-    /**
-     * Creates a snapshot to get habit details
-     * @param snapshot -> Current Habit data from snapshot by Firestore database
-     * @return habit details
-     */
     @NonNull
     private static Habit createFromSnapshot(@NonNull DocumentSnapshot snapshot) {
         String title = snapshot.getString("title");
@@ -91,20 +84,30 @@ public class HabitRepository {
         return new Habit(snapshot.getId(), title, reason, startDate, occurrence, events, shared);
     }
 
+    /**
+     * @return Handle to a live-updating copy of the habits in the database.
+     */
     @NonNull
     public LiveData<Map<String, Habit>> getHabits() {
         return this.habits;
     }
 
+    /**
+     * Find a habit in the database based on a given predicate.
+     *
+     * @param predicate The predicate to test against.
+     * @return The first habit that matches the predicate.
+     */
     @NonNull
     public Optional<Habit> findHabit(Predicate<Habit> predicate) {
         return this.habitsMap.values().stream().filter(predicate).findFirst();
     }
 
     /**
-     * Retrieves Habit in Firestore database
-     * @param id -> current Habit snapshot document ID
-     * @return Retrieved Habit
+     * Retrieves a habit from the database by ID.
+     *
+     * @param id The ID of the habit to retrieve.
+     * @return Future for the retrieved habit.
      */
     @NonNull
     public CompletableFuture<Habit> retrieveHabit(@NonNull String id) {
@@ -122,11 +125,6 @@ public class HabitRepository {
         return future;
     }
 
-    /**
-     * Checks whether habit has been changed and updates changing to habit hashmap
-     * @param snapshots -> Zero or more DocumentSnapshot for current habit
-     * @param e A class of exceptions thrown by Cloud Firestore
-     */
     private void onHabitsChanged(@Nullable QuerySnapshot snapshots, @Nullable FirebaseFirestoreException e) {
         if (e != null || snapshots == null) {
             Log.e(TAG, "Failed to listen to collection updates.", e);

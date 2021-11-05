@@ -12,10 +12,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.concurrent.CompletableFuture;
 
 /**
- * Add/Delete/Update user data to userbase
- *
+ * Singleton providing methods for write operations on remote user instances.
  */
-
 public class UserController {
     @NonNull
     public final static String TAG = "UserController";
@@ -30,6 +28,9 @@ public class UserController {
         this.usersCollection = FirebaseFirestore.getInstance().collection("Users");
     }
 
+    /**
+     * @return Singleton instance of the UserController.
+     */
     @NonNull
     public static UserController getInstance() {
         if (INSTANCE == null) {
@@ -40,9 +41,11 @@ public class UserController {
     }
 
     /**
-     * Add habit and User ID in habit
-     * @param userId -> Current user ID
-     * @param habitId -> habit object ID
+     * Add a habit reference to the list of habits owned by a user.
+     *
+     * @param userId  The ID of the user to update.
+     * @param habitId The ID of the habit to associate with the user.
+     * @return A future for the ID of the user, once updated.
      */
     @NonNull
     public CompletableFuture<String> addHabit(@NonNull String userId, @NonNull String habitId) {
@@ -64,9 +67,11 @@ public class UserController {
     }
 
     /**
-     * Delete habit and user ID in habit
-     * @param userId -> Current User unique ID
-     * @param habitId -> habit object ID
+     * Delete a habit reference from the list of habits owned by a user.
+     *
+     * @param userId  The ID of the user to update.
+     * @param habitId The ID of the habit to remove from the user.
+     * @return A future for the ID of the user, once updated.
      */
     @NonNull
     public CompletableFuture<String> deleteHabit(@NonNull String userId, @NonNull String habitId) {

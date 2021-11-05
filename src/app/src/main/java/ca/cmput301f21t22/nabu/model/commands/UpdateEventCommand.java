@@ -10,9 +10,8 @@ import ca.cmput301f21t22.nabu.model.controllers.EventController;
 import ca.cmput301f21t22.nabu.model.repositories.EventRepository;
 
 /**
- * Used to call on controllers to update an event to the database of habit's events
+ * Used to call on controllers to update an existing event.
  */
-
 public class UpdateEventCommand implements Command<CompletableFuture<Event>> {
     @NonNull
     private final EventRepository eventRepository;
@@ -24,11 +23,11 @@ public class UpdateEventCommand implements Command<CompletableFuture<Event>> {
     private final Event event;
 
     /**
-     * Update the event to current habit
-     * @param habit -> current habit that user edit
-     * @param event -> event that user wants to update
+     * Create an instance of UpdateEventCommand.
+     *
+     * @param event The event to be updated. This must be a remote-linked instance, whose non-ID fields have been
+     *              changed to the new values.
      */
-
     public UpdateEventCommand(@NonNull Event event) {
         this.eventRepository = EventRepository.getInstance();
 
@@ -37,6 +36,11 @@ public class UpdateEventCommand implements Command<CompletableFuture<Event>> {
         this.event = event;
     }
 
+    /**
+     * Execute the command.
+     *
+     * @return A future for the event as updated.
+     */
     @Override
     public CompletableFuture<Event> execute() {
         return this.eventController.update(this.event.getId(), this.event)

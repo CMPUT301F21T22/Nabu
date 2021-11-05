@@ -12,9 +12,8 @@ import ca.cmput301f21t22.nabu.model.controllers.UserController;
 import ca.cmput301f21t22.nabu.model.repositories.HabitRepository;
 
 /**
- * Used to call on controllers to add a habit to the database of user's habits
+ * Used to call on controllers to add a habit to the database of habits, and associate it with an existing user.
  */
-
 public class AddHabitCommand implements Command<CompletableFuture<Habit>> {
     @NonNull
     private final HabitRepository habitRepository;
@@ -30,9 +29,10 @@ public class AddHabitCommand implements Command<CompletableFuture<Habit>> {
     private final Habit habit;
 
     /**
-     * Add the habit to current User
-     * @param user -> Current User
-     * @param habit -> Habit that user wants to add
+     * Create an instance of AddHabitCommand.
+     *
+     * @param user  The user to add the habit to.
+     * @param habit The habit that should be added. This may be a local-only instance, as described in {@link Habit#Habit()}.
      */
 
     public AddHabitCommand(@NonNull User user, @NonNull Habit habit) {
@@ -45,6 +45,11 @@ public class AddHabitCommand implements Command<CompletableFuture<Habit>> {
         this.habit = habit;
     }
 
+    /**
+     * Execute the command.
+     *
+     * @return A future for a remote-linked instance of the habit as added.
+     */
     @Override
     public CompletableFuture<Habit> execute() {
         return this.habitController.add(this.habit)

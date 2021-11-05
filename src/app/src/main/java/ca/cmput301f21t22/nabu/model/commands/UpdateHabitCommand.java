@@ -10,9 +10,8 @@ import ca.cmput301f21t22.nabu.model.controllers.HabitController;
 import ca.cmput301f21t22.nabu.model.repositories.HabitRepository;
 
 /**
- * Used to call on controllers to update a habit to the database of user's habits
+ * Used to call on controllers to update an existing habit.
  */
-
 public class UpdateHabitCommand implements Command<CompletableFuture<Habit>> {
     @NonNull
     private final HabitRepository habitRepository;
@@ -24,11 +23,11 @@ public class UpdateHabitCommand implements Command<CompletableFuture<Habit>> {
     private final Habit habit;
 
     /**
-     * Update the habit to current user
-     * @param user -> Current User
-     * @param habit -> Habit that user wants to update
+     * Create an instance of UpdateHabitCommand.
+     *
+     * @param habit The remote-linked instance of habit that should be updated, whose non-ID fields have been changed to
+     *              the new desired values.
      */
-
     public UpdateHabitCommand(@NonNull Habit habit) {
         this.habitRepository = HabitRepository.getInstance();
 
@@ -37,6 +36,11 @@ public class UpdateHabitCommand implements Command<CompletableFuture<Habit>> {
         this.habit = habit;
     }
 
+    /**
+     * Execute the command.
+     *
+     * @return A future for the habit as updated.
+     */
     @Override
     public CompletableFuture<Habit> execute() {
         return this.habitController.update(this.habit.getId(), this.habit)

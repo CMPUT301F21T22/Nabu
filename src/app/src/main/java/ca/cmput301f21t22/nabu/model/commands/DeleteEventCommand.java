@@ -13,9 +13,9 @@ import ca.cmput301f21t22.nabu.model.controllers.HabitController;
 import ca.cmput301f21t22.nabu.model.repositories.HabitRepository;
 
 /**
- * Used to call on controllers to delete and event from the database of habit events
+ * Used to call on controllers to delete an event from the database of events, and remove any references held to it by
+ * habits.
  */
-
 public class DeleteEventCommand implements Command<CompletableFuture<Boolean>> {
     @NonNull
     private final HabitRepository habitRepository;
@@ -29,11 +29,11 @@ public class DeleteEventCommand implements Command<CompletableFuture<Boolean>> {
     private final Event event;
 
     /**
-     * Delete the event from current habit
-     * @param habit -> current habit that user edits
-     * @param event -> event that user wants to delete
+     * Create an instance of DeleteEventCommand.
+     *
+     * @param event The event that should be deleted. This must be a remote-linked instance.
+     * @see Event
      */
-
     public DeleteEventCommand(@NonNull Event event) {
         this.habitRepository = HabitRepository.getInstance();
 
@@ -43,6 +43,11 @@ public class DeleteEventCommand implements Command<CompletableFuture<Boolean>> {
         this.event = event;
     }
 
+    /**
+     * Execute the command.
+     *
+     * @return A future indicating whether the operation succeeded.
+     */
     @Override
     public CompletableFuture<Boolean> execute() {
         Optional<Habit> parent =

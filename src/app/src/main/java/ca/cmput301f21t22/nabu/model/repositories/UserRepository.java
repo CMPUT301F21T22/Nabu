@@ -33,7 +33,6 @@ import ca.cmput301f21t22.nabu.data.User;
  * Ensures consistency between database & local data
  * Informs listening objects of changes to the data
  */
-
 public class UserRepository {
     @NonNull
     public final static String TAG = "UserRepository";
@@ -54,7 +53,6 @@ public class UserRepository {
     @NonNull
     private final FirebaseAuth auth;
 
-
     private UserRepository() {
         this.currentUser = new MutableLiveData<>();
 
@@ -69,8 +67,7 @@ public class UserRepository {
     }
 
     /**
-     * getInstance from UserRepository
-     * @return User Instance
+     * @return Singleton instance of the UserRepository.
      */
     @NonNull
     public static UserRepository getInstance() {
@@ -81,11 +78,6 @@ public class UserRepository {
         return INSTANCE;
     }
 
-    /**
-     * Creates snapshot to get user details
-     * @param snapshot -> Current user data from snapshot by Firestore database
-     * @return User details
-     */
     @NonNull
     private static User createFromSnapshot(@NonNull DocumentSnapshot snapshot) {
         String email = Objects.requireNonNull(snapshot.getString("email"));
@@ -94,25 +86,33 @@ public class UserRepository {
         return new User(snapshot.getId(), email, habits);
     }
 
+    /**
+     * @return Handle to a live-updating copy of the current logged-in user.
+     */
     @NonNull
     public LiveData<User> getCurrentUser() {
         return this.currentUser;
     }
 
+    /**
+     * @return Handle to a live-updating copy of all users in the database.
+     */
     @NonNull
     public LiveData<Map<String, User>> getUsers() {
         return this.users;
     }
 
+    /**
+     * Find a user in the database based on a given predicate.
+     *
+     * @param predicate The predicate to test against.
+     * @return The first user that matches the predicate.
+     */
     @NonNull
     public Optional<User> findUser(Predicate<User> predicate) {
         return this.usersMap.values().stream().filter(predicate).findFirst();
     }
 
-    /**
-     * Set up current User
-     * Get user information
-     */
     private void onSignInChanged() {
         FirebaseUser user = this.auth.getCurrentUser();
         if (user == null) {
@@ -127,11 +127,6 @@ public class UserRepository {
                         e -> Log.e(TAG, "Could not retrieve currently logged in user from collection.", e));
     }
 
-    /**
-     * Checks whether user has been changed and updates changing to user hashmap
-     * @param snapshots -> Zero or more DocumentSnapshot for current user
-     * @param e -> A class of exceptions thrown by Cloud Firestore
-     */
     private void onUsersChanged(@Nullable QuerySnapshot snapshots, @Nullable FirebaseFirestoreException e) {
         if (e != null || snapshots == null) {
             Log.e(TAG, "Failed to listen to collection updates.", e);
@@ -169,10 +164,9 @@ public class UserRepository {
             return;
         }
 
-        /**
-         * If there's a non-null logged in user but they're not in Firestore, it's a new user and it's added to the database.
-         */
+        // If there's a non-null logged in user but they're not in Firestore, it's a new user and it's added to the database.
         if (!snapshot.exists()) {
+            // TODO: This should be moved to UserController.
             Map<String, Object> map = new HashMap<>();
             map.put("email", fbUser.getEmail());
             map.put("habits", new ArrayList<>());

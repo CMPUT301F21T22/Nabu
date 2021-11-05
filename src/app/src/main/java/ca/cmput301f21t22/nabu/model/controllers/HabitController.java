@@ -16,9 +16,8 @@ import java.util.concurrent.CompletableFuture;
 import ca.cmput301f21t22.nabu.data.Habit;
 
 /**
- * Add/Delete/Update habit data to userbase
+ * Singleton providing methods for write operations on remote habit instances, including addition, deletion, and updates.
  */
-
 public class HabitController {
     @NonNull
     public final static String TAG = "HabitController";
@@ -33,6 +32,9 @@ public class HabitController {
         this.habitsCollection = FirebaseFirestore.getInstance().collection("Habits");
     }
 
+    /**
+     * @return Singleton instance of the HabitController.
+     */
     @NonNull
     public static HabitController getInstance() {
         if (INSTANCE == null) {
@@ -55,8 +57,10 @@ public class HabitController {
     }
 
     /**
-     * Delete habit in database and feedback
-     * @param habitId -> Current habit ID
+     * Deletes a habit by ID from the database.
+     *
+     * @param habitId The ID of the habit to delete.
+     * @return A future indicating whether the operation completed successfully.
      */
     @NonNull
     public CompletableFuture<Boolean> delete(@NonNull String habitId) {
@@ -76,9 +80,11 @@ public class HabitController {
     }
 
     /**
-     *  Update habit to database and feedback
-     * @param habitId -> Current Habit ID
-     * @param habit -> habit object
+     * Update the data fields of a habit in the database.
+     *
+     * @param habitId The ID of the habit to update.
+     * @param habit   An habit to read data from.
+     * @return A future for the ID of the habit, once updated.
      */
     @NonNull
     public CompletableFuture<String> update(@NonNull String habitId, @NonNull Habit habit) {
@@ -100,9 +106,11 @@ public class HabitController {
     }
 
     /**
-     * Adds event from the list of events inside a habit
-     * @param habitId -> Current habit unique ID
-     * @param eventId -> Event user wants to edit
+     * Add an event reference to the list of events owned by a habit.
+     *
+     * @param habitId The ID of the habit to update.
+     * @param eventId The ID of the event to associate with the habit.
+     * @return A future for the ID of the habit, once updated.
      */
     @NonNull
     public CompletableFuture<String> addEvent(@NonNull String habitId, @NonNull String eventId) {
@@ -124,9 +132,11 @@ public class HabitController {
     }
 
     /**
-     * Delete event from the list of events in habit
-     * @param habitId -> Current habit ID
-     * @param eventId -> Event user would like delete
+     * Deletes an event reference from the list of events owned by a habit.
+     *
+     * @param habitId The ID of the habit to update.
+     * @param eventId The ID of the event to remove from the habit.
+     * @return A future for the ID of the habit, once updated.
      */
     @NonNull
     public CompletableFuture<String> deleteEvent(@NonNull String habitId, @NonNull String eventId) {
@@ -148,8 +158,10 @@ public class HabitController {
     }
 
     /**
-     * Add habit in database and feedback
-     * @param habit -> habit object
+     * Add a habit to the database.
+     *
+     * @param habit A habit to read data from.
+     * @return A future for the ID of the newly added habit.
      */
     @NonNull
     public CompletableFuture<String> add(@NonNull Habit habit) {
