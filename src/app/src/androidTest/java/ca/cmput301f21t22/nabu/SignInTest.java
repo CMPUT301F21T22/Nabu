@@ -26,7 +26,8 @@ import static org.junit.Assert.assertFalse;
 
 /**
  * Runs tests on the login menu
- * Assumes a user starts on the login screen
+ * User being logged out of the app is preferable, although the program will attempt to log the user
+ * out otherwise.
  * Each test, at its end deletes any Habits and Events it makes, and then signs out
  */
 public class SignInTest {
@@ -43,6 +44,26 @@ public class SignInTest {
     @Before
     public void setUp() throws Exception {
         solo = new Solo(InstrumentationRegistry.getInstrumentation(), rule.getActivity());
+    }
+
+    /**
+     * Runs before all tests and makes sure the user is logged out before logging in to test account
+     */
+    @Before
+    public void logInSetup() {
+        //Checks if application is on the log in menu, if not, tries to log out
+        if (solo.waitForText("Sign in", 1, 4000) == false) {
+
+            //Checks if application is on a page where the navigation bar is, if not, go back to it
+            if (solo.waitForText("Settings", 1, 4000) == false) {
+                solo.goBack(); //Any fragment is at most one back away from the navigation bar
+            }
+
+            //Logs out user
+            solo.clickOnMenuItem("Settings");
+            solo.clickOnText("Sign out");
+            solo.clickOnText("Sign", 3);
+        }
     }
 
     /**

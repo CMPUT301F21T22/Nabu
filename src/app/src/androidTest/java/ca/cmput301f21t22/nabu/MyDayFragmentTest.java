@@ -28,7 +28,8 @@ import java.util.Calendar;
 
 /**
  * Runs tests on the My Day fragment.
- * Assumes a user is already logged in and on the MyDayFragment section
+ * User being logged out of the app is preferable, although the program will attempt to log the user
+ * out otherwise.
  */
 public class MyDayFragmentTest {
     private Solo solo;
@@ -78,6 +79,32 @@ public class MyDayFragmentTest {
     @Before
     public void setUp() throws Exception {
         solo = new Solo(InstrumentationRegistry.getInstrumentation(), rule.getActivity());
+    }
+
+    /**
+     * Runs before all tests and makes sure the user is logged out before logging in to test account
+     */
+    @Before
+    public void logInSetup() {
+        //Checks if application is on the log in menu, if not, tries to log out
+        if (solo.waitForText("Sign in", 1, 4000) == false) {
+
+            //Checks if application is on a page where the navigation bar is, if not, go back to it
+            if (solo.waitForText("Settings", 1, 4000) == false) {
+                solo.goBack(); //Any fragment is at most one back away from the navigation bar
+            }
+
+            //Logs out user
+            solo.clickOnMenuItem("Settings");
+            solo.clickOnText("Sign out");
+            solo.clickOnText("Sign", 3);
+        }
+
+        //Logs in test account
+        solo.enterText((EditText) solo.getView(R.id.email), "boggles@swamp.bog");
+        solo.clickOnButton("Next");
+        solo.enterText((EditText) solo.getView(R.id.password), "boggle");
+        solo.clickOnButton("Sign in");
     }
 
     /**
@@ -252,6 +279,9 @@ public class MyDayFragmentTest {
      */
     @After
     public void tearDown() throws Exception {
+        solo.clickOnMenuItem("Settings");
+        solo.clickOnText("Sign out");
+        solo.clickOnText("Sign", 3);
         solo.finishOpenedActivities();
     }
 }
