@@ -16,7 +16,7 @@ import java.util.concurrent.CompletableFuture;
 import ca.cmput301f21t22.nabu.data.Habit;
 
 /**
- * Add,delete and update habit data to userbase
+ * Add/Delete/Update habit data to userbase
  */
 
 public class HabitController {
@@ -56,7 +56,7 @@ public class HabitController {
 
     /**
      * Delete habit in database and feedback
-     * @param habitId Current habit ID
+     * @param habitId -> Current habit ID
      */
     @NonNull
     public CompletableFuture<Boolean> delete(@NonNull String habitId) {
@@ -77,8 +77,8 @@ public class HabitController {
 
     /**
      *  Update habit to database and feedback
-     * @param habitId Current Habit ID
-     * @param habit habit object
+     * @param habitId -> Current Habit ID
+     * @param habit -> habit object
      */
     @NonNull
     public CompletableFuture<String> update(@NonNull String habitId, @NonNull Habit habit) {
@@ -101,8 +101,8 @@ public class HabitController {
 
     /**
      * Adds event from the list of events inside a habit
-     * @param habitId Current habit unique ID
-     * @param eventId Event user wants to edit
+     * @param habitId -> Current habit unique ID
+     * @param eventId -> Event user wants to edit
      */
     @NonNull
     public CompletableFuture<String> addEvent(@NonNull String habitId, @NonNull String eventId) {
@@ -125,8 +125,8 @@ public class HabitController {
 
     /**
      * Delete event from the list of events in habit
-     * @param habitId Current habit ID
-     * @param eventId Event user would like delete
+     * @param habitId -> Current habit ID
+     * @param eventId -> Event user would like delete
      */
     @NonNull
     public CompletableFuture<String> deleteEvent(@NonNull String habitId, @NonNull String eventId) {
@@ -149,7 +149,7 @@ public class HabitController {
 
     /**
      * Add habit in database and feedback
-     * @param habit habit object
+     * @param habit -> habit object
      */
     @NonNull
     public CompletableFuture<String> add(@NonNull Habit habit) {

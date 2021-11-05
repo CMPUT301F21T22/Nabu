@@ -32,6 +32,12 @@ public class DeleteHabitCommand implements Command<CompletableFuture<Boolean>> {
     @NonNull
     private final Habit habit;
 
+    /**
+     * Delete the habit from current user
+     * @param user -> current user
+     * @param habit -> habit that user wants to delete
+     */
+
     public DeleteHabitCommand(@NonNull Habit habit) {
         this.userRepository = UserRepository.getInstance();
 

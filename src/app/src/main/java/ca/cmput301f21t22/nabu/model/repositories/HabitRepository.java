@@ -28,9 +28,9 @@ import ca.cmput301f21t22.nabu.data.Occurrence;
 
 /**
  * Retrieves habit data from database
- * Deposit habit data within proper event lists
- * Ensure consistency between database & local data
- * Inform listening objects of changes to the data
+ * Deposits habit data within proper event lists
+ * Ensures consistency between database & local data
+ * Informs listening objects of changes to the data
  */
 
 public class HabitRepository {
@@ -70,8 +70,8 @@ public class HabitRepository {
     }
 
     /**
-     * Create snapshot to get habit details
-     * @param snapshot Current Habit data  from snapshot by Firestore database
+     * Creates a snapshot to get habit details
+     * @param snapshot -> Current Habit data from snapshot by Firestore database
      * @return habit details
      */
     @NonNull
@@ -102,8 +102,8 @@ public class HabitRepository {
     }
 
     /**
-     * Retrieve Habit in Firestore database
-     * @param id current Habit snapshot document ID
+     * Retrieves Habit in Firestore database
+     * @param id -> current Habit snapshot document ID
      * @return Retrieved Habit
      */
     @NonNull
@@ -123,8 +123,8 @@ public class HabitRepository {
     }
 
     /**
-     * Check whether habit has been changed and update changing to habit hashmap
-     * @param snapshots Zero or more DocumentSnapshot for current habit
+     * Checks whether habit has been changed and updates changing to habit hashmap
+     * @param snapshots -> Zero or more DocumentSnapshot for current habit
      * @param e A class of exceptions thrown by Cloud Firestore
      */
     private void onHabitsChanged(@Nullable QuerySnapshot snapshots, @Nullable FirebaseFirestoreException e) {

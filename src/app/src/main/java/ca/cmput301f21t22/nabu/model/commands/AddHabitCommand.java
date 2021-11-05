@@ -31,9 +31,10 @@ public class AddHabitCommand implements Command<CompletableFuture<Habit>> {
 
     /**
      * Add the habit to current User
-     * @param user Current User
-     * @param habit Habit that user wants to add
+     * @param user -> Current User
+     * @param habit -> Habit that user wants to add
      */
+
     public AddHabitCommand(@NonNull User user, @NonNull Habit habit) {
         this.habitRepository = HabitRepository.getInstance();
 

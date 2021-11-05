@@ -29,9 +29,9 @@ import ca.cmput301f21t22.nabu.data.User;
 
 /**
  * Retrieves user data from database
- * Deposit user data within proper event lists
- * Ensure consistency between database & local data
- * Inform listening objects of changes to the data
+ * Deposits user data within proper event lists
+ * Ensures consistency between database & local data
+ * Informs listening objects of changes to the data
  */
 
 public class UserRepository {
@@ -82,8 +82,8 @@ public class UserRepository {
     }
 
     /**
-     * Create snapshot to get user details
-     * @param snapshot Current user data from snapshot by Firestore database
+     * Creates snapshot to get user details
+     * @param snapshot -> Current user data from snapshot by Firestore database
      * @return User details
      */
     @NonNull
@@ -110,7 +110,8 @@ public class UserRepository {
     }
 
     /**
-     * Set up current User, gets user information
+     * Set up current User
+     * Get user information
      */
     private void onSignInChanged() {
         FirebaseUser user = this.auth.getCurrentUser();
@@ -127,9 +128,9 @@ public class UserRepository {
     }
 
     /**
-     * * Check whether user has been changed and update changing to user hashmap
-     * @param snapshots Zero or more DocumentSnapshot for current user
-     * @param e A class of exceptions thrown by Cloud Firestore
+     * Checks whether user has been changed and updates changing to user hashmap
+     * @param snapshots -> Zero or more DocumentSnapshot for current user
+     * @param e -> A class of exceptions thrown by Cloud Firestore
      */
     private void onUsersChanged(@Nullable QuerySnapshot snapshots, @Nullable FirebaseFirestoreException e) {
         if (e != null || snapshots == null) {
@@ -169,10 +170,9 @@ public class UserRepository {
         }
 
         /**
-         * If there's a non-null logged in user, but they're not in Firestore, it's a new user, and we should add it to the database.
+         * If there's a non-null logged in user but they're not in Firestore, it's a new user and it's added to the database.
          */
         if (!snapshot.exists()) {
-            // TODO: This belongs in a UserController
             Map<String, Object> map = new HashMap<>();
             map.put("email", fbUser.getEmail());
             map.put("habits", new ArrayList<>());

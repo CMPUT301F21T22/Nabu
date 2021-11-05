@@ -23,6 +23,12 @@ public class UpdateHabitCommand implements Command<CompletableFuture<Habit>> {
     @NonNull
     private final Habit habit;
 
+    /**
+     * Update the habit to current user
+     * @param user -> Current User
+     * @param habit -> Habit that user wants to update
+     */
+
     public UpdateHabitCommand(@NonNull Habit habit) {
         this.habitRepository = HabitRepository.getInstance();
 

@@ -23,6 +23,12 @@ public class UpdateEventCommand implements Command<CompletableFuture<Event>> {
     @NonNull
     private final Event event;
 
+    /**
+     * Update the event to current habit
+     * @param habit -> current habit that user edit
+     * @param event -> event that user wants to update
+     */
+
     public UpdateEventCommand(@NonNull Event event) {
         this.eventRepository = EventRepository.getInstance();
 

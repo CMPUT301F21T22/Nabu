@@ -28,6 +28,12 @@ public class DeleteEventCommand implements Command<CompletableFuture<Boolean>> {
     @NonNull
     private final Event event;
 
+    /**
+     * Delete the event from current habit
+     * @param habit -> current habit that user edits
+     * @param event -> event that user wants to delete
+     */
+
     public DeleteEventCommand(@NonNull Event event) {
         this.habitRepository = HabitRepository.getInstance();
 
