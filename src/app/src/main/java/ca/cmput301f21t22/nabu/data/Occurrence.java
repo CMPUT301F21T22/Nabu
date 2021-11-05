@@ -23,6 +23,13 @@ public class Occurrence implements Serializable {
      * Create an instance of Occurrence.
      */
     public Occurrence() {
+        this.onSunday = false;
+        this.onMonday = false;
+        this.onTuesday = false;
+        this.onWednesday = false;
+        this.onThursday = false;
+        this.onFriday = false;
+        this.onSaturday = false;
     }
 
     /**
