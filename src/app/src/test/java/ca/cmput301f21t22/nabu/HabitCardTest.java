@@ -22,17 +22,17 @@ public class HabitCardTest {
 
     private HabitCard mockHabitCard() {
         Habit habit = new Habit("Pet Dog", "They're a good boy", new GregorianCalendar(
-                1989+1900, 12, 13).getTime(), new Occurrence(),
+                89+19, 12, 13).getTime(), new Occurrence(),
                 new ArrayList<>(), false);
 
         List<Event> events = new ArrayList<>();
-        events.add(new Event(new GregorianCalendar(2011+1900, 11, 11).getTime(),
+        events.add(new Event(new GregorianCalendar(11+19, 11, 11).getTime(),
                 "Lost 30 pounds", "Photo/events/event202", new GeoPoint(
-                        506, 200)));
+                        56, 2)));
 
         events.add(new Event(new GregorianCalendar(2021+1900, 11, 3)
                 .getTime(), "Lost 20 pounds", "Photo/events/event204",
-                new GeoPoint(596, 210)));
+                new GeoPoint(81, 10)));
         return new HabitCard(habit, events);
     }
 

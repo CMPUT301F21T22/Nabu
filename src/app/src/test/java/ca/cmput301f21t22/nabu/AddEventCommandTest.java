@@ -28,14 +28,4 @@ public class AddEventCommandTest {
         firestore.setFirestoreSettings(settings);
     }
 
-    @Test
-    private void testAddEventCommand() {
-        Event event = new Event((new GregorianCalendar()).getTime(), "another day another floss", "user/events/event300", new GeoPoint(15, 78));
-
-        AddEventCommand addEventCommand = new AddEventCommand(new Habit(), event);
-        assertEquals(event, addEventCommand.execute());
-        //TODO: add process for checking database
-    }
-
-
 }

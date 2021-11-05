@@ -18,7 +18,6 @@ import ca.cmput301f21t22.nabu.model.commands.UpdateEventCommand;
 
 public class UpdateEventCommandTest {
     @Before
-    @Test
     private void fireSetUp() {
         FirebaseFirestore firestore = FirebaseFirestore.getInstance();
         firestore.useEmulator("10.0.2.2", 8080);
@@ -29,15 +28,4 @@ public class UpdateEventCommandTest {
         firestore.setFirestoreSettings(settings);
     }
 
-    private void testUpdateEventCommand() {
-        Event event = new Event((new GregorianCalendar()).getTime(), "another day another floss", "user/events/event300", new GeoPoint(15, 78));
-
-        AddEventCommand addEventCommand = new AddEventCommand(new Habit(), event);
-        addEventCommand.execute();
-
-        UpdateEventCommand updateEventCommand = new UpdateEventCommand(event);
-
-        assertEquals(event, addEventCommand.execute());
-        //TODO: add process for checking database
-    }
 }

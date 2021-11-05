@@ -18,8 +18,8 @@ import ca.cmput301f21t22.nabu.data.Occurrence;
 import ca.cmput301f21t22.nabu.model.commands.AddEventCommand;
 
 public class AddHabitCommandTest {
+
     @Before
-    @Test
     private void fireSetUp() {
         FirebaseFirestore firestore = FirebaseFirestore.getInstance();
         firestore.useEmulator("10.0.2.2", 8080);
@@ -30,12 +30,4 @@ public class AddHabitCommandTest {
         firestore.setFirestoreSettings(settings);
     }
 
-    @Test
-    private void testAddHabitCommand() {
-        Habit habit = new Habit("Floss teeth", "get healthier teeth", new GregorianCalendar().getTime(), new Occurrence(), new ArrayList<>(), false);
-
-        AddEventCommand addHabitCommand = new AddEventCommand(habit, new Event());
-        assertEquals(habit, addHabitCommand.execute());
-        //TODO: add process for checking database
-    }
 }

@@ -18,7 +18,6 @@ import ca.cmput301f21t22.nabu.model.commands.DeleteEventCommand;
 
 public class DeleteEventCommandTest {
     @Before
-    @Test
     private void fireSetUp() {
         FirebaseFirestore firestore = FirebaseFirestore.getInstance();
         firestore.useEmulator("10.0.2.2", 8080);
@@ -29,12 +28,4 @@ public class DeleteEventCommandTest {
         firestore.setFirestoreSettings(settings);
     }
 
-    private void testDeleteEventCommand() {
-        Event event = new Event((new GregorianCalendar()).getTime(), "another day another floss", "user/events/event300", new GeoPoint(15, 78));
-
-        AddEventCommand addEventCommand = new AddEventCommand(new Habit(), event);
-        DeleteEventCommand deleteEventCommand = new DeleteEventCommand(event);
-        assertEquals(true, deleteEventCommand.execute());
-        //TODO: add process for checking database
-    }
 }

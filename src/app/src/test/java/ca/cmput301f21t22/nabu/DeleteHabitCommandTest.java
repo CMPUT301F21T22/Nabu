@@ -8,7 +8,6 @@ import org.junit.Test;
 
 public class DeleteHabitCommandTest {
     @Before
-    @Test
     private void fireSetUp() {
         FirebaseFirestore firestore = FirebaseFirestore.getInstance();
         firestore.useEmulator("10.0.2.2", 8080);
