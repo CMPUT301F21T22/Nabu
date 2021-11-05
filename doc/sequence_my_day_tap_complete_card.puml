@@ -19,25 +19,22 @@ activate DeleteEventCommand
 DeleteEventCommand -> HabitRepository : Find parent habit of given event
 activate HabitRepository
 
-HabitRepository -> DeleteEventCommand
+HabitRepository -[dashed]-> DeleteEventCommand : Parent habit
 deactivate HabitRepository
 
 DeleteEventCommand -> HabitController : Detach event from parent habit
 activate HabitController
 
-HabitController -> DeleteEventCommand
+HabitController -[dashed]-> DeleteEventCommand : Whether the detachment was successful
 deactivate HabitController
 
 DeleteEventCommand -> EventController : Delete event
 activate EventController
 
-EventController -> DeleteEventCommand
+EventController -[dashed]-> DeleteEventCommand : Whether the deletion was successful
 deactivate EventController
 
-DeleteEventCommand -> MyDay
+DeleteEventCommand -[dashed]-> MyDay : Whether the deletion was successful
 destroy DeleteEventCommand
-
-MyDay -> User : Display changes
-deactivate MyDay
 
 @enduml

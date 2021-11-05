@@ -20,11 +20,8 @@ activate HabitRepository
 MyDay -> EventRepository : Observes
 activate EventRepository
 
-UserRepository -> MyDay : Changes to the current user
-HabitRepository -> MyDay : Changes to the habits
-EventRepository -> MyDay : Changes to the events
-
-MyDay -> User : Show UI
-deactivate MyDay
+UserRepository -[dashed]-> MyDay : Changes to the current user
+HabitRepository -[dashed]-> MyDay : Changes to the habits
+EventRepository -[dashed]-> MyDay : Changes to the events
 
 @enduml
