@@ -27,6 +27,7 @@
     <string name="menu_view_events">View Events</string>
     <string name="menu_edit_habit">Edit Habit</string>
     <string name="menu_delete_habit">Delete Habit</string>
+    <string name="menu_add_habit">Add Habit</string>
     <string name="hint_habit_title">Habit Title</string>
     <string name="button_on_sunday_toggle">Sun</string>
     <string name="button_on_monday_toggle">Mon</string>
