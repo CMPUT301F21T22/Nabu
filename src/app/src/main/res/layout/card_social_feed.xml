@@ -15,7 +15,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="Example Habit" />
+        tools:text="Example Email" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/feed_View"
