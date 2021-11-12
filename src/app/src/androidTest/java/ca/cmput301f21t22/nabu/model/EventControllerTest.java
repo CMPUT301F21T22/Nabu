@@ -57,7 +57,7 @@ public class EventControllerTest extends FirestoreTest {
 
     @Test
     public void updateEvent() throws ExecutionException, InterruptedException {
-        String eventId = this.controller.add(new Event(new Date())).get();
+        String eventId = this.controller.add(new Event()).get();
 
         Date date = new GregorianCalendar(2019, 11, 28).getTime();
         GeoPoint location = new GeoPoint(53.512, -113.5076);
@@ -83,9 +83,10 @@ public class EventControllerTest extends FirestoreTest {
 
     @Test
     public void deleteEvent() throws ExecutionException, InterruptedException {
-        String eventId = this.controller.add(new Event(new Date())).get();
+        String eventId = this.controller.add(new Event()).get();
 
         assertTrue(this.controller.delete(eventId).get());
+
         AtomicBoolean complete = new AtomicBoolean(false);
         this.collection.document(eventId).get().addOnCompleteListener(task -> {
             DocumentSnapshot document = task.getResult();
