@@ -62,32 +62,6 @@ public class UserController {
     }
 
     /**
-     * Update the data fields of a user in the database.
-     *
-     * @param userId The ID of the user to update.
-     * @param user   A user to read data from.
-     * @return A future for the ID of the user, once updated.
-     */
-    @NonNull
-    public CompletableFuture<String> update(@NonNull String userId, @NonNull User user) {
-        if (userId.equals("")) {
-            throw new IllegalArgumentException();
-        }
-
-        CompletableFuture<String> future = new CompletableFuture<>();
-        this.usersCollection.document(userId)
-                .update(createFromUser(user))
-                .addOnCompleteListener(unused -> future.complete(userId))
-                .addOnSuccessListener(unused -> {
-                    Log.d(TAG, "User with id: " + userId + " updated.");
-                })
-                .addOnFailureListener(unused -> {
-                    Log.d(TAG, "Failed to update user with id: " + userId);
-                });
-        return future;
-    }
-
-    /**
      * Add a habit reference to the list of habits owned by a user.
      *
      * @param userId  The ID of the user to update.
