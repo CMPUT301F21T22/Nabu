@@ -150,7 +150,7 @@ public class HabitRepositoryTest extends FirestoreTest {
     }
 
     @Test
-    public void findHabit() {
+    public void findHabitByOccurrence() {
         Occurrence testOccurrence = new Occurrence(true, true, false, false, true, true, false);
 
         Map<String, Object> map1 = new HashMap<>();
