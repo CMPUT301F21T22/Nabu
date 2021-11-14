@@ -16,11 +16,14 @@ public abstract class FirestoreTest {
 
     @BeforeClass
     public static void setUpClass() {
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.useEmulator("10.0.2.2", 8080);
-        FirebaseFirestoreSettings settings =
-                new FirebaseFirestoreSettings.Builder().setPersistenceEnabled(false).build();
-        db.setFirestoreSettings(settings);
+        try {
+            FirebaseFirestore db = FirebaseFirestore.getInstance();
+            db.useEmulator("10.0.2.2", 8080);
+            FirebaseFirestoreSettings settings =
+                    new FirebaseFirestoreSettings.Builder().setPersistenceEnabled(false).build();
+            db.setFirestoreSettings(settings);
+        } catch (IllegalStateException ignored) {
+        }
     }
 
     @Before
