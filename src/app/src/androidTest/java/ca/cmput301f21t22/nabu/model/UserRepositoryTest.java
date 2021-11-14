@@ -4,7 +4,6 @@ import static org.awaitility.Awaitility.await;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule;
@@ -20,9 +19,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -72,7 +69,7 @@ public class UserRepositoryTest extends AuthenticatedFirestoreTest {
                 assertTrue(query.isPresent());
                 User user = query.get();
                 assertNotEquals("", user.getId());
-                assertEquals("test3@example.com", user.getEmail());
+                assertEquals("test1@example.com", user.getEmail());
                 assertEquals(new ArrayList<>(), user.getHabits());
 
                 usersComplete.set(true);
@@ -83,7 +80,7 @@ public class UserRepositoryTest extends AuthenticatedFirestoreTest {
         Observer<User> currentUserObserver = user -> {
             if (user != null) {
                 assertNotEquals("", user.getId());
-                assertEquals("test3@example.com", user.getEmail());
+                assertEquals("test1@example.com", user.getEmail());
                 assertEquals(new ArrayList<>(), user.getHabits());
 
                 currentUserComplete.set(true);
@@ -93,7 +90,7 @@ public class UserRepositoryTest extends AuthenticatedFirestoreTest {
         this.repository.getUsers().observeForever(usersObserver);
         this.repository.getCurrentUser().observeForever(currentUserObserver);
 
-        this.createUser("test3@example.com", "password3");
+        this.createMockUser();
 
         await().until(usersComplete::get);
         await().until(currentUserComplete::get);
@@ -103,7 +100,7 @@ public class UserRepositoryTest extends AuthenticatedFirestoreTest {
 
     @Test
     public void liveExistingAccountSignIn() throws ExecutionException, InterruptedException {
-        this.createUser("test3@example.com", "password3");
+        this.createMockUser();
         await().until(() -> this.repository.getCurrentUser().getValue() != null);
         this.auth.signOut();
         await().until(() -> this.repository.getCurrentUser().getValue() == null);
@@ -115,7 +112,7 @@ public class UserRepositoryTest extends AuthenticatedFirestoreTest {
                 assertTrue(query.isPresent());
                 User user = query.get();
                 assertNotEquals("", user.getId());
-                assertEquals("test3@example.com", user.getEmail());
+                assertEquals("test1@example.com", user.getEmail());
                 assertEquals(new ArrayList<>(), user.getHabits());
 
                 usersComplete.set(true);
@@ -126,7 +123,7 @@ public class UserRepositoryTest extends AuthenticatedFirestoreTest {
         Observer<User> currentUserObserver = user -> {
             if (user != null) {
                 assertNotEquals("", user.getId());
-                assertEquals("test3@example.com", user.getEmail());
+                assertEquals("test1@example.com", user.getEmail());
                 assertEquals(new ArrayList<>(), user.getHabits());
 
                 currentUserComplete.set(true);
@@ -136,7 +133,7 @@ public class UserRepositoryTest extends AuthenticatedFirestoreTest {
         this.repository.getUsers().observeForever(usersObserver);
         this.repository.getCurrentUser().observeForever(currentUserObserver);
 
-        this.auth.signInWithEmailAndPassword("test3@example.com", "password3");
+        this.auth.signInWithEmailAndPassword("test1@example.com", "password1");
 
         await().until(usersComplete::get);
         await().until(currentUserComplete::get);
@@ -146,7 +143,7 @@ public class UserRepositoryTest extends AuthenticatedFirestoreTest {
 
     @Test
     public void liveUserUpdates() throws ExecutionException, InterruptedException {
-        this.createUser("test3@example.com", "password3");
+        this.createMockUser();
         await().until(() -> this.repository.getCurrentUser().getValue() != null);
 
         AtomicBoolean usersComplete = new AtomicBoolean(false);
@@ -189,26 +186,5 @@ public class UserRepositoryTest extends AuthenticatedFirestoreTest {
         await().until(currentUserComplete::get);
         this.repository.getUsers().removeObserver(usersObserver);
         this.repository.getCurrentUser().removeObserver(currentUserObserver);
-    }
-
-    private void createUser(String email, String password) throws ExecutionException, InterruptedException {
-        CompletableFuture<FirebaseUser> createFuture = new CompletableFuture<>();
-        this.auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(task -> {
-            if (task.isSuccessful()) {
-                createFuture.complete(this.auth.getCurrentUser());
-            } else {
-                assertNull(task.getException());
-            }
-        });
-
-        FirebaseUser fbUser = createFuture.get();
-        await().until(() -> {
-            User user = this.repository.getCurrentUser().getValue();
-            Map<String, User> users = this.repository.getUsers().getValue();
-            if (user != null && users != null) {
-                return Objects.equals(user.getId(), fbUser.getUid()) && users.containsKey(fbUser.getUid());
-            }
-            return false;
-        });
     }
 }

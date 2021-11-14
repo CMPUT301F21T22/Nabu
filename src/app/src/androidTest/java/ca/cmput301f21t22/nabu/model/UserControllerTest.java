@@ -84,26 +84,4 @@ public class UserControllerTest extends AuthenticatedFirestoreTest {
         });
         await().until(complete::get);
     }
-
-    private void createMockUser() throws ExecutionException, InterruptedException {
-        CompletableFuture<FirebaseUser> createFuture = new CompletableFuture<>();
-        this.auth.createUserWithEmailAndPassword("test1@example.com", "password1").addOnCompleteListener(task -> {
-            if (task.isSuccessful()) {
-                createFuture.complete(this.auth.getCurrentUser());
-            } else {
-                assertNull(task.getException());
-            }
-        });
-
-        UserRepository repository = UserRepository.getInstance();
-        FirebaseUser fbUser = createFuture.get();
-        await().until(() -> {
-            User user = repository.getCurrentUser().getValue();
-            Map<String, User> users = repository.getUsers().getValue();
-            if (user != null && users != null) {
-                return Objects.equals(user.getId(), fbUser.getUid()) && users.containsKey(fbUser.getUid());
-            }
-            return false;
-        });
-    }
 }

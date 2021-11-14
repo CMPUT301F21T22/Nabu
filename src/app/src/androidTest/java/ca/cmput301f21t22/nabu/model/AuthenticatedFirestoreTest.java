@@ -1,6 +1,10 @@
 package ca.cmput301f21t22.nabu.model;
 
+import static org.awaitility.Awaitility.await;
+import static org.junit.Assert.assertNull;
+
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreSettings;
 import com.squareup.okhttp.OkHttpClient;
@@ -11,6 +15,13 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 
 import java.io.IOException;
+import java.util.Map;
+import java.util.Objects;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
+
+import ca.cmput301f21t22.nabu.data.User;
+import ca.cmput301f21t22.nabu.model.repositories.UserRepository;
 
 public abstract class AuthenticatedFirestoreTest {
     protected FirebaseFirestore db;
@@ -46,5 +57,31 @@ public abstract class AuthenticatedFirestoreTest {
                 new Request.Builder().url("http://10.0.2.2:9099/emulator/v1/projects/nabu-94833/accounts")
                         .delete()
                         .build()).execute();
+    }
+
+    protected void createUser(String email, String password) throws ExecutionException, InterruptedException {
+        CompletableFuture<FirebaseUser> createFuture = new CompletableFuture<>();
+        this.auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                createFuture.complete(this.auth.getCurrentUser());
+            } else {
+                assertNull(task.getException());
+            }
+        });
+
+        UserRepository repository = UserRepository.getInstance();
+        FirebaseUser fbUser = createFuture.get();
+        await().until(() -> {
+            User user = repository.getCurrentUser().getValue();
+            Map<String, User> users = repository.getUsers().getValue();
+            if (user != null && users != null) {
+                return Objects.equals(user.getId(), fbUser.getUid()) && users.containsKey(fbUser.getUid());
+            }
+            return false;
+        });
+    }
+
+    protected void createMockUser() throws ExecutionException, InterruptedException {
+        this.createUser("test1@example.com", "password1");
     }
 }
