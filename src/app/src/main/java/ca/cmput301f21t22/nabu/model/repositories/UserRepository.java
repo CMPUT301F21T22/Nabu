@@ -26,6 +26,7 @@ import java.util.Optional;
 import java.util.function.Predicate;
 
 import ca.cmput301f21t22.nabu.data.User;
+import ca.cmput301f21t22.nabu.model.controllers.UserController;
 
 /**
  * Retrieves user data from database
@@ -53,6 +54,9 @@ public class UserRepository {
     @NonNull
     private final FirebaseAuth auth;
 
+    @NonNull
+    private final UserController controller;
+
     private UserRepository() {
         this.currentUser = new MutableLiveData<>();
 
@@ -63,7 +67,9 @@ public class UserRepository {
         this.usersCollection.addSnapshotListener(this::onUsersChanged);
 
         this.auth = FirebaseAuth.getInstance();
-        this.auth.addAuthStateListener(auth -> this.onSignInChanged());
+        this.auth.addAuthStateListener(this::onSignInChanged);
+
+        this.controller = UserController.getInstance();
     }
 
     /**
@@ -113,8 +119,8 @@ public class UserRepository {
         return this.usersMap.values().stream().filter(predicate).findFirst();
     }
 
-    private void onSignInChanged() {
-        FirebaseUser user = this.auth.getCurrentUser();
+    private void onSignInChanged(FirebaseAuth auth) {
+        FirebaseUser user = auth.getCurrentUser();
         if (user == null) {
             this.currentUser.setValue(null);
             return;
@@ -122,7 +128,9 @@ public class UserRepository {
 
         this.usersCollection.document(user.getUid())
                 .get()
-                .addOnSuccessListener(this::onCurrentUserLoaded)
+                .addOnSuccessListener(snapshot -> this.currentUser.setValue(
+                        snapshot.exists() ? createFromSnapshot(snapshot) :
+                        new User(snapshot.getId(), Objects.requireNonNull(user.getEmail()), new ArrayList<>())))
                 .addOnFailureListener(
                         e -> Log.e(TAG, "Could not retrieve currently logged in user from collection.", e));
     }
@@ -154,28 +162,6 @@ public class UserRepository {
                     }
                     break;
             }
-        }
-    }
-
-    private void onCurrentUserLoaded(@NonNull DocumentSnapshot snapshot) {
-        FirebaseUser fbUser = this.auth.getCurrentUser();
-        if (fbUser == null) {
-            Log.e(TAG, "No logged in user.");
-            return;
-        }
-
-        // If there's a non-null logged in user but they're not in Firestore, it's a new user and it's added to the database.
-        if (!snapshot.exists()) {
-            // TODO: This should be moved to UserController.
-            Map<String, Object> map = new HashMap<>();
-            map.put("email", fbUser.getEmail());
-            map.put("habits", new ArrayList<>());
-            snapshot.getReference().set(map);
-        } else {
-            User user = createFromSnapshot(snapshot);
-            this.currentUser.setValue(user);
-            this.usersMap.put(snapshot.getId(), user);
-            this.users.setValue(this.usersMap);
         }
     }
 }
