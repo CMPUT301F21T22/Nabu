@@ -187,4 +187,16 @@ public class UserRepositoryTest extends AuthenticatedFirestoreTest {
         this.repository.getUsers().removeObserver(usersObserver);
         this.repository.getCurrentUser().removeObserver(currentUserObserver);
     }
+
+    @Test
+    public void retrieveUser() throws ExecutionException, InterruptedException {
+        this.createMockUser();
+        await().until(() -> this.repository.getCurrentUser().getValue() != null);
+
+        User user = this.repository.getCurrentUser().getValue();
+        assertNotNull(user);
+
+        User retrieved = this.repository.retrieveUser(user.getId()).get();
+        assertEquals(user, retrieved);
+    }
 }

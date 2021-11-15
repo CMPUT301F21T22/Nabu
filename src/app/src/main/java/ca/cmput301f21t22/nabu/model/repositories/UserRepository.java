@@ -23,6 +23,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
 import java.util.function.Predicate;
 
 import ca.cmput301f21t22.nabu.data.User;
@@ -117,6 +118,28 @@ public class UserRepository {
     @NonNull
     public Optional<User> findUser(Predicate<User> predicate) {
         return this.usersMap.values().stream().filter(predicate).findFirst();
+    }
+
+    /**
+     * Retrieves a user from the database by ID.
+     *
+     * @param id The ID of the user to retrieve.
+     * @return Future for the retrieved user.
+     */
+    @NonNull
+    public CompletableFuture<User> retrieveUser(@NonNull String id) {
+        CompletableFuture<User> future = new CompletableFuture<>();
+        this.usersCollection.document(id).get().addOnSuccessListener(snapshot -> {
+            try {
+                future.complete(createFromSnapshot(snapshot));
+            } catch (IllegalArgumentException e) {
+                future.complete(null);
+            }
+        }).addOnFailureListener(e -> {
+            Log.e(TAG, "Failed to retrieve user.", e);
+            future.complete(null);
+        });
+        return future;
     }
 
     private void onSignInChanged(FirebaseAuth auth) {
