@@ -87,7 +87,7 @@ public class AddEventCommandTest extends AuthenticatedFirestoreTest {
         assertTrue(habit.getEvents().contains(result.getId()));
     }
 
-    @Test(expected = ExecutionException.class)
+    @Test(expected = Exception.class)
     public void addEventToLocalHabit() throws ExecutionException, InterruptedException {
         Habit habit = new Habit();
         new AddEventCommand(habit, new Event()).execute().get();

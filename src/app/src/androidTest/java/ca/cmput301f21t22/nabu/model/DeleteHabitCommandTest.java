@@ -69,7 +69,7 @@ public class DeleteHabitCommandTest extends AuthenticatedFirestoreTest {
         assertFalse(user.getHabits().contains(this.habit.getId()));
     }
 
-    @Test(expected = ExecutionException.class)
+    @Test(expected = Exception.class)
     public void deleteLocalHabit() throws ExecutionException, InterruptedException {
         new DeleteHabitCommand(new Habit()).execute().get();
     }

@@ -77,7 +77,7 @@ public class DeleteEventCommandTest extends AuthenticatedFirestoreTest {
         assertFalse(habit.getEvents().contains(this.event.getId()));
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test(expected = Exception.class)
     public void deleteLocalEvent() throws ExecutionException, InterruptedException {
         new DeleteEventCommand(new Event()).execute().get();
     }

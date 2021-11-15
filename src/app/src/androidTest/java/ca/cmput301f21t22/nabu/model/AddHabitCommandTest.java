@@ -82,7 +82,7 @@ public class AddHabitCommandTest extends AuthenticatedFirestoreTest {
         assertTrue(user.getHabits().contains(result.getId()));
     }
 
-    @Test(expected = ExecutionException.class)
+    @Test(expected = Exception.class)
     public void addHabitToLocalUser() throws ExecutionException, InterruptedException {
         User user = new User("", "some@noncemail.org", new ArrayList<>());
         new AddHabitCommand(user, new Habit()).execute().get();
