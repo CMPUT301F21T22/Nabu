@@ -5,11 +5,19 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
+
+import ca.cmput301f21t22.nabu.data.User;
 
 /**
  * Singleton providing methods for write operations on remote user instances.
@@ -23,9 +31,14 @@ public class UserController {
 
     @NonNull
     private final CollectionReference usersCollection;
+    @NonNull
+    private final FirebaseAuth auth;
 
     private UserController() {
         this.usersCollection = FirebaseFirestore.getInstance().collection("Users");
+
+        this.auth = FirebaseAuth.getInstance();
+        this.auth.addAuthStateListener(this::onSignInChanged);
     }
 
     /**
@@ -38,6 +51,14 @@ public class UserController {
         }
 
         return INSTANCE;
+    }
+
+    @NonNull
+    private static Map<String, Object> createFromUser(User user) {
+        Map<String, Object> map = new HashMap<>();
+        map.put("email", user.getEmail());
+        map.put("habits", user.getHabits());
+        return map;
     }
 
     /**
@@ -90,5 +111,22 @@ public class UserController {
                     Log.w(TAG, "Failed to remove habit with id: " + habitId + " from user with id: " + userId);
                 });
         return future;
+    }
+
+    private void onSignInChanged(FirebaseAuth auth) {
+        FirebaseUser user = auth.getCurrentUser();
+        if (user == null) {
+            return;
+        }
+
+        String id = user.getUid();
+
+        this.usersCollection.document(user.getUid()).get().addOnSuccessListener(snapshot -> {
+            if (!snapshot.exists()) {
+                snapshot.getReference()
+                        .set(createFromUser(
+                                new User(user.getUid(), Objects.requireNonNull(user.getEmail()), new ArrayList<>())));
+            }
+        }).addOnFailureListener(e -> Log.e(TAG, "Could not retrieve currently logged in user from collection."));
     }
 }

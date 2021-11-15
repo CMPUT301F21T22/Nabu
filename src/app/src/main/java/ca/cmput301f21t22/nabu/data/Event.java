@@ -114,14 +114,13 @@ public class Event implements Serializable {
             return false;
         }
         Event event = (Event) o;
-        return this.id.equals(event.id) && this.date.equals(event.date) &&
-               Objects.equals(this.comment, event.comment) && Objects.equals(this.photoPath, event.photoPath) &&
-               Objects.equals(this.location, event.location);
+        return this.date.equals(event.date) && Objects.equals(this.comment, event.comment) &&
+               Objects.equals(this.photoPath, event.photoPath) && Objects.equals(this.location, event.location);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.id, this.date, this.comment, this.photoPath, this.location);
+        return Objects.hash(this.date, this.comment, this.photoPath, this.location);
     }
 
     /**

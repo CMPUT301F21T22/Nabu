@@ -47,12 +47,12 @@ public class User implements Serializable {
             return false;
         }
         User user = (User) o;
-        return this.id.equals(user.id) && this.email.equals(user.email) && this.habits.equals(user.habits);
+        return this.email.equals(user.email) && this.habits.equals(user.habits);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.id, this.email, this.habits);
+        return Objects.hash(this.email, this.habits);
     }
 
     /**

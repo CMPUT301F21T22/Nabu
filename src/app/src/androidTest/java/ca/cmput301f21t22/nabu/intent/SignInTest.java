@@ -1,4 +1,4 @@
-package ca.cmput301f21t22.nabu;
+package ca.cmput301f21t22.nabu.intent;
 
 import static junit.framework.TestCase.assertTrue;
 
@@ -23,6 +23,9 @@ import org.junit.runner.RunWith;
 import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+
+import ca.cmput301f21t22.nabu.MainActivity;
+import ca.cmput301f21t22.nabu.R;
 
 /**
  * Runs tests on the login menu

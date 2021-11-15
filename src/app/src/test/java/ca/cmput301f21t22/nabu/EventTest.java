@@ -34,7 +34,7 @@ public class EventTest {
             String photoPath = "Photo/events/event57";
             GeoPoint geoPoint = new GeoPoint(20, 30);
             Event event = new Event(id, date, comment, photoPath, geoPoint);
-            assertEquals(Objects.hash(id, date, comment, photoPath, geoPoint), event.hashCode());
+            assertEquals(Objects.hash(date, comment, photoPath, geoPoint), event.hashCode());
         }
 
         //Tests if the Id value is correctly returned
