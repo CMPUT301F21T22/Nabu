@@ -5,6 +5,7 @@ import androidx.annotation.Nullable;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Arrays;
 import java.util.Objects;
 
@@ -90,9 +91,10 @@ public class MyDayCard implements Serializable {
 
         Occurrence occ = this.habit.getOccurrence();
         LocalDate day = LocalDate.now().minusDays(pos);
+        LocalDate startDate = this.habit.getStartDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         Event event = this.events[pos];
 
-        if (!occ.isOnDayOfWeek(day.getDayOfWeek())) {
+        if (!occ.isOnDayOfWeek(day.getDayOfWeek()) || startDate.isAfter(day)) {
             return Icon.NOT_DUE;
         } else if (event == null && pos == 0) {
             return Icon.INCOMPLETE;
