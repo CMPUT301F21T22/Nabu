@@ -9,6 +9,7 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
@@ -153,6 +154,31 @@ public class HabitController {
                 })
                 .addOnFailureListener(unused -> {
                     Log.w(TAG, "Failed to remove Event with id: " + habitId + " from habit with id: " + eventId);
+                });
+        return future;
+    }
+
+    /**
+     * Remove all events from a user.
+     *
+     * @param habitId The ID of the habit to update.
+     * @return A future for the ID of the habit, once updated.
+     */
+    @NonNull
+    public CompletableFuture<String> clearEvents(@NonNull String habitId) {
+        if (habitId.equals("")) {
+            throw new IllegalArgumentException();
+        }
+
+        CompletableFuture<String> future = new CompletableFuture<>();
+        this.habitsCollection.document(habitId)
+                .update("events", new ArrayList<>())
+                .addOnCompleteListener(unused -> future.complete(habitId))
+                .addOnSuccessListener(unused -> {
+                    Log.d(TAG, "Cleared events of habit with id: " + habitId);
+                })
+                .addOnFailureListener(unused -> {
+                    Log.d(TAG, "Could not clear events of habit with id: " + habitId);
                 });
         return future;
     }
