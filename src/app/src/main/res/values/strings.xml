@@ -24,6 +24,7 @@
     <string name="error_title_too_long">Title can only have up to 20 characters.</string>
     <string name="error_reason_empty">Reason cannot be empty.</string>
     <string name="error_reason_too_long">Reason can only have up to 30 characters.</string>
+    <string name="error_start_date_empty">Start date cannot be empty</string>
     <string name="menu_view_events">View Events</string>
     <string name="menu_edit_habit">Edit Habit</string>
     <string name="menu_delete_habit">Delete Habit</string>
