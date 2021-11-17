@@ -113,6 +113,30 @@ public class UserController {
         return future;
     }
 
+    /**
+     * Removes all habits from a user.
+     *
+     * @param userId The ID of the user to update.
+     * @return A future for the ID of the user, once updated.
+     */
+    public CompletableFuture<String> clearHabits(@NonNull String userId) {
+        if (userId.equals("")) {
+            throw new IllegalArgumentException();
+        }
+
+        CompletableFuture<String> future = new CompletableFuture<>();
+        this.usersCollection.document(userId)
+                .update("habits", new ArrayList<>())
+                .addOnCompleteListener(unused -> future.complete(userId))
+                .addOnSuccessListener(unused -> {
+                    Log.d(TAG, "Cleared habits of user with id: " + userId);
+                })
+                .addOnFailureListener(unused -> {
+                    Log.d(TAG, "Could not clear habits of user with id: " + userId);
+                });
+        return future;
+    }
+
     private void onSignInChanged(FirebaseAuth auth) {
         FirebaseUser user = auth.getCurrentUser();
         if (user == null) {
