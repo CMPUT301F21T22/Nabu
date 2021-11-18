@@ -91,15 +91,13 @@ public class EventController {
         }
 
         CompletableFuture<String> future = new CompletableFuture<>();
-        this.eventsCollection.document(eventId)
-                .update(createFromEvent(event))
-                .addOnCompleteListener(unused -> future.complete(eventId))
-                .addOnSuccessListener(unused -> {
-                    Log.d(TAG, "Event with id: " + eventId + " updated.");
-                })
-                .addOnFailureListener(unused -> {
-                    Log.d(TAG, "Failed to update event with id: " + eventId);
-                });
+        this.eventsCollection.document(eventId).update(createFromEvent(event)).addOnSuccessListener(unused -> {
+            future.complete(eventId);
+            Log.d(TAG, "Event with id: " + eventId + " updated.");
+        }).addOnFailureListener(unused -> {
+            future.complete(eventId);
+            Log.d(TAG, "Failed to update event with id: " + eventId);
+        });
         return future;
     }
 

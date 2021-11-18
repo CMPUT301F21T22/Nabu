@@ -96,11 +96,12 @@ public class HabitController {
         CompletableFuture<String> future = new CompletableFuture<>();
         this.habitsCollection.document(habitId)
                 .update(createFromHabit(habit))
-                .addOnCompleteListener(unused -> future.complete(habitId))
                 .addOnSuccessListener(unused -> {
+                    future.complete(habitId);
                     Log.d(TAG, "Habit with id: " + habitId + " updated.");
                 })
                 .addOnFailureListener(unused -> {
+                    future.complete(habitId);
                     Log.d(TAG, "Failed to update habit with id: " + habitId);
                 });
         return future;
@@ -122,11 +123,12 @@ public class HabitController {
         CompletableFuture<String> future = new CompletableFuture<>();
         this.habitsCollection.document(habitId)
                 .update("events", FieldValue.arrayUnion(eventId))
-                .addOnCompleteListener(unused -> future.complete(habitId))
                 .addOnSuccessListener(unused -> {
+                    future.complete(habitId);
                     Log.d(TAG, "Event with id: " + eventId + " added to habit with id: " + habitId);
                 })
                 .addOnFailureListener(unused -> {
+                    future.complete(habitId);
                     Log.w(TAG, "Failed to add event with id: " + eventId + " to habit with id: " + habitId);
                 });
         return future;
@@ -148,11 +150,12 @@ public class HabitController {
         CompletableFuture<String> future = new CompletableFuture<>();
         this.habitsCollection.document(habitId)
                 .update("events", FieldValue.arrayRemove(eventId))
-                .addOnCompleteListener(unused -> future.complete(habitId))
                 .addOnSuccessListener(unused -> {
+                    future.complete(habitId);
                     Log.d(TAG, "Event with id: " + habitId + " removed from habit with id: " + eventId);
                 })
                 .addOnFailureListener(unused -> {
+                    future.complete(habitId);
                     Log.w(TAG, "Failed to remove Event with id: " + habitId + " from habit with id: " + eventId);
                 });
         return future;
@@ -171,15 +174,13 @@ public class HabitController {
         }
 
         CompletableFuture<String> future = new CompletableFuture<>();
-        this.habitsCollection.document(habitId)
-                .update("events", new ArrayList<>())
-                .addOnCompleteListener(unused -> future.complete(habitId))
-                .addOnSuccessListener(unused -> {
-                    Log.d(TAG, "Cleared events of habit with id: " + habitId);
-                })
-                .addOnFailureListener(unused -> {
-                    Log.d(TAG, "Could not clear events of habit with id: " + habitId);
-                });
+        this.habitsCollection.document(habitId).update("events", new ArrayList<>()).addOnSuccessListener(unused -> {
+            future.complete(habitId);
+            Log.d(TAG, "Cleared events of habit with id: " + habitId);
+        }).addOnFailureListener(unused -> {
+            future.complete(habitId);
+            Log.d(TAG, "Could not clear events of habit with id: " + habitId);
+        });
         return future;
     }
 
