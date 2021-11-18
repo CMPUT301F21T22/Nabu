@@ -12,32 +12,17 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
-import ca.cmput301f21t22.nabu.data.HabitCard;
 import ca.cmput301f21t22.nabu.databinding.CardSocialHabitBinding;
-import ca.cmput301f21t22.nabu.ui.ItemClickListener;
 
-import android.annotation.SuppressLint;
-import android.graphics.Paint;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.RecyclerView;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import ca.cmput301f21t22.nabu.data.MyDayCard;
-import ca.cmput301f21t22.nabu.databinding.CardMyDayCompleteBinding;
-import ca.cmput301f21t22.nabu.ui.ItemClickListener;
 
-public class SocialCardAdapter extends RecyclerView.Adapter<SocialCardAdapter.ViewHolder> {
+public class SocialHabitCardAdapter extends RecyclerView.Adapter<SocialHabitCardAdapter.ViewHolder> {
     @NonNull
     private List<MyDayCard> cards;
 
-    public SocialCardAdapter() {
+    public SocialHabitCardAdapter() {
         this.cards = new ArrayList<>();
     }
 
