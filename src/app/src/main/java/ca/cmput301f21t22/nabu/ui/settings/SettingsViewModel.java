@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModel;
 import com.google.firebase.auth.FirebaseAuth;
 
 import ca.cmput301f21t22.nabu.data.User;
+import ca.cmput301f21t22.nabu.model.commands.ResetUserCommand;
 import ca.cmput301f21t22.nabu.model.repositories.UserRepository;
 
 public class SettingsViewModel extends ViewModel {
@@ -34,7 +35,10 @@ public class SettingsViewModel extends ViewModel {
     }
 
     public void reset() {
-        // TODO: Implement Reset.
+        User current = this.currentUser.getValue();
+        if (current != null) {
+            new ResetUserCommand(current).execute();
+        }
     }
 
     @NonNull

@@ -116,6 +116,32 @@ public class HabitControllerTest extends FirestoreTest {
     }
 
     @Test
+    public void clearEventsFromHabit() throws ExecutionException, InterruptedException {
+        String habitId = this.controller.add(new Habit()).get();
+        habitId = this.controller.addEvent(habitId, "event1").get();
+        habitId = this.controller.addEvent(habitId, "event2").get();
+        habitId = this.controller.addEvent(habitId, "event3").get();
+        habitId = this.controller.addEvent(habitId, "event4").get();
+
+        habitId = this.controller.clearEvents(habitId).get();
+
+        AtomicBoolean complete = new AtomicBoolean(false);
+        this.collection.document(habitId).get().addOnCompleteListener(task -> {
+            DocumentSnapshot document = task.getResult();
+            assertTrue(task.isSuccessful());
+            assertNotNull(document);
+
+            //noinspection unchecked
+            List<String> events = (List<String>) document.get("events");
+            assertNotNull(events);
+            assertEquals(new ArrayList<>(), events);
+
+            complete.set(true);
+        });
+        await().until(complete::get);
+    }
+
+    @Test
     public void deleteEventFromHabit() throws ExecutionException, InterruptedException {
         String habitId = this.controller.add(new Habit()).get();
         habitId = this.controller.addEvent(habitId, "iTqYxu1N6IO72GNHFBtX").get();

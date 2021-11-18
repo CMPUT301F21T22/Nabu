@@ -9,6 +9,7 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
@@ -95,11 +96,12 @@ public class HabitController {
         CompletableFuture<String> future = new CompletableFuture<>();
         this.habitsCollection.document(habitId)
                 .update(createFromHabit(habit))
-                .addOnCompleteListener(unused -> future.complete(habitId))
                 .addOnSuccessListener(unused -> {
+                    future.complete(habitId);
                     Log.d(TAG, "Habit with id: " + habitId + " updated.");
                 })
                 .addOnFailureListener(unused -> {
+                    future.complete(habitId);
                     Log.d(TAG, "Failed to update habit with id: " + habitId);
                 });
         return future;
@@ -121,11 +123,12 @@ public class HabitController {
         CompletableFuture<String> future = new CompletableFuture<>();
         this.habitsCollection.document(habitId)
                 .update("events", FieldValue.arrayUnion(eventId))
-                .addOnCompleteListener(unused -> future.complete(habitId))
                 .addOnSuccessListener(unused -> {
+                    future.complete(habitId);
                     Log.d(TAG, "Event with id: " + eventId + " added to habit with id: " + habitId);
                 })
                 .addOnFailureListener(unused -> {
+                    future.complete(habitId);
                     Log.w(TAG, "Failed to add event with id: " + eventId + " to habit with id: " + habitId);
                 });
         return future;
@@ -147,13 +150,37 @@ public class HabitController {
         CompletableFuture<String> future = new CompletableFuture<>();
         this.habitsCollection.document(habitId)
                 .update("events", FieldValue.arrayRemove(eventId))
-                .addOnCompleteListener(unused -> future.complete(habitId))
                 .addOnSuccessListener(unused -> {
+                    future.complete(habitId);
                     Log.d(TAG, "Event with id: " + habitId + " removed from habit with id: " + eventId);
                 })
                 .addOnFailureListener(unused -> {
+                    future.complete(habitId);
                     Log.w(TAG, "Failed to remove Event with id: " + habitId + " from habit with id: " + eventId);
                 });
+        return future;
+    }
+
+    /**
+     * Remove all events from a user.
+     *
+     * @param habitId The ID of the habit to update.
+     * @return A future for the ID of the habit, once updated.
+     */
+    @NonNull
+    public CompletableFuture<String> clearEvents(@NonNull String habitId) {
+        if (habitId.equals("")) {
+            throw new IllegalArgumentException();
+        }
+
+        CompletableFuture<String> future = new CompletableFuture<>();
+        this.habitsCollection.document(habitId).update("events", new ArrayList<>()).addOnSuccessListener(unused -> {
+            future.complete(habitId);
+            Log.d(TAG, "Cleared events of habit with id: " + habitId);
+        }).addOnFailureListener(unused -> {
+            future.complete(habitId);
+            Log.d(TAG, "Could not clear events of habit with id: " + habitId);
+        });
         return future;
     }
 

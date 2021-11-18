@@ -77,11 +77,12 @@ public class UserController {
         CompletableFuture<String> future = new CompletableFuture<>();
         this.usersCollection.document(userId)
                 .update("habits", FieldValue.arrayUnion(habitId))
-                .addOnCompleteListener(unused -> future.complete(userId))
                 .addOnSuccessListener(unused -> {
+                    future.complete(userId);
                     Log.d(TAG, "Habit with id: " + habitId + " added to user with id: " + userId);
                 })
                 .addOnFailureListener(unused -> {
+                    future.complete(userId);
                     Log.w(TAG, "Failed to add habit with id: " + habitId + " to user with id: " + userId);
                 });
         return future;
@@ -103,13 +104,36 @@ public class UserController {
         CompletableFuture<String> future = new CompletableFuture<>();
         this.usersCollection.document(userId)
                 .update("habits", FieldValue.arrayRemove(habitId))
-                .addOnCompleteListener(unused -> future.complete(userId))
                 .addOnSuccessListener(unused -> {
+                    future.complete(userId);
                     Log.d(TAG, "Habit with id: " + habitId + " removed from user with id: " + userId);
                 })
                 .addOnFailureListener(unused -> {
+                    future.complete(userId);
                     Log.w(TAG, "Failed to remove habit with id: " + habitId + " from user with id: " + userId);
                 });
+        return future;
+    }
+
+    /**
+     * Removes all habits from a user.
+     *
+     * @param userId The ID of the user to update.
+     * @return A future for the ID of the user, once updated.
+     */
+    public CompletableFuture<String> clearHabits(@NonNull String userId) {
+        if (userId.equals("")) {
+            throw new IllegalArgumentException();
+        }
+
+        CompletableFuture<String> future = new CompletableFuture<>();
+        this.usersCollection.document(userId).update("habits", new ArrayList<>()).addOnSuccessListener(unused -> {
+            future.complete(userId);
+            Log.d(TAG, "Cleared habits of user with id: " + userId);
+        }).addOnFailureListener(unused -> {
+            future.complete(userId);
+            Log.d(TAG, "Could not clear habits of user with id: " + userId);
+        });
         return future;
     }
 
@@ -118,8 +142,6 @@ public class UserController {
         if (user == null) {
             return;
         }
-
-        String id = user.getUid();
 
         this.usersCollection.document(user.getUid()).get().addOnSuccessListener(snapshot -> {
             if (!snapshot.exists()) {
