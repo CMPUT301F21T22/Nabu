@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ca.cmput301f21t22.nabu.data.HabitCard;
+import ca.cmput301f21t22.nabu.databinding.CardSocialHabitBinding;
 import ca.cmput301f21t22.nabu.ui.ItemClickListener;
 
 import android.annotation.SuppressLint;
@@ -35,8 +36,6 @@ import ca.cmput301f21t22.nabu.ui.ItemClickListener;
 public class SocialCardAdapter extends RecyclerView.Adapter<SocialCardAdapter.ViewHolder> {
     @NonNull
     private List<MyDayCard> cards;
-    @Nullable
-    private ItemClickListener<SocialCardAdapter, MyDayCard> clickListener;
 
     public SocialCardAdapter() {
         this.cards = new ArrayList<>();
@@ -46,18 +45,13 @@ public class SocialCardAdapter extends RecyclerView.Adapter<SocialCardAdapter.Vi
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return new ViewHolder(
-                CardMyDayCompleteBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false));
+                CardSocialHabitBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false));
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         MyDayCard card = this.cards.get(position);
         holder.onBindView(card);
-        holder.binding.card.setOnClickListener((view) -> {
-            if (this.clickListener != null) {
-                this.clickListener.onItemClicked(this, card);
-            }
-        });
     }
 
     @Override
@@ -72,15 +66,11 @@ public class SocialCardAdapter extends RecyclerView.Adapter<SocialCardAdapter.Vi
         this.notifyDataSetChanged();
     }
 
-    public void setClickListener(@Nullable ItemClickListener<SocialCardAdapter, MyDayCard> clickListener) {
-        this.clickListener = clickListener;
-    }
-
     public static class ViewHolder extends RecyclerView.ViewHolder {
         @NonNull
-        private final CardMyDayCompleteBinding binding;
+        private final CardSocialHabitBinding binding;
 
-        public ViewHolder(@NonNull CardMyDayCompleteBinding binding) {
+        public ViewHolder(@NonNull CardSocialHabitBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
         }
@@ -89,7 +79,10 @@ public class SocialCardAdapter extends RecyclerView.Adapter<SocialCardAdapter.Vi
             this.binding.labelHabitName.setPaintFlags(
                     this.binding.labelHabitName.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
             this.binding.labelHabitName.setText(card.getHabit().getTitle());
-            card.getHabit().getReason();
+
+            this.binding.labelReason.setPaintFlags(
+                    this.binding.labelHabitName.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+            this.binding.labelReason.setText(card.getHabit().getReason());
 
             ImageView[] icons = {
                     this.binding.iconComplete0,
