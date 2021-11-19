@@ -1,12 +1,12 @@
 package ca.cmput301f21t22.nabu.ui.habits;
 
-import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -56,12 +56,12 @@ public class HabitCardAdapter extends RecyclerView.Adapter<HabitCardAdapter.View
         holder.onBindView(card);
         holder.binding.card.setOnClickListener((view) -> {
             if (this.habitCardClickListener != null) {
-                this.habitCardClickListener.onItemClicked(this, card);
+                this.habitCardClickListener.onItemClicked(this, card, position);
             }
         });
         holder.binding.buttonOverflowMenu.setOnClickListener((view) -> {
             if (this.habitCardMenuClickListener != null) {
-                this.habitCardMenuClickListener.onItemMenuClicked(view, card);
+                this.habitCardMenuClickListener.onItemMenuClicked(view, card, position);
             }
         });
     }
@@ -71,11 +71,11 @@ public class HabitCardAdapter extends RecyclerView.Adapter<HabitCardAdapter.View
         return this.cards.size();
     }
 
-    @SuppressLint("NotifyDataSetChanged")
-    public void setCards(@Nullable List<HabitCard> cards) {
-        cards = cards != null ? cards : new ArrayList<>();
-        this.cards = cards;
-        this.notifyDataSetChanged();
+    public void setCards(@Nullable List<HabitCard> newCards) {
+        List<HabitCard> old = this.cards;
+        this.cards = newCards != null ? new ArrayList<>(newCards) : new ArrayList<>();
+        DiffUtil.DiffResult diffResult = DiffUtil.calculateDiff(new HabitCardDiffUtilCallback(old, this.cards));
+        diffResult.dispatchUpdatesTo(this);
     }
 
     public void setHabitCardClickListener(@Nullable ItemClickListener<HabitCardAdapter, HabitCard> habitCardClickListener) {

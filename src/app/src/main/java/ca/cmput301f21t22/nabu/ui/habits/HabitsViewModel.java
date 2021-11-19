@@ -64,8 +64,11 @@ public class HabitsViewModel extends ViewModel {
         this.onDataChanged();
     }
 
-    public void onCardClicked(@NonNull HabitCard card) {
-        card.setExpanded(!card.isExpanded());
+    public void onCardClicked(int position) {
+        HabitCard oldCard = this.cardsList.get(position);
+        HabitCard newCard = new HabitCard(oldCard.getHabit(), oldCard.getEvents());
+        newCard.setExpanded(!oldCard.isExpanded());
+        this.cardsList.set(position, newCard);
         this.cards.setValue(this.cardsList);
     }
 

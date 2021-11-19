@@ -39,7 +39,7 @@ public class IncompleteCardAdapter extends RecyclerView.Adapter<IncompleteCardAd
         holder.onBindView(card);
         holder.binding.card.setOnClickListener((view) -> {
             if (this.clickListener != null) {
-                this.clickListener.onItemClicked(this, card);
+                this.clickListener.onItemClicked(this, card, position);
             }
         });
     }
