@@ -59,6 +59,8 @@ public class UserController {
         Map<String, Object> map = new HashMap<>();
         map.put("email", user.getEmail());
         map.put("habits", user.getHabits());
+        map.put("following", user.getFollowing());
+        map.put("requests", user.getRequests());
         return map;
     }
 
