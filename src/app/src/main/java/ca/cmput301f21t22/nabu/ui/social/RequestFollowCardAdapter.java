@@ -15,15 +15,15 @@ import ca.cmput301f21t22.nabu.data.User;
 import ca.cmput301f21t22.nabu.databinding.CardUserRequestBinding;
 import ca.cmput301f21t22.nabu.ui.ItemClickListener;
 
-public class RequestCardAdapter extends RecyclerView.Adapter<RequestCardAdapter.ViewHolder> {
+public class RequestFollowCardAdapter extends RecyclerView.Adapter<RequestFollowCardAdapter.ViewHolder> {
     @NonNull
     private List<User> requests;
     @Nullable
-    private ItemClickListener<RequestCardAdapter, User> requestCardRejectButtonListener;
+    private ItemClickListener<RequestFollowCardAdapter, User> requestCardRejectButtonListener;
     @Nullable
-    private ItemClickListener<RequestCardAdapter, User> requestCardAcceptButtonListener;
+    private ItemClickListener<RequestFollowCardAdapter, User> requestCardAcceptButtonListener;
 
-    public RequestCardAdapter() {
+    public RequestFollowCardAdapter() {
         this.requests = new ArrayList<>();
     }
 
@@ -64,12 +64,12 @@ public class RequestCardAdapter extends RecyclerView.Adapter<RequestCardAdapter.
         this.notifyDataSetChanged();
     }
 
-    public void setDenyButtonListener(@Nullable ItemClickListener<RequestCardAdapter, User>
+    public void setDenyButtonListener(@Nullable ItemClickListener<RequestFollowCardAdapter, User>
                                               requestCardDenyButtonListener) {
         this.requestCardRejectButtonListener = requestCardDenyButtonListener;
     }
 
-    public void setAcceptButtonListener(@Nullable ItemClickListener<RequestCardAdapter, User>
+    public void setAcceptButtonListener(@Nullable ItemClickListener<RequestFollowCardAdapter, User>
                                                 requestCardAcceptButtonListener) {
         this.requestCardAcceptButtonListener = requestCardAcceptButtonListener;
     }
