@@ -110,6 +110,9 @@ public class HabitsFragment extends ExtendedToolbarFragment {
             menu.show();
         });
 
+        this.adapter.setHabitCardDraggedListener(
+                (originalPosition, targetPosition) -> this.viewModel.reorderHabits(originalPosition, targetPosition));
+
         this.viewModel.getCards().observe(this.getViewLifecycleOwner(), cards -> this.adapter.setCards(cards));
 
         this.binding.listHabits.setLayoutManager(new LinearLayoutManager(this.requireContext()));

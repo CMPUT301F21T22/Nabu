@@ -17,6 +17,7 @@ import ca.cmput301f21t22.nabu.data.HabitCard;
 import ca.cmput301f21t22.nabu.data.User;
 import ca.cmput301f21t22.nabu.model.commands.DeleteEventCommand;
 import ca.cmput301f21t22.nabu.model.commands.DeleteHabitCommand;
+import ca.cmput301f21t22.nabu.model.commands.ReorderHabitCommand;
 
 public class HabitsViewModel extends ViewModel {
     @NonNull
@@ -70,6 +71,18 @@ public class HabitsViewModel extends ViewModel {
         newCard.setExpanded(!oldCard.isExpanded());
         this.cardsList.set(position, newCard);
         this.cards.setValue(this.cardsList);
+    }
+
+    public boolean reorderHabits(int originalPosition, int targetPosition) {
+        if (this.currentUser != null) {
+            try {
+                new ReorderHabitCommand(this.currentUser, originalPosition, targetPosition).execute();
+                return true;
+            } catch (Exception e) {
+                return false;
+            }
+        }
+        return false;
     }
 
     public void deleteHabit(@NonNull Habit habit) {
