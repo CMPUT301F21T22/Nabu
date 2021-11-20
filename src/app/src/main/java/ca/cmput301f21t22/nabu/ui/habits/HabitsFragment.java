@@ -54,8 +54,8 @@ public class HabitsFragment extends ExtendedToolbarFragment {
                 .getEvents()
                 .observe(this.getViewLifecycleOwner(), events -> this.viewModel.setCurrentEvents(events));
 
-        this.adapter.setHabitCardClickListener((adapter, card) -> this.viewModel.onCardClicked(card));
-        this.adapter.setHabitCardMenuClickListener((view, card) -> {
+        this.adapter.setHabitCardClickListener((adapter, card, position) -> this.viewModel.onCardClicked(position));
+        this.adapter.setHabitCardMenuClickListener((view, card, position) -> {
             PopupMenu menu = new PopupMenu(this.getContext(), view);
             if (!card.isExpanded()) {
                 menu.getMenuInflater().inflate(R.menu.overflow_menu_habit_card_unexpanded, menu.getMenu());
@@ -64,7 +64,7 @@ public class HabitsFragment extends ExtendedToolbarFragment {
             }
             menu.setOnMenuItemClickListener(menuItem -> {
                 if (menuItem.getItemId() == menu.getMenu().getItem(0).getItemId()) {
-                    this.viewModel.onCardClicked(card);
+                    this.viewModel.onCardClicked(position);
                     return true;
                 } else if (menuItem.getItemId() == menu.getMenu().getItem(1).getItemId()) {
                     EditHabitFragment.newInstance(card.getHabit()).show(this.getChildFragmentManager(), "EditHabit");
@@ -85,9 +85,9 @@ public class HabitsFragment extends ExtendedToolbarFragment {
             menu.show();
         });
 
-        this.adapter.setEventCardClickListener((adapter, event) -> EditEventFragment.newInstance(event)
+        this.adapter.setEventCardClickListener((adapter, event, position) -> EditEventFragment.newInstance(event)
                 .show(this.getChildFragmentManager(), "EditEvent"));
-        this.adapter.setEventCardMenuClickListener((view, event) -> {
+        this.adapter.setEventCardMenuClickListener((view, event, position) -> {
             PopupMenu menu = new PopupMenu(this.getContext(), view);
             menu.getMenuInflater().inflate(R.menu.overflow_menu_event_card, menu.getMenu());
             menu.setOnMenuItemClickListener(menuItem -> {
@@ -109,6 +109,9 @@ public class HabitsFragment extends ExtendedToolbarFragment {
             });
             menu.show();
         });
+
+        this.adapter.setHabitCardDraggedListener(
+                (originalPosition, targetPosition) -> this.viewModel.reorderHabits(originalPosition, targetPosition));
 
         this.viewModel.getCards().observe(this.getViewLifecycleOwner(), cards -> this.adapter.setCards(cards));
 

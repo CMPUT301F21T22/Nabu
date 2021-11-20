@@ -13,6 +13,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
@@ -134,6 +135,32 @@ public class UserController {
             future.complete(userId);
             Log.d(TAG, "Could not clear habits of user with id: " + userId);
         });
+        return future;
+    }
+
+    /**
+     * Updates the entire list of habits attached to a user.
+     *
+     * @param userId      The ID of the user to update.
+     * @param newHabitIds The list of habits that should be attached to the user.
+     * @return A future for the ID of the user, once updated.
+     */
+    public CompletableFuture<String> updateHabits(@NonNull String userId, @NonNull List<String> newHabitIds) {
+        if (userId.equals("") || newHabitIds.contains("")) {
+            throw new IllegalArgumentException();
+        }
+
+        CompletableFuture<String> future = new CompletableFuture<>();
+        this.usersCollection.document(userId)
+                .update("habits", new ArrayList<>(newHabitIds))
+                .addOnSuccessListener(unused -> {
+                    future.complete(userId);
+                    Log.d(TAG, "Updated habits of user with id: " + userId);
+                })
+                .addOnFailureListener(unused -> {
+                    future.complete(userId);
+                    Log.d(TAG, "Could not update habits of user with id: " + userId);
+                });
         return future;
     }
 
