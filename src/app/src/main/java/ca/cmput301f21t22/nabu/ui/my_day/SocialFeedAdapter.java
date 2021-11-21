@@ -17,112 +17,66 @@ import java.util.List;
 import ca.cmput301f21t22.nabu.data.Event;
 import ca.cmput301f21t22.nabu.data.Habit;
 import ca.cmput301f21t22.nabu.data.HabitCard;
+import ca.cmput301f21t22.nabu.data.User;
 import ca.cmput301f21t22.nabu.databinding.CardHabitBinding;
+import ca.cmput301f21t22.nabu.databinding.CardSocialHabitBinding;
+import ca.cmput301f21t22.nabu.databinding.SocialFeedBinding;
 import ca.cmput301f21t22.nabu.ui.ItemClickListener;
 import ca.cmput301f21t22.nabu.ui.ItemMenuClickListener;
 import ca.cmput301f21t22.nabu.ui.habits.EventCardAdapter;
 
 public class SocialFeedAdapter extends RecyclerView.Adapter<SocialFeedAdapter.ViewHolder> {
     @NonNull
-    private List<HabitCard> cards;
-    @Nullable
-    private ItemClickListener<ca.cmput301f21t22.nabu.ui.habits.HabitCardAdapter, HabitCard> habitCardClickListener;
-    @Nullable
-    private ItemMenuClickListener<HabitCard> habitCardMenuClickListener;
-    @Nullable
-    private ItemClickListener<EventCardAdapter, Event> eventCardClickListener;
-    @Nullable
-    private ItemMenuClickListener<Event> eventCardMenuClickListener;
+    private List<User> users;
+
 
     public SocialFeedAdapter() {
-        this.cards = new ArrayList<>();
+        this.users = new ArrayList<>();
     }
 
     @NonNull
     @Override
     public SocialFeedAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        CardHabitBinding binding = CardHabitBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
-        binding.listEvents.setLayoutManager(new LinearLayoutManager(parent.getContext()));
-        return new SocialFeedAdapter.ViewHolder(binding, new EventCardAdapter());
+        SocialFeedBinding binding = SocialFeedBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
+        binding.feedView.setLayoutManager(new LinearLayoutManager(parent.getContext()));
+        return new SocialFeedAdapter.ViewHolder(binding, new SocialHabitCardAdapter());
     }
 
     @Override
     public void onBindViewHolder(@NonNull SocialFeedAdapter.ViewHolder holder, int position) {
-        HabitCard card = this.cards.get(position);
+        User user = this.users.get(position);
 
-        holder.adapter.setEvents(card.getEvents());
-        holder.adapter.setClickListener(this.eventCardClickListener);
-        holder.adapter.setMenuClickListener(this.eventCardMenuClickListener);
+        holder.adapter.setCards(user.getHabits());
 
-        holder.onBindView(card);
-        holder.binding.card.setOnClickListener((view) -> {
-            if (this.habitCardClickListener != null) {
-                this.habitCardClickListener.onItemClicked(this, card);
-            }
-        });
-        holder.binding.buttonOverflowMenu.setOnClickListener((view) -> {
-            if (this.habitCardMenuClickListener != null) {
-                this.habitCardMenuClickListener.onItemMenuClicked(view, card);
-            }
-        });
+        holder.onBindView(user);
     }
 
     @Override
     public int getItemCount() {
-        return this.cards.size();
+        return this.users.size();
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    public void setCards(@Nullable List<HabitCard> cards) {
-        cards = cards != null ? cards : new ArrayList<>();
-        this.cards = cards;
+    public void setCards(@Nullable List<User> users) {
+        users = users != null ? users : new ArrayList<>();
+        this.users = users;
         this.notifyDataSetChanged();
-    }
-
-    public void setHabitCardClickListener(@Nullable ItemClickListener<ca.cmput301f21t22.nabu.ui.habits.HabitCardAdapter, HabitCard> habitCardClickListener) {
-        this.habitCardClickListener = habitCardClickListener;
-    }
-
-    public void setHabitCardMenuClickListener(@Nullable ItemMenuClickListener<HabitCard> habitCardMenuClickListener) {
-        this.habitCardMenuClickListener = habitCardMenuClickListener;
-    }
-
-    public void setEventCardClickListener(@Nullable ItemClickListener<EventCardAdapter, Event> eventCardClickListener) {
-        this.eventCardClickListener = eventCardClickListener;
-    }
-
-    public void setEventCardMenuClickListener(@Nullable ItemMenuClickListener<Event> eventCardMenuClickListener) {
-        this.eventCardMenuClickListener = eventCardMenuClickListener;
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         @NonNull
-        private final DateFormat dateFormat;
+        private final SocialFeedBinding binding;
         @NonNull
-        private final CardHabitBinding binding;
-        @NonNull
-        private final EventCardAdapter adapter;
+        private final SocialHabitCardAdapter adapter;
 
-        public ViewHolder(@NonNull CardHabitBinding binding, @NonNull EventCardAdapter adapter) {
+        public ViewHolder(@NonNull SocialFeedBinding binding, @NonNull SocialHabitCardAdapter adapter) {
             super(binding.getRoot());
-            this.dateFormat = DateFormat.getDateInstance();
             this.binding = binding;
             this.adapter = adapter;
         }
 
-        public void onBindView(@NonNull HabitCard card) {
-            Habit habit = card.getHabit();
-            this.binding.labelHabitTitle.setText(habit.getTitle());
-            this.binding.labelOccurrence.setText(habit.getOccurrence().toString());
-            this.binding.labelReason.setText(habit.getReason());
-            this.binding.labelStartDate.setText(this.dateFormat.format(habit.getStartDate()));
-
-            if (card.isExpanded() && card.getEvents().size() > 0) {
-                this.binding.listEvents.setAdapter(this.adapter);
-                this.binding.layoutEvents.setVisibility(View.VISIBLE);
-            } else {
-                this.binding.layoutEvents.setVisibility(View.GONE);
-            }
+        public void onBindView(@NonNull User user) {
+            this.binding.feedNameText.setText(user.getEmail());
         }
     }
 }
