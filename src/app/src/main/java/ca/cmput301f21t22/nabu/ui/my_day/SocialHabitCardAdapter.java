@@ -113,7 +113,7 @@ public class SocialHabitCardAdapter extends
             this.binding.labelHabitName.setText(card.getHabit().getTitle());
 
             this.binding.labelReason.setPaintFlags(
-                    this.binding.labelHabitName.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+                    this.binding.labelReason.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
             this.binding.labelReason.setText(card.getHabit().getReason());
 
             ImageView[] icons = {
