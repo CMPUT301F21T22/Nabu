@@ -57,7 +57,9 @@ public class ResetUserCommand implements Command<CompletableFuture<Boolean>> {
     public CompletableFuture<Boolean> execute() {
         List<String> habitIds = this.user.getHabits();
 
-        return this.userController.clearHabits(this.user.getId())
+        return this.userController.clearFollowing(this.user.getId())
+                .thenCompose(this.userController::clearRequests)
+                .thenCompose(this.userController::clearHabits)
                 .thenCompose(userId -> CompletableFuture.allOf(habitIds.stream().map(habitId -> {
                     Optional<Habit> habit = this.habitRepository.findHabit(h -> h.getId().equals(habitId));
                     List<String> eventIds = habit.map(Habit::getEvents).orElseGet(ArrayList::new);
