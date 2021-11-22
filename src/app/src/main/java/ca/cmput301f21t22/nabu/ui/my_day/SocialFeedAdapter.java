@@ -12,7 +12,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import ca.cmput301f21t22.nabu.data.Event;
 import ca.cmput301f21t22.nabu.data.Habit;
@@ -29,7 +31,6 @@ public class SocialFeedAdapter extends RecyclerView.Adapter<SocialFeedAdapter.Vi
     @NonNull
     private List<User> users;
 
-
     public SocialFeedAdapter() {
         this.users = new ArrayList<>();
     }
@@ -45,9 +46,8 @@ public class SocialFeedAdapter extends RecyclerView.Adapter<SocialFeedAdapter.Vi
     @Override
     public void onBindViewHolder(@NonNull SocialFeedAdapter.ViewHolder holder, int position) {
         User user = this.users.get(position);
-
-        holder.adapter.setCards(user.getHabits());
-
+        List<Habit> habits = habits;
+        holder.adapter.setCards();
         holder.onBindView(user);
     }
 

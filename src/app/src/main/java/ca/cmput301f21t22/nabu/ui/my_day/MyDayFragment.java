@@ -16,10 +16,16 @@ import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.time.format.TextStyle;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import ca.cmput301f21t22.nabu.R;
+import ca.cmput301f21t22.nabu.data.Habit;
+import ca.cmput301f21t22.nabu.data.User;
 import ca.cmput301f21t22.nabu.databinding.FragmentMydayBinding;
 import ca.cmput301f21t22.nabu.databinding.HeaderCalendarBinding;
 import ca.cmput301f21t22.nabu.dialogs.edit_event.EditEventFragment;
@@ -40,6 +46,10 @@ public class MyDayFragment extends ExtendedToolbarFragment {
     private IncompleteCardAdapter incompleteAdapter;
     @Nullable
     private CompleteCardAdapter completeAdapter;
+    @Nullable
+    private SocialFeedAdapter feedAdapter;
+    @Nullable
+    private Map<String, Habit> currentHabits;
 
     @Nullable
     @Override
@@ -50,6 +60,7 @@ public class MyDayFragment extends ExtendedToolbarFragment {
         this.binding = FragmentMydayBinding.inflate(inflater, container, false);
         this.incompleteAdapter = new IncompleteCardAdapter();
         this.completeAdapter = new CompleteCardAdapter();
+        this.feedAdapter = new SocialFeedAdapter();
 
         UserRepository.getInstance()
                 .getCurrentUser()
@@ -60,6 +71,12 @@ public class MyDayFragment extends ExtendedToolbarFragment {
         EventRepository.getInstance()
                 .getEvents()
                 .observe(this.getViewLifecycleOwner(), events -> this.viewModel.setCurrentEvents(events));
+
+        HabitRepository.getInstance()
+                .getHabits()
+                .observe(this.getViewLifecycleOwner(), habits -> {
+                    this.currentHabits = habits;
+                });
 
         this.incompleteAdapter.setClickListener((adapter, item) -> this.viewModel.onCardClicked(item));
         this.completeAdapter.setClickListener((adapter, item) -> this.viewModel.onCardClicked(item));
@@ -80,10 +97,28 @@ public class MyDayFragment extends ExtendedToolbarFragment {
             }
         });
 
+        this.viewModel.getCards().observe(this.getViewLifecycleOwner(), cards -> this.adapter.setCards(cards));
+
+        this.binding.listHabits.setLayoutManager(new LinearLayoutManager(this.requireContext()));
+        this.binding.listHabits.setAdapter(this.adapter);
         this.binding.listCard.setLayoutManager(new LinearLayoutManager(this.requireContext()));
         this.binding.listCard.setAdapter(new ConcatAdapter(this.incompleteAdapter, this.completeAdapter));
 
         return this.binding.getRoot();
+    }
+
+    private List<Habit> getHabitsForUser(User user) {
+        List<Habit> habits = new ArrayList<>();
+        for (String habitId : user.getHabits()) {
+            Habit habit = this.currentHabits.get(habitId);
+            if (habit != null) {
+                LocalDate startDate = habit.getStartDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+                if (startDate.isBefore(LocalDate.now()) || startDate.isEqual(LocalDate.now())) {
+                    habits.add(habit);
+                }
+            }
+        }
+        return habits;
     }
 
     @Override
