@@ -222,7 +222,7 @@ public class UserControllerTest extends AuthenticatedFirestoreTest {
         assertNotNull(user);
         String userId = user.getUid();
 
-        userId = this.controller.addRequests(userId, "OtherUser").get();
+        userId = this.controller.addRequest(userId, "OtherUser").get();
 
         AtomicBoolean complete = new AtomicBoolean(false);
         this.collection.document(userId).get().addOnCompleteListener(task -> {
@@ -246,9 +246,9 @@ public class UserControllerTest extends AuthenticatedFirestoreTest {
         FirebaseUser user = this.auth.getCurrentUser();
         assertNotNull(user);
         String userId = user.getUid();
-        userId = this.controller.addRequests(userId, "OtherUser").get();
+        userId = this.controller.addRequest(userId, "OtherUser").get();
 
-        userId = this.controller.deleteRequests(userId, "OtherUser").get();
+        userId = this.controller.deleteRequest(userId, "OtherUser").get();
 
         AtomicBoolean complete = new AtomicBoolean(false);
         this.collection.document(userId).get().addOnCompleteListener(task -> {
@@ -272,9 +272,9 @@ public class UserControllerTest extends AuthenticatedFirestoreTest {
         FirebaseUser user = this.auth.getCurrentUser();
         assertNotNull(user);
         String userId = user.getUid();
-        userId = this.controller.addRequests(userId, "OtherUser1").get();
-        userId = this.controller.addRequests(userId, "OtherUser2").get();
-        userId = this.controller.addRequests(userId, "OtherUser3").get();
+        userId = this.controller.addRequest(userId, "OtherUser1").get();
+        userId = this.controller.addRequest(userId, "OtherUser2").get();
+        userId = this.controller.addRequest(userId, "OtherUser3").get();
 
         userId = this.controller.clearRequests(userId).get();
 

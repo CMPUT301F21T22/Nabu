@@ -70,8 +70,8 @@ public class ResetUserCommandTest extends AuthenticatedFirestoreTest {
             userController.addFollowing(user.getUid(), "followedUser1");
             userController.addFollowing(user.getUid(), "followedUser2");
 
-            userController.addRequests(user.getUid(), "requestUser1");
-            userController.addRequests(user.getUid(), "requestUser2");
+            userController.addRequest(user.getUid(), "requestUser1");
+            userController.addRequest(user.getUid(), "requestUser2");
 
             this.user = this.userRepository.retrieveUser(user.getUid()).get();
         } catch (Exception e) {

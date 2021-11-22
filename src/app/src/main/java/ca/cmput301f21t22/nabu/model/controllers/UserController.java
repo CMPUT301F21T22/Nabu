@@ -247,7 +247,7 @@ public class UserController {
      * @param requesterId The ID of the user from whom the request comes.
      * @return A future for the ID of the user, once updated.
      */
-    public CompletableFuture<String> addRequests(@NonNull String userId, @NonNull String requesterId) {
+    public CompletableFuture<String> addRequest(@NonNull String userId, @NonNull String requesterId) {
         if (userId.equals("") || requesterId.equals("")) {
             throw new IllegalArgumentException();
         }
@@ -273,7 +273,7 @@ public class UserController {
      * @param requesterId The ID of the user whose request should be deleted.
      * @return A future for the ID of the user, once updated.
      */
-    public CompletableFuture<String> deleteRequests(@NonNull String userId, @NonNull String requesterId) {
+    public CompletableFuture<String> deleteRequest(@NonNull String userId, @NonNull String requesterId) {
         if (userId.equals("") || requesterId.equals("")) {
             throw new IllegalArgumentException();
         }
