@@ -85,12 +85,14 @@ public class UserRepository {
         return INSTANCE;
     }
 
+    @SuppressWarnings("unchecked")
     @NonNull
     private static User createFromSnapshot(@NonNull DocumentSnapshot snapshot) {
         String email = Objects.requireNonNull(snapshot.getString("email"));
-        @SuppressWarnings("unchecked") List<String> habits =
-                Objects.requireNonNull((List<String>) snapshot.get("habits"));
-        return new User(snapshot.getId(), email, habits);
+        List<String> habits = Objects.requireNonNull((List<String>) snapshot.get("habits"));
+        List<String> following = Objects.requireNonNull((List<String>) snapshot.get("following"));
+        List<String> requests = Objects.requireNonNull((List<String>) snapshot.get("requests"));
+        return new User(snapshot.getId(), email, habits, following, requests);
     }
 
     /**

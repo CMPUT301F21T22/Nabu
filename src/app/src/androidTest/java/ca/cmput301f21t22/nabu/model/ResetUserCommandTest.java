@@ -67,6 +67,12 @@ public class ResetUserCommandTest extends AuthenticatedFirestoreTest {
             userController.addHabit(user.getUid(), habitId1).get();
             userController.addHabit(user.getUid(), habitId2).get();
 
+            userController.addFollowing(user.getUid(), "followedUser1");
+            userController.addFollowing(user.getUid(), "followedUser2");
+
+            userController.addRequest(user.getUid(), "requestUser1");
+            userController.addRequest(user.getUid(), "requestUser2");
+
             this.user = this.userRepository.retrieveUser(user.getUid()).get();
         } catch (Exception e) {
             assertNull(e);
@@ -90,6 +96,8 @@ public class ResetUserCommandTest extends AuthenticatedFirestoreTest {
         User user = this.userRepository.retrieveUser(this.user.getId()).get();
         assertNotNull(user);
         assertEquals(new ArrayList<>(), user.getHabits());
+        assertEquals(new ArrayList<>(), user.getFollowing());
+        assertEquals(new ArrayList<>(), user.getRequests());
     }
 
     @Test(expected = Exception.class)
