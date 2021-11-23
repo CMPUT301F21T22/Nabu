@@ -47,9 +47,11 @@ public class MyDayFragment extends ExtendedToolbarFragment {
     @Nullable
     private CompleteCardAdapter completeAdapter;
     @Nullable
-    private SocialFeedAdapter feedAdapter;
+    private SocialFeedAdapter followingFeedAdapter;
     @Nullable
-    private Map<String, Habit> currentHabits;
+    private SocialFeedAdapter generalFeedAdapter;
+    @Nullable
+    private Map<String, Habit> currentSocialHabits;
 
     @Nullable
     @Override
@@ -60,7 +62,8 @@ public class MyDayFragment extends ExtendedToolbarFragment {
         this.binding = FragmentMydayBinding.inflate(inflater, container, false);
         this.incompleteAdapter = new IncompleteCardAdapter();
         this.completeAdapter = new CompleteCardAdapter();
-        this.feedAdapter = new SocialFeedAdapter();
+        this.followingFeedAdapter = new SocialFeedAdapter();
+        this.generalFeedAdapter = new SocialFeedAdapter();
 
         UserRepository.getInstance()
                 .getCurrentUser()
@@ -75,7 +78,7 @@ public class MyDayFragment extends ExtendedToolbarFragment {
         HabitRepository.getInstance()
                 .getHabits()
                 .observe(this.getViewLifecycleOwner(), habits -> {
-                    this.currentHabits = habits;
+                    this.currentSocialHabits = habits;
                 });
 
         this.incompleteAdapter.setClickListener((adapter, item) -> this.viewModel.onCardClicked(item));
@@ -97,10 +100,15 @@ public class MyDayFragment extends ExtendedToolbarFragment {
             }
         });
 
-        this.viewModel.getCards().observe(this.getViewLifecycleOwner(), cards -> this.adapter.setCards(cards));
+        this.viewModel.getFollowingUserCards().observe(this.getViewLifecycleOwner(), cards -> this.followingFeedAdapter.setCards(cards));
+        this.viewModel.getGeneralUserCards().observe(this.getViewLifecycleOwner(), cards -> this.generalFeedAdapter.setCards(cards));
 
-        this.binding.listHabits.setLayoutManager(new LinearLayoutManager(this.requireContext()));
-        this.binding.listHabits.setAdapter(this.adapter);
+        this.binding.followingFeed.setLayoutManager(new LinearLayoutManager(this.requireContext()));
+        this.binding.followingFeed.setAdapter(this.followingFeedAdapter);
+
+        this.binding.generalFeed.setLayoutManager(new LinearLayoutManager(this.requireContext()));
+        this.binding.generalFeed.setAdapter(this.generalFeedAdapter);
+
         this.binding.listCard.setLayoutManager(new LinearLayoutManager(this.requireContext()));
         this.binding.listCard.setAdapter(new ConcatAdapter(this.incompleteAdapter, this.completeAdapter));
 
@@ -110,7 +118,7 @@ public class MyDayFragment extends ExtendedToolbarFragment {
     private List<Habit> getHabitsForUser(User user) {
         List<Habit> habits = new ArrayList<>();
         for (String habitId : user.getHabits()) {
-            Habit habit = this.currentHabits.get(habitId);
+            Habit habit = this.currentSocialHabits.get(habitId);
             if (habit != null) {
                 LocalDate startDate = habit.getStartDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
                 if (startDate.isBefore(LocalDate.now()) || startDate.isEqual(LocalDate.now())) {

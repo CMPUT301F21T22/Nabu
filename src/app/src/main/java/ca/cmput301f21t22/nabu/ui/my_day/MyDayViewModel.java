@@ -17,6 +17,7 @@ import java.util.Objects;
 import ca.cmput301f21t22.nabu.data.Event;
 import ca.cmput301f21t22.nabu.data.Habit;
 import ca.cmput301f21t22.nabu.data.MyDayCard;
+import ca.cmput301f21t22.nabu.data.MyDayUserCard;
 import ca.cmput301f21t22.nabu.data.User;
 import ca.cmput301f21t22.nabu.model.commands.AddEventCommand;
 import ca.cmput301f21t22.nabu.model.commands.DeleteEventCommand;
@@ -31,6 +32,10 @@ public class MyDayViewModel extends ViewModel {
     private final MutableLiveData<List<MyDayCard>> incompleteCards;
     @NonNull
     private final MutableLiveData<List<MyDayCard>> completeCards;
+    @NonNull
+    private final MutableLiveData<List<MyDayUserCard>> followingUserCards;
+    @NonNull
+    private final MutableLiveData<List<MyDayUserCard>> generalUserCards;
 
     @Nullable
     private Event mostRecentEvent;
@@ -48,6 +53,8 @@ public class MyDayViewModel extends ViewModel {
         this.cardsList = new ArrayList<>();
         this.incompleteCards = new MutableLiveData<>();
         this.completeCards = new MutableLiveData<>();
+        this.followingUserCards = new MutableLiveData<>();
+        this.generalUserCards = new MutableLiveData<>();
 
         this.mostRecentEvent = null;
         this.instantShowEdit = new MutableLiveData<>();
@@ -62,6 +69,12 @@ public class MyDayViewModel extends ViewModel {
     public LiveData<List<MyDayCard>> getCompleteCards() {
         return this.completeCards;
     }
+
+    @NonNull
+    public LiveData<List<MyDayUserCard>> getFollowingUserCards() {return this.followingUserCards;}
+
+    @NonNull
+    public LiveData<List<MyDayUserCard>> getGeneralUserCards() {return this.generalUserCards;}
 
     @NonNull
     public Event getMostRecentEvent() {
@@ -85,6 +98,16 @@ public class MyDayViewModel extends ViewModel {
 
     public void setCurrentEvents(@Nullable Map<String, Event> currentEvents) {
         this.currentEvents = currentEvents;
+        this.onDataChanged();
+    }
+
+    public void setFollowingUserCards(@Nullable List<MyDayUserCard> followingUserCards) {
+        this.followingUserCards.setValue(followingUserCards);
+        this.onDataChanged();
+    }
+
+    public void setGeneralUserCards(@Nullable List<MyDayUserCard> generalUserCards) {
+        this.generalUserCards.setValue(generalUserCards);
         this.onDataChanged();
     }
 
@@ -131,6 +154,21 @@ public class MyDayViewModel extends ViewModel {
             }
         }
         return new MyDayCard(habit, relevantEvents);
+    }
+
+    @NonNull
+    private MyDayUserCard processUser(@NonNull User user, Map<String, Habit> currentSocialHabits) {
+        ArrayList<MyDayCard> habits = new ArrayList<>();
+        for (String habitId : user.getHabits()) {
+            Habit habit = currentSocialHabits.get(habitId);
+            if (habit != null) {
+                LocalDate startDate = habit.getStartDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+                if (startDate.isBefore(LocalDate.now()) || startDate.isEqual(LocalDate.now())) {
+                    habits.add(this.processHabit(habit));
+                }
+            }
+        }
+        return new MyDayUserCard(user, habits);
     }
 
     private void updateLists() {
