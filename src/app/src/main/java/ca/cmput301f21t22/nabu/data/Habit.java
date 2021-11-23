@@ -107,15 +107,14 @@ public class Habit implements Serializable {
             return false;
         }
         Habit habit = (Habit) o;
-        return this.shared == habit.shared && this.id.equals(habit.id) && this.title.equals(habit.title) &&
-               this.reason.equals(habit.reason) && this.startDate.equals(habit.startDate) &&
-               this.occurrence.equals(habit.occurrence) && this.events.equals(habit.events);
+        return this.shared == habit.shared && this.title.equals(habit.title) && this.reason.equals(habit.reason) &&
+               this.startDate.equals(habit.startDate) && this.occurrence.equals(habit.occurrence) &&
+               this.events.equals(habit.events);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(
-                this.id, this.title, this.reason, this.startDate, this.occurrence, this.events, this.shared);
+        return Objects.hash(this.title, this.reason, this.startDate, this.occurrence, this.events, this.shared);
     }
 
     /**

@@ -42,12 +42,12 @@ public class EventCardAdapter extends RecyclerView.Adapter<EventCardAdapter.View
         holder.onBindView(event);
         holder.binding.card.setOnClickListener((view) -> {
             if (this.clickListener != null) {
-                this.clickListener.onItemClicked(this, event);
+                this.clickListener.onItemClicked(this, event, position);
             }
         });
         holder.binding.buttonOverflowMenu.setOnClickListener((view) -> {
             if (this.menuClickListener != null) {
-                this.menuClickListener.onItemMenuClicked(view, event);
+                this.menuClickListener.onItemMenuClicked(view, event, position);
             }
         });
     }

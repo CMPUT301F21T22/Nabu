@@ -61,8 +61,8 @@ public class MyDayFragment extends ExtendedToolbarFragment {
                 .getEvents()
                 .observe(this.getViewLifecycleOwner(), events -> this.viewModel.setCurrentEvents(events));
 
-        this.incompleteAdapter.setClickListener((adapter, item) -> this.viewModel.onCardClicked(item));
-        this.completeAdapter.setClickListener((adapter, item) -> this.viewModel.onCardClicked(item));
+        this.incompleteAdapter.setClickListener((adapter, item, position) -> this.viewModel.onCardClicked(item));
+        this.completeAdapter.setClickListener((adapter, item, position) -> this.viewModel.onCardClicked(item));
 
         this.viewModel.getIncompleteCards()
                 .observe(this.getViewLifecycleOwner(), cards -> this.incompleteAdapter.setCards(cards));

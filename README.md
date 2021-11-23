@@ -8,21 +8,23 @@ An application designed to create and encourage healthy habit building.
 
 A simple, and easy-to-use Android application which tracks your habits for the days of the week, reminds & encourages you for those habits, and lets you interact with friends to see what they're doing.
 
-#### Running in Android Studio
+## Project Structure
 
-> The project can be opened in [Android Studio](https://github.com/CMPUT301F21T22/Nabu/tree/main/src) from the /src directory.
+The Android Studio project can be opened from the `/src` directory.
 
-#### Project Tests
+UML documentation and group information can be found in the `/doc` directory.
 
-> The [project tests](https://github.com/CMPUT301F21T22/Nabu/tree/main/src/app/src/test/java/ca/cmput301f21t22/nabu) can be found in the test directory -> /src/app/src/test
+Mockup and Storyboard design files can be found in the `/design` directory.
 
-#### App Module
+### Running Model Tests
 
-> The [app module](https://github.com/CMPUT301F21T22/Nabu/tree/main/src/app/src/main) is in the main directory -> /src/app/src/main
+Model tests run on-device, and thus require an Android Emulator. In addition, the following steps should be taken:
 
-#### Project Documentation
-
-> The [UML documentation](https://github.com/CMPUT301F21T22/Nabu/tree/main/doc) can be found in the /doc directory.
+1. Install [Node.js](https://nodejs.org/en/) (version 10.13.0 or later).
+2. Install the [Firebase CLI](https://firebase.google.com/docs/cli) with `npm install -g firebase-tools`.
+3. Login with the account `CMPUT301F21T22@gmail.com`/`V-@*stJZ.3C` in order to access the expected Firebase project.
+4. Ensure the working directory is the Android Studio project directory with `cd <PATH_TO_PROJECT>/Nabu/src`.
+5. Start the emulators with `firebase emulators:start`.
 
 ## Contributors
 

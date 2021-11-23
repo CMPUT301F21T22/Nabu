@@ -23,9 +23,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
 import java.util.function.Predicate;
 
 import ca.cmput301f21t22.nabu.data.User;
+import ca.cmput301f21t22.nabu.model.controllers.UserController;
 
 /**
  * Retrieves user data from database
@@ -33,7 +35,6 @@ import ca.cmput301f21t22.nabu.data.User;
  * Ensures consistency between database & local data
  * Informs listening objects of changes to the data
  */
-
 public class UserRepository {
     @NonNull
     public final static String TAG = "UserRepository";
@@ -54,6 +55,8 @@ public class UserRepository {
     @NonNull
     private final FirebaseAuth auth;
 
+    @NonNull
+    private final UserController controller;
 
     private UserRepository() {
         this.currentUser = new MutableLiveData<>();
@@ -65,12 +68,13 @@ public class UserRepository {
         this.usersCollection.addSnapshotListener(this::onUsersChanged);
 
         this.auth = FirebaseAuth.getInstance();
-        this.auth.addAuthStateListener(auth -> this.onSignInChanged());
+        this.auth.addAuthStateListener(this::onSignInChanged);
+
+        this.controller = UserController.getInstance();
     }
 
     /**
-     * getInstance from UserRepository
-     * @return User Instance
+     * @return Singleton instance of the UserRepository.
      */
     @NonNull
     public static UserRepository getInstance() {
@@ -81,40 +85,69 @@ public class UserRepository {
         return INSTANCE;
     }
 
-    /**
-     * Creates snapshot to get user details
-     * @param snapshot -> Current user data from snapshot by Firestore database
-     * @return User details
-     */
+    @SuppressWarnings("unchecked")
     @NonNull
     private static User createFromSnapshot(@NonNull DocumentSnapshot snapshot) {
         String email = Objects.requireNonNull(snapshot.getString("email"));
-        @SuppressWarnings("unchecked") List<String> habits =
-                Objects.requireNonNull((List<String>) snapshot.get("habits"));
-        return new User(snapshot.getId(), email, habits);
+        List<String> habits = (List<String>) snapshot.get("habits");
+        List<String> following = (List<String>) snapshot.get("following");
+        List<String> requests = (List<String>) snapshot.get("requests");
+        return new User(
+                snapshot.getId(), email, habits != null ? habits : new ArrayList<>(),
+                following != null ? following : new ArrayList<>(), requests != null ? requests : new ArrayList<>());
     }
 
+    /**
+     * @return Handle to a live-updating copy of the current logged-in user.
+     */
     @NonNull
     public LiveData<User> getCurrentUser() {
         return this.currentUser;
     }
 
+    /**
+     * @return Handle to a live-updating copy of all users in the database.
+     */
     @NonNull
     public LiveData<Map<String, User>> getUsers() {
         return this.users;
     }
 
+    /**
+     * Find a user in the database based on a given predicate.
+     *
+     * @param predicate The predicate to test against.
+     * @return The first user that matches the predicate.
+     */
     @NonNull
     public Optional<User> findUser(Predicate<User> predicate) {
         return this.usersMap.values().stream().filter(predicate).findFirst();
     }
 
     /**
-     * Set up current User
-     * Get user information
+     * Retrieves a user from the database by ID.
+     *
+     * @param id The ID of the user to retrieve.
+     * @return Future for the retrieved user.
      */
-    private void onSignInChanged() {
-        FirebaseUser user = this.auth.getCurrentUser();
+    @NonNull
+    public CompletableFuture<User> retrieveUser(@NonNull String id) {
+        CompletableFuture<User> future = new CompletableFuture<>();
+        this.usersCollection.document(id).get().addOnSuccessListener(snapshot -> {
+            try {
+                future.complete(createFromSnapshot(snapshot));
+            } catch (IllegalArgumentException e) {
+                future.complete(null);
+            }
+        }).addOnFailureListener(e -> {
+            Log.e(TAG, "Failed to retrieve user.", e);
+            future.complete(null);
+        });
+        return future;
+    }
+
+    private void onSignInChanged(FirebaseAuth auth) {
+        FirebaseUser user = auth.getCurrentUser();
         if (user == null) {
             this.currentUser.setValue(null);
             return;
@@ -122,16 +155,13 @@ public class UserRepository {
 
         this.usersCollection.document(user.getUid())
                 .get()
-                .addOnSuccessListener(this::onCurrentUserLoaded)
+                .addOnSuccessListener(snapshot -> this.currentUser.setValue(
+                        snapshot.exists() ? createFromSnapshot(snapshot) :
+                        new User(snapshot.getId(), Objects.requireNonNull(user.getEmail()), new ArrayList<>())))
                 .addOnFailureListener(
                         e -> Log.e(TAG, "Could not retrieve currently logged in user from collection.", e));
     }
 
-    /**
-     * Checks whether user has been changed and updates changing to user hashmap
-     * @param snapshots -> Zero or more DocumentSnapshot for current user
-     * @param e -> A class of exceptions thrown by Cloud Firestore
-     */
     private void onUsersChanged(@Nullable QuerySnapshot snapshots, @Nullable FirebaseFirestoreException e) {
         if (e != null || snapshots == null) {
             Log.e(TAG, "Failed to listen to collection updates.", e);
@@ -159,29 +189,6 @@ public class UserRepository {
                     }
                     break;
             }
-        }
-    }
-
-    private void onCurrentUserLoaded(@NonNull DocumentSnapshot snapshot) {
-        FirebaseUser fbUser = this.auth.getCurrentUser();
-        if (fbUser == null) {
-            Log.e(TAG, "No logged in user.");
-            return;
-        }
-
-        /**
-         * If there's a non-null logged in user but they're not in Firestore, it's a new user and it's added to the database.
-         */
-        if (!snapshot.exists()) {
-            Map<String, Object> map = new HashMap<>();
-            map.put("email", fbUser.getEmail());
-            map.put("habits", new ArrayList<>());
-            snapshot.getReference().set(map);
-        } else {
-            User user = createFromSnapshot(snapshot);
-            this.currentUser.setValue(user);
-            this.usersMap.put(snapshot.getId(), user);
-            this.users.setValue(this.usersMap);
         }
     }
 }
