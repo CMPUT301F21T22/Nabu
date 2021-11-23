@@ -89,10 +89,12 @@ public class UserRepository {
     @NonNull
     private static User createFromSnapshot(@NonNull DocumentSnapshot snapshot) {
         String email = Objects.requireNonNull(snapshot.getString("email"));
-        List<String> habits = Objects.requireNonNull((List<String>) snapshot.get("habits"));
-        List<String> following = Objects.requireNonNull((List<String>) snapshot.get("following"));
-        List<String> requests = Objects.requireNonNull((List<String>) snapshot.get("requests"));
-        return new User(snapshot.getId(), email, habits, following, requests);
+        List<String> habits = (List<String>) snapshot.get("habits");
+        List<String> following = (List<String>) snapshot.get("following");
+        List<String> requests = (List<String>) snapshot.get("requests");
+        return new User(
+                snapshot.getId(), email, habits != null ? habits : new ArrayList<>(),
+                following != null ? following : new ArrayList<>(), requests != null ? requests : new ArrayList<>());
     }
 
     /**
