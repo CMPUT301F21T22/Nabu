@@ -48,6 +48,9 @@ public class MyDayViewModel extends ViewModel {
     private Map<String, Habit> currentHabits;
     @Nullable
     private Map<String, Event> currentEvents;
+    private Map<String, User> allCurrentUsers;
+    @NonNull
+    private List<User> followingList;
 
     public MyDayViewModel() {
         this.cardsList = new ArrayList<>();
@@ -56,6 +59,7 @@ public class MyDayViewModel extends ViewModel {
         this.followingUserCards = new MutableLiveData<>();
         this.generalUserCards = new MutableLiveData<>();
 
+        this.followingList = new ArrayList<>();
         this.mostRecentEvent = null;
         this.instantShowEdit = new MutableLiveData<>();
     }
@@ -101,13 +105,12 @@ public class MyDayViewModel extends ViewModel {
         this.onDataChanged();
     }
 
-    public void setFollowingUserCards(@Nullable List<MyDayUserCard> followingUserCards) {
-        this.followingUserCards.setValue(followingUserCards);
-        this.onDataChanged();
+    public void setAllCurrentUsers(@Nullable Map<String, User> allUsers){
+        this.allCurrentUsers = allUsers;
     }
 
-    public void setGeneralUserCards(@Nullable List<MyDayUserCard> generalUserCards) {
-        this.generalUserCards.setValue(generalUserCards);
+    public void setFollowingList(@Nullable List<User> followingList) {
+        this.followingList = followingList;
         this.onDataChanged();
     }
 
@@ -135,8 +138,20 @@ public class MyDayViewModel extends ViewModel {
             }
         }
 
+        if (this.followingList != null) {
+            List<User> users = this.followingList;
+
+            List<MyDayUserCard> following = new ArrayList<>();
+            //Process new users.
+            for (User followingUser : users) {
+                following.add(this.processUser(followingUser, this.currentHabits));
+            }
+            this.followingUserCards.setValue(following);
+        }
+
         this.updateLists();
     }
+
 
     @NonNull
     private MyDayCard processHabit(@NonNull Habit habit) {
@@ -185,6 +200,8 @@ public class MyDayViewModel extends ViewModel {
                 incomplete.add(card);
             }
         }
+
+
 
         this.incompleteCards.setValue(incomplete);
         this.completeCards.setValue(complete);
