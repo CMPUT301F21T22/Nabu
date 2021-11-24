@@ -3,8 +3,6 @@ package ca.cmput301f21t22.nabu;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 
-import com.google.firebase.firestore.GeoPoint;
-
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -16,6 +14,7 @@ import java.util.Objects;
 import ca.cmput301f21t22.nabu.data.Event;
 import ca.cmput301f21t22.nabu.data.Habit;
 import ca.cmput301f21t22.nabu.data.HabitCard;
+import ca.cmput301f21t22.nabu.data.LatLngPoint;
 import ca.cmput301f21t22.nabu.data.Occurrence;
 
 public class HabitCardTest {
@@ -46,8 +45,8 @@ public class HabitCardTest {
                 new Habit("Drink less energy drinks", "Can't sleep", new Date(), new Occurrence(), new ArrayList<>(),
                           false);
         List<Event> events = new ArrayList<>();
-        events.add(
-                new Event(new Date(), "Lowered my sugar intake by half", "user/events/event233", new GeoPoint(30, 50)));
+        events.add(new Event(new Date(), "Lowered my sugar intake by half", "user/events/event233",
+                             new LatLngPoint(30, 50)));
         HabitCard habitCard = new HabitCard(habit, events);
         assertEquals(events, habitCard.getEvents());
     }
@@ -91,10 +90,10 @@ public class HabitCardTest {
         List<Event> events = new ArrayList<>();
         events.add(
                 new Event(new GregorianCalendar(11 + 19, 11, 11).getTime(), "Lost 30 pounds", "Photo/events/event202",
-                          new GeoPoint(56, 2)));
+                          new LatLngPoint(56, 2)));
 
         events.add(new Event(new GregorianCalendar(2021 + 1900, 11, 3).getTime(), "Lost 20 pounds",
-                             "Photo/events/event204", new GeoPoint(81, 10)));
+                             "Photo/events/event204", new LatLngPoint(81, 10)));
         return new HabitCard(habit, events);
     }
 }

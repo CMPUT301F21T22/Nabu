@@ -20,6 +20,7 @@ import java.util.Map;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import ca.cmput301f21t22.nabu.data.Event;
+import ca.cmput301f21t22.nabu.data.LatLngPoint;
 import ca.cmput301f21t22.nabu.model.repositories.EventRepository;
 
 public class EventRepositoryTest extends FirestoreTest {
@@ -46,7 +47,7 @@ public class EventRepositoryTest extends FirestoreTest {
                 assertEquals(new GregorianCalendar(2015, 11, 18).getTime(), event.getDate());
                 assertEquals("Some comment", event.getComment());
                 assertEquals("https://i.imgur.com/CTk5SXj.png", event.getPhotoPath());
-                assertEquals(new GeoPoint(53.5453, -113.4502), event.getLocation());
+                assertEquals(new LatLngPoint(53.5453, -113.4502), event.getLocation());
 
                 complete.set(true);
             }
@@ -115,7 +116,7 @@ public class EventRepositoryTest extends FirestoreTest {
                 assertEquals(new GregorianCalendar(2015, 11, 18).getTime(), event.getDate());
                 assertEquals("Some comment", event.getComment());
                 assertEquals("https://i.imgur.com/CTk5SXj.png", event.getPhotoPath());
-                assertEquals(new GeoPoint(53.5453, -113.4502), event.getLocation());
+                assertEquals(new LatLngPoint(53.5453, -113.4502), event.getLocation());
 
                 complete.set(true);
             }
@@ -154,7 +155,7 @@ public class EventRepositoryTest extends FirestoreTest {
             assertEquals(new GregorianCalendar(2015, 11, 18).getTime(), event.getDate());
             assertEquals("Some comment", event.getComment());
             assertEquals("https://i.imgur.com/CTk5SXj.png", event.getPhotoPath());
-            assertEquals(new GeoPoint(53.5453, -113.4502), event.getLocation());
+            assertEquals(new LatLngPoint(53.5453, -113.4502), event.getLocation());
 
             complete.set(true);
         });
