@@ -35,20 +35,25 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/cardView"
+                    android:id="@+id/button_edit_image"
                     android:layout_width="64dp"
                     android:layout_height="64dp"
                     app:cardCornerRadius="64dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:clickable="true"
+                    android:focusable="true">
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:scaleType="centerCrop"
                         tools:ignore="ContentDescription"
-                        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+                        tools:srcCompat="@tools:sample/backgrounds/scenic"
+                        android:id="@+id/event"
+                        />
+
                     <View
                         android:layout_width="64dp"
                         android:layout_height="64dp"
@@ -60,6 +65,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
                 </androidx.cardview.widget.CardView>
                 <ImageView
+                    android:id="@+id/btnUpload"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:elevation="4dp"
@@ -69,7 +75,9 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/ic_outline_add_a_photo_24"
                     app:tint="@color/white"
-                    tools:ignore="ContentDescription" />
+                    tools:ignore="ContentDescription"
+                    android:clickable="false"
+                    android:focusable="false"/>
             </androidx.constraintlayout.widget.ConstraintLayout>
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/container_date"

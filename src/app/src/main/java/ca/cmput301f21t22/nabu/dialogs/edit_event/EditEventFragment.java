@@ -1,12 +1,24 @@
 package ca.cmput301f21t22.nabu.dialogs.edit_event;
 
+import static android.app.Activity.RESULT_OK;
+
+import static com.firebase.ui.auth.AuthUI.getApplicationContext;
+
+import android.app.ProgressDialog;
+import android.content.Intent;
+import android.media.Image;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AutoCompleteTextView;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,12 +27,20 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.google.android.gms.maps.model.LatLng;
 import com.google.firebase.firestore.GeoPoint;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.util.Date;
 import java.util.Locale;
 import java.util.Objects;
+import java.util.UUID;
 
 import ca.cmput301f21t22.nabu.R;
 import ca.cmput301f21t22.nabu.data.Event;
@@ -41,6 +61,12 @@ public class EditEventFragment extends DialogFragment {
     private EditEventViewModel viewModel;
     @Nullable
     private FragmentEditEventBinding binding;
+
+    private ImageView event;
+    private Uri imageUri;
+    private FirebaseStorage storage;
+    private StorageReference storageReference;
+
 
     private EditEventFragment() {
         this.dateFormat = DateFormat.getDateInstance();
@@ -67,12 +93,14 @@ public class EditEventFragment extends DialogFragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.setStyle(STYLE_NORMAL, R.style.Theme_MaterialComponents_DayNight_DialogWhenLarge);
+
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
+
         this.viewModel = new ViewModelProvider(this).get(EditEventViewModel.class);
         this.binding = FragmentEditEventBinding.inflate(inflater, container, false);
 
@@ -136,6 +164,55 @@ public class EditEventFragment extends DialogFragment {
                 this.viewModel.saveEvent();
             }
         });
+
+
+        event = this.binding.event;
+        storage = FirebaseStorage.getInstance();
+        storageReference = storage.getReference();
+
+        event.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                choosePicture();
+            }
+
+            private void choosePicture() {
+                Intent intent = new Intent();
+                intent.setType("image/*");
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                startActivityForResult(intent, 1);
+            }
+
+            protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data){
+                EditEventFragment.super.onActivityResult(requestCode, resultCode, data);
+                if (requestCode==1 && resultCode==RESULT_OK && data!=null && data.getData()!=null){
+                    imageUri = data.getData();
+                    event.setImageURI(imageUri);
+                    uploadPicture();
+                }
+            }
+
+            private void uploadPicture() {
+
+                final String randomKey = UUID.randomUUID().toString();
+                StorageReference riversRef = storageReference.child("images/");
+
+                riversRef.putFile(imageUri)
+                        .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                            @Override
+                            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                //Snackbar.make(EditEventFragment.this.binding., "Image Uploaded.", Snackbar.LENGTH_LONG).show();
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception exception) {
+                                Toast.makeText(EditEventFragment.this.requireContext(), "Failed to upload", Toast.LENGTH_LONG).show();
+                            }
+                        });
+            }
+        });
+
 
         return this.binding.getRoot();
     }
@@ -215,3 +292,5 @@ public class EditEventFragment extends DialogFragment {
         }
     }
 }
+
+
