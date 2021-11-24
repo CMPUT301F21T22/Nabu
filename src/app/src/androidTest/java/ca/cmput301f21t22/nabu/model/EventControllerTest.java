@@ -18,6 +18,7 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import ca.cmput301f21t22.nabu.data.Event;
+import ca.cmput301f21t22.nabu.data.LatLngPoint;
 import ca.cmput301f21t22.nabu.model.controllers.EventController;
 
 public class EventControllerTest extends FirestoreTest {
@@ -34,7 +35,7 @@ public class EventControllerTest extends FirestoreTest {
     @Test
     public void addEvent() throws ExecutionException, InterruptedException {
         Date date = new GregorianCalendar(2019, 11, 28).getTime();
-        GeoPoint location = new GeoPoint(53.512, -113.5076);
+        LatLngPoint location = new LatLngPoint(53.512, -113.5076);
         Event event = new Event(date, "Some comment", "https://i.imgur.com/7cRKlOs.jpeg", location);
 
         String eventId = this.controller.add(event).get();
@@ -48,7 +49,10 @@ public class EventControllerTest extends FirestoreTest {
             assertEquals(new GregorianCalendar(2019, 11, 28).getTime(), document.getDate("date"));
             assertEquals("Some comment", document.getString("comment"));
             assertEquals("https://i.imgur.com/7cRKlOs.jpeg", document.getString("photoPath"));
-            assertEquals(new GeoPoint(53.512, -113.5076), document.getGeoPoint("location"));
+
+            GeoPoint gp = document.getGeoPoint("location");
+            assertNotNull(gp);
+            assertEquals(new LatLngPoint(53.512, -113.5076), new LatLngPoint(gp.getLatitude(), gp.getLongitude()));
 
             complete.set(true);
         });
@@ -60,7 +64,7 @@ public class EventControllerTest extends FirestoreTest {
         String eventId = this.controller.add(new Event()).get();
 
         Date date = new GregorianCalendar(2019, 11, 28).getTime();
-        GeoPoint location = new GeoPoint(53.512, -113.5076);
+        LatLngPoint location = new LatLngPoint(53.512, -113.5076);
         Event event = new Event(date, "Some comment", "https://i.imgur.com/7cRKlOs.jpeg", location);
 
         eventId = this.controller.update(eventId, event).get();
@@ -74,7 +78,10 @@ public class EventControllerTest extends FirestoreTest {
             assertEquals(new GregorianCalendar(2019, 11, 28).getTime(), document.getDate("date"));
             assertEquals("Some comment", document.getString("comment"));
             assertEquals("https://i.imgur.com/7cRKlOs.jpeg", document.getString("photoPath"));
-            assertEquals(new GeoPoint(53.512, -113.5076), document.getGeoPoint("location"));
+
+            GeoPoint gp = document.getGeoPoint("location");
+            assertNotNull(gp);
+            assertEquals(new LatLngPoint(53.512, -113.5076), new LatLngPoint(gp.getLatitude(), gp.getLongitude()));
 
             complete.set(true);
         });

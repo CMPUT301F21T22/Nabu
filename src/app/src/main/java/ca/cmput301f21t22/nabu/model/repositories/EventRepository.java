@@ -22,6 +22,7 @@ import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
 import ca.cmput301f21t22.nabu.data.Event;
+import ca.cmput301f21t22.nabu.data.LatLngPoint;
 
 /**
  * Retrieves event data from database
@@ -69,10 +70,15 @@ public class EventRepository {
         Date date = snapshot.getDate("date");
         String comment = snapshot.getString("comment");
         String photoPath = snapshot.getString("photoPath");
-        GeoPoint location = snapshot.getGeoPoint("location");
+        GeoPoint gp = snapshot.getGeoPoint("location");
 
         if (date == null) {
             throw new IllegalArgumentException();
+        }
+
+        LatLngPoint location = null;
+        if (gp != null) {
+            location = new LatLngPoint(gp.getLatitude(), gp.getLongitude());
         }
 
         return new Event(snapshot.getId(), date, comment, photoPath, location);

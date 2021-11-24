@@ -8,12 +8,14 @@ import androidx.annotation.Nullable;
 import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.GeoPoint;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
 import ca.cmput301f21t22.nabu.data.Event;
+import ca.cmput301f21t22.nabu.data.LatLngPoint;
 
 /**
  * Singleton providing methods for write operations on remote event instances, including addition, deletion, and updates.
@@ -50,7 +52,13 @@ public class EventController {
         map.put("date", new Timestamp(event.getDate()));
         map.put("comment", event.getComment());
         map.put("photoPath", event.getPhotoPath());
-        map.put("location", event.getLocation());
+
+        LatLngPoint location = event.getLocation();
+        GeoPoint gp = null;
+        if (location != null) {
+            gp = new GeoPoint(location.getLatitude(), location.getLongitude());
+        }
+        map.put("location", gp);
         return map;
     }
 

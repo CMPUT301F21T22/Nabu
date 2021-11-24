@@ -1,5 +1,6 @@
 package ca.cmput301f21t22.nabu.dialogs.edit_event;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,22 +9,28 @@ import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.FileProvider;
 import androidx.fragment.app.DialogFragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.google.android.gms.maps.model.LatLng;
-import com.google.firebase.firestore.GeoPoint;
+import com.squareup.picasso.Picasso;
 
+import java.io.File;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.util.Date;
 import java.util.Locale;
 import java.util.Objects;
+import java.util.UUID;
 
 import ca.cmput301f21t22.nabu.R;
 import ca.cmput301f21t22.nabu.data.Event;
+import ca.cmput301f21t22.nabu.data.LatLngPoint;
 import ca.cmput301f21t22.nabu.databinding.FragmentEditEventBinding;
 import ca.cmput301f21t22.nabu.dialogs.date_picker.DatePickerFragment;
 import ca.cmput301f21t22.nabu.dialogs.location_picker.LocationPickerFragment;
@@ -37,6 +44,8 @@ public class EditEventFragment extends DialogFragment {
 
     @NonNull
     private final DateFormat dateFormat;
+    @Nullable
+    private ActivityResultLauncher<Uri> takePhotoLauncher;
     @Nullable
     private EditEventViewModel viewModel;
     @Nullable
@@ -67,6 +76,11 @@ public class EditEventFragment extends DialogFragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.setStyle(STYLE_NORMAL, R.style.Theme_MaterialComponents_DayNight_DialogWhenLarge);
+        this.takePhotoLauncher = this.registerForActivityResult(new ActivityResultContracts.TakePicture(), result -> {
+            if (this.viewModel != null && result) {
+                this.viewModel.uploadLocalPhoto();
+            }
+        });
     }
 
     @Override
@@ -101,7 +115,11 @@ public class EditEventFragment extends DialogFragment {
         });
 
         this.viewModel.getPhotoPath().observe(this.getViewLifecycleOwner(), photoPath -> {
-            // TODO: Display image from path.
+            if (photoPath != null) {
+                Picasso.get().load(photoPath).into(this.binding.imageEvent);
+            } else {
+                this.binding.imageEvent.setImageDrawable(null);
+            }
         });
 
         this.viewModel.getLocation().observe(this.getViewLifecycleOwner(), location -> {
@@ -115,6 +133,16 @@ public class EditEventFragment extends DialogFragment {
         });
 
         this.viewModel.loadEvent((Event) this.requireArguments().getSerializable(ARG_EVENT));
+
+        this.binding.buttonEditImage.setOnClickListener(view -> {
+            File file = new File(this.requireContext().getFilesDir(), UUID.randomUUID().toString());
+            Uri path = FileProvider.getUriForFile(this.requireContext(),
+                                                  this.requireContext().getPackageName() + ".provider", file);
+            if (this.takePhotoLauncher != null) {
+                this.takePhotoLauncher.launch(path);
+            }
+            this.viewModel.setLocalPhotoPath(path);
+        });
 
         this.binding.textDate.setOnClickListener(this::onEditDateClicked);
         this.binding.layoutDate.setEndIconOnClickListener((view) -> this.onEditDateClicked(this.binding.textDate));
@@ -170,15 +198,15 @@ public class EditEventFragment extends DialogFragment {
 
         AutoCompleteTextView edit = (AutoCompleteTextView) view;
 
-        GeoPoint gp = this.viewModel.getLocation().getValue();
-        if (gp != null) {
+        LatLngPoint l = this.viewModel.getLocation().getValue();
+        if (l != null) {
             new LocationPickerFragment(
-                    new LatLng(gp.getLatitude(), gp.getLongitude()), (fragment, location) -> this.viewModel.setLocation(
-                    new GeoPoint(location.latitude, location.longitude))).show(
+                    new LatLng(l.getLatitude(), l.getLongitude()), (fragment, location) -> this.viewModel.setLocation(
+                    new LatLngPoint(location.latitude, location.longitude))).show(
                     this.getChildFragmentManager(), "LocationPicker");
         } else {
             new LocationPickerFragment((fragment, location) -> this.viewModel.setLocation(
-                    new GeoPoint(location.latitude, location.longitude))).show(
+                    new LatLngPoint(location.latitude, location.longitude))).show(
                     this.getChildFragmentManager(), "LocationPicker");
         }
 
@@ -215,3 +243,5 @@ public class EditEventFragment extends DialogFragment {
         }
     }
 }
+
+

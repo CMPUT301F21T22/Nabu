@@ -14,6 +14,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.squareup.picasso.Picasso;
 
 import java.text.DateFormat;
 import java.util.ArrayList;
@@ -110,6 +111,10 @@ public class EventCardAdapter extends RecyclerView.Adapter<EventCardAdapter.View
             if (event.getComment() != null && !event.getComment().equals("")) {
                 this.binding.labelComment.setText(event.getComment());
                 this.binding.labelComment.setVisibility(View.VISIBLE);
+            }
+            if (event.getPhotoPath() != null && !event.getPhotoPath().equals("")) {
+                Picasso.get().load(event.getPhotoPath()).into(this.binding.imagePhoto);
+                this.binding.imagePhoto.setVisibility(View.VISIBLE);
             }
             if (event.getLocation() != null && this.map != null) {
                 LatLng position = new LatLng(event.getLocation().getLatitude(), event.getLocation().getLongitude());

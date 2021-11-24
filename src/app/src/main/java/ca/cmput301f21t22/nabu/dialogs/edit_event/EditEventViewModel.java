@@ -1,17 +1,19 @@
 package ca.cmput301f21t22.nabu.dialogs.edit_event;
 
+import android.net.Uri;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.google.firebase.firestore.GeoPoint;
-
 import java.util.Date;
 
 import ca.cmput301f21t22.nabu.data.Event;
+import ca.cmput301f21t22.nabu.data.LatLngPoint;
 import ca.cmput301f21t22.nabu.model.commands.UpdateEventCommand;
+import ca.cmput301f21t22.nabu.model.commands.UploadLocalPhotoCommand;
 
 public class EditEventViewModel extends ViewModel {
     @NonNull
@@ -26,7 +28,10 @@ public class EditEventViewModel extends ViewModel {
     @NonNull
     private final MutableLiveData<String> photoPath;
     @NonNull
-    private final MutableLiveData<GeoPoint> location;
+    private final MutableLiveData<LatLngPoint> location;
+
+    @Nullable
+    private Uri localPhotoPath;
 
     public EditEventViewModel() {
         this.saved = new MutableLiveData<>();
@@ -74,11 +79,11 @@ public class EditEventViewModel extends ViewModel {
     }
 
     @NonNull
-    public LiveData<GeoPoint> getLocation() {
+    public LiveData<LatLngPoint> getLocation() {
         return this.location;
     }
 
-    public void setLocation(@Nullable GeoPoint location) {
+    public void setLocation(@Nullable LatLngPoint location) {
         this.location.setValue(location);
         this.saved.setValue(false);
     }
@@ -106,5 +111,17 @@ public class EditEventViewModel extends ViewModel {
                         this.saved.setValue(true);
                     }
                 });
+    }
+
+    public void setLocalPhotoPath(@Nullable Uri localPhotoPath) {
+        this.localPhotoPath = localPhotoPath;
+    }
+
+    public void uploadLocalPhoto() {
+        if (this.localPhotoPath == null) {
+            return;
+        }
+
+        new UploadLocalPhotoCommand(this.localPhotoPath).execute().thenAccept(this.photoPath::setValue);
     }
 }
