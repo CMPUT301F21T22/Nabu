@@ -26,8 +26,6 @@ import ca.cmput301f21t22.nabu.databinding.FragmentEditHabitBinding;
 import ca.cmput301f21t22.nabu.dialogs.date_picker.DatePickerFragment;
 import ca.cmput301f21t22.nabu.ui.SimpleTextWatcher;
 
-
-
 public class EditHabitFragment extends DialogFragment {
     @NonNull
     public final static String TAG = "EditHabitFragment";
