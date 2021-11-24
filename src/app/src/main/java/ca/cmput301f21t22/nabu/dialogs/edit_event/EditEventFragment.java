@@ -6,21 +6,27 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.google.android.gms.maps.model.LatLng;
+import com.google.firebase.firestore.GeoPoint;
+
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.util.Date;
+import java.util.Locale;
 import java.util.Objects;
 
 import ca.cmput301f21t22.nabu.R;
 import ca.cmput301f21t22.nabu.data.Event;
 import ca.cmput301f21t22.nabu.databinding.FragmentEditEventBinding;
 import ca.cmput301f21t22.nabu.dialogs.date_picker.DatePickerFragment;
+import ca.cmput301f21t22.nabu.dialogs.location_picker.LocationPickerFragment;
 import ca.cmput301f21t22.nabu.ui.SimpleTextWatcher;
 
 public class EditEventFragment extends DialogFragment {
@@ -46,6 +52,15 @@ public class EditEventFragment extends DialogFragment {
         args.putSerializable(ARG_EVENT, event);
         fragment.setArguments(args);
         return fragment;
+    }
+
+    private static String retrieveText(TextView textView) {
+        CharSequence t = textView.getText();
+        if (t != null) {
+            return t.toString();
+        } else {
+            return "";
+        }
     }
 
     @Override
@@ -79,7 +94,7 @@ public class EditEventFragment extends DialogFragment {
         });
 
         this.viewModel.getComment().observe(this.getViewLifecycleOwner(), comment -> {
-            EditText edit = this.binding.editTextComment;
+            EditText edit = this.binding.editComment;
             if (!Objects.equals(comment, edit.getText().toString())) {
                 edit.setText(comment);
             }
@@ -90,7 +105,13 @@ public class EditEventFragment extends DialogFragment {
         });
 
         this.viewModel.getLocation().observe(this.getViewLifecycleOwner(), location -> {
-            // TODO: Display location.
+            String locationString = null;
+            if (location != null) {
+                locationString =
+                        String.format(Locale.getDefault(), "%f, %f", location.getLatitude(), location.getLongitude());
+            }
+
+            this.binding.textLocation.setText(locationString);
         });
 
         this.viewModel.loadEvent((Event) this.requireArguments().getSerializable(ARG_EVENT));
@@ -98,21 +119,23 @@ public class EditEventFragment extends DialogFragment {
         this.binding.textDate.setOnClickListener(this::onEditDateClicked);
         this.binding.layoutDate.setEndIconOnClickListener((view) -> this.onEditDateClicked(this.binding.textDate));
 
-        this.binding.editTextComment.addTextChangedListener(new SimpleTextWatcher(editable -> {
+        this.binding.editComment.addTextChangedListener(new SimpleTextWatcher(editable -> {
             String newComment = editable.toString();
-            if (newComment.length() > 20) {
-                this.binding.layoutComment.setErrorEnabled(true);
-                this.binding.layoutComment.setError(this.getString(R.string.error_comment_too_long));
-                this.viewModel.setSaveable(false);
-            } else {
-                this.binding.layoutComment.setErrorEnabled(false);
-                this.binding.layoutComment.setError(null);
+            if (this.validateComment(newComment)) {
                 this.viewModel.setComment(newComment);
-                this.viewModel.setSaveable(true);
             }
         }));
 
-        this.binding.buttonSave.setOnClickListener(view -> this.viewModel.saveEvent());
+        this.binding.textLocation.setOnClickListener(this::onEditLocationClicked);
+        this.binding.layoutLocation.setEndIconOnClickListener(
+                (view) -> this.onEditLocationClicked(this.binding.textLocation));
+
+        this.binding.buttonSave.setOnClickListener(view -> {
+            if (this.validateDate(retrieveText(this.binding.textDate)) &&
+                this.validateComment(retrieveText(this.binding.editComment))) {
+                this.viewModel.saveEvent();
+            }
+        });
 
         return this.binding.getRoot();
     }
@@ -140,5 +163,55 @@ public class EditEventFragment extends DialogFragment {
                 this.getChildFragmentManager(), "DatePicker");
 
         edit.dismissDropDown();
+    }
+
+    private void onEditLocationClicked(View view) {
+        assert this.viewModel != null;
+
+        AutoCompleteTextView edit = (AutoCompleteTextView) view;
+
+        GeoPoint gp = this.viewModel.getLocation().getValue();
+        if (gp != null) {
+            new LocationPickerFragment(
+                    new LatLng(gp.getLatitude(), gp.getLongitude()), (fragment, location) -> this.viewModel.setLocation(
+                    new GeoPoint(location.latitude, location.longitude))).show(
+                    this.getChildFragmentManager(), "LocationPicker");
+        } else {
+            new LocationPickerFragment((fragment, location) -> this.viewModel.setLocation(
+                    new GeoPoint(location.latitude, location.longitude))).show(
+                    this.getChildFragmentManager(), "LocationPicker");
+        }
+
+        edit.dismissDropDown();
+    }
+
+    private boolean validateDate(String date) {
+        assert this.binding != null;
+        assert this.viewModel != null;
+
+        if (date == null || date.length() == 0) {
+            this.binding.layoutDate.setErrorEnabled(true);
+            this.binding.layoutDate.setError(this.getString(R.string.error_date_empty));
+            return false;
+        } else {
+            this.binding.layoutDate.setErrorEnabled(false);
+            this.binding.layoutDate.setError(null);
+            return true;
+        }
+    }
+
+    private boolean validateComment(String comment) {
+        assert this.binding != null;
+        assert this.viewModel != null;
+
+        if (comment.length() > 20) {
+            this.binding.layoutComment.setErrorEnabled(true);
+            this.binding.layoutComment.setError(this.getString(R.string.error_comment_too_long));
+            return false;
+        } else {
+            this.binding.layoutComment.setErrorEnabled(false);
+            this.binding.layoutComment.setError(null);
+            return true;
+        }
     }
 }

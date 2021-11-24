@@ -14,7 +14,6 @@ import ca.cmput301f21t22.nabu.data.Event;
 import ca.cmput301f21t22.nabu.model.commands.UpdateEventCommand;
 
 public class EditEventViewModel extends ViewModel {
-    private boolean saveable;
     @NonNull
     private final MutableLiveData<Boolean> saved;
 
@@ -37,10 +36,6 @@ public class EditEventViewModel extends ViewModel {
         this.comment = new MutableLiveData<>();
         this.photoPath = new MutableLiveData<>();
         this.location = new MutableLiveData<>();
-    }
-
-    public void setSaveable(boolean saveable) {
-        this.saveable = saveable;
     }
 
     @NonNull
@@ -100,7 +95,7 @@ public class EditEventViewModel extends ViewModel {
 
     public void saveEvent() {
         Date date = this.date.getValue();
-        if (!this.saveable || date == null) {
+        if (date == null) {
             return;
         }
 
