@@ -41,11 +41,15 @@ dependencies {
     implementation 'androidx.navigation:navigation-fragment:2.3.5'
     implementation 'androidx.navigation:navigation-ui:2.3.5'
     implementation 'com.squareup.okhttp3:okhttp:4.9.0'
+    implementation "io.grpc:grpc-okhttp:1.32.2"
 
     implementation platform('com.google.firebase:firebase-bom:28.4.2')
     implementation 'com.google.firebase:firebase-firestore'
     implementation 'com.firebaseui:firebase-ui-auth:7.2.0'
     implementation "io.grpc:grpc-okhttp:1.32.2"
+    implementation 'com.google.firebase:firebase-storage:20.0.0'
+    implementation 'com.google.firebase:firebase-storage:20.0.0'
+    implementation 'com.google.firebase:firebase-auth:21.0.1'
 
     testImplementation 'junit:junit:4.13.2'
 
