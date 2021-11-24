@@ -126,14 +126,16 @@ public class LocationPickerFragment extends DialogFragment
     }
 
     private void updateMap() {
-        if (this.map != null && this.location != null) {
-            LatLng position = new LatLng(this.location.latitude, this.location.longitude);
-            this.map.clear();
-            this.map.moveCamera(CameraUpdateFactory.newCameraPosition(
-                    new CameraPosition.Builder().target(position).zoom(14).build()));
-            this.map.addMarker(new MarkerOptions().position(position).draggable(true));
-            this.callback.onLocationSelected(this, position);
+        if (this.map == null || this.location == null) {
+            return;
         }
+
+        LatLng position = new LatLng(this.location.latitude, this.location.longitude);
+        this.map.clear();
+        this.map.moveCamera(
+                CameraUpdateFactory.newCameraPosition(new CameraPosition.Builder().target(position).zoom(14).build()));
+        this.map.addMarker(new MarkerOptions().position(position).draggable(true));
+        this.callback.onLocationSelected(this, position);
     }
 
     public interface Callback {
