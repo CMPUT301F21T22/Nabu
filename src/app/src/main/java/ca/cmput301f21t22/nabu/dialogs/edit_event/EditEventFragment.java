@@ -90,7 +90,7 @@ public class EditEventFragment extends DialogFragment {
         });
 
         this.viewModel.getLocation().observe(this.getViewLifecycleOwner(), location -> {
-            // TODO: Display location.
+            // TODO: Display image from path.
         });
 
         this.viewModel.loadEvent((Event) this.requireArguments().getSerializable(ARG_EVENT));
@@ -141,4 +141,6 @@ public class EditEventFragment extends DialogFragment {
 
         edit.dismissDropDown();
     }
+
+
 }
