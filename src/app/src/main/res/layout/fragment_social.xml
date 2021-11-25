@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".ui.my_day.MyDayFragment">
-
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/button_add_follow_request"
         android:layout_width="wrap_content"
@@ -21,7 +19,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:tint="@color/white"
         tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
-
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <!--
     <TextView
         android:id="@+id/requests_Title"
         android:layout_width="wrap_content"
@@ -31,19 +39,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Incoming Requests" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/pending_request_List"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:clipChildren="false"
         android:clipToPadding="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/requests_Title"
-        tools:context=".ui.my_day.MyDayFragment" />
-
+        app:layout_constraintTop_toBottomOf="@+id/requests_Title" />
     <TextView
         android:id="@+id/following_Title"
         android:layout_width="wrap_content"
@@ -53,17 +58,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pending_request_List"
         tools:text="Following" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/follower_List"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:clipChildren="false"
         android:clipToPadding="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/following_Title"
-        tools:context=".ui.my_day.MyDayFragment" />
-
+        app:layout_constraintTop_toBottomOf="@+id/following_Title" />
+        -->
 </androidx.constraintlayout.widget.ConstraintLayout>

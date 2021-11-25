@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ca.cmput301f21t22.nabu.data.MyDayUserCard;
-import ca.cmput301f21t22.nabu.databinding.SocialFeedBinding;
+import ca.cmput301f21t22.nabu.databinding.LayoutSocialFeedBinding;
 
 public class SocialFeedAdapter extends RecyclerView.Adapter<SocialFeedAdapter.ViewHolder> {
     @NonNull
@@ -26,7 +26,8 @@ public class SocialFeedAdapter extends RecyclerView.Adapter<SocialFeedAdapter.Vi
     @NonNull
     @Override
     public SocialFeedAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        SocialFeedBinding binding = SocialFeedBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
+        LayoutSocialFeedBinding binding =
+                LayoutSocialFeedBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
         binding.feedView.setLayoutManager(new LinearLayoutManager(parent.getContext()));
         return new SocialFeedAdapter.ViewHolder(binding, new SocialHabitCardAdapter());
     }
@@ -53,11 +54,11 @@ public class SocialFeedAdapter extends RecyclerView.Adapter<SocialFeedAdapter.Vi
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         @NonNull
-        private final SocialFeedBinding binding;
+        private final LayoutSocialFeedBinding binding;
         @NonNull
         private final SocialHabitCardAdapter adapter;
 
-        public ViewHolder(@NonNull SocialFeedBinding binding, @NonNull SocialHabitCardAdapter adapter) {
+        public ViewHolder(@NonNull LayoutSocialFeedBinding binding, @NonNull SocialHabitCardAdapter adapter) {
             super(binding.getRoot());
             this.binding = binding;
             this.adapter = adapter;

@@ -82,7 +82,7 @@ public class SocialViewModel extends ViewModel {
 
     public void onUnfollowClicked(@NonNull User user) {
         if (this.currentUser != null) {
-            new UnfollowUserCommand(this.currentUser, user);
+            new UnfollowUserCommand(this.currentUser, user).execute();
         }
     }
 
