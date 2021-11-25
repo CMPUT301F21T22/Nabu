@@ -82,11 +82,6 @@ public class MyDayViewModel extends ViewModel {
     }
 
     @NonNull
-    public LiveData<List<MyDayUserCard>> getGeneralUserCards() {
-        return this.generalUserCards;
-    }
-
-    @NonNull
     public Event getMostRecentEvent() {
         return Objects.requireNonNull(this.mostRecentEvent);
     }
@@ -176,7 +171,7 @@ public class MyDayViewModel extends ViewModel {
         ArrayList<MyDayCard> habits = new ArrayList<>();
         for (String habitId : user.getHabits()) {
             Habit habit = currentSocialHabits.get(habitId);
-            if (habit != null) {
+            if (habit != null && habit.isShared() == true) {
                 LocalDate startDate = habit.getStartDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
                 if (startDate.isBefore(LocalDate.now()) || startDate.isEqual(LocalDate.now())) {
                     habits.add(this.processHabit(habit));
