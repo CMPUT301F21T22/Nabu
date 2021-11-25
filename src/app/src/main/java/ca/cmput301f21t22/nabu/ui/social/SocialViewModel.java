@@ -49,6 +49,9 @@ public class SocialViewModel extends ViewModel {
     @NonNull
     public LiveData<List<User>> getFollowingCards() { return this.followingCards; }
 
+    @NonNull
+    public User getCurrentUser() {return this.currentUser; }
+
     public void setCurrentUser(@Nullable User currentUser) {
         this.currentUser = currentUser;
         this.onDataChanged();
