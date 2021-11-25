@@ -13,6 +13,7 @@ import java.util.Map;
 import ca.cmput301f21t22.nabu.data.User;
 import ca.cmput301f21t22.nabu.model.Command;
 import ca.cmput301f21t22.nabu.model.commands.AcceptRequestCommand;
+import ca.cmput301f21t22.nabu.model.commands.RejectRequestCommand;
 import ca.cmput301f21t22.nabu.model.commands.SendRequestCommand;
 import ca.cmput301f21t22.nabu.model.commands.UnfollowUserCommand;
 
