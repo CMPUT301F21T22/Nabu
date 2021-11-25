@@ -11,6 +11,7 @@
     <string name="button_cancel">@android:string/cancel</string>
     <string name="button_sign_out">Sign out</string>
     <string name="button_reset">Reset</string>
+    <string name="button_add">Add</string>
     <string name="button_edit_event">Edit Event</string>
     <string name="dialog_sign_out_message">Are you sure you want to sign out?</string>
     <string name="dialog_reset_message">Are you sure you want to reset all user data?</string>
@@ -28,6 +29,7 @@
     <string name="menu_view_events">View Events</string>
     <string name="menu_edit_habit">Edit Habit</string>
     <string name="menu_delete_habit">Delete Habit</string>
+    <string name="menu_add_habit">Add Habit</string>
     <string name="hint_habit_title">Habit Title</string>
     <string name="button_on_sunday_toggle">Sun</string>
     <string name="button_on_monday_toggle">Mon</string>
@@ -47,4 +49,7 @@
     <string name="button_delete">Delete</string>
     <string name="hint_location">Location</string>
     <string name="error_date_empty">Date cannot be empty</string>
+    <string name="title_send_follow_request">Send Follow Request</string>
+    <string name="hint_email">Email</string>
+    <string name="error_email_empty">Email cannot be empty</string>
 </resources>

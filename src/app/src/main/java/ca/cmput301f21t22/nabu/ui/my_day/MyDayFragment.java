@@ -40,6 +40,8 @@ public class MyDayFragment extends ExtendedToolbarFragment {
     private IncompleteCardAdapter incompleteAdapter;
     @Nullable
     private CompleteCardAdapter completeAdapter;
+    @Nullable
+    private SocialFeedAdapter followingFeedAdapter;
 
     @Nullable
     @Override
@@ -50,6 +52,7 @@ public class MyDayFragment extends ExtendedToolbarFragment {
         this.binding = FragmentMydayBinding.inflate(inflater, container, false);
         this.incompleteAdapter = new IncompleteCardAdapter();
         this.completeAdapter = new CompleteCardAdapter();
+        this.followingFeedAdapter = new SocialFeedAdapter();
 
         UserRepository.getInstance()
                 .getCurrentUser()
@@ -60,6 +63,10 @@ public class MyDayFragment extends ExtendedToolbarFragment {
         EventRepository.getInstance()
                 .getEvents()
                 .observe(this.getViewLifecycleOwner(), events -> this.viewModel.setCurrentEvents(events));
+
+        UserRepository.getInstance().getUsers().observe(this.getViewLifecycleOwner(), allUsers -> {
+            this.viewModel.setAllCurrentUsers(allUsers);
+        });
 
         this.incompleteAdapter.setClickListener((adapter, item, position) -> this.viewModel.onCardClicked(item));
         this.completeAdapter.setClickListener((adapter, item, position) -> this.viewModel.onCardClicked(item));
@@ -80,8 +87,12 @@ public class MyDayFragment extends ExtendedToolbarFragment {
             }
         });
 
-        this.binding.listCard.setLayoutManager(new LinearLayoutManager(this.requireContext()));
-        this.binding.listCard.setAdapter(new ConcatAdapter(this.incompleteAdapter, this.completeAdapter));
+        this.viewModel.getFollowingUserCards()
+                .observe(this.getViewLifecycleOwner(), cards -> this.followingFeedAdapter.setCards(cards));
+
+        this.binding.feed.setLayoutManager(new LinearLayoutManager(this.requireContext()));
+        this.binding.feed.setAdapter(
+                new ConcatAdapter(this.incompleteAdapter, this.completeAdapter, this.followingFeedAdapter));
 
         return this.binding.getRoot();
     }

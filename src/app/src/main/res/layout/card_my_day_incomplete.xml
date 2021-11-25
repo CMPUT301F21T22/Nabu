@@ -8,8 +8,8 @@
     android:clipChildren="false"
     android:clipToPadding="false"
     android:paddingStart="8dp"
-    android:paddingTop="8dp"
-    android:paddingEnd="8dp">
+    android:paddingEnd="8dp"
+    android:paddingBottom="8dp">
     <androidx.cardview.widget.CardView
         android:id="@+id/card"
         android:layout_width="match_parent"
@@ -17,6 +17,7 @@
         android:clickable="true"
         android:focusable="true"
         android:foreground="?android:attr/selectableItemBackgroundBorderless"
+        app:cardCornerRadius="8dp"
         app:cardElevation="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
