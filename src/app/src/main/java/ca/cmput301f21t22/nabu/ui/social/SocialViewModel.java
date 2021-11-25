@@ -8,10 +8,10 @@ import androidx.lifecycle.ViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import ca.cmput301f21t22.nabu.data.User;
-import ca.cmput301f21t22.nabu.model.Command;
 import ca.cmput301f21t22.nabu.model.commands.AcceptRequestCommand;
 import ca.cmput301f21t22.nabu.model.commands.RejectRequestCommand;
 import ca.cmput301f21t22.nabu.model.commands.SendRequestCommand;
@@ -44,13 +44,19 @@ public class SocialViewModel extends ViewModel {
     }
 
     @NonNull
-    public LiveData<List<User>> getRequestCards() { return this.requestCards; }
+    public LiveData<List<User>> getRequestCards() {
+        return this.requestCards;
+    }
 
     @NonNull
-    public LiveData<List<User>> getFollowingCards() { return this.followingCards; }
+    public LiveData<List<User>> getFollowingCards() {
+        return this.followingCards;
+    }
 
-    @NonNull
-    public User getCurrentUser() {return this.currentUser; }
+    @Nullable
+    public User getCurrentUser() {
+        return this.currentUser;
+    }
 
     public void setCurrentUser(@Nullable User currentUser) {
         this.currentUser = currentUser;
@@ -62,43 +68,38 @@ public class SocialViewModel extends ViewModel {
         this.onDataChanged();
     }
 
-    public void onAcceptClicked(@NonNull User user){
-        new AcceptRequestCommand(this.currentUser, user).execute();
+    public void onAcceptClicked(@NonNull User user) {
+        if (this.currentUser != null) {
+            new AcceptRequestCommand(this.currentUser, user).execute();
+        }
     }
 
-    public void onDenyClicked(@NonNull User user){
-        new RejectRequestCommand(this.currentUser, user).execute();
+    public void onDenyClicked(@NonNull User user) {
+        if (this.currentUser != null) {
+            new RejectRequestCommand(this.currentUser, user).execute();
+        }
     }
 
-    public void onUnfollowClicked(@NonNull User user){
-        new UnfollowUserCommand(this.currentUser, user);
+    public void onUnfollowClicked(@NonNull User user) {
+        if (this.currentUser != null) {
+            new UnfollowUserCommand(this.currentUser, user);
+        }
     }
 
-    public boolean onEmailEntered(@NonNull String email){
-        User user = null;
-        if(this.currentUser != null){
-            for(User userCheck : this.allCurrentUsers.values()) {
-                if (userCheck.getEmail() == email) {
-                    user = userCheck;
+    public void onEmailEntered(@NonNull String email) {
+        if (this.currentUser != null && this.allCurrentUsers != null) {
+            for (User user : this.allCurrentUsers.values()) {
+                if (user.getEmail().trim().toUpperCase(Locale.ROOT).equals(email.trim().toUpperCase(Locale.ROOT))) {
+                    new SendRequestCommand(this.currentUser, user).execute();
                     break;
                 }
             }
         }
-
-        if (user == null) {
-            return false;
-        }
-
-        new SendRequestCommand(this.currentUser, user).execute();
-
-        return true;
     }
 
     public void onDataChanged() {
-
-        if(this.currentUser != null) {
+        if (this.currentUser != null && this.allCurrentUsers != null) {
             List<User> usersRequesting = new ArrayList<>();
-
             for (String userId : this.currentUser.getRequests()) {
                 User requestingUser = this.allCurrentUsers.get(userId);
                 if (requestingUser != null) {
@@ -107,17 +108,14 @@ public class SocialViewModel extends ViewModel {
             }
             this.requestCards.setValue(usersRequesting);
 
-
             List<User> usersFollowed = new ArrayList<>();
-
             for (String userId : this.currentUser.getFollowing()) {
                 User requestingUser = this.allCurrentUsers.get(userId);
                 if (requestingUser != null) {
                     usersFollowed.add(requestingUser);
                 }
             }
-            this.requestCards.setValue(usersRequesting);
+            this.followingCards.setValue(usersFollowed);
         }
     }
-
 }

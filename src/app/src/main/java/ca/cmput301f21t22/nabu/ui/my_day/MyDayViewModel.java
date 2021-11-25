@@ -33,6 +33,8 @@ public class MyDayViewModel extends ViewModel {
     @NonNull
     private final MutableLiveData<List<MyDayCard>> completeCards;
     @NonNull
+    private final List<MyDayUserCard> followingUserCardsList;
+    @NonNull
     private final MutableLiveData<List<MyDayUserCard>> followingUserCards;
     @NonNull
     private final MutableLiveData<List<MyDayUserCard>> generalUserCards;
@@ -48,18 +50,18 @@ public class MyDayViewModel extends ViewModel {
     private Map<String, Habit> currentHabits;
     @Nullable
     private Map<String, Event> currentEvents;
+    @Nullable
     private Map<String, User> allCurrentUsers;
-    @NonNull
-    private List<User> followingList;
 
     public MyDayViewModel() {
         this.cardsList = new ArrayList<>();
         this.incompleteCards = new MutableLiveData<>();
         this.completeCards = new MutableLiveData<>();
+
+        this.followingUserCardsList = new ArrayList<>();
         this.followingUserCards = new MutableLiveData<>();
         this.generalUserCards = new MutableLiveData<>();
 
-        this.followingList = new ArrayList<>();
         this.mostRecentEvent = null;
         this.instantShowEdit = new MutableLiveData<>();
     }
@@ -75,10 +77,14 @@ public class MyDayViewModel extends ViewModel {
     }
 
     @NonNull
-    public LiveData<List<MyDayUserCard>> getFollowingUserCards() {return this.followingUserCards;}
+    public LiveData<List<MyDayUserCard>> getFollowingUserCards() {
+        return this.followingUserCards;
+    }
 
     @NonNull
-    public LiveData<List<MyDayUserCard>> getGeneralUserCards() {return this.generalUserCards;}
+    public LiveData<List<MyDayUserCard>> getGeneralUserCards() {
+        return this.generalUserCards;
+    }
 
     @NonNull
     public Event getMostRecentEvent() {
@@ -92,26 +98,25 @@ public class MyDayViewModel extends ViewModel {
 
     public void setCurrentUser(@Nullable User currentUser) {
         this.currentUser = currentUser;
-        this.onDataChanged();
+        this.onUserDataChanged();
+        this.onSocialDataChanged();
     }
 
     public void setCurrentHabits(@Nullable Map<String, Habit> currentHabits) {
         this.currentHabits = currentHabits;
-        this.onDataChanged();
+        this.onUserDataChanged();
+        this.onSocialDataChanged();
     }
 
     public void setCurrentEvents(@Nullable Map<String, Event> currentEvents) {
         this.currentEvents = currentEvents;
-        this.onDataChanged();
+        this.onUserDataChanged();
+        this.onSocialDataChanged();
     }
 
-    public void setAllCurrentUsers(@Nullable Map<String, User> allUsers){
+    public void setAllCurrentUsers(@Nullable Map<String, User> allUsers) {
         this.allCurrentUsers = allUsers;
-    }
-
-    public void setFollowingList(@Nullable List<User> followingList) {
-        this.followingList = followingList;
-        this.onDataChanged();
+        this.onSocialDataChanged();
     }
 
     public void onCardClicked(@NonNull MyDayCard card) {
@@ -127,7 +132,7 @@ public class MyDayViewModel extends ViewModel {
         }
     }
 
-    private void onDataChanged() {
+    private void onUserDataChanged() {
         this.cardsList.clear();
 
         if (this.currentUser != null && this.currentHabits != null) {
@@ -145,20 +150,8 @@ public class MyDayViewModel extends ViewModel {
             }
         }
 
-        if (this.followingList != null) {
-            List<User> users = this.followingList;
-
-            List<MyDayUserCard> following = new ArrayList<>();
-            //Process new users.
-            for (User followingUser : users) {
-                following.add(this.processUser(followingUser, this.currentHabits));
-            }
-            this.followingUserCards.setValue(following);
-        }
-
-        this.updateLists();
+        this.updateUserLists();
     }
-
 
     @NonNull
     private MyDayCard processHabit(@NonNull Habit habit) {
@@ -193,7 +186,7 @@ public class MyDayViewModel extends ViewModel {
         return new MyDayUserCard(user, habits);
     }
 
-    private void updateLists() {
+    private void updateUserLists() {
         List<MyDayCard> incomplete = new ArrayList<>();
         List<MyDayCard> complete = new ArrayList<>();
 
@@ -208,9 +201,27 @@ public class MyDayViewModel extends ViewModel {
             }
         }
 
-
-
         this.incompleteCards.setValue(incomplete);
         this.completeCards.setValue(complete);
+    }
+
+    private void onSocialDataChanged() {
+        this.followingUserCardsList.clear();
+
+        if (this.currentUser != null && this.allCurrentUsers != null) {
+            //Process new users.
+            for (String followingUserId : this.currentUser.getFollowing()) {
+                User followingUser = this.allCurrentUsers.get(followingUserId);
+                if (followingUser != null) {
+                    this.followingUserCardsList.add(this.processUser(followingUser, this.currentHabits));
+                }
+            }
+        }
+
+        this.updateSocialLists();
+    }
+
+    private void updateSocialLists() {
+        this.followingUserCards.setValue(this.followingUserCardsList);
     }
 }

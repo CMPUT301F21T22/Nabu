@@ -10,7 +10,7 @@ import java.util.List;
  * View.
  */
 public class MyDayUserCard {
-    private User user;
+    private final User user;
     private List<MyDayCard> userHabits;
 
     /**
