@@ -90,7 +90,9 @@ public class SocialViewModel extends ViewModel {
         if (this.currentUser != null && this.allCurrentUsers != null) {
             for (User user : this.allCurrentUsers.values()) {
                 if (user.getEmail().trim().toUpperCase(Locale.ROOT).equals(email.trim().toUpperCase(Locale.ROOT))) {
-                    new SendRequestCommand(this.currentUser, user).execute();
+                    if (!this.currentUser.getFollowing().contains(user.getId())) {
+                        new SendRequestCommand(this.currentUser, user).execute();
+                    }
                     break;
                 }
             }

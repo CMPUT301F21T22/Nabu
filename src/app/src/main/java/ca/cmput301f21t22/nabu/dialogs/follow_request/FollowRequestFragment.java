@@ -1,83 +1,75 @@
 package ca.cmput301f21t22.nabu.dialogs.follow_request;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
 import ca.cmput301f21t22.nabu.R;
-import ca.cmput301f21t22.nabu.ui.social.SocialViewModel;
+import ca.cmput301f21t22.nabu.databinding.DialogNewFollowRequestBinding;
 
 public class FollowRequestFragment extends DialogFragment {
-    /*
-        //@SuppressLint("InflateParams")
-        @NonNull
-        @Override
-        public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
-            LayoutInflater inflater = this.requireActivity().getLayoutInflater();
-            View view = inflater.inflate(R.layout.layout_new_follow_request, null);
+    @NonNull
+    private final Callback callback;
+    @Nullable
+    private DialogNewFollowRequestBinding binding;
 
-            return new AlertDialog.Builder(this.getActivity()).setView(view).create();
+    public FollowRequestFragment(@NonNull Callback callback) {
+        this.callback = callback;
+    }
+
+    private static String retrieveText(TextView textView) {
+        CharSequence t = textView.getText();
+        if (t != null) {
+            return t.toString();
+        } else {
+            return "";
         }
     }
 
-    public class AddMedicineFragment extends DialogFragment {
-
-     */
-    private SocialViewModel viewModel;
-    private EditText requestedEmail;
-    private View view;
-
-    public FollowRequestFragment(SocialViewModel myDayViewModel) {
-        this.viewModel = myDayViewModel;
-    }
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-    }
-
+    @SuppressLint("InflateParams")
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
-        this.view = LayoutInflater.from(getActivity()).inflate(R.layout.dialog_new_follow_request, null);
-        //this.binding = FragmentEditHabitBinding.inflate(inflater, container, false);
-        requestedEmail = view.findViewById(R.id.email_address_input);
+        LayoutInflater inflater = this.requireActivity().getLayoutInflater();
+        this.binding = DialogNewFollowRequestBinding.inflate(inflater);
 
-        //Create the 'pop-up' window
-        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-        return builder.setView(this.view).setNegativeButton("CANCEL", null)
-
-                .setPositiveButton("ADD", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-
-                        String email = requestedEmail.getText().toString();
-                        if (validateEmail(email)) {
-                            viewModel.onEmailEntered(email);
-                        }
-                    }
-                }).create();
+        AlertDialog dialog = new AlertDialog.Builder(this.getActivity()).setTitle(R.string.title_send_follow_request)
+                .setView(this.binding.getRoot())
+                .setNegativeButton(android.R.string.cancel, null)
+                .setPositiveButton(R.string.button_add, null)
+                .show();
+        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(view -> {
+            String email = retrieveText(this.binding.editEmail);
+            if (this.validateEmail(email)) {
+                this.callback.onTargetEmail(email);
+                this.dismiss();
+            }
+        });
+        return dialog;
     }
 
     private boolean validateEmail(String email) {
-        if (email == null || email.length() == 0) {
-            this.view.findViewById(R.id.email_address_input).setAutofillHints("Email cannot be empty.");
-            return false;
-        } else if (1 != 1/*email does not exist*/) {
-            this.view.findViewById(R.id.email_address_input).setAutofillHints("That account does not exist");
+        assert this.binding != null;
+
+        if (email == null || email.equals("")) {
+            this.binding.layoutEmail.setErrorEnabled(true);
+            this.binding.layoutEmail.setError(this.getString(R.string.error_email_empty));
             return false;
         } else {
-            this.view.findViewById(R.id.email_address_input).setAutofillHints("");
+            this.binding.layoutEmail.setErrorEnabled(false);
+            this.binding.layoutEmail.setError(null);
             return true;
         }
+    }
+
+    public interface Callback {
+        void onTargetEmail(String email);
     }
 }

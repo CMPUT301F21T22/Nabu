@@ -73,8 +73,8 @@ public class SocialFragment extends ExtendedToolbarFragment {
         //Section for email sending shtuff
 
         this.binding.buttonAddFollowRequest.setOnClickListener(
-                view -> new FollowRequestFragment(this.viewModel).show(this.getChildFragmentManager(),
-                                                                       "Send Follow Request"));
+                view -> new FollowRequestFragment(this.viewModel::onEmailEntered).show(this.getChildFragmentManager(),
+                                                                                       "Send Follow Request"));
 
         return this.binding.getRoot();
     }
