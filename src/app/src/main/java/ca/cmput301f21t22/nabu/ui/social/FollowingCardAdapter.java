@@ -64,7 +64,7 @@ public class FollowingCardAdapter extends RecyclerView.Adapter<FollowingCardAdap
         holder.onBindView(user);
         holder.binding.unfollowButton.setOnClickListener((view) -> {
             if (this.unfollowButtonListener != null) {
-                this.unfollowButtonListener.onItemClicked(this, user);
+                this.unfollowButtonListener.onItemClicked(this, user, position);
             }
         });
     }

@@ -66,12 +66,12 @@ public class RequestFollowCardAdapter extends
         holder.onBindView(user);
         holder.binding.rejectFollowButton.setOnClickListener((view) -> {
             if (this.requestCardRejectButtonListener != null) {
-                this.requestCardRejectButtonListener.onItemClicked(this, user);
+                this.requestCardRejectButtonListener.onItemClicked(this, user, position);
             }
         });
         holder.binding.acceptFollowButton.setOnClickListener((view) -> {
             if (this.requestCardAcceptButtonListener != null) {
-                this.requestCardAcceptButtonListener.onItemClicked(this, user);
+                this.requestCardAcceptButtonListener.onItemClicked(this, user, position);
             }
         });
     }
