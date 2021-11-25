@@ -31,4 +31,6 @@ Model tests run on-device, and thus require an Android Emulator. In addition, th
 - Teng Liu
 - Wigandt De Klerk
 - Hao Lan
-- Aryan Malik 
+- Aryan Malik
+- Zhekai Zhao
+- Alysha Van Bibber
