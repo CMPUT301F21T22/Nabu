@@ -45,7 +45,7 @@ public class AddMedicineFragment extends DialogFragment {
  */
     private SocialViewModel viewModel;
     private EditText requestedEmail;
-    private LayoutNewFollowRequestBinding binding;
+    private View view;
 
     public FollowRequestFragment(SocialViewModel myDayViewModel) {
         this.viewModel = myDayViewModel;
@@ -59,15 +59,15 @@ public class AddMedicineFragment extends DialogFragment {
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
-        //View view = LayoutInflater.from(getActivity())
-                //.inflate(R.layout.layout_new_follow_request, null);
-        this.binding = FragmentEditHabitBinding.inflate(inflater, container, false);
-        requestedEmail = this.binding.emailAddressInput;
+        this.view = LayoutInflater.from(getActivity())
+                .inflate(R.layout.layout_new_follow_request, null);
+        //this.binding = FragmentEditHabitBinding.inflate(inflater, container, false);
+        requestedEmail = view.findViewById(R.id.email_address_input);
 
         //Create the 'pop-up' window
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         return builder
-                .setView(this.binding.getRoot())
+                .setView(this.view)
                 .setNegativeButton("CANCEL", null)
 
                 .setPositiveButton("ADD", new DialogInterface.OnClickListener() {
@@ -84,9 +84,14 @@ public class AddMedicineFragment extends DialogFragment {
 
     private boolean validateEmail(String email) {
         if (email == null || email.length() == 0) {
-            this.binding.layoutTitle.setErrorEnabled(true);
-            this.binding.layoutTitle.setError(this.getString(R.string.error_title_too_long));
+            this.view.findViewById(R.id.email_address_input).setAutofillHints("Email cannot be empty.");
+            return false;
+        } else if (1 != 1/*email does not exist*/) {
+            this.view.findViewById(R.id.email_address_input).setAutofillHints("That account does not exist");
+            return false;
+        } else {
+            this.view.findViewById(R.id.email_address_input).setAutofillHints("");
+            return true;
         }
     }
-
 }

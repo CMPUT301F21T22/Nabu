@@ -19,7 +19,6 @@ import ca.cmput301f21t22.nabu.R;
 import ca.cmput301f21t22.nabu.data.User;
 import ca.cmput301f21t22.nabu.databinding.FragmentSocialBinding;
 import ca.cmput301f21t22.nabu.databinding.HeaderDefaultBinding;
-import ca.cmput301f21t22.nabu.dialogs.edit_habit.EditHabitFragment;
 import ca.cmput301f21t22.nabu.dialogs.follow_request.FollowRequestFragment;
 import ca.cmput301f21t22.nabu.model.repositories.UserRepository;
 import ca.cmput301f21t22.nabu.ui.ExtendedToolbarFragment;
@@ -75,17 +74,9 @@ public class SocialFragment extends ExtendedToolbarFragment {
         this.binding.followerList.setAdapter(this.followingAdapter);
 
         //Section for email sending shtuff
-        this.binding.buttonAddFollowRequest.setOnClickListener(view -> {
-            User currentUser = this.viewModel.getCurrentUser();
-            if (currentUser != null) {
-                new FollowRequestFragment(this.viewModel).show(this.getChildFragmentManager(), "Request To Follow");
-            }
-        });
-                /*view -> new FollowRequestFragment()
-                        .setNegativeButton(R.string.button_cancel, (dialogInterface, i) -> {
-                        })
-                        .setPositiveButton(R.string.button_sign_out, (dialogInterface, i) -> this.viewModel.signOut())
-                        .show());*/
+
+        this.binding.buttonAddFollowRequest.setOnClickListener(
+                view -> new FollowRequestFragment(this.viewModel).show(this.getChildFragmentManager(), "Send Follow Request"));
 
         return this.binding.getRoot();
     }
