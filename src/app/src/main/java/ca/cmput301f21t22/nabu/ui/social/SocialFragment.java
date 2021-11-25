@@ -7,10 +7,14 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import java.util.Map;
+
 import ca.cmput301f21t22.nabu.R;
+import ca.cmput301f21t22.nabu.data.User;
 import ca.cmput301f21t22.nabu.databinding.FragmentSocialBinding;
 import ca.cmput301f21t22.nabu.databinding.HeaderDefaultBinding;
 import ca.cmput301f21t22.nabu.model.repositories.UserRepository;
@@ -41,11 +45,19 @@ public class SocialFragment extends ExtendedToolbarFragment {
         UserRepository.getInstance()
                 .getCurrentUser()
                 .observe(this.getViewLifecycleOwner(), user -> this.viewModel.setCurrentUser(user));
+        UserRepository.getInstance()
+                .getUsers()
+                .observe(this.getViewLifecycleOwner(), new Observer<Map<String, User>>() {
+                    @Override
+                    public void onChanged(Map<String, User> stringUserMap) {
+                        viewModel.setAllCurrentUsers(stringUserMap);
+                    }
+                });
 
-        this.requestAdapter.setAcceptButtonListener((adapter, item) -> this.viewModel.onAcceptClicked(item));
-        this.requestAdapter.setDenyButtonListener((adapter, item) -> this.viewModel.onDenyClicked(item));
+        this.requestAdapter.setAcceptButtonListener((adapter, item, position) -> this.viewModel.onAcceptClicked(item));
+        this.requestAdapter.setDenyButtonListener((adapter, item, position) -> this.viewModel.onDenyClicked(item));
 
-        this.followingAdapter.setUnfollowButtonListener((adapter, item) -> this.viewModel.onUnfollowClicked(item));
+        this.followingAdapter.setUnfollowButtonListener((adapter, item, position) -> this.viewModel.onUnfollowClicked(item));
 
         this.viewModel.getRequestCards()
                 .observe(this.getViewLifecycleOwner(), cards -> this.requestAdapter.setCards(cards));
