@@ -7,16 +7,11 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.ConcatAdapter;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.google.android.material.dialog.MaterialAlertDialogBuilder;
-
-import java.util.Map;
-
 import ca.cmput301f21t22.nabu.R;
-import ca.cmput301f21t22.nabu.data.User;
 import ca.cmput301f21t22.nabu.databinding.FragmentSocialBinding;
 import ca.cmput301f21t22.nabu.databinding.HeaderDefaultBinding;
 import ca.cmput301f21t22.nabu.dialogs.follow_request.FollowRequestFragment;
@@ -50,33 +45,36 @@ public class SocialFragment extends ExtendedToolbarFragment {
                 .observe(this.getViewLifecycleOwner(), user -> this.viewModel.setCurrentUser(user));
         UserRepository.getInstance()
                 .getUsers()
-                .observe(this.getViewLifecycleOwner(), new Observer<Map<String, User>>() {
-                    @Override
-                    public void onChanged(Map<String, User> stringUserMap) {
-                        viewModel.setAllCurrentUsers(stringUserMap);
-                    }
-                });
+                .observe(this.getViewLifecycleOwner(),
+                         users -> SocialFragment.this.viewModel.setAllCurrentUsers(users));
 
         this.requestAdapter.setAcceptButtonListener((adapter, item, position) -> this.viewModel.onAcceptClicked(item));
         this.requestAdapter.setDenyButtonListener((adapter, item, position) -> this.viewModel.onDenyClicked(item));
 
-        this.followingAdapter.setUnfollowButtonListener((adapter, item, position) -> this.viewModel.onUnfollowClicked(item));
+        this.followingAdapter.setUnfollowButtonListener(
+                (adapter, item, position) -> this.viewModel.onUnfollowClicked(item));
 
         this.viewModel.getRequestCards()
                 .observe(this.getViewLifecycleOwner(), cards -> this.requestAdapter.setCards(cards));
         this.viewModel.getFollowingCards()
                 .observe(this.getViewLifecycleOwner(), cards -> this.followingAdapter.setCards(cards));
 
+        /*
         this.binding.pendingRequestList.setLayoutManager(new LinearLayoutManager(this.requireContext()));
         this.binding.pendingRequestList.setAdapter(this.requestAdapter);
 
         this.binding.followerList.setLayoutManager(new LinearLayoutManager(this.requireContext()));
         this.binding.followerList.setAdapter(this.followingAdapter);
+         */
+
+        this.binding.list.setLayoutManager(new LinearLayoutManager(this.requireContext()));
+        this.binding.list.setAdapter(new ConcatAdapter(this.requestAdapter, this.followingAdapter));
 
         //Section for email sending shtuff
 
         this.binding.buttonAddFollowRequest.setOnClickListener(
-                view -> new FollowRequestFragment(this.viewModel).show(this.getChildFragmentManager(), "Send Follow Request"));
+                view -> new FollowRequestFragment(this.viewModel::onEmailEntered).show(this.getChildFragmentManager(),
+                                                                                       "Send Follow Request"));
 
         return this.binding.getRoot();
     }

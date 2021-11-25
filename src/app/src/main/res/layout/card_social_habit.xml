@@ -8,30 +8,31 @@
     android:clipChildren="false"
     android:clipToPadding="false"
     android:paddingStart="8dp"
-    android:paddingTop="8dp"
-    android:paddingEnd="8dp">
-    <androidx.cardview.widget.CardView
+    android:paddingEnd="8dp"
+    android:paddingBottom="8dp">
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="#F6F6F6"
-        android:clickable="true"
-        android:focusable="true"
-        android:foreground="?android:attr/selectableItemBackgroundBorderless"
+        app:cardCornerRadius="8dp"
         app:cardElevation="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:strokeColor="#F6F6F6"
+        app:strokeWidth="2dp">
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
             <TextView
                 android:id="@+id/label_habit_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
+                android:alpha="0.8"
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="Example Habit" />
@@ -44,7 +45,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/label_habit_name"
                 app:layout_constraintTop_toBottomOf="@+id/label_habit_name"
-                tools:text="Habit Reason" />
+                tools:text="Example Reason" />
             <ImageView
                 android:id="@+id/icon_complete_0"
                 android:layout_width="18dp"
@@ -52,7 +53,7 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="16dp"
-                android:alpha="0.6"
+                android:alpha="0.8"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -65,7 +66,7 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="16dp"
-                android:alpha="0.6"
+                android:alpha="0.8"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/icon_complete_0"
                 app:layout_constraintTop_toTopOf="parent"
@@ -78,7 +79,7 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="16dp"
-                android:alpha="0.6"
+                android:alpha="0.8"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/icon_complete_1"
                 app:layout_constraintTop_toTopOf="parent"
@@ -91,7 +92,7 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="16dp"
-                android:alpha="0.6"
+                android:alpha="0.8"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/icon_complete_2"
                 app:layout_constraintTop_toTopOf="parent"
@@ -104,7 +105,7 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="16dp"
-                android:alpha="0.6"
+                android:alpha="0.8"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/icon_complete_3"
                 app:layout_constraintTop_toTopOf="parent"
@@ -117,7 +118,7 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="16dp"
-                android:alpha="0.6"
+                android:alpha="0.8"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/icon_complete_4"
                 app:layout_constraintTop_toTopOf="parent"
@@ -130,12 +131,12 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="16dp"
-                android:alpha="0.6"
+                android:alpha="0.8"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/icon_complete_5"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="ContentDescription"
                 tools:srcCompat="@drawable/ic_baseline_check_circle_18" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

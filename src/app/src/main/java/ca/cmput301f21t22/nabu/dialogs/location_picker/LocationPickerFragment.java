@@ -33,7 +33,7 @@ import ca.cmput301f21t22.nabu.R;
 public class LocationPickerFragment extends DialogFragment
         implements OnMapReadyCallback, GoogleMap.OnMarkerDragListener {
     @Nullable
-    SupportMapFragment fragment;
+    private SupportMapFragment fragment;
     @NonNull
     private final Callback callback;
     @NonNull
