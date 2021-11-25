@@ -1,6 +1,7 @@
 package ca.cmput301f21t22.nabu;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 import org.junit.Test;
 
@@ -24,7 +25,7 @@ public class UserTests {
         List<String> habits = new ArrayList<>();
         habits.add("Water Lily pads");
         User user = new User(id, email, habits);
-        assertEquals(Objects.hash(id, email, habits), user.hashCode());
+        assertEquals(Objects.hash(email, habits), user.hashCode());
     }
 
     @Test
@@ -42,7 +43,7 @@ public class UserTests {
     }
 
     @Test
-    public void  testSetEmail() {
+    public void testSetEmail() {
         String email = "newbogglesSr@swamp.bog";
         User user = new User("5", "bogglesSr@swamp.bog", new ArrayList<>());
         user.setEmail(email);
@@ -77,16 +78,16 @@ public class UserTests {
         notHabits.add("Be tyrannical");
 
         User user = new User("333", "kingboggles@swamp.bog", habits);
-        User user1 = new User("333","kingboggles@swamp.bog", habits);
-        assertEquals(true, user.equals(user1));
+        User user1 = new User("333", "kingboggles@swamp.bog", habits);
+        assertEquals(user, user1);
 
         User notUser = new User("334", "kingboggles@swamp.bog", habits);
-        assertEquals(false, user.equals(notUser));
+        assertEquals(user, notUser);
 
         User notUser1 = new User("333", "boggles@swamp.bog", habits);
-        assertEquals(false, user.equals(notUser));
+        assertNotEquals(user, notUser1);
 
         User notUser2 = new User("333", "kingboggles@swamp.bog", notHabits);
-        assertEquals(false, user.equals(notUser));
+        assertNotEquals(user, notUser2);
     }
 }

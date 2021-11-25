@@ -35,12 +35,13 @@ public class HabitCard {
             return false;
         }
         HabitCard habitCard = (HabitCard) o;
-        return this.habit.equals(habitCard.habit) && this.events.equals(habitCard.events);
+        return this.expanded == habitCard.expanded && this.habit.equals(habitCard.habit) &&
+               this.events.equals(habitCard.events);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.habit, this.events);
+        return Objects.hash(this.expanded, this.habit, this.events);
     }
 
     /**

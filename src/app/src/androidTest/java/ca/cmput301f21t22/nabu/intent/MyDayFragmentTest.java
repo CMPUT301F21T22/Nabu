@@ -1,4 +1,4 @@
-package ca.cmput301f21t22.nabu;
+package ca.cmput301f21t22.nabu.intent;
 
 import static junit.framework.TestCase.assertTrue;
 
@@ -25,6 +25,9 @@ import static org.junit.Assert.assertFalse;
 
 import java.time.DayOfWeek;
 import java.util.Calendar;
+
+import ca.cmput301f21t22.nabu.MainActivity;
+import ca.cmput301f21t22.nabu.R;
 
 /**
  * Runs tests on the My Day fragment.

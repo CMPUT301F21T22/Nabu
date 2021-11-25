@@ -3,8 +3,6 @@ package ca.cmput301f21t22.nabu.data;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.google.firebase.firestore.GeoPoint;
-
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
@@ -28,12 +26,12 @@ public class Event implements Serializable {
     @Nullable
     private String photoPath;
     @Nullable
-    private GeoPoint location;
+    private LatLngPoint location;
 
     /**
      * Create a local-only instance of Event.
      *
-     * @see Event#Event(Date, String, String, GeoPoint)
+     * @see Event#Event(Date, String, String, LatLngPoint)
      */
     public Event() {
         this(new Date());
@@ -43,7 +41,7 @@ public class Event implements Serializable {
      * Create a local-only instance of Event.
      *
      * @param date The date on which the event occurred.
-     * @see Event#Event(Date, String, String, GeoPoint)
+     * @see Event#Event(Date, String, String, LatLngPoint)
      */
     public Event(@NonNull Date date) {
         this("", date);
@@ -64,7 +62,7 @@ public class Event implements Serializable {
     public Event(@NonNull Date date,
                  @Nullable String comment,
                  @Nullable String photoPath,
-                 @Nullable GeoPoint location) {
+                 @Nullable LatLngPoint location) {
         this("", date, comment, photoPath, location);
     }
 
@@ -73,7 +71,7 @@ public class Event implements Serializable {
      *
      * @param id   The unique remote ID of the event.
      * @param date The date on which the event occurred.
-     * @see Event#Event(String, Date, String, String, GeoPoint)
+     * @see Event#Event(String, Date, String, String, LatLngPoint)
      */
     public Event(@NonNull String id, @NonNull Date date) {
         this(id, date, null, null, null);
@@ -97,7 +95,7 @@ public class Event implements Serializable {
                  @NonNull Date date,
                  @Nullable String comment,
                  @Nullable String photoPath,
-                 @Nullable GeoPoint location) {
+                 @Nullable LatLngPoint location) {
         this.id = id;
         this.date = date;
         this.comment = comment;
@@ -114,14 +112,13 @@ public class Event implements Serializable {
             return false;
         }
         Event event = (Event) o;
-        return this.id.equals(event.id) && this.date.equals(event.date) &&
-               Objects.equals(this.comment, event.comment) && Objects.equals(this.photoPath, event.photoPath) &&
-               Objects.equals(this.location, event.location);
+        return this.date.equals(event.date) && Objects.equals(this.comment, event.comment) &&
+               Objects.equals(this.photoPath, event.photoPath) && Objects.equals(this.location, event.location);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.id, this.date, this.comment, this.photoPath, this.location);
+        return Objects.hash(this.date, this.comment, this.photoPath, this.location);
     }
 
     /**
@@ -181,14 +178,14 @@ public class Event implements Serializable {
      * @return A point on the earth associated with the event.
      */
     @Nullable
-    public GeoPoint getLocation() {
+    public LatLngPoint getLocation() {
         return this.location;
     }
 
     /**
      * @param location A point on the earth that should be associated with the event.
      */
-    public void setLocation(@Nullable GeoPoint location) {
+    public void setLocation(@Nullable LatLngPoint location) {
         this.location = location;
     }
 }

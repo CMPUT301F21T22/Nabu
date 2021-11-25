@@ -17,7 +17,6 @@ import ca.cmput301f21t22.nabu.model.commands.AddHabitCommand;
 import ca.cmput301f21t22.nabu.model.commands.UpdateHabitCommand;
 
 public class EditHabitViewModel extends ViewModel {
-    private boolean saveable;
     @NonNull
     private final MutableLiveData<Boolean> saved;
 
@@ -67,10 +66,6 @@ public class EditHabitViewModel extends ViewModel {
         this.onSaturday = new MutableLiveData<>();
         this.events = new ArrayList<>();
         this.shared = new MutableLiveData<>();
-    }
-
-    public void setSaveable(boolean saveable) {
-        this.saveable = saveable;
     }
 
     @NonNull
@@ -214,10 +209,6 @@ public class EditHabitViewModel extends ViewModel {
     }
 
     public void saveHabit() {
-        if (!this.saveable) {
-            return;
-        }
-
         String title = this.title.getValue();
         String reason = this.reason.getValue();
         Date startDate = this.startDate.getValue();
@@ -253,6 +244,7 @@ public class EditHabitViewModel extends ViewModel {
             new AddHabitCommand(this.currentUser, savedHabit).execute().thenAccept(habit -> {
                 if (habit != null) {
                     this.saved.setValue(true);
+                    this.id = habit.getId();
                 }
             });
         }

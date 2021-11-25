@@ -134,7 +134,14 @@ public class MyDayViewModel extends ViewModel {
             List<String> habitIds = this.currentUser.getHabits();
             // Process new habits.
             for (String habitId : habitIds) {
-                this.cardsList.add(this.processHabit(Objects.requireNonNull(this.currentHabits.get(habitId))));
+                Habit habit = this.currentHabits.get(habitId);
+                LocalDate today = LocalDate.now();
+                if (habit != null) {
+                    LocalDate startDate = habit.getStartDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+                    if (startDate.isBefore(today) || startDate.isEqual(today)) {
+                        this.cardsList.add(this.processHabit(habit));
+                    }
+                }
             }
         }
 

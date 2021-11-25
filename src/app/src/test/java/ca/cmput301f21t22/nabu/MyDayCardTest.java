@@ -72,7 +72,7 @@ public class MyDayCardTest {
         assertEquals(MyDayCard.Icon.NOT_DUE, myDayCard1.getIcon(0));
         assertEquals(MyDayCard.Icon.INCOMPLETE, myDayCard2.getIcon(0));
         assertEquals(MyDayCard.Icon.COMPLETE, myDayCard3.getIcon(0));
-        assertEquals(MyDayCard.Icon.FAILED, myDayCard2.getIcon(1));
+        assertEquals(MyDayCard.Icon.NOT_DUE, myDayCard2.getIcon(1));
     }
 
     //Tests the equals method

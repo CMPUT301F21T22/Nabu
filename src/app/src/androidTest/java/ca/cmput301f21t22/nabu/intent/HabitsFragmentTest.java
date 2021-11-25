@@ -1,16 +1,14 @@
-package ca.cmput301f21t22.nabu;
+package ca.cmput301f21t22.nabu.intent;
 
 import static junit.framework.TestCase.assertTrue;
 
 import android.app.Activity;
-import androidx.test.ext.junit.runners.AndroidJUnit4;
+
 import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.rule.ActivityTestRule;
 
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ListView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.robotium.solo.Solo;
@@ -18,10 +16,13 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
-import org.junit.runner.RunWith;
+
 import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+
+import ca.cmput301f21t22.nabu.MainActivity;
+import ca.cmput301f21t22.nabu.R;
 
 /**
  * Runs tests on the habits fragment.
@@ -190,7 +191,7 @@ public class HabitsFragmentTest {
         solo.setDatePicker(0,2021,
                 10, 9);
         solo.clickOnText("OK");
-        solo.enterText((EditText) solo.getView(R.id.edit_text_comment), "Bought Bees");
+        solo.enterText((EditText) solo.getView(R.id.edit_comment), "Bought Bees");
         solo.clickOnView((FloatingActionButton) solo.getView(R.id.button_save));
         solo.goBack();
 
@@ -280,7 +281,7 @@ public class HabitsFragmentTest {
         solo.setDatePicker(0,2021,
                 10, 9);
         solo.clickOnText("OK");
-        solo.enterText((EditText) solo.getView(R.id.edit_text_comment), "Bought Bees");
+        solo.enterText((EditText) solo.getView(R.id.edit_comment), "Bought Bees");
         solo.clickOnView((FloatingActionButton) solo.getView(R.id.button_save));
         solo.goBack();
 
@@ -406,7 +407,7 @@ public class HabitsFragmentTest {
         solo.setDatePicker(0,2021,
                 10, 9);
         solo.clickOnText("OK");
-        solo.enterText((EditText) solo.getView(R.id.edit_text_comment), "Bought Bees");
+        solo.enterText((EditText) solo.getView(R.id.edit_comment), "Bought Bees");
         solo.clickOnView((FloatingActionButton) solo.getView(R.id.button_save));
         solo.goBack();
 
@@ -421,8 +422,8 @@ public class HabitsFragmentTest {
         solo.setDatePicker(0,2021,
                 11, 15);
         solo.clickOnText("OK");
-        solo.clearEditText((EditText) solo.getView(R.id.edit_text_comment));
-        solo.enterText((EditText) solo.getView(R.id.edit_text_comment), "Getting new bees");
+        solo.clearEditText((EditText) solo.getView(R.id.edit_comment));
+        solo.enterText((EditText) solo.getView(R.id.edit_comment), "Getting new bees");
         solo.clickOnView((FloatingActionButton) solo.getView(R.id.button_save));
         solo.goBack();
 

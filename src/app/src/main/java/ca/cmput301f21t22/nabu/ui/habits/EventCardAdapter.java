@@ -9,6 +9,13 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+import com.squareup.picasso.Picasso;
+
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -42,12 +49,12 @@ public class EventCardAdapter extends RecyclerView.Adapter<EventCardAdapter.View
         holder.onBindView(event);
         holder.binding.card.setOnClickListener((view) -> {
             if (this.clickListener != null) {
-                this.clickListener.onItemClicked(this, event);
+                this.clickListener.onItemClicked(this, event, position);
             }
         });
         holder.binding.buttonOverflowMenu.setOnClickListener((view) -> {
             if (this.menuClickListener != null) {
-                this.menuClickListener.onItemMenuClicked(view, event);
+                this.menuClickListener.onItemMenuClicked(view, event, position);
             }
         });
     }
@@ -71,102 +78,32 @@ public class EventCardAdapter extends RecyclerView.Adapter<EventCardAdapter.View
     public void setMenuClickListener(@Nullable ItemMenuClickListener<Event> menuClickListener) {
         this.menuClickListener = menuClickListener;
     }
-    /*
-    @Nullable
-    ViewGroup container;
-    private ArrayList<Event> events;
-    private Context context;
-    @Nullable
-    private CardEventBinding binding;
 
-    public EventCardAdapter(Context context, ArrayList<Event> events) {
-        super(context, 0, events);
-
-        this.events = events;
-        this.context = context;
-    }
-
-    //Set up views for list objects
-    @NonNull
-    @Override
-    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        //return super.getView(position, convertView, parent);
-        View view = convertView;
-
-        if (view == null) {
-            this.binding = CardEventBinding.inflate(LayoutInflater.from(context));
-        }
-
-        Event event = events.get(position);
-
-        TextView eventComment = this.binding.labelComment;
-        TextView dates = this.binding.labelDate;
-        //ImageView eventPhoto = this.binding.eventPhoto;
-        //TextView eventLocation  = this.binding.eventLocation;
-
-        eventComment.setText(event.getComment());
-        dates.setText(event.getDate().toString());
-        //eventPhoto.(event.getPhotoPath());
-        //eventLocation.setText(event.getLocation());
-
-        final ImageButton eventsMenuButton = this.binding.buttonOverflowMenu;
-        eventsMenuButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                PopupMenu eventsPopupMenu = new PopupMenu(context, eventsMenuButton);
-                MenuInflater inflater = eventsPopupMenu.getMenuInflater();
-                inflater.inflate(R.menu.habit_card_popup_menu, eventsPopupMenu.getMenu());
-                eventsPopupMenu.show();
-                final PopupMenu menu = eventsPopupMenu;
-                menu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-                    @Override
-                    public boolean onMenuItemClick(MenuItem item) {
-                        if (item.getItemId() == eventsPopupMenu.getMenu().getItem(0).getItemId()) {
-                            //Edit
-                            Event inputEvent = new Event(new Date());
-                            //TODO: Add call for edit habit fragment
-                            edit(position, inputEvent);
-                            return true;
-                        } else if (item.getItemId() == eventsPopupMenu.getMenu().getItem(1).getItemId()) {
-                            //remove
-                            remove(events.get(position));
-                            return true;
-                        } else {
-                            return false;
-                        } //Default
-                    }
-                });
-            }
-        });
-
-        return this.binding.getRoot();
-    }
-
-    @Override
-    public void remove(@Nullable Event event) {
-        super.remove(event);
-        //this.habits.remove(habit);
-        this.notifyDataSetChanged();
-    }
-
-    public void edit(int position, @Nullable Event event) {
-        this.remove(this.getItem(position));
-        this.insert(event, position);
-        //this.habits.set(position, habit);
-        this.notifyDataSetChanged();
-    }
-     */
-
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder implements OnMapReadyCallback {
         @NonNull
         private final DateFormat dateFormat;
         @NonNull
         private final CardEventBinding binding;
+        @Nullable
+        private Event cache;
+        @Nullable
+        private GoogleMap map;
 
         public ViewHolder(@NonNull CardEventBinding binding) {
             super(binding.getRoot());
             this.dateFormat = DateFormat.getDateInstance();
             this.binding = binding;
+
+            this.binding.mapLocation.onCreate(null);
+            this.binding.mapLocation.getMapAsync(this);
+        }
+
+        @Override
+        public void onMapReady(@NonNull GoogleMap googleMap) {
+            this.map = googleMap;
+            if (this.cache != null) {
+                this.onBindView(this.cache);
+            }
         }
 
         public void onBindView(@NonNull Event event) {
@@ -175,6 +112,21 @@ public class EventCardAdapter extends RecyclerView.Adapter<EventCardAdapter.View
                 this.binding.labelComment.setText(event.getComment());
                 this.binding.labelComment.setVisibility(View.VISIBLE);
             }
+            if (event.getPhotoPath() != null && !event.getPhotoPath().equals("")) {
+                Picasso.get().load(event.getPhotoPath()).into(this.binding.imagePhoto);
+                this.binding.imagePhoto.setVisibility(View.VISIBLE);
+            }
+            if (event.getLocation() != null && this.map != null) {
+                LatLng position = new LatLng(event.getLocation().getLatitude(), event.getLocation().getLongitude());
+                this.map.clear();
+                this.map.moveCamera(CameraUpdateFactory.newLatLng(position));
+                this.map.addMarker(new MarkerOptions().position(position).draggable(true));
+                this.map.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+
+                this.binding.mapLocation.setVisibility(View.VISIBLE);
+            }
+
+            this.cache = event;
         }
     }
 }

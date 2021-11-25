@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.ToggleButton;
 
 import androidx.annotation.NonNull;
@@ -57,6 +58,15 @@ public class EditHabitFragment extends DialogFragment {
         args.putSerializable(ARG_HABIT, habit);
         fragment.setArguments(args);
         return fragment;
+    }
+
+    private static String retrieveText(TextView textView) {
+        CharSequence t = textView.getText();
+        if (t != null) {
+            return t.toString();
+        } else {
+            return "";
+        }
     }
 
     @Override
@@ -149,36 +159,14 @@ public class EditHabitFragment extends DialogFragment {
 
         this.binding.editTitle.addTextChangedListener(new SimpleTextWatcher(editable -> {
             String newTitle = editable.toString();
-            if (newTitle.length() == 0) {
-                this.binding.layoutTitle.setErrorEnabled(true);
-                this.binding.layoutTitle.setError(this.getString(R.string.error_title_empty));
-                this.viewModel.setSaveable(false);
-            } else if (newTitle.length() > 20) {
-                this.binding.layoutTitle.setErrorEnabled(true);
-                this.binding.layoutTitle.setError(this.getString(R.string.error_title_too_long));
-                this.viewModel.setSaveable(false);
-            } else {
-                this.binding.layoutTitle.setErrorEnabled(false);
-                this.binding.layoutTitle.setError(null);
+            if (this.validateTitle(newTitle)) {
                 this.viewModel.setTitle(newTitle);
-                this.viewModel.setSaveable(true);
             }
         }));
         this.binding.editReason.addTextChangedListener(new SimpleTextWatcher(editable -> {
             String newReason = editable.toString();
-            if (newReason.length() == 0) {
-                this.binding.layoutReason.setErrorEnabled(true);
-                this.binding.layoutReason.setError(this.getString(R.string.error_reason_empty));
-                this.viewModel.setSaveable(false);
-            } else if (newReason.length() > 30) {
-                this.binding.layoutReason.setErrorEnabled(true);
-                this.binding.layoutReason.setError(this.getString(R.string.error_reason_too_long));
-                this.viewModel.setSaveable(false);
-            } else {
-                this.binding.layoutReason.setErrorEnabled(false);
-                this.binding.layoutReason.setError(null);
+            if (this.validateReason(newReason)) {
                 this.viewModel.setReason(newReason);
-                this.viewModel.setSaveable(true);
             }
         }));
         this.binding.textStartDate.setOnClickListener(this::onEditStartDateClicked);
@@ -199,7 +187,13 @@ public class EditHabitFragment extends DialogFragment {
         this.binding.buttonOnSaturday.setOnCheckedChangeListener(
                 (button, checked) -> this.viewModel.setOnSaturday(checked));
         this.binding.switchShared.setOnCheckedChangeListener((view, checked) -> this.viewModel.setShared(checked));
-        this.binding.buttonSave.setOnClickListener(view -> this.viewModel.saveHabit());
+        this.binding.buttonSave.setOnClickListener(view -> {
+            if (this.validateTitle(retrieveText(this.binding.editTitle)) &&
+                this.validateReason(retrieveText(this.binding.editReason)) &&
+                this.validateStartDate(retrieveText(this.binding.textStartDate))) {
+                this.viewModel.saveHabit();
+            }
+        });
 
         return this.binding.getRoot();
     }
@@ -227,5 +221,58 @@ public class EditHabitFragment extends DialogFragment {
                 this.getChildFragmentManager(), "DatePicker");
 
         edit.dismissDropDown();
+    }
+
+    private boolean validateTitle(String title) {
+        assert this.binding != null;
+        assert this.viewModel != null;
+
+        if (title == null || title.length() == 0) {
+            this.binding.layoutTitle.setErrorEnabled(true);
+            this.binding.layoutTitle.setError(this.getString(R.string.error_title_empty));
+            return false;
+        } else if (title.length() > 20) {
+            this.binding.layoutTitle.setErrorEnabled(true);
+            this.binding.layoutTitle.setError(this.getString(R.string.error_title_too_long));
+            return false;
+        } else {
+            this.binding.layoutTitle.setErrorEnabled(false);
+            this.binding.layoutTitle.setError(null);
+            return true;
+        }
+    }
+
+    private boolean validateReason(String reason) {
+        assert this.binding != null;
+        assert this.viewModel != null;
+
+        if (reason == null || reason.length() == 0) {
+            this.binding.layoutReason.setErrorEnabled(true);
+            this.binding.layoutReason.setError(this.getString(R.string.error_reason_empty));
+            return false;
+        } else if (reason.length() > 30) {
+            this.binding.layoutReason.setErrorEnabled(true);
+            this.binding.layoutReason.setError(this.getString(R.string.error_reason_too_long));
+            return false;
+        } else {
+            this.binding.layoutReason.setErrorEnabled(false);
+            this.binding.layoutReason.setError(null);
+            return true;
+        }
+    }
+
+    private boolean validateStartDate(String date) {
+        assert this.binding != null;
+        assert this.viewModel != null;
+
+        if (date == null || date.length() == 0) {
+            this.binding.layoutStartDate.setErrorEnabled(true);
+            this.binding.layoutStartDate.setError(this.getString(R.string.error_start_date_empty));
+            return false;
+        } else {
+            this.binding.layoutStartDate.setErrorEnabled(false);
+            this.binding.layoutStartDate.setError(null);
+            return true;
+        }
     }
 }
