@@ -10,6 +10,12 @@ public class LatLngPoint implements Serializable {
     private final double latitude;
     private final double longitude;
 
+    /**
+     * Create an instance of LatLngPoint.
+     *
+     * @param latitude  The latitude of the point.
+     * @param longitude The longitude of the point.
+     */
     public LatLngPoint(double latitude, double longitude) {
         this.latitude = latitude;
         this.longitude = longitude;
@@ -32,10 +38,16 @@ public class LatLngPoint implements Serializable {
         return Objects.hash(this.latitude, this.longitude);
     }
 
+    /**
+     * @return The latitude of the point.
+     */
     public double getLatitude() {
         return this.latitude;
     }
 
+    /**
+     * @return The longitude of the point.
+     */
     public double getLongitude() {
         return this.longitude;
     }
