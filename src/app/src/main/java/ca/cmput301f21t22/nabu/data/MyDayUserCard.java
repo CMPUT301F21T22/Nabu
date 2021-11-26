@@ -6,8 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * A data structure, holding the data needed to render a card of another user's habits in the My Day
- * View.
+ * A data object, holding the data needed to render a card of another user's habits in the My Day view.
  */
 public class MyDayUserCard {
     private final User user;
@@ -16,52 +15,51 @@ public class MyDayUserCard {
     /**
      * Create an instance of MyDayUserCard.
      *
-     * @param user The user associated with the card view.
+     * @param user       The user associated with the card view.
      * @param userHabits The habits of that user to be displayed, stored in MyDayCards.
      */
-    public MyDayUserCard(@NonNull User user, @NonNull ArrayList<MyDayCard> userHabits){
+    public MyDayUserCard(@NonNull User user, @NonNull ArrayList<MyDayCard> userHabits) {
         this.user = user;
         this.userHabits = userHabits;
     }
 
     /**
      * Return the user associated with the card.
-     * @return
-     *  The User associated with the card.
+     *
+     * @return The User associated with the card.
      */
-    public User getUser(){
+    public User getUser() {
         return this.user;
     }
 
-    public void setHabits(ArrayList<MyDayCard> userHabits){
+    public void setHabits(ArrayList<MyDayCard> userHabits) {
         this.userHabits = userHabits;
     }
 
     /**
      * Return the email of the user associated with the card.
-     * @return
-     *  The String email of the user associated with the card.
+     *
+     * @return The String email of the user associated with the card.
      */
-    public String getEmail(){
+    public String getEmail() {
         return this.user.getEmail();
     }
 
     /**
      * Return the Id of the user associated with the card.
-     * @return
-     *  The String Id of the user associated with the card.
+     *
+     * @return The String Id of the user associated with the card.
      */
-    public String getUserId(){
+    public String getUserId() {
         return this.user.getId();
     }
 
     /**
      * Return the habits associated with the user associated with the card.
-     * @return
-     *  List of the user's habits represented by MyDayCards.
+     *
+     * @return List of the user's habits represented by MyDayCards.
      */
-    public List<MyDayCard> getUserHabits(){
+    public List<MyDayCard> getUserHabits() {
         return this.userHabits;
     }
-
 }

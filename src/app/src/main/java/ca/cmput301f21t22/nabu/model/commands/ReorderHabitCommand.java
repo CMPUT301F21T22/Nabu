@@ -11,7 +11,7 @@ import ca.cmput301f21t22.nabu.model.Command;
 import ca.cmput301f21t22.nabu.model.controllers.UserController;
 
 /**
- * Used to call on controllers to change the order of a single habit in a given user.
+ * Command providing a way to change the order of a single habit in a given user.
  */
 public class ReorderHabitCommand implements Command<CompletableFuture<Boolean>> {
     @NonNull

@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * A data structure, holding the data needed to render a card in the Habits view.
+ * A data object, holding the data needed to render a card in the Habits view.
  */
 public class HabitCard {
     private boolean expanded;

@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /**
- * A data object storing a latitude and a longitude.
+ * A data object, storing a latitude and a longitude.
  */
 public class LatLngPoint implements Serializable {
     private final double latitude;

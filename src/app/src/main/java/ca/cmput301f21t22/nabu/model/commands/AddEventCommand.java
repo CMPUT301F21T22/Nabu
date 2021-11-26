@@ -12,7 +12,7 @@ import ca.cmput301f21t22.nabu.model.controllers.HabitController;
 import ca.cmput301f21t22.nabu.model.repositories.EventRepository;
 
 /**
- * Used to call on controllers to add an event to the database of habit events, and associate the new event with an
+ * Command providing a way to add an event to the database of habit events, and associate the new event with an
  * existing habit.
  */
 public class AddEventCommand implements Command<CompletableFuture<Event>> {

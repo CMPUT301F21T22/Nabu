@@ -12,7 +12,7 @@ import java.util.Objects;
 import ca.cmput301f21t22.nabu.R;
 
 /**
- * A data structure, holding the data needed to render a card in the My Day view.
+ * A data object, holding the data needed to render a card in the My Day view.
  */
 public class MyDayCard implements Serializable {
     @NonNull

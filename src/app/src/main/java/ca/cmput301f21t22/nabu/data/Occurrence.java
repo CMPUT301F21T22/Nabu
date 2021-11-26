@@ -8,7 +8,7 @@ import java.time.DayOfWeek;
 import java.util.Objects;
 
 /**
- * A data object storing the days of the week on which an event occurs.
+ * A data object, storing the days of the week on which an event occurs.
  */
 public class Occurrence implements Serializable {
     private boolean onSunday;

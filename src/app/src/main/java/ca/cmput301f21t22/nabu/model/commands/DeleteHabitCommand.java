@@ -15,7 +15,7 @@ import ca.cmput301f21t22.nabu.model.controllers.UserController;
 import ca.cmput301f21t22.nabu.model.repositories.UserRepository;
 
 /**
- * Used to call on controllers to delete a habit from the database of habits, delete any events it owns, and remove any
+ * Command providing a way to delete a habit from the database of habits, delete any events it owns, and remove any
  * references to it held by users.
  */
 public class DeleteHabitCommand implements Command<CompletableFuture<Boolean>> {

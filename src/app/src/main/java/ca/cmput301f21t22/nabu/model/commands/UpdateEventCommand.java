@@ -10,7 +10,7 @@ import ca.cmput301f21t22.nabu.model.controllers.EventController;
 import ca.cmput301f21t22.nabu.model.repositories.EventRepository;
 
 /**
- * Used to call on controllers to update an existing event.
+ * Command providing a way to update an existing event.
  */
 public class UpdateEventCommand implements Command<CompletableFuture<Event>> {
     @NonNull
