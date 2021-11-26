@@ -55,8 +55,6 @@ public class DeleteHabitCommand implements Command<CompletableFuture<Boolean>> {
      */
     @Override
     public CompletableFuture<Boolean> execute() {
-        // TODO: Refactor to use HabitController.clearEvents
-
         // The user that owns this habit.
         Optional<User> parent = this.userRepository.findUser(user -> user.getHabits().contains(this.habit.getId()));
         // The children events of the habit.
