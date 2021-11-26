@@ -14,7 +14,6 @@ import java.util.Optional;
 import java.util.concurrent.ExecutionException;
 
 import ca.cmput301f21t22.nabu.data.User;
-import ca.cmput301f21t22.nabu.model.commands.AcceptRequestCommand;
 import ca.cmput301f21t22.nabu.model.commands.RejectRequestCommand;
 import ca.cmput301f21t22.nabu.model.controllers.UserController;
 import ca.cmput301f21t22.nabu.model.repositories.UserRepository;
