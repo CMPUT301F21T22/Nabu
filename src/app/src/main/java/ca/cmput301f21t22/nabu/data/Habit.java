@@ -98,6 +98,10 @@ public class Habit implements Serializable {
         this.shared = shared;
     }
 
+    /**
+     * @return Whether two objects are structurally equivalent.
+     * @see Object#equals(Object)
+     */
     @Override
     public boolean equals(@Nullable Object o) {
         if (this == o) {
@@ -112,6 +116,10 @@ public class Habit implements Serializable {
                this.events.equals(habit.events);
     }
 
+    /**
+     * @return The hash code of the object's fields.
+     * @see Object#hashCode()
+     */
     @Override
     public int hashCode() {
         return Objects.hash(this.title, this.reason, this.startDate, this.occurrence, this.events, this.shared);

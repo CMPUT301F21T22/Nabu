@@ -32,6 +32,10 @@ public class MyDayCard implements Serializable {
         this.events = events;
     }
 
+    /**
+     * @return Whether two objects are structurally equivalent.
+     * @see Object#equals(Object)
+     */
     @Override
     public boolean equals(@Nullable Object o) {
         if (this == o) {
@@ -44,6 +48,10 @@ public class MyDayCard implements Serializable {
         return this.habit.equals(myDayCard.habit) && Arrays.equals(this.events, myDayCard.events);
     }
 
+    /**
+     * @return The hash code of the object's fields.
+     * @see Object#hashCode()
+     */
     @Override
     public int hashCode() {
         int result = Objects.hash(this.habit);

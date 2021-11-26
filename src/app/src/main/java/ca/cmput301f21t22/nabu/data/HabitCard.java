@@ -26,6 +26,10 @@ public class HabitCard {
         this.events = events;
     }
 
+    /**
+     * @return Whether two objects are structurally equivalent.
+     * @see Object#equals(Object)
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -39,6 +43,10 @@ public class HabitCard {
                this.events.equals(habitCard.events);
     }
 
+    /**
+     * @return The hash code of the object's fields.
+     * @see Object#hashCode()
+     */
     @Override
     public int hashCode() {
         return Objects.hash(this.expanded, this.habit, this.events);

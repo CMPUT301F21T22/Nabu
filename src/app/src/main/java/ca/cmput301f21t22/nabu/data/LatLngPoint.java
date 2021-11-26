@@ -21,6 +21,10 @@ public class LatLngPoint implements Serializable {
         this.longitude = longitude;
     }
 
+    /**
+     * @return Whether two objects are structurally equivalent.
+     * @see Object#equals(Object)
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -33,6 +37,10 @@ public class LatLngPoint implements Serializable {
         return Double.compare(that.latitude, this.latitude) == 0 && Double.compare(that.longitude, this.longitude) == 0;
     }
 
+    /**
+     * @return The hash code of the object's fields.
+     * @see Object#hashCode()
+     */
     @Override
     public int hashCode() {
         return Objects.hash(this.latitude, this.longitude);
