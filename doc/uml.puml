@@ -1,0 +1,350 @@
+@startuml
+
+frame "Model Data" {
+    class UserRepository {
+        + EventRepository getInstance()
+    }
+
+    class HabitRepository {
+        + EventRepository getInstance()
+    }
+
+    class EventRepository {
+        + EventRepository getInstance()
+    }
+
+    class User {
+        +<<get/set>> String id
+        +<<get/set>> String email
+        +<<get/set>> List<String> habits
+    }
+
+    class Habit {
+        +<<get/set>> String id
+        +<<get/set>> String title
+        +<<get/set>> String reason
+        +<<get/set>> Date startDate
+        +<<get/set>> Occurrence occurrence
+        +<<get/set>> List<String> events
+        +<<get/set>> boolean shared
+    }
+
+    class Event {
+        +<<get/set>> String id
+        +<<get/set>> Date date
+        +<<get/set>> String comment
+        +<<get/set>> String photoPath
+        +<<get/set>> LatLngPoint location
+    }
+
+    class Occurrence {
+        +<<get/set>> boolean onSunday
+        +<<get/set>> boolean onMonday
+        +<<get/set>> boolean onTuesday
+        +<<get/set>> boolean onWednesday
+        +<<get/set>> boolean onThursday
+        +<<get/set>> boolean onFriday
+        +<<get/set>> boolean onSaturday
+    }
+
+    class LatLngPoint {
+        +<<get>> double latitude
+        +<<get>> double longitude
+    }
+
+    class EventChronologicalComparator {
+        +int compare(Event, Event)
+    }
+
+    interface Comparator<Event> {
+        +//int compare(Event, Event)//
+    }
+
+    UserRepository "1" -- "0..*" User
+    HabitRepository "1" -- "0..*" Habit
+    EventRepository "1" -- "0..*" Event
+
+    User "1" *- "0..*" Habit : \t
+    Habit "1" *- "0..*" Event : \t
+
+    Habit "1" *-- "1" Occurrence
+    Event "1" *-- "1" LatLngPoint
+
+    Event "2" - "1" EventChronologicalComparator
+    Comparator <|-- EventChronologicalComparator : \t
+}
+
+frame "Rendering Data" {
+    class "Habit" as h2
+    class "Event" as e2
+
+    class HabitCard {
+        - Habit habit
+        - List<Event> events
+
+        + <<get/set>> boolean expanded
+        + <<get>> Habit habit
+        + <<get>> List<Event> events
+    }
+
+    HabitCard "1" o- "0..*" e2 : \t
+    HabitCard "1" o-- "1" h2
+
+    class MyDayCard {
+        - Habit habit
+        - Event[] events
+
+        + <<get>> Habit habit
+        + <<get>> Event[] events
+
+        + Icon getIcon(int pos)
+    }
+
+    enum MyDayCard.Icon {
+        INCOMPLETE
+        COMPLETE
+        FAILED
+        NOT_DUE
+
+        +<<get>> int resource
+    }
+
+    e2 "7" --o "1" MyDayCard : \t
+    h2 "1" -o "1" MyDayCard : \t
+    MyDayCard "1" *- "7" MyDayCard.Icon : \t
+    e2 "1" - "1" MyDayCard.Icon : \t
+}
+
+frame Views {
+    Fragment <|- DialogFragment
+
+    DialogFragment <|-- EditEventFragment
+    DialogFragment <|-- EditHabitFragment
+
+    Activity <|-- MainActivity
+    Fragment <|-- SocialFragment
+    Fragment <|-- SettingsFragment
+    Fragment <|-- MyDayFragment
+    Fragment <|-- HabitsFragment
+}
+
+frame ViewModels {
+    class MainViewModel {
+        + <<event>> Boolean signedIn
+
+        + void onSignIn()
+    }
+
+    MainActivity -- "1" MainViewModel
+
+    class EditEventViewModel {
+        - String id
+
+        + <<set>> Boolean saveable
+
+        + <<event>> Boolean saved
+        + <<event/set>> Date date
+        + <<event/set>> String comment
+        + <<event/set>> String photoPath
+        + <<event/set>> GeoPoint location
+
+        + void loadEvent(Event)
+        + void saveEvent()
+    }
+
+    EditEventFragment -- "1" EditEventViewModel
+
+    class EditHabitViewModel {
+        - String id
+        - List<String> events
+
+        + <<set>> Boolean saveable
+        + <<set>> User currentUser
+
+        + <<event>> Boolean saved
+        + <<event/set>> String title
+        + <<event/set>> String reason
+        + <<event/set>> Date startDate
+        + <<event/set>> Boolean onSunday
+        + <<event/set>> Boolean onMonday
+        ... repeat for days of the week
+        + <<event/set>> Boolean onSaturday
+        + <<event/set>> Boolean shared
+
+        + void loadHabit(Habit)
+        + void saveHabit()
+    }
+
+    EditHabitFragment -- "1" EditHabitViewModel
+
+    class HabitsViewModel {
+        - List<HabitCard> cardsList
+
+        + <<get/set>> User currentUser
+        + <<set>> Map<String, Habit> currentHabits
+        + <<set>> Map<String, Event> currentEvents
+
+        + <<event>> List<HabitCard> cards
+
+        + void onCardClicked(HabitCard)
+        + boolean reorderHabits(int, int)
+        + void deleteHabit(Habit)
+        + void deleteEvent(Event)
+    }
+
+    HabitsFragment -- "1" HabitsViewModel
+
+    class MyDayViewModel {
+        - List<HabitCard> cardsList
+        - List<HabitCard> followingUserCardsList
+
+        + <<get>> Event mostRecentEvent
+        + <<set>> User currentUser
+        + <<set>> Map<String, Habit> currentHabits
+        + <<set>> Map<String, Event> currentEvents
+        + <<set>> Map<String, User> allCurrentUsers
+
+        + <<event>> List<HabitCard> incompleteCards
+        + <<event>> List<HabitCard> completeCards
+
+        + <<event>> List<HabitCard> followingUserCards
+        + <<event>> List<HabitCard> completeCards
+
+        + <<event>> Boolean showEdit
+
+        + void onCardClicked(MyDayCard)
+    }
+
+    MyDayFragment -- "1" MyDayViewModel
+
+    class SettingsViewModel {
+        + <<event/set>> User currentUser
+
+        + void signOut()
+        + void reset()
+    }
+
+    SettingsFragment -- "1" SettingsViewModel
+
+    class SocialViewModel {
+        + <<get/set>> User currentUser
+        + <<set>> Map<String, User> allCurrentUsers
+
+        + <<event>> List<User> requestCards
+        + <<event>> List<User> followingCards
+
+        + void onAcceptClicked(User)
+        + void onDenyClicked(User)
+        + void onUnfollowClicked(User)
+        + void onEmailEntered(String)
+    }
+
+    SocialFragment -- "1" SocialViewModel
+
+    class "HabitCard" as hc3
+    class "MyDayCard" as mdc3
+
+    HabitsViewModel "1" *-- "0..*" hc3
+    MyDayViewModel "1" *-- "0..*" mdc3
+
+    class "User" as u3
+    
+    SocialViewModel "1" o-- "0..*" u3
+}
+
+
+frame Commands {
+    interface Command<TResult> {
+      + TResult execute()
+    }
+
+    class AddEventCommand implements Command {
+      + AddEventCommand(Habit, Event)
+      + CompletableFuture<Event> execute()
+    }
+
+    class UpdateEventCommand implements Command {
+      + UpdateEventCommand(Event)
+      + CompletableFuture<Event> execute()
+    }
+
+    class DeleteEventCommand implements Command {
+      + DeleteEventCommand(Event)
+      + CompletableFuture<Boolean> execute()
+    }
+
+    class AddHabitCommand implements Command {
+      + AddHabitCommand(User, Habit)
+      + CompletableFuture<Habit> execute()
+    }
+
+    class UpdateHabitCommand implements Command {
+      + UpdateHabitCommand(Habit)
+      + CompletableFuture<Habit> execute()
+    }
+
+    class DeleteHabitCommand implements Command {
+      + DeleteHabitCommand(Habit)
+      + CompletableFuture<Boolean> execute()
+    }
+}
+
+frame Controllers {
+    class EventController {
+      + EventController getInstance()
+
+      + CompletableFuture<Boolean> delete(String)
+      + CompletableFuture<String> update(String, Event)
+      + CompletableFuture<String> add(Event)
+    }
+
+    class HabitController {
+      + HabitController getInstance()
+
+      + CompletableFuture<Boolean> delete(String)
+      + CompletableFuture<String> update(String, Habit)
+      + CompletableFuture<String> add(Habit)
+
+      + CompletableFuture<String> addEvent(String, String)
+      + CompletableFuture<String> deleteEvent(String, String)
+    }
+
+    note right of HabitController::addEvent
+        Pushes a remote Event ID to
+        the collection of Event IDs held
+        by a Habit
+    end note
+
+    note left of HabitController::deleteEvent
+        Deletes a remote Event ID from
+        the collection of Event IDs held
+        by a Habit
+    end note
+
+    class UserController {
+      + UserController getInstance()
+
+      + CompletableFuture<String> addHabit(String, String)
+      + CompletableFuture<String> deleteHabit(String, String)
+    }
+}
+
+note bottom of Controllers
+    The Controller classes, unlike
+    Commands, operate on String IDs
+    exclusively. It is the duty of the
+    Commands to translate semantic
+    objects to-and-from their IDs.
+end note
+
+note bottom of Commands
+    The Commands also use the
+    Repositories to correlate returned
+    String IDs with their data objects,
+    but these relationships are
+    omitted for brevity.
+end note
+
+Commands o- Controllers
+
+@enduml

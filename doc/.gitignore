@@ -1,0 +1,4 @@
+**/*.vpp.*
+**/*.vux
+**/*.log
+.keystore
