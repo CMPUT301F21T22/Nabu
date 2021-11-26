@@ -30,17 +30,10 @@ public class SocialViewModel extends ViewModel {
     private User currentUser;
     @Nullable
     private Map<String, User> allCurrentUsers;
-    /*@Nullable
-    private List<User> userRequests;
-    @Nullable
-    private List<User> userFollowing;
-     */
 
     public SocialViewModel() {
         this.requestCards = new MutableLiveData<>();
         this.followingCards = new MutableLiveData<>();
-        //this.userRequests = new ArrayList<>();
-        //this.userFollowing = new ArrayList<>();
     }
 
     @NonNull
@@ -99,7 +92,7 @@ public class SocialViewModel extends ViewModel {
         }
     }
 
-    public void onDataChanged() {
+    private void onDataChanged() {
         if (this.currentUser != null && this.allCurrentUsers != null) {
             List<User> usersRequesting = new ArrayList<>();
             for (String userId : this.currentUser.getRequests()) {

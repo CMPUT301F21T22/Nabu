@@ -36,8 +36,6 @@ public class MyDayViewModel extends ViewModel {
     private final List<MyDayUserCard> followingUserCardsList;
     @NonNull
     private final MutableLiveData<List<MyDayUserCard>> followingUserCards;
-    @NonNull
-    private final MutableLiveData<List<MyDayUserCard>> generalUserCards;
 
     @Nullable
     private Event mostRecentEvent;
@@ -60,7 +58,6 @@ public class MyDayViewModel extends ViewModel {
 
         this.followingUserCardsList = new ArrayList<>();
         this.followingUserCards = new MutableLiveData<>();
-        this.generalUserCards = new MutableLiveData<>();
 
         this.mostRecentEvent = null;
         this.instantShowEdit = new MutableLiveData<>();
@@ -171,7 +168,7 @@ public class MyDayViewModel extends ViewModel {
         ArrayList<MyDayCard> habits = new ArrayList<>();
         for (String habitId : user.getHabits()) {
             Habit habit = currentSocialHabits.get(habitId);
-            if (habit != null && habit.isShared() == true) {
+            if (habit != null && habit.isShared()) {
                 LocalDate startDate = habit.getStartDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
                 if (startDate.isBefore(LocalDate.now()) || startDate.isEqual(LocalDate.now())) {
                     habits.add(this.processHabit(habit));
