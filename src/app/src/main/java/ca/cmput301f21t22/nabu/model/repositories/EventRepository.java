@@ -25,10 +25,7 @@ import ca.cmput301f21t22.nabu.data.Event;
 import ca.cmput301f21t22.nabu.data.LatLngPoint;
 
 /**
- * Retrieves event data from database
- * Deposits event data within proper event lists
- * Ensures consistency between database & local data
- * Informs listening objects of changes to the data
+ * Singleton providing methods for reading, searching, and observing the database of remote event instances.
  */
 public class EventRepository {
     @NonNull

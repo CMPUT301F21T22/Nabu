@@ -103,6 +103,10 @@ public class Event implements Serializable {
         this.location = location;
     }
 
+    /**
+     * @return Whether two objects are structurally equivalent.
+     * @see Object#equals(Object)
+     */
     @Override
     public boolean equals(@Nullable Object o) {
         if (this == o) {
@@ -116,6 +120,10 @@ public class Event implements Serializable {
                Objects.equals(this.photoPath, event.photoPath) && Objects.equals(this.location, event.location);
     }
 
+    /**
+     * @return The hash code of the object's fields.
+     * @see Object#hashCode()
+     */
     @Override
     public int hashCode() {
         return Objects.hash(this.date, this.comment, this.photoPath, this.location);

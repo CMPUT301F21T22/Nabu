@@ -13,7 +13,7 @@ import ca.cmput301f21t22.nabu.model.controllers.HabitController;
 import ca.cmput301f21t22.nabu.model.repositories.HabitRepository;
 
 /**
- * Used to call on controllers to delete an event from the database of events, and remove any references held to it by
+ * Command providing a way to delete an event from the database of events, and remove any references held to it by
  * habits.
  */
 public class DeleteEventCommand implements Command<CompletableFuture<Boolean>> {

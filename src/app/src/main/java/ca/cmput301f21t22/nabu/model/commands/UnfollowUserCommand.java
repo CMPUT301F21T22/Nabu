@@ -9,7 +9,7 @@ import ca.cmput301f21t22.nabu.model.Command;
 import ca.cmput301f21t22.nabu.model.controllers.UserController;
 
 /**
- * Used to call on controllers to unfollow a user.
+ * Command providing a way to unfollow a user from the context of a given active user.
  */
 public class UnfollowUserCommand implements Command<CompletableFuture<Boolean>> {
     @NonNull

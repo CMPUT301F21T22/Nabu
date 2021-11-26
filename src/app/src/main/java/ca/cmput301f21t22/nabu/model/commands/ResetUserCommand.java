@@ -16,7 +16,7 @@ import ca.cmput301f21t22.nabu.model.controllers.UserController;
 import ca.cmput301f21t22.nabu.model.repositories.HabitRepository;
 
 /**
- * Used to call on controllers to reset all habit and social information attached to a user.
+ * Command providing a way to reset all habit and social information attached to a user.
  */
 public class ResetUserCommand implements Command<CompletableFuture<Boolean>> {
     @NonNull

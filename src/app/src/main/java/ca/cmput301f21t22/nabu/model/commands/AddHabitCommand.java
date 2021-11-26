@@ -12,7 +12,7 @@ import ca.cmput301f21t22.nabu.model.controllers.UserController;
 import ca.cmput301f21t22.nabu.model.repositories.HabitRepository;
 
 /**
- * Used to call on controllers to add a habit to the database of habits, and associate it with an existing user.
+ * Command providing a way to add a habit to the database of habits, and associate it with an existing user.
  */
 public class AddHabitCommand implements Command<CompletableFuture<Habit>> {
     @NonNull

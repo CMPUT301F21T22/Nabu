@@ -65,6 +65,10 @@ public class User implements Serializable {
         this.requests = requests;
     }
 
+    /**
+     * @return Whether two objects are structurally equivalent.
+     * @see Object#equals(Object)
+     */
     @Override
     public boolean equals(@Nullable Object o) {
         if (this == o) {
@@ -77,6 +81,10 @@ public class User implements Serializable {
         return this.email.equals(user.email) && this.habits.equals(user.habits);
     }
 
+    /**
+     * @return The hash code of the object's fields.
+     * @see Object#hashCode()
+     */
     @Override
     public int hashCode() {
         return Objects.hash(this.email, this.habits);

@@ -9,7 +9,7 @@ import ca.cmput301f21t22.nabu.model.Command;
 import ca.cmput301f21t22.nabu.model.controllers.UserController;
 
 /**
- * Used to call on controllers to accept an incoming follow request.
+ * Command providing a way to accept an incoming follow request from the context of a given recipient user.
  */
 public class AcceptRequestCommand implements Command<CompletableFuture<Boolean>> {
     @NonNull

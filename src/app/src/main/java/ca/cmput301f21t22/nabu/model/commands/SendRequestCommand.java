@@ -9,7 +9,7 @@ import ca.cmput301f21t22.nabu.model.Command;
 import ca.cmput301f21t22.nabu.model.controllers.UserController;
 
 /**
- * Used to call on controllers to send a follow request to a user.
+ * Command providing a way to send a follow request to a user from a given user.
  */
 public class SendRequestCommand implements Command<CompletableFuture<Boolean>> {
     @NonNull

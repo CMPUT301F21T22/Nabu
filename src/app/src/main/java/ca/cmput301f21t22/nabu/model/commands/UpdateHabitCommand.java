@@ -10,7 +10,7 @@ import ca.cmput301f21t22.nabu.model.controllers.HabitController;
 import ca.cmput301f21t22.nabu.model.repositories.HabitRepository;
 
 /**
- * Used to call on controllers to update an existing habit.
+ * Command providing a way to update an existing habit.
  */
 public class UpdateHabitCommand implements Command<CompletableFuture<Habit>> {
     @NonNull

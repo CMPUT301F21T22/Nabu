@@ -30,10 +30,7 @@ import ca.cmput301f21t22.nabu.data.User;
 import ca.cmput301f21t22.nabu.model.controllers.UserController;
 
 /**
- * Retrieves user data from database
- * Deposits user data within proper event lists
- * Ensures consistency between database & local data
- * Informs listening objects of changes to the data
+ * Singleton providing methods for reading, searching, and observing the database of remote user instances.
  */
 public class UserRepository {
     @NonNull

@@ -27,10 +27,7 @@ import ca.cmput301f21t22.nabu.data.Habit;
 import ca.cmput301f21t22.nabu.data.Occurrence;
 
 /**
- * Retrieves habit data from database
- * Deposits habit data within proper event lists
- * Ensures consistency between database & local data
- * Informs listening objects of changes to the data
+ * Singleton providing methods for reading, searching, and observing the database of remote habit instances.
  */
 public class HabitRepository {
     @NonNull

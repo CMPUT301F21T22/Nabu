@@ -8,7 +8,7 @@ import java.time.DayOfWeek;
 import java.util.Objects;
 
 /**
- * A data object storing the days of the week on which an event occurs.
+ * A data object, storing the days of the week on which an event occurs.
  */
 public class Occurrence implements Serializable {
     private boolean onSunday;
@@ -59,6 +59,10 @@ public class Occurrence implements Serializable {
         this.onSaturday = onSaturday;
     }
 
+    /**
+     * @return Whether two objects are structurally equivalent.
+     * @see Object#equals(Object)
+     */
     @Override
     public boolean equals(@Nullable Object o) {
         if (this == o) {
@@ -73,6 +77,10 @@ public class Occurrence implements Serializable {
                this.onFriday == that.onFriday && this.onSaturday == that.onSaturday;
     }
 
+    /**
+     * @return The hash code of the object's fields.
+     * @see Object#hashCode()
+     */
     @Override
     public int hashCode() {
         return Objects.hash(this.onSunday, this.onMonday, this.onTuesday, this.onWednesday, this.onThursday,
