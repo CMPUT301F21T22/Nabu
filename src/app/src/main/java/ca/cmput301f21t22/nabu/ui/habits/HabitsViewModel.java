@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -94,6 +95,11 @@ public class HabitsViewModel extends ViewModel {
     }
 
     private void onDataChanged() {
+        Map<String, Boolean> cards = new HashMap<>();
+        for (HabitCard card : this.cardsList) {
+            cards.put(card.getHabit().getId(), card.isExpanded());
+        }
+
         this.cardsList.clear();
 
         if (this.currentUser != null && this.currentHabits != null) {
@@ -102,7 +108,8 @@ public class HabitsViewModel extends ViewModel {
             for (String habitId : habitIds) {
                 Habit habit = this.currentHabits.get(habitId);
                 if (habit != null) {
-                    this.cardsList.add(this.processHabit(habit));
+                    Boolean expanded = cards.getOrDefault(habitId, false);
+                    this.cardsList.add(this.processHabit(habit, expanded != null ? expanded : false));
                 }
             }
         }
@@ -111,7 +118,7 @@ public class HabitsViewModel extends ViewModel {
     }
 
     @NonNull
-    private HabitCard processHabit(@NonNull Habit habit) {
+    private HabitCard processHabit(@NonNull Habit habit, boolean expanded) {
         ArrayList<Event> events = new ArrayList<>();
         List<String> eventIds = habit.getEvents();
         if (this.currentEvents != null) {
@@ -120,6 +127,9 @@ public class HabitsViewModel extends ViewModel {
             }
         }
         events.sort(new EventChronologicalComparator());
-        return new HabitCard(habit, events);
+
+        HabitCard card = new HabitCard(habit, events);
+        card.setExpanded(expanded);
+        return card;
     }
 }

@@ -162,6 +162,7 @@ public class EditEventFragment extends DialogFragment {
             if (this.validateDate(retrieveText(this.binding.textDate)) &&
                 this.validateComment(retrieveText(this.binding.editComment))) {
                 this.viewModel.saveEvent();
+                this.dismiss();
             }
         });
 

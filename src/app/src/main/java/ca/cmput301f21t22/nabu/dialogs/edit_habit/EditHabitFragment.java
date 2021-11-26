@@ -192,6 +192,7 @@ public class EditHabitFragment extends DialogFragment {
                 this.validateReason(retrieveText(this.binding.editReason)) &&
                 this.validateStartDate(retrieveText(this.binding.textStartDate))) {
                 this.viewModel.saveHabit();
+                this.dismiss();
             }
         });
 
