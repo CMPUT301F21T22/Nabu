@@ -59,29 +59,16 @@ public class SocialFragment extends ExtendedToolbarFragment {
         this.viewModel.getFollowingCards()
                 .observe(this.getViewLifecycleOwner(), cards -> this.followingAdapter.setCards(cards));
 
-        /*
-        this.binding.pendingRequestList.setLayoutManager(new LinearLayoutManager(this.requireContext()));
-        this.binding.pendingRequestList.setAdapter(this.requestAdapter);
-
-        this.binding.followerList.setLayoutManager(new LinearLayoutManager(this.requireContext()));
-        this.binding.followerList.setAdapter(this.followingAdapter);
-         */
-
         this.binding.list.setLayoutManager(new LinearLayoutManager(this.requireContext()));
         this.binding.list.setAdapter(new ConcatAdapter(this.requestAdapter, this.followingAdapter));
 
-        //Section for email sending shtuff
+        //Section for email sending stuff
 
         this.binding.buttonAddFollowRequest.setOnClickListener(
                 view -> new FollowRequestFragment(this.viewModel::onEmailEntered).show(this.getChildFragmentManager(),
-                                                                                       "Send Follow Request"));
+                                                                                       "SendFollowRequest"));
 
         return this.binding.getRoot();
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
     }
 
     @NonNull
