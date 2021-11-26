@@ -1,11 +1,9 @@
 package ca.cmput301f21t22.nabu.dialogs.edit_habit;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -194,7 +192,7 @@ public class EditHabitFragment extends DialogFragment {
                 this.validateReason(retrieveText(this.binding.editReason)) &&
                 this.validateStartDate(retrieveText(this.binding.textStartDate))) {
                 this.viewModel.saveHabit();
-                this.hideKeyboard();
+                this.dismiss();
             }
         });
 
@@ -276,16 +274,6 @@ public class EditHabitFragment extends DialogFragment {
             this.binding.layoutStartDate.setErrorEnabled(false);
             this.binding.layoutStartDate.setError(null);
             return true;
-        }
-    }
-
-    private void hideKeyboard() {
-        assert this.binding != null;
-        InputMethodManager manager =
-                (InputMethodManager) this.requireContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-        if (manager != null) {
-            manager.hideSoftInputFromWindow(
-                    this.binding.getRoot().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
         }
     }
 }

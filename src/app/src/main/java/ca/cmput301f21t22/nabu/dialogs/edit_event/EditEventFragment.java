@@ -1,12 +1,10 @@
 package ca.cmput301f21t22.nabu.dialogs.edit_event;
 
-import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -164,7 +162,7 @@ public class EditEventFragment extends DialogFragment {
             if (this.validateDate(retrieveText(this.binding.textDate)) &&
                 this.validateComment(retrieveText(this.binding.editComment))) {
                 this.viewModel.saveEvent();
-                this.hideKeyboard();
+                this.dismiss();
             }
         });
 
@@ -243,16 +241,6 @@ public class EditEventFragment extends DialogFragment {
             this.binding.layoutComment.setErrorEnabled(false);
             this.binding.layoutComment.setError(null);
             return true;
-        }
-    }
-
-    private void hideKeyboard() {
-        assert this.binding != null;
-        InputMethodManager manager =
-                (InputMethodManager) this.requireContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-        if (manager != null) {
-            manager.hideSoftInputFromWindow(
-                    this.binding.getRoot().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
         }
     }
 }
