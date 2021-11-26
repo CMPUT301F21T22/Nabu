@@ -61,6 +61,8 @@ public class RejectRequestCommandTest extends AuthenticatedFirestoreTest{
     public void RejectRequest() throws ExecutionException, InterruptedException {
         assertTrue(new RejectRequestCommand(this.user1, this.user2).execute().get());
 
+        await().until(() -> this.userRepository.retrieveUser(this.user2.getId()).get().getRequests().size() == 0);
+
         User u1 = this.userRepository.retrieveUser(this.user1.getId()).get();
         User u2 = this.userRepository.retrieveUser(this.user2.getId()).get();
 
