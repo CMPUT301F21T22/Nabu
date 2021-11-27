@@ -37,7 +37,7 @@ import ca.cmput301f21t22.nabu.TestResources.DateProvider;
  */
 public class MyDayFragmentTest {
     private Solo solo;
-    private DateProvider dateProvider;
+    private DateProvider dateProvider = new DateProvider();
     @Rule
     public ActivityTestRule<MainActivity> rule =
             new ActivityTestRule<>(MainActivity.class, true, true);

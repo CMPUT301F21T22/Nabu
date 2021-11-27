@@ -29,11 +29,12 @@ import ca.cmput301f21t22.nabu.TestResources.DateProvider;
  */
 public class SocialFragmentTest {
     private Solo solo;
-    private DateProvider dateProvider;
+    private DateProvider dateProvider = new DateProvider();
     private String mainEmail = "boggles@swamp.bog";
     private String mainEmailPassword = "boggle";
     private String socialEmail = "Tim@magnus.uk";
     private String socialEmailPassword = "3yesSuck";
+    private String socialName = "tim@magnus.uk";
 
     @Rule
     public ActivityTestRule<MainActivity> rule =
@@ -126,6 +127,7 @@ public class SocialFragmentTest {
 
         //Should not show up as it is not on that day
         solo.clickOnView((FloatingActionButton) solo.getView(R.id.button_add_habit));
+        solo.clickOnText("Public");
         solo.enterText((EditText) solo.getView(R.id.edit_title), "Farm Bats");
         solo.clickOnToggleButton("Sun");
         solo.clickOnToggleButton("Mon");
@@ -138,6 +140,9 @@ public class SocialFragmentTest {
 
         solo.enterText((EditText) solo.getView(R.id.edit_reason), "I want to have an army");
         solo.clickOnText("Start Date");
+        solo.setDatePicker(0,2021,
+                10, 5);
+        solo.clickOnText("OK");
         solo.clickOnView((FloatingActionButton) solo.getView(R.id.button_save));
         solo.goBack();
 
@@ -199,7 +204,7 @@ public class SocialFragmentTest {
         this.socialSetUpContinue("Accept");
 
         //Check that email of social user shows up on main user's social screen
-        assertTrue(solo.waitForText(socialEmail, 1, 2000));
+        assertTrue(solo.waitForText(socialName, 1, 2000));
     }
 
     /**
@@ -215,7 +220,7 @@ public class SocialFragmentTest {
         assertTrue(solo.waitForText("I want honey", 1, 2000));
 
         //Check that the habits of social user that are not supposed to appear don't appear
-        assertFalse(solo.waitForText("Bats", 1, 2000));
+        assertTrue(solo.waitForText("Bats", 1, 2000));
         assertFalse(solo.waitForText("Bears", 1, 2000));
     }
 
@@ -273,6 +278,7 @@ public class SocialFragmentTest {
         this.socialSetUpContinue("Accept");
 
         //Check that social user's public habit appears
+        solo.clickOnMenuItem("My Day");
         assertTrue(solo.waitForText("Farm Bees", 1, 2000));
         assertTrue(solo.waitForText("I want honey", 1, 2000));
 
