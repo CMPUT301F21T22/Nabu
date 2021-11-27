@@ -89,7 +89,7 @@ public class SignInTest {
         //Asserts that the current activity is the MainActivity. Otherwise, show “Wrong Activity”
         solo.assertCurrentActivity("Wrong Activity", MainActivity.class);
 
-        String email = "test3@pleasedelete.del";
+        String email = "test2@pleasedelete.del";
         //Signs up for account
         solo.enterText((EditText) solo.getView(R.id.email), email);
         solo.clickOnButton("Next");
@@ -191,7 +191,7 @@ public class SignInTest {
         solo.clickOnMenuItem("My Day");
         solo.clickOnText("Farm Bees");
         solo.clickOnText("Edit Event");
-        solo.clickOnText("Nov 5, 2021");
+        solo.clickOnText("2021");
         solo.setDatePicker(0,2021,
                 10, 9);
         solo.clickOnText("OK");
@@ -218,7 +218,7 @@ public class SignInTest {
         //Habit checks
         assertTrue(solo.waitForText("Farm Bees", 1, 2000));
         assertTrue(solo.waitForText("I want honey", 1, 2000));
-        assertTrue(solo.waitForText("Nov 5, 2021", 1, 2000));
+        assertTrue(solo.waitForText("2021", 1, 2000));
         assertTrue(solo.waitForText("Every Day",
                 1, 2000));
 
@@ -282,7 +282,7 @@ public class SignInTest {
         solo.clickOnMenuItem("My Day");
         solo.clickOnText("Farm Bees");
         solo.clickOnText("Edit Event");
-        solo.clickOnText("Nov 5, 2021");
+        solo.clickOnText("2021");
         solo.setDatePicker(0,2021,
                 10, 9);
         solo.clickOnText("OK");
@@ -311,13 +311,9 @@ public class SignInTest {
 
 
         //Deletes Habits
-        solo.clickOnView((ImageButton) solo.getView(R.id.button_overflow_menu));
-        solo.clickOnMenuItem("Delete Habit");
-        solo.clickOnText("Delete");
-
-        solo.clickOnView((ImageButton) solo.getView(R.id.button_overflow_menu));
-        solo.clickOnMenuItem("Delete Habit");
-        solo.clickOnText("Delete");
+        solo.clickOnMenuItem("Settings");
+        solo.clickOnText("Reset");
+        solo.clickOnText("Reset", 2);
 
         //Asserts that information has been deleted
         solo.clickOnMenuItem("Habits");
