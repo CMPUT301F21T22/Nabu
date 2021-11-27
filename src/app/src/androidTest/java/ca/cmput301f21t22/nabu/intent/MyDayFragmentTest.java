@@ -48,7 +48,7 @@ public class MyDayFragmentTest {
      */
     public String getCurrentDay(){
         Calendar calendar = Calendar.getInstance();
-        int dayOfWeek = Calendar.DAY_OF_WEEK - 1;
+        int dayOfWeek = Calendar.DAY_OF_WEEK;
         String day;
         if (dayOfWeek == Calendar.SUNDAY) {
             day = "Sun";
@@ -179,21 +179,6 @@ public class MyDayFragmentTest {
         assertTrue(solo.waitForText("Farm Bees", 1, 2000));
         assertTrue(solo.waitForText("Farm Hornets", 1, 2000));
         assertFalse(solo.waitForText("Farm Wasps", 1, 2000));
-
-        //Deletes Habits
-        solo.clickOnMenuItem("Habits");
-
-        solo.clickOnView((ImageButton) solo.getView(R.id.button_overflow_menu));
-        solo.clickOnMenuItem("Delete Habit");
-        solo.clickOnText("Delete");
-
-        solo.clickOnView((ImageButton) solo.getView(R.id.button_overflow_menu));
-        solo.clickOnMenuItem("Delete Habit");
-        solo.clickOnText("Delete");
-
-        solo.clickOnView((ImageButton) solo.getView(R.id.button_overflow_menu));
-        solo.clickOnMenuItem("Delete Habit");
-        solo.clickOnText("Delete");
     }
 
     /**
@@ -267,12 +252,6 @@ public class MyDayFragmentTest {
         assertTrue(solo.waitForText("Habit marked as complete", 1,
                 2000));
         solo.clickOnText("Farm Bees");
-
-        //Deletes Habit
-        solo.clickOnMenuItem("Habits");
-        solo.clickOnView((ImageButton) solo.getView(R.id.button_overflow_menu));
-        solo.clickOnMenuItem("Delete Habit");
-        solo.clickOnText("Delete");
     }
 
     /**
@@ -283,6 +262,8 @@ public class MyDayFragmentTest {
     @After
     public void tearDown() throws Exception {
         solo.clickOnMenuItem("Settings");
+        solo.clickOnText("Reset");
+        solo.clickOnText("Reset", 2);
         solo.clickOnText("Sign out");
         solo.clickOnText("Sign", 3);
         solo.finishOpenedActivities();
