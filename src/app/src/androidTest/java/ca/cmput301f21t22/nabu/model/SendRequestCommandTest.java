@@ -14,7 +14,6 @@ import java.util.concurrent.ExecutionException;
 
 import ca.cmput301f21t22.nabu.data.User;
 import ca.cmput301f21t22.nabu.model.commands.SendRequestCommand;
-import ca.cmput301f21t22.nabu.model.controllers.UserController;
 import ca.cmput301f21t22.nabu.model.repositories.UserRepository;
 
 public class SendRequestCommandTest extends AuthenticatedFirestoreTest {
@@ -28,7 +27,6 @@ public class SendRequestCommandTest extends AuthenticatedFirestoreTest {
         this.userRepository = UserRepository.getInstance();
 
         // Setup test situation.
-        UserController userController = UserController.getInstance();
         try {
             this.createUser("test1@example.com", "password1");
             this.createUser("test2@example.com", "password2");

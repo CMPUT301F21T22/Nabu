@@ -162,7 +162,7 @@ public class HabitRepositoryTest extends FirestoreTest {
         map1.put("shared", true);
         this.collection.document("Habit1").set(map1);
 
-        Map<String, Object> map2 = new HashMap<>();
+
         map1.put("title", "Some title 2");
         map1.put("reason", "Some reason 2");
         map1.put("startDate", new Timestamp(new GregorianCalendar(1983, 6, 23).getTime()));
