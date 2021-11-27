@@ -1,7 +1,9 @@
 package ca.cmput301f21t22.nabu;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
@@ -26,6 +28,8 @@ public class OccurrenceTest {
 
         assertEquals(new Occurrence(false, false, false,
                 false, false, false, false), occurrence1);
+        assertEquals(occurrence2,new Occurrence(false, true, true,
+                false, false, true, false));
     }
 
 
@@ -74,19 +78,19 @@ public class OccurrenceTest {
         Occurrence occurrence = new Occurrence();
         Occurrence occurrence1 = new Occurrence(true, false, false,
                 false, false, false, false);
-        assertEquals(false, occurrence.isOnSunday());
-        assertEquals(true, occurrence1.isOnSunday());
+        assertFalse(occurrence.isOnSunday());
+        assertTrue(occurrence1.isOnSunday());
 
         occurrence.setOnSunday(true);
         occurrence1.setOnSunday(false);
-        assertEquals(true, occurrence.isOnSunday());
-        assertEquals(false, occurrence1.isOnSunday());
+        assertTrue(occurrence.isOnSunday());
+        assertFalse(occurrence1.isOnSunday());
 
         //Repeat to make sure function does not just reverse the value at each call
         occurrence.setOnSunday(true);
         occurrence1.setOnSunday(false);
-        assertEquals(true, occurrence.isOnSunday());
-        assertEquals(false, occurrence1.isOnSunday());
+        assertTrue(occurrence.isOnSunday());
+        assertFalse(occurrence1.isOnSunday());
     }
 
     @Test
@@ -94,19 +98,19 @@ public class OccurrenceTest {
         Occurrence occurrence = new Occurrence();
         Occurrence occurrence1 = new Occurrence(false, true, false,
                 false, false, false, false);
-        assertEquals(false, occurrence.isOnMonday());
-        assertEquals(true, occurrence1.isOnMonday());
+        assertFalse(occurrence.isOnMonday());
+        assertTrue(occurrence1.isOnMonday());
 
         occurrence.setOnMonday(true);
         occurrence1.setOnMonday(false);
-        assertEquals(true, occurrence.isOnMonday());
-        assertEquals(false, occurrence1.isOnMonday());
+        assertTrue(occurrence.isOnMonday());
+        assertFalse(occurrence1.isOnMonday());
 
         //Repeat to make sure function does not just reverse the value at each call
         occurrence.setOnMonday(true);
         occurrence1.setOnMonday(false);
-        assertEquals(true, occurrence.isOnMonday());
-        assertEquals(false, occurrence1.isOnMonday());
+        assertTrue(occurrence.isOnMonday());
+        assertFalse(occurrence1.isOnMonday());
     }
 
     @Test
@@ -114,19 +118,19 @@ public class OccurrenceTest {
         Occurrence occurrence = new Occurrence();
         Occurrence occurrence1 = new Occurrence(false, false, true,
                 false, false, false, false);
-        assertEquals(false, occurrence.isOnTuesday());
-        assertEquals(true, occurrence1.isOnTuesday());
+        assertFalse(occurrence.isOnTuesday());
+        assertTrue(occurrence1.isOnTuesday());
 
         occurrence.setOnTuesday(true);
         occurrence1.setOnTuesday(false);
-        assertEquals(true, occurrence.isOnTuesday());
-        assertEquals(false, occurrence1.isOnTuesday());
+        assertTrue(occurrence.isOnTuesday());
+        assertFalse(occurrence1.isOnTuesday());
 
         //Repeat to make sure function does not just reverse the value at each call
         occurrence.setOnTuesday(true);
         occurrence1.setOnTuesday(false);
-        assertEquals(true, occurrence.isOnTuesday());
-        assertEquals(false, occurrence1.isOnTuesday());
+        assertTrue(occurrence.isOnTuesday());
+        assertFalse(occurrence1.isOnTuesday());
     }
 
     @Test
@@ -134,19 +138,19 @@ public class OccurrenceTest {
         Occurrence occurrence = new Occurrence();
         Occurrence occurrence1 = new Occurrence(false, false, false,
                 true, false, false, false);
-        assertEquals(false, occurrence.isOnWednesday());
-        assertEquals(true, occurrence1.isOnWednesday());
+        assertFalse(occurrence.isOnWednesday());
+        assertTrue(occurrence1.isOnWednesday());
 
         occurrence.setOnWednesday(true);
         occurrence1.setOnWednesday(false);
-        assertEquals(true, occurrence.isOnWednesday());
-        assertEquals(false, occurrence1.isOnWednesday());
+        assertTrue(occurrence.isOnWednesday());
+        assertFalse(occurrence1.isOnWednesday());
 
         //Repeat to make sure function does not just reverse the value at each call
         occurrence.setOnWednesday(true);
         occurrence1.setOnWednesday(false);
-        assertEquals(true, occurrence.isOnWednesday());
-        assertEquals(false, occurrence1.isOnWednesday());
+        assertTrue(occurrence.isOnWednesday());
+        assertFalse(occurrence1.isOnWednesday());
     }
 
     @Test
@@ -154,19 +158,19 @@ public class OccurrenceTest {
         Occurrence occurrence = new Occurrence();
         Occurrence occurrence1 = new Occurrence(false, false, false,
                 false, true, false, false);
-        assertEquals(false, occurrence.isOnThursday());
-        assertEquals(true, occurrence1.isOnThursday());
+        assertFalse(occurrence.isOnThursday());
+        assertTrue(occurrence1.isOnThursday());
 
         occurrence.setOnThursday(true);
         occurrence1.setOnThursday(false);
-        assertEquals(true, occurrence.isOnThursday());
-        assertEquals(false, occurrence1.isOnThursday());
+        assertTrue(occurrence.isOnThursday());
+        assertFalse(occurrence1.isOnThursday());
 
         //Repeat to make sure function does not just reverse the value at each call
         occurrence.setOnThursday(true);
         occurrence1.setOnThursday(false);
-        assertEquals(true, occurrence.isOnThursday());
-        assertEquals(false, occurrence1.isOnThursday());
+        assertTrue(occurrence.isOnThursday());
+        assertFalse(occurrence1.isOnThursday());
     }
 
     @Test
@@ -174,19 +178,19 @@ public class OccurrenceTest {
         Occurrence occurrence = new Occurrence();
         Occurrence occurrence1 = new Occurrence(false, false, false,
                 false, false, true, false);
-        assertEquals(false, occurrence.isOnFriday());
-        assertEquals(true, occurrence1.isOnFriday());
+        assertFalse(occurrence.isOnFriday());
+        assertTrue(occurrence1.isOnFriday());
 
         occurrence.setOnFriday(true);
         occurrence1.setOnFriday(false);
-        assertEquals(true, occurrence.isOnFriday());
-        assertEquals(false, occurrence1.isOnFriday());
+        assertTrue(occurrence.isOnFriday());
+        assertFalse(occurrence1.isOnFriday());
 
         //Repeat to make sure function does not just reverse the value at each call
         occurrence.setOnFriday(true);
         occurrence1.setOnFriday(false);
-        assertEquals(true, occurrence.isOnFriday());
-        assertEquals(false, occurrence1.isOnFriday());
+        assertTrue(occurrence.isOnFriday());
+        assertFalse(occurrence1.isOnFriday());
     }
 
     @Test
@@ -194,73 +198,73 @@ public class OccurrenceTest {
         Occurrence occurrence = new Occurrence();
         Occurrence occurrence1 = new Occurrence(false, false, false,
                 false, false, false, true);
-        assertEquals(false, occurrence.isOnSaturday());
-        assertEquals(true, occurrence1.isOnSaturday());
+        assertFalse(occurrence.isOnSaturday());
+        assertTrue(occurrence1.isOnSaturday());
 
         occurrence.setOnSaturday(true);
         occurrence1.setOnSaturday(false);
-        assertEquals(true, occurrence.isOnSaturday());
-        assertEquals(false, occurrence1.isOnSaturday());
+        assertTrue(occurrence.isOnSaturday());
+        assertFalse(occurrence1.isOnSaturday());
 
         //Repeat to make sure function does not just reverse the value at each call
         occurrence.setOnSaturday(true);
         occurrence1.setOnSaturday(false);
-        assertEquals(true, occurrence.isOnSaturday());
-        assertEquals(false, occurrence1.isOnSaturday());
+        assertTrue(occurrence.isOnSaturday());
+        assertFalse(occurrence1.isOnSaturday());
     }
 
     @Test
     public void testIsOnDayOfWeek() {
         Occurrence occurrence = new Occurrence();
 
-        assertEquals(false, occurrence.isOnDayOfWeek(DayOfWeek.SUNDAY));
+        assertFalse(occurrence.isOnDayOfWeek(DayOfWeek.SUNDAY));
         occurrence.setOnSunday(true);
-        assertEquals(true, occurrence.isOnDayOfWeek(DayOfWeek.SUNDAY));
+        assertTrue(occurrence.isOnDayOfWeek(DayOfWeek.SUNDAY));
 
-        assertEquals(false, occurrence.isOnDayOfWeek(DayOfWeek.MONDAY));
+        assertFalse(occurrence.isOnDayOfWeek(DayOfWeek.MONDAY));
         occurrence.setOnMonday(true);
-        assertEquals(true, occurrence.isOnDayOfWeek(DayOfWeek.MONDAY));
+        assertTrue(occurrence.isOnDayOfWeek(DayOfWeek.MONDAY));
 
-        assertEquals(false, occurrence.isOnDayOfWeek(DayOfWeek.TUESDAY));
+        assertFalse(occurrence.isOnDayOfWeek(DayOfWeek.TUESDAY));
         occurrence.setOnTuesday(true);
-        assertEquals(true, occurrence.isOnDayOfWeek(DayOfWeek.TUESDAY));
+        assertTrue(occurrence.isOnDayOfWeek(DayOfWeek.TUESDAY));
 
-        assertEquals(false, occurrence.isOnDayOfWeek(DayOfWeek.WEDNESDAY));
+        assertFalse(occurrence.isOnDayOfWeek(DayOfWeek.WEDNESDAY));
         occurrence.setOnWednesday(true);
-        assertEquals(true, occurrence.isOnDayOfWeek(DayOfWeek.WEDNESDAY));
+        assertTrue(occurrence.isOnDayOfWeek(DayOfWeek.WEDNESDAY));
 
-        assertEquals(false, occurrence.isOnDayOfWeek(DayOfWeek.THURSDAY));
+        assertFalse(occurrence.isOnDayOfWeek(DayOfWeek.THURSDAY));
         occurrence.setOnThursday(true);
-        assertEquals(true, occurrence.isOnDayOfWeek(DayOfWeek.THURSDAY));
+        assertTrue(occurrence.isOnDayOfWeek(DayOfWeek.THURSDAY));
 
-        assertEquals(false, occurrence.isOnDayOfWeek(DayOfWeek.FRIDAY));
+        assertFalse(occurrence.isOnDayOfWeek(DayOfWeek.FRIDAY));
         occurrence.setOnFriday(true);
-        assertEquals(true, occurrence.isOnDayOfWeek(DayOfWeek.FRIDAY));
+        assertTrue(occurrence.isOnDayOfWeek(DayOfWeek.FRIDAY));
 
-        assertEquals(false, occurrence.isOnDayOfWeek(DayOfWeek.SATURDAY));
+        assertFalse(occurrence.isOnDayOfWeek(DayOfWeek.SATURDAY));
         occurrence.setOnSaturday(true);
-        assertEquals(true, occurrence.isOnDayOfWeek(DayOfWeek.SATURDAY));
+        assertTrue(occurrence.isOnDayOfWeek(DayOfWeek.SATURDAY));
 
         Occurrence occurrence1 = new Occurrence(true, true, true,
                 true, false, false, false);
         Occurrence occurrence2 = new Occurrence(false, false, false,
                 false, true, true, true);
 
-        assertEquals(true, occurrence1.isOnDayOfWeek(DayOfWeek.SUNDAY));
-        assertEquals(true, occurrence1.isOnDayOfWeek(DayOfWeek.MONDAY));
-        assertEquals(true, occurrence1.isOnDayOfWeek(DayOfWeek.TUESDAY));
-        assertEquals(true, occurrence1.isOnDayOfWeek(DayOfWeek.WEDNESDAY));
-        assertEquals(false, occurrence1.isOnDayOfWeek(DayOfWeek.THURSDAY));
-        assertEquals(false, occurrence1.isOnDayOfWeek(DayOfWeek.FRIDAY));
-        assertEquals(false, occurrence1.isOnDayOfWeek(DayOfWeek.SATURDAY));
+        assertTrue(occurrence1.isOnDayOfWeek(DayOfWeek.SUNDAY));
+        assertTrue(occurrence1.isOnDayOfWeek(DayOfWeek.MONDAY));
+        assertTrue(occurrence1.isOnDayOfWeek(DayOfWeek.TUESDAY));
+        assertTrue(occurrence1.isOnDayOfWeek(DayOfWeek.WEDNESDAY));
+        assertFalse(occurrence1.isOnDayOfWeek(DayOfWeek.THURSDAY));
+        assertFalse(occurrence1.isOnDayOfWeek(DayOfWeek.FRIDAY));
+        assertFalse(occurrence1.isOnDayOfWeek(DayOfWeek.SATURDAY));
 
-        assertEquals(false, occurrence2.isOnDayOfWeek(DayOfWeek.SUNDAY));
-        assertEquals(false, occurrence2.isOnDayOfWeek(DayOfWeek.MONDAY));
-        assertEquals(false, occurrence2.isOnDayOfWeek(DayOfWeek.TUESDAY));
-        assertEquals(false, occurrence2.isOnDayOfWeek(DayOfWeek.WEDNESDAY));
-        assertEquals(true, occurrence2.isOnDayOfWeek(DayOfWeek.THURSDAY));
-        assertEquals(true, occurrence2.isOnDayOfWeek(DayOfWeek.FRIDAY));
-        assertEquals(true, occurrence2.isOnDayOfWeek(DayOfWeek.SATURDAY));
+        assertFalse(occurrence2.isOnDayOfWeek(DayOfWeek.SUNDAY));
+        assertFalse(occurrence2.isOnDayOfWeek(DayOfWeek.MONDAY));
+        assertFalse(occurrence2.isOnDayOfWeek(DayOfWeek.TUESDAY));
+        assertFalse(occurrence2.isOnDayOfWeek(DayOfWeek.WEDNESDAY));
+        assertTrue(occurrence2.isOnDayOfWeek(DayOfWeek.THURSDAY));
+        assertTrue(occurrence2.isOnDayOfWeek(DayOfWeek.FRIDAY));
+        assertTrue(occurrence2.isOnDayOfWeek(DayOfWeek.SATURDAY));
     }
 
     @Test
@@ -282,15 +286,15 @@ public class OccurrenceTest {
         Occurrence occurrence8 = new Occurrence(true, true,
                 true, true, true, true, false);
 
-        assertEquals(true, occurrence1.equals(new Occurrence(true, true,
-                true, true, true, true, true)));
-        assertEquals(false, occurrence1.equals(occurrence2));
-        assertEquals(false, occurrence1.equals(occurrence3));
-        assertEquals(false, occurrence1.equals(occurrence4));
-        assertEquals(false, occurrence1.equals(occurrence5));
-        assertEquals(false, occurrence1.equals(occurrence6));
-        assertEquals(false, occurrence1.equals(occurrence7));
-        assertEquals(false, occurrence1.equals(occurrence8));
+        assertEquals(occurrence1, new Occurrence(true, true,
+                true, true, true, true, true));
+        assertNotEquals(occurrence1, occurrence2);
+        assertNotEquals(occurrence1, occurrence3);
+        assertNotEquals(occurrence1, occurrence4);
+        assertNotEquals(occurrence1, occurrence5);
+        assertNotEquals(occurrence1, occurrence6);
+        assertNotEquals(occurrence1, occurrence7);
+        assertNotEquals(occurrence1, occurrence8);
 
         Occurrence occurrence9 = new Occurrence();
         Occurrence occurrence10 = new Occurrence();
@@ -308,14 +312,14 @@ public class OccurrenceTest {
         Occurrence occurrence16 = new Occurrence();
         occurrence16.setOnSaturday(true);
 
-        assertEquals(true, occurrence9.equals(new Occurrence()));
-        assertEquals(false, occurrence9.equals(occurrence10));
-        assertEquals(false, occurrence9.equals(occurrence11));
-        assertEquals(false, occurrence9.equals(occurrence12));
-        assertEquals(false, occurrence9.equals(occurrence13));
-        assertEquals(false, occurrence9.equals(occurrence14));
-        assertEquals(false, occurrence9.equals(occurrence15));
-        assertEquals(false, occurrence9.equals(occurrence16));
+        assertEquals(occurrence9, new Occurrence());
+        assertNotEquals(occurrence9, occurrence10);
+        assertNotEquals(occurrence9, occurrence11);
+        assertNotEquals(occurrence9, occurrence12);
+        assertNotEquals(occurrence9, occurrence13);
+        assertNotEquals(occurrence9, occurrence14);
+        assertNotEquals(occurrence9, occurrence15);
+        assertNotEquals(occurrence9, occurrence16);
     }
 
 
