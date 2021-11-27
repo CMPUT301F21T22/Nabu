@@ -63,6 +63,8 @@ public class HabitsFragmentTest {
 
             //Logs out user
             solo.clickOnMenuItem("Settings");
+            solo.clickOnText("Reset");
+            solo.clickOnText("Reset", 2);
             solo.clickOnText("Sign out");
             solo.clickOnText("Sign", 3);
         }
