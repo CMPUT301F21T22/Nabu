@@ -437,7 +437,7 @@ public class HabitsFragmentTest {
     public void tearDown() throws Exception {
         solo.clickOnMenuItem("Settings");
         solo.clickOnText("Reset");
-        solo.clickOnText("Reset");
+        solo.clickOnText("Reset", 2);
         solo.clickOnText("Sign out");
         solo.clickOnText("Sign", 3);
         solo.finishOpenedActivities();
