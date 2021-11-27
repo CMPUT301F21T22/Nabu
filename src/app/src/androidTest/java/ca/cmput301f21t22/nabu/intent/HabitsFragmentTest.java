@@ -21,6 +21,8 @@ import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 
+import java.util.Date;
+
 import ca.cmput301f21t22.nabu.MainActivity;
 import ca.cmput301f21t22.nabu.R;
 
@@ -31,6 +33,7 @@ import ca.cmput301f21t22.nabu.R;
  */
 public class HabitsFragmentTest {
     private Solo solo;
+
     @Rule
     public ActivityTestRule<MainActivity> rule =
             new ActivityTestRule<>(MainActivity.class, true, true);
@@ -114,7 +117,7 @@ public class HabitsFragmentTest {
         //Asserts Habit is on screen and has the relevant information
         assertTrue(solo.waitForText("Farm Bees", 1, 2000));
         assertTrue(solo.waitForText("I want honey", 1, 2000));
-        assertTrue(solo.waitForText("Nov 5, 2021", 1, 2000));
+        assertTrue(solo.waitForText("2021", 1, 2000));
         assertTrue(solo.waitForText("Every Day",
                 1, 2000));
 
@@ -144,9 +147,6 @@ public class HabitsFragmentTest {
         assertTrue(solo.waitForText("Sun, Mon, Tues, Thu, Fri, Sat",
                 1, 2000));
 
-        solo.clickOnView((ImageButton) solo.getView(R.id.button_overflow_menu));
-        solo.clickOnMenuItem("Delete Habit");
-        solo.clickOnText("Delete");
         solo.clickOnView((ImageButton) solo.getView(R.id.button_overflow_menu));
         solo.clickOnMenuItem("Delete Habit");
         solo.clickOnText("Delete");
@@ -187,7 +187,7 @@ public class HabitsFragmentTest {
         solo.clickOnMenuItem("My Day");
         solo.clickOnText("Farm Bees");
         solo.clickOnText("Edit Event");
-        solo.clickOnText("Nov 5, 2021");
+        solo.clickOnText("2021");
         solo.setDatePicker(0,2021,
                 10, 9);
         solo.clickOnText("OK");
@@ -203,10 +203,9 @@ public class HabitsFragmentTest {
         assertTrue(solo.waitForText("Bought Bees", 1, 2000));
         assertTrue(solo.waitForText("Nov 9, 2021", 1, 2000));
 
-        solo.clickOnView((ImageButton) solo.getView(R.id.button_overflow_menu));
-        solo.clickOnMenuItem("Delete Habit");
-        solo.clickOnText("Delete");
+        solo.goBack();
     }
+
     /**
      * Creates a Habit
      * Deletes the Habit
@@ -277,7 +276,7 @@ public class HabitsFragmentTest {
         solo.clickOnMenuItem("My Day");
         solo.clickOnText("Farm Bees");
         solo.clickOnText("Edit Event");
-        solo.clickOnText("Nov 5, 2021");
+        solo.clickOnText("2021");
         solo.setDatePicker(0,2021,
                 10, 9);
         solo.clickOnText("OK");
@@ -290,7 +289,9 @@ public class HabitsFragmentTest {
         solo.clickOnView((ImageButton) solo.getView(R.id.button_overflow_menu));
         solo.clickOnMenuItem("View Events");
 
-        solo.clickOnImageButton(1);
+        //TODO: Issue, can not find proper index for event overflow menu, and cannot seem to press
+        // it otherwise
+        solo.clickOnImageButton(3);
         solo.clickOnMenuItem("Delete Event");
         solo.clickOnText("Delete");
 
@@ -302,10 +303,6 @@ public class HabitsFragmentTest {
         //TODO: Issue, text not on screen but solo still returns as true
         assertFalse(solo.waitForText("Bought Bees", 1, 2000));
         assertFalse(solo.waitForText("Nov 9, 2021", 1, 2000));
-
-        solo.clickOnView((ImageButton) solo.getView(R.id.button_overflow_menu));
-        solo.clickOnMenuItem("Delete Habit");
-        solo.clickOnText("Delete");
     }
     /**
      * Creates a Habit
@@ -361,11 +358,6 @@ public class HabitsFragmentTest {
         assertTrue(solo.waitForText("Nov 9, 2021", 1, 2000));
         assertTrue(solo.waitForText("Fri, Sat",
                 1, 2000));
-
-        //Deletes Habit
-        solo.clickOnView((ImageButton) solo.getView(R.id.button_overflow_menu));
-        solo.clickOnMenuItem("Delete Habit");
-        solo.clickOnText("Delete");
     }
 
     /**
@@ -403,7 +395,7 @@ public class HabitsFragmentTest {
         solo.clickOnMenuItem("My Day");
         solo.clickOnText("Farm Bees");
         solo.clickOnText("Edit Event");
-        solo.clickOnText("Nov 5, 2021");
+        solo.clickOnText("2021");
         solo.setDatePicker(0,2021,
                 10, 9);
         solo.clickOnText("OK");
@@ -416,6 +408,8 @@ public class HabitsFragmentTest {
         solo.clickOnView((ImageButton) solo.getView(R.id.button_overflow_menu));
         solo.clickOnMenuItem("View Events");
 
+        //TODO: Issue, can not find proper index for event overflow menu, and cannot seem to press
+        // it otherwise
         solo.clickOnImageButton(1);
         solo.clickOnMenuItem("Edit Event");
         solo.clickOnView(solo.getView(R.id.text_date));
@@ -432,12 +426,6 @@ public class HabitsFragmentTest {
         solo.clickOnMenuItem("View Events");
         assertTrue(solo.waitForText("Getting new bees", 1, 2000));
         assertTrue(solo.waitForText("Dec 15, 2021", 1, 2000));
-
-
-        //Deletes Habit
-        solo.clickOnView((ImageButton) solo.getView(R.id.button_overflow_menu));
-        solo.clickOnMenuItem("Delete Habit");
-        solo.clickOnText("Delete");
     }
 
     /**
@@ -448,6 +436,8 @@ public class HabitsFragmentTest {
     @After
     public void tearDown() throws Exception {
         solo.clickOnMenuItem("Settings");
+        solo.clickOnText("Reset");
+        solo.clickOnText("Reset");
         solo.clickOnText("Sign out");
         solo.clickOnText("Sign", 3);
         solo.finishOpenedActivities();
