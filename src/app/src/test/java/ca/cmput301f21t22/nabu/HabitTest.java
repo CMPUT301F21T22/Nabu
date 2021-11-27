@@ -3,6 +3,7 @@ package ca.cmput301f21t22.nabu;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
@@ -20,9 +21,21 @@ public class HabitTest {
     @Test
     public void testCreate() {
         List<String> events = new ArrayList<>();
-        Habit habit1 = new Habit();
-        Habit habit2 = new Habit("Pet Dog", "They're a good boy", new Date(), new Occurrence(), events, false);
-        Habit habit3 = new Habit("104", "Feed Cat", "They are hungry", new Date(), new Occurrence(), events, true);
+        try{
+            Habit habit1 = new Habit();
+        }catch (Exception e1){
+            assertNull(e1);
+        }
+        try{
+            Habit habit2 = new Habit("Pet Dog", "They're a good boy", new Date(), new Occurrence(), events, false);
+        }catch (Exception e2){
+            assertNull(e2);
+        }
+        try{
+            Habit habit3 = new Habit("104", "Feed Cat", "They are hungry", new Date(), new Occurrence(), events, true);
+        }catch (Exception e3){
+            assertNull(e3);
+        }
     }
 
     //Tests to assert the hash code of the elements is preserved
@@ -141,20 +154,20 @@ public class HabitTest {
         boolean shared = true;
         Habit habit1 =
                 new Habit("Drink less energy drinks", "Can't sleep", new Date(), new Occurrence(), new ArrayList<>(),
-                          true);
+                          shared);
         assertTrue(habit1.isShared());
         shared = false;
         Habit habit2 =
                 new Habit("Drink less energy drinks", "Can't sleep", new Date(), new Occurrence(), new ArrayList<>(),
-                          false);
+                          shared);
         assertFalse(habit2.isShared());
     }
 
     @Test
     public void testSetShared() {
-        boolean shared = true;
+        boolean shared = false;
         Habit habit = new Habit("Count fireflies", "You would not believe your eyes...", new Date(), new Occurrence(),
-                                new ArrayList<>(), false);
+                                new ArrayList<>(), shared);
         habit.setShared(true);
         assertTrue(habit.isShared());
     }
