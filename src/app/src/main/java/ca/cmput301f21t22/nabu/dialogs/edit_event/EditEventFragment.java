@@ -15,6 +15,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.FileProvider;
 import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.google.android.gms.maps.model.LatLng;
@@ -51,7 +53,7 @@ public class EditEventFragment extends DialogFragment {
     @Nullable
     private FragmentEditEventBinding binding;
 
-    private EditEventFragment() {
+    public EditEventFragment() {
         this.dateFormat = DateFormat.getDateInstance();
     }
 
@@ -173,6 +175,13 @@ public class EditEventFragment extends DialogFragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         this.requireDialog().getWindow().setWindowAnimations(R.style.Animation_MaterialComponents_BottomSheetDialog);
         super.onViewCreated(view, savedInstanceState);
+    }
+
+    @Override
+    public void show(@NonNull FragmentManager manager, @Nullable String tag) {
+        FragmentTransaction fragmentTransaction = manager.beginTransaction();
+        fragmentTransaction.add(this, tag);
+        fragmentTransaction.commitAllowingStateLoss();
     }
 
     private void onEditDateClicked(View view) {

@@ -16,6 +16,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -32,8 +34,6 @@ import ca.cmput301f21t22.nabu.R;
 
 public class LocationPickerFragment extends DialogFragment
         implements OnMapReadyCallback, GoogleMap.OnMarkerDragListener {
-    @Nullable
-    private SupportMapFragment fragment;
     @NonNull
     private final Callback callback;
     @NonNull
@@ -60,6 +60,13 @@ public class LocationPickerFragment extends DialogFragment
                 this.dismiss();
             }
         });
+    }
+
+    @Override
+    public void show(@NonNull FragmentManager manager, @Nullable String tag) {
+        FragmentTransaction fragmentTransaction = manager.beginTransaction();
+        fragmentTransaction.add(this, tag);
+        fragmentTransaction.commitAllowingStateLoss();
     }
 
     @SuppressLint("InflateParams")

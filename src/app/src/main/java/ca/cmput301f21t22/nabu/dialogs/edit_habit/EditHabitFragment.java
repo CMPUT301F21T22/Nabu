@@ -12,6 +12,8 @@ import android.widget.ToggleButton;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 
 import java.text.DateFormat;
@@ -40,7 +42,7 @@ public class EditHabitFragment extends DialogFragment {
     @Nullable
     private FragmentEditHabitBinding binding;
 
-    private EditHabitFragment() {
+    public EditHabitFragment() {
         this.dateFormat = DateFormat.getDateInstance();
     }
 
@@ -197,6 +199,13 @@ public class EditHabitFragment extends DialogFragment {
         });
 
         return this.binding.getRoot();
+    }
+
+    @Override
+    public void show(@NonNull FragmentManager manager, @Nullable String tag) {
+        FragmentTransaction fragmentTransaction = manager.beginTransaction();
+        fragmentTransaction.add(this, tag);
+        fragmentTransaction.commitAllowingStateLoss();
     }
 
     @Override

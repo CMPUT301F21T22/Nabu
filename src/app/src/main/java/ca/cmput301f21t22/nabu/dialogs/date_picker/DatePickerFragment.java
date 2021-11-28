@@ -8,6 +8,8 @@ import android.widget.DatePicker;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -24,6 +26,13 @@ public class DatePickerFragment extends DialogFragment implements DatePickerDial
         this.initial = initial;
         this.callback = callback;
         this.calendar = Calendar.getInstance();
+    }
+
+    @Override
+    public void show(@NonNull FragmentManager manager, @Nullable String tag) {
+        FragmentTransaction fragmentTransaction = manager.beginTransaction();
+        fragmentTransaction.add(this, tag);
+        fragmentTransaction.commitAllowingStateLoss();
     }
 
     @Override
