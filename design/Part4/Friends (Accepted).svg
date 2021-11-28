@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="393" height="851" viewBox="0 0 393 851">
+  <defs>
+    <clipPath id="clip-Google_Pixel_5_1">
+      <rect width="393" height="851"/>
+    </clipPath>
+  </defs>
+  <g id="Google_Pixel_5_1" data-name="Google Pixel 5 – 1" clip-path="url(#clip-Google_Pixel_5_1)">
+    <rect width="393" height="851" fill="#fff"/>
+    <circle id="Ellipse_1" data-name="Ellipse 1" cx="35.5" cy="35.5" r="35.5" transform="translate(303 684)" fill="#6222ee"/>
+    <rect id="Rectangle_1" data-name="Rectangle 1" width="393" height="24" fill="#3716b3"/>
+    <rect id="Rectangle_2" data-name="Rectangle 2" width="393" height="66" transform="translate(0 24)" fill="#6222ee"/>
+    <text id="Social" transform="translate(13 66)" fill="#fff" font-size="24" font-family="HelveticaNeue, Helvetica Neue"><tspan x="0" y="0">Social</tspan></text>
+    <line id="Line_1" data-name="Line 1" x2="399" transform="translate(0 767.5)" fill="none" stroke="#707070" stroke-width="1"/>
+    <text id="My_Day" data-name="My Day" transform="translate(19 821)" fill="#050000" font-size="16" font-family="HelveticaNeue, Helvetica Neue"><tspan x="0" y="15">My Day</tspan></text>
+    <text id="Social-2" data-name="Social" transform="translate(124 821)" fill="#6222ee" font-size="16" font-family="HelveticaNeue, Helvetica Neue"><tspan x="0" y="15">Social</tspan></text>
+    <text id="Habits" transform="translate(218 821)" fill="#030107" font-size="16" font-family="HelveticaNeue, Helvetica Neue"><tspan x="0" y="15">Habits</tspan></text>
+    <g id="Component_1_1" data-name="Component 1 – 1" transform="translate(315 821)">
+      <text id="Settings" fill="#050000" font-size="16" font-family="HelveticaNeue, Helvetica Neue"><tspan x="0" y="15">Settings</tspan></text>
+    </g>
+    <image id="outline_light_mode_black_24dp" width="34" height="34" transform="translate(31 780)" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAQAAAD9CzEMAAABhElEQVRYw+2YsW7CMBCGPyGywQO0wAyM2TLBysrgteEZKDwErJlRkeChEGwg5kgwBQZ3cdxWpIqd1LRV65viO/+/fbbvzoG/1QYcODBwR7BHItm7I5BK/glcEzQIaVtvcoeQRxP4JjGSBGF1TAUXJDGtfIJQueGaSZHdBFc1apRv3CXRFH0j+L6GT+jYzefFiGBpv+aUYmxkPbF2KdBjwZSq/vYQrNhy5syWFQJP66qMWdArc3CH7PQdSGXH8GsuV4XZDXgqMyrlCeafwksk87LwQw2VEBFQo0ZApI+yLOcoT/v+iP9B43PUe+EVJxB69v6NzterEMUJ1goiytRGSrs2y7WpT98Hs43qCzJHBUq7ycVRYTiVt3B8Uj31TIK60p5ycdwTOHeR803+tmPq/KI5DxV3CHZ3CNeOEk6fBRPjlDm1TZlp0p8YWT8XrSkkSxdlS6dU4dXNNx+VKh3DfOMWMZKLdfGbIIlpmszngacC5XubkMb/E+r3Ezh/iDv/lfAT2yssyZear9yjYAAAAABJRU5ErkJggg=="/>
+    <image id="outline_settings_black_24dp" width="34" height="34" transform="translate(328 780)" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAQAAAD9CzEMAAACo0lEQVRYw+2Xv0tbURTHPyUSmlqkEA3BFJFOgptLoi1UpIODBR0DDkKXlFpBslis6KISELJkcxb8FxxcBKF0C9GiswRDuxh/Vom8Dj25edf33tWk7w0Fz1vePfd7ftx7zz3nXHik/4W2sO58W36qjzrUW1hE/TOQdDWQ9M/ApKuBSf8MLInKFQDWZLTkn4ENUTkFQEZGG60pG6HMJiNq3ME8VVE5BMA7GVWZp8Mmt0nZJudBYQ5F/JAsnYxzbNv1GAC9Nk6FCTrJ2qTCZgNZ7RhvtFFVMCF+G1BZk/oYJ67xYlFhmR6Fe0WOXx7IE1mnK60L6Jwrm8glc0Qc2Ha+aiu54FT+1r3UD3ArkGmizHKAhUWRPk+H+vkhmE90MCPStwy4w3cEUKJNOMMsKN/7ybPPGWfsk6dfuM9ZZFD+29gXDTtu6kfVYnfpcsRWgZq20zUKjniJ813NjzoNpLhW00ekNPXbrse5rZkYpKxmrt3zVJIjGySj+AWPeLEoKExGcy/pHaZ2X8dk72tKME2cOGnlSE3OYkxbV8x0E0LkFPRvYsgr9VFbfaibyAMwpGRyhO7PRnXhlwDsySitYdLC3QMgoZx4EF0K/CmAuj7dGqZbuKcSoPUr2ZSB8IMNhJszUN+iRBBbFPAh62H63u8wtV+0G2b8vmhJG6TMm6ZTRUrLA0lTsvtGvKVk18WuKdk10nVRHdRrFmk3pusICwyrdF0ypWt7wfnICz4LvGQoOH0UsbA4YJYo0/cVnEbJrKrLZmFxxReeObAR5u6gzu8rmaai/5NVehWuh2UqrRR9c9tywRNBVVttW5yN14TmaULW2eAcM95c42VuHd9qiaGl1tHc/H4AYOrfml9T+74KwIr/7XvgD5DAn1CBPwIDf8Y+UpD0Bwg0vBIrUMm0AAAAAElFTkSuQmCC"/>
+    <path id="Mask" d="M34,0H46L40,10ZM18,5a5,5,0,1,1,5,5A5,5,0,0,1,18,5ZM0,10V0H10V10Z" transform="translate(336 8)" fill="rgba(255,255,255,0.38)"/>
+    <g id="group_black_24dp" transform="translate(130 778)">
+      <path id="Path_1" data-name="Path 1" d="M0,0H34V36H0Z" fill="none"/>
+      <path id="Path_2" data-name="Path 2" d="M12.5,21.25C8.99,21.25,2,23.423,2,27.75V31H23V27.75C23,23.423,16.01,21.25,12.5,21.25ZM5.51,27.286a12.441,12.441,0,0,1,6.99-2.321,12.441,12.441,0,0,1,6.99,2.321ZM12.5,18c2.9,0,5.25-2.916,5.25-6.5S15.4,5,12.5,5,7.25,7.916,7.25,11.5,9.605,18,12.5,18Zm0-9.286A2.558,2.558,0,0,1,14.75,11.5a2.558,2.558,0,0,1-2.25,2.786A2.558,2.558,0,0,1,10.25,11.5,2.558,2.558,0,0,1,12.5,8.714ZM23.06,21.361A8.315,8.315,0,0,1,26,27.75V31h6V27.75C32,24,26.75,21.863,23.06,21.361ZM21.5,18c2.9,0,5.25-2.916,5.25-6.5S24.4,5,21.5,5a4.373,4.373,0,0,0-2.25.65,11.822,11.822,0,0,1,1.5,5.85,11.822,11.822,0,0,1-1.5,5.85A4.373,4.373,0,0,0,21.5,18Z" fill="#6222ee"/>
+    </g>
+    <g id="widgets_black_24dp" transform="translate(226 780)">
+      <path id="Path_3" data-name="Path 3" d="M0,0H34V34H0Z" fill="none"/>
+      <path id="Path_4" data-name="Path 4" d="M23.73,5.986l4.295,4.3-4.295,4.3-4.295-4.3,4.295-4.3m-11.625.729v6.071H6.035V6.714h6.07M27.282,21.893v6.071h-6.07V21.893h6.07m-15.176,0v6.071H6.035V21.893h6.07M23.73,1.69l-8.59,8.576,8.59,8.591,8.59-8.591L23.73,1.69Zm-8.59,1.988H3V15.821H15.141ZM30.317,18.857H18.176V31H30.317Zm-15.176,0H3V31H15.141Z" transform="translate(0 0)" fill="#020103"/>
+    </g>
+    <g id="person_add_black_24dp_1_" data-name="person_add_black_24dp (1)" transform="translate(322 703)">
+      <path id="Path_7" data-name="Path 7" d="M0,0H34V34H0Z" fill="none"/>
+      <path id="Path_8" data-name="Path 8" d="M21.364,17c3.215,0,5.818-2.909,5.818-6.5S24.578,4,21.364,4s-5.818,2.909-5.818,6.5S18.149,17,21.364,17Zm0-9.75a3.1,3.1,0,0,1,2.909,3.25,3.1,3.1,0,0,1-2.909,3.25,3.1,3.1,0,0,1-2.909-3.25A3.1,3.1,0,0,1,21.364,7.25Zm0,13c-3.884,0-11.636,2.178-11.636,6.5V30H33V26.75C33,22.428,25.247,20.25,21.364,20.25Zm-8.727,6.5c.32-1.17,4.815-3.25,8.727-3.25s8.436,2.1,8.727,3.25ZM8.273,21.875V17h4.364V13.75H8.273V8.875H5.364V13.75H1V17H5.364v4.875Z" fill="#fdf8f8"/>
+    </g>
+    <g id="Group_11" data-name="Group 11" transform="translate(0 -74)">
+      <g id="Light_Text_fields_1._Filled_18_States_" data-name="Light 🌕/ Text fields/1. Filled/ (18 States)" transform="translate(17 181)">
+        <path id="_Container_l_Color" data-name="🔲🎨 Container l Color" d="M4,0H355a4,4,0,0,1,4,4V52a4,4,0,0,1-4,4H4a4,4,0,0,1-4-4V4A4,4,0,0,1,4,0Z" fill="rgba(0,0,0,0.04)"/>
+        <g id="Light_Elevation_00dp" data-name="Light 🌕/Elevation/00dp">
+          <rect id="Rectangle" width="359" height="56" fill="#fff" style="mix-blend-mode: multiply;isolation: isolate"/>
+        </g>
+        <path id="_States" data-name="💡States" d="M4,0H355a4,4,0,0,1,4,4V56a0,0,0,0,1,0,0H0a0,0,0,0,1,0,0V4A4,4,0,0,1,4,0Z" fill="none"/>
+        <rect id="Indicator" width="359" height="1" transform="translate(0 55)" fill="rgba(255,255,255,0.6)"/>
+        <text id="_Input_text" data-name="✏️ Input text" transform="translate(21 35)" font-size="16" font-family="Roboto-Regular, Roboto" letter-spacing="0.009em"><tspan x="0" y="0">email@address</tspan></text>
+      </g>
+      <g id="person_remove_black_24dp" transform="translate(336 197)">
+        <g id="Group_8" data-name="Group 8">
+          <rect id="Rectangle_5" data-name="Rectangle 5" width="24" height="24" fill="none"/>
+        </g>
+        <g id="Group_10" data-name="Group 10">
+          <g id="Group_9" data-name="Group 9">
+            <path id="Path_15" data-name="Path 15" d="M14,8a4,4,0,1,0-4,4A4,4,0,0,0,14,8ZM12,8a2,2,0,1,1-2-2A2.006,2.006,0,0,1,12,8Z"/>
+            <path id="Path_16" data-name="Path 16" d="M2,18v2H18V18c0-2.66-5.33-4-8-4S2,15.34,2,18Zm2,0c.2-.71,3.3-2,6-2s5.77,1.28,6,2Z"/>
+            <rect id="Rectangle_6" data-name="Rectangle 6" width="6" height="2" transform="translate(17 10)"/>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

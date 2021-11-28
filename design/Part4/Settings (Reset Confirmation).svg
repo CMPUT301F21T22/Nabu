@@ -1,0 +1,129 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="393" height="851" viewBox="0 0 393 851">
+  <defs>
+    <filter id="Rectangle_3" x="7" y="105" width="380" height="84" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Rectangle" x="4.5" y="362.5" width="384" height="148" filterUnits="userSpaceOnUse">
+      <feOffset dy="11" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="7.5" result="blur-2"/>
+      <feFlood flood-opacity="0.2"/>
+      <feComposite operator="in" in2="blur-2"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Rectangle-2" x="-42" y="314" width="477" height="241" filterUnits="userSpaceOnUse">
+      <feOffset dy="9" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="23" result="blur-3"/>
+      <feFlood flood-opacity="0.122"/>
+      <feComposite operator="in" in2="blur-3"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Rectangle-3" x="-30" y="341" width="453" height="217" filterUnits="userSpaceOnUse">
+      <feOffset dy="24" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="19" result="blur-4"/>
+      <feFlood flood-opacity="0.141"/>
+      <feComposite operator="in" in2="blur-4"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <clipPath id="clip-Google_Pixel_5_1">
+      <rect width="393" height="851"/>
+    </clipPath>
+  </defs>
+  <g id="Google_Pixel_5_1" data-name="Google Pixel 5 – 1" clip-path="url(#clip-Google_Pixel_5_1)">
+    <rect width="393" height="851" fill="#fff"/>
+    <rect id="Rectangle_1" data-name="Rectangle 1" width="393" height="24" fill="#3716b3"/>
+    <rect id="Rectangle_2" data-name="Rectangle 2" width="393" height="66" transform="translate(0 24)" fill="#6222ee"/>
+    <text id="Settings" transform="translate(13 66)" fill="#fff" font-size="24" font-family="HelveticaNeue, Helvetica Neue"><tspan x="0" y="0">Settings</tspan></text>
+    <line id="Line_1" data-name="Line 1" x2="399" transform="translate(0 767.5)" fill="none" stroke="#707070" stroke-width="1"/>
+    <text id="My_Day" data-name="My Day" transform="translate(19 821)" fill="#050000" font-size="16" font-family="HelveticaNeue, Helvetica Neue"><tspan x="0" y="15">My Day</tspan></text>
+    <text id="Social" transform="translate(124 821)" font-size="16" font-family="HelveticaNeue, Helvetica Neue"><tspan x="0" y="15">Social</tspan></text>
+    <text id="Habits" transform="translate(218 821)" fill="#060508" font-size="16" font-family="HelveticaNeue, Helvetica Neue"><tspan x="0" y="15">Habits</tspan></text>
+    <g id="Component_1_1" data-name="Component 1 – 1" transform="translate(315 821)">
+      <text id="Settings-2" data-name="Settings" fill="#6222ee" font-size="16" font-family="HelveticaNeue, Helvetica Neue"><tspan x="0" y="15">Settings</tspan></text>
+    </g>
+    <image id="outline_light_mode_black_24dp" width="34" height="34" transform="translate(31 780)" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAQAAAD9CzEMAAABhElEQVRYw+2YsW7CMBCGPyGywQO0wAyM2TLBysrgteEZKDwErJlRkeChEGwg5kgwBQZ3cdxWpIqd1LRV65viO/+/fbbvzoG/1QYcODBwR7BHItm7I5BK/glcEzQIaVtvcoeQRxP4JjGSBGF1TAUXJDGtfIJQueGaSZHdBFc1apRv3CXRFH0j+L6GT+jYzefFiGBpv+aUYmxkPbF2KdBjwZSq/vYQrNhy5syWFQJP66qMWdArc3CH7PQdSGXH8GsuV4XZDXgqMyrlCeafwksk87LwQw2VEBFQo0ZApI+yLOcoT/v+iP9B43PUe+EVJxB69v6NzterEMUJ1goiytRGSrs2y7WpT98Hs43qCzJHBUq7ycVRYTiVt3B8Uj31TIK60p5ycdwTOHeR803+tmPq/KI5DxV3CHZ3CNeOEk6fBRPjlDm1TZlp0p8YWT8XrSkkSxdlS6dU4dXNNx+VKh3DfOMWMZKLdfGbIIlpmszngacC5XubkMb/E+r3Ezh/iDv/lfAT2yssyZear9yjYAAAAABJRU5ErkJggg=="/>
+    <path id="Mask" d="M34,0H46L40,10ZM18,5a5,5,0,1,1,5,5A5,5,0,0,1,18,5ZM0,10V0H10V10Z" transform="translate(336 8)" fill="rgba(255,255,255,0.38)"/>
+    <g id="group_black_24dp" transform="translate(130 778)">
+      <path id="Path_1" data-name="Path 1" d="M0,0H34V36H0Z" fill="none"/>
+      <path id="Path_2" data-name="Path 2" d="M12.5,21.25C8.99,21.25,2,23.423,2,27.75V31H23V27.75C23,23.423,16.01,21.25,12.5,21.25ZM5.51,27.286a12.441,12.441,0,0,1,6.99-2.321,12.441,12.441,0,0,1,6.99,2.321ZM12.5,18c2.9,0,5.25-2.916,5.25-6.5S15.4,5,12.5,5,7.25,7.916,7.25,11.5,9.605,18,12.5,18Zm0-9.286A2.558,2.558,0,0,1,14.75,11.5a2.558,2.558,0,0,1-2.25,2.786A2.558,2.558,0,0,1,10.25,11.5,2.558,2.558,0,0,1,12.5,8.714ZM23.06,21.361A8.315,8.315,0,0,1,26,27.75V31h6V27.75C32,24,26.75,21.863,23.06,21.361ZM21.5,18c2.9,0,5.25-2.916,5.25-6.5S24.4,5,21.5,5a4.373,4.373,0,0,0-2.25.65,11.822,11.822,0,0,1,1.5,5.85,11.822,11.822,0,0,1-1.5,5.85A4.373,4.373,0,0,0,21.5,18Z"/>
+    </g>
+    <g id="widgets_black_24dp" transform="translate(226 780)">
+      <path id="Path_3" data-name="Path 3" d="M0,0H34V34H0Z" fill="none"/>
+      <path id="Path_4" data-name="Path 4" d="M23.73,5.986l4.295,4.3-4.295,4.3-4.295-4.3,4.295-4.3m-11.625.729v6.071H6.035V6.714h6.07M27.282,21.893v6.071h-6.07V21.893h6.07m-15.176,0v6.071H6.035V21.893h6.07M23.73,1.69l-8.59,8.576,8.59,8.591,8.59-8.591L23.73,1.69Zm-8.59,1.988H3V15.821H15.141ZM30.317,18.857H18.176V31H30.317Zm-15.176,0H3V31H15.141Z" transform="translate(0 0)" fill="#020007"/>
+    </g>
+    <g id="settings_black_24dp" transform="translate(328 780)">
+      <path id="Path_5" data-name="Path 5" d="M0,0H34V34H0Z" fill="none"/>
+      <path id="Path_6" data-name="Path 6" d="M28.25,18.47A11.583,11.583,0,0,0,28.356,17a11.583,11.583,0,0,0-.106-1.47l3.195-2.475a.752.752,0,0,0,.182-.96L28.6,6.905a.758.758,0,0,0-.666-.375.713.713,0,0,0-.257.045l-3.77,1.5a11.087,11.087,0,0,0-2.559-1.47L20.771,2.63A.736.736,0,0,0,20.029,2H13.973a.736.736,0,0,0-.742.63l-.575,3.975A11.659,11.659,0,0,0,10.1,8.075l-3.77-1.5a.865.865,0,0,0-.273-.045A.751.751,0,0,0,5.4,6.9l-3.028,5.19a.735.735,0,0,0,.182.96L5.752,15.53A11.788,11.788,0,0,0,5.646,17a11.788,11.788,0,0,0,.106,1.47L2.557,20.945a.752.752,0,0,0-.182.96L5.4,27.095a.758.758,0,0,0,.666.375.713.713,0,0,0,.257-.045l3.77-1.5a11.087,11.087,0,0,0,2.559,1.47l.575,3.975a.736.736,0,0,0,.742.63h6.056a.736.736,0,0,0,.742-.63l.575-3.975a11.659,11.659,0,0,0,2.559-1.47l3.77,1.5a.865.865,0,0,0,.273.045.751.751,0,0,0,.651-.375l3.028-5.19a.752.752,0,0,0-.182-.96Zm-3-2.565a7.941,7.941,0,0,1,.076,1.1c0,.315-.03.645-.076,1.095l-.212,1.695,1.347,1.05,1.635,1.26-1.06,1.815-1.923-.765-1.575-.63L22.1,23.54a8.887,8.887,0,0,1-1.893,1.095l-1.6.645-.242,1.695L18.061,29h-2.12l-.288-2.025-.242-1.695-1.6-.645a8.611,8.611,0,0,1-1.862-1.065l-1.378-1.05-1.6.645-1.923.765-1.06-1.815,1.635-1.26,1.347-1.05L8.75,18.11c-.045-.465-.076-.81-.076-1.11s.03-.645.076-1.1l.212-1.695L7.614,13.16,5.979,11.9l1.06-1.815,1.923.765,1.575.63L11.9,10.46a8.887,8.887,0,0,1,1.893-1.095l1.6-.645.242-1.695L15.941,5h2.1l.288,2.025.242,1.695,1.6.645a8.611,8.611,0,0,1,1.862,1.065l1.378,1.05,1.6-.645,1.923-.765,1.06,1.815-1.62,1.275-1.347,1.05.212,1.7ZM17,11a6,6,0,1,0,6.056,6A6.027,6.027,0,0,0,17,11Zm0,9a3,3,0,1,1,3.028-3A3.023,3.023,0,0,1,17,20Z" transform="translate(0 0)" fill="#6222ee"/>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#Rectangle_3)">
+      <rect id="Rectangle_3-2" data-name="Rectangle 3" width="362" height="66" transform="translate(16 111)" fill="#fcfcfc"/>
+    </g>
+    <g id="account_circle_black_24dp" transform="translate(31 127)">
+      <path id="Path_7" data-name="Path 7" d="M0,0H34V34H0Z" fill="none"/>
+      <path id="Path_8" data-name="Path 8" d="M17,2A15,15,0,1,0,32,17,15.005,15.005,0,0,0,17,2ZM9.6,26.42c.645-1.35,4.575-2.67,7.4-2.67s6.765,1.32,7.4,2.67a11.888,11.888,0,0,1-14.79,0ZM26.54,24.245C24.4,21.635,19.19,20.75,17,20.75s-7.4.885-9.54,3.495a12,12,0,1,1,19.08,0ZM17,8a5.25,5.25,0,1,0,5.25,5.25A5.237,5.237,0,0,0,17,8Zm0,7.5a2.25,2.25,0,1,1,2.25-2.25A2.247,2.247,0,0,1,17,15.5Z" transform="translate(0 0)"/>
+    </g>
+    <text id="Signed_in_as:_yourgivenemail_address" data-name="Signed in as:
+yourgivenemail@address" transform="translate(91 126)" fill="#060508" font-size="16" font-family="HelveticaNeue, Helvetica Neue"><tspan x="0" y="15">Signed in as:</tspan><tspan font-family="HelveticaNeue-Bold, Helvetica Neue" font-weight="700"><tspan x="0" y="34">yourgivenemail@address</tspan></tspan></text>
+    <g id="logout_black_24dp" transform="translate(31 197.623)">
+      <g id="Group_1" data-name="Group 1">
+        <path id="Path_9" data-name="Path 9" d="M0,0H34V38.754H0Z" fill="none"/>
+      </g>
+      <g id="Group_2" data-name="Group 2" transform="translate(3 3)">
+        <path id="Path_10" data-name="Path 10" d="M24.778,12.1l-2.193,2.566,2.458,2.893H12.333V21.2H25.042l-2.458,2.875,2.193,2.584L31,19.377ZM6.111,6.639H17V3H6.111A3.417,3.417,0,0,0,3,6.639V32.115a3.417,3.417,0,0,0,3.111,3.639H17V32.115H6.111Z" transform="translate(-3 -3)"/>
+      </g>
+    </g>
+    <text id="Sign_out" data-name="Sign out" transform="translate(87 223)" fill="#060508" font-size="16" font-family="HelveticaNeue, Helvetica Neue"><tspan x="0" y="0">Sign out</tspan></text>
+    <g id="restore_black_24dp" transform="translate(31 273)">
+      <path id="Path_11" data-name="Path 11" d="M0,0H34V34H0Z" fill="none"/>
+      <path id="Path_12" data-name="Path 12" d="M18.714,3C11.378,3,5.429,9.269,5.429,17H1l5.9,6.207L12.81,17H8.381A10.614,10.614,0,0,1,18.714,6.111,10.614,10.614,0,0,1,29.048,17,10.614,10.614,0,0,1,18.714,27.889a10,10,0,0,1-7.292-3.2l-2.1,2.209A12.89,12.89,0,0,0,18.714,31C26.051,31,32,24.731,32,17S26.051,3,18.714,3Zm-1.476,7.778v7.778l6.274,3.92,1.137-1.991-5.2-3.251V10.778Z" transform="translate(0 0)"/>
+    </g>
+    <text id="Reset_user_data" data-name="Reset user data" transform="translate(87 296)" fill="#060508" font-size="16" font-family="HelveticaNeue, Helvetica Neue"><tspan x="0" y="0">Reset user data</tspan></text>
+    <g id="Rectangle_4" data-name="Rectangle 4" transform="translate(-36 -29)" fill="rgba(112,112,112,0.47)" stroke="rgba(112,112,112,0.26)" stroke-width="1">
+      <rect width="494" height="926" stroke="none"/>
+      <rect x="0.5" y="0.5" width="493" height="925" fill="none"/>
+    </g>
+    <g id="Light_Dialog_3_States_" data-name="Light 🌕/ Dialog (3 States)" transform="translate(27 374)">
+      <g id="Container" transform="translate(-56 -348)">
+        <g id="Light_Elevation" data-name="Light 🌕/Elevation" transform="translate(56 348)">
+          <g id="Shadow" style="mix-blend-mode: multiply;isolation: isolate">
+            <g transform="matrix(1, 0, 0, 1, -27, -374)" filter="url(#Rectangle)">
+              <rect id="Rectangle-4" data-name="Rectangle" width="339" height="103" rx="4" transform="translate(27 374)" fill="#fff"/>
+            </g>
+            <g transform="matrix(1, 0, 0, 1, -27, -374)" filter="url(#Rectangle-2)">
+              <rect id="Rectangle-5" data-name="Rectangle" width="339" height="103" rx="4" transform="translate(27 374)" fill="#fff"/>
+            </g>
+            <g transform="matrix(1, 0, 0, 1, -27, -374)" filter="url(#Rectangle-3)">
+              <rect id="Rectangle-6" data-name="Rectangle" width="339" height="103" rx="4" transform="translate(27 374)" fill="#fff"/>
+            </g>
+          </g>
+        </g>
+        <rect id="Container-2" data-name="Container" width="339" height="103" rx="10" transform="translate(56 348)" fill="#fff"/>
+        <g id="Button" transform="translate(85.5 399)">
+          <path id="Container-3" data-name="Container" d="M0,0H280a0,0,0,0,1,0,0V48a4,4,0,0,1-4,4H4a4,4,0,0,1-4-4V0A0,0,0,0,1,0,0Z" fill="none"/>
+          <g id="Button-2" data-name="Button" transform="translate(239 6.5)">
+            <g id="Container-4" data-name="Container">
+              <rect id="_Color" data-name="↳ 🎨 Color" width="63" height="39" rx="4" fill="none"/>
+              <g id="_States" data-name="↳ 💡States">
+                <rect id="States_Light_Surface_containers_Primary_Content" data-name="States/Light 🌕/Surface containers/Primary Content" fill="rgba(98,0,238,0)"/>
+              </g>
+            </g>
+            <text id="_Label" data-name="↳ ✏️ Label" transform="translate(8 25)" fill="#6200ee" font-size="14" font-family="Roboto-Medium, Roboto" font-weight="500" letter-spacing="0.089em"><tspan x="0" y="0">RESET</tspan></text>
+          </g>
+          <g id="Button-3" data-name="Button" transform="translate(159 6.5)">
+            <g id="Container-5" data-name="Container">
+              <rect id="_Color-2" data-name="↳ 🎨 Color" width="75" height="39" rx="4" fill="none"/>
+              <g id="_States-2" data-name="↳ 💡States">
+                <rect id="States_Light_Surface_containers_Primary_Content-2" data-name="States/Light 🌕/Surface containers/Primary Content" width="1" height="1" rx="0.5" fill="rgba(98,0,238,0)"/>
+              </g>
+            </g>
+            <text id="_Label-2" data-name="↳ ✏️ Label" transform="translate(8 25)" fill="#6200ee" font-size="14" font-family="Roboto-Medium, Roboto" font-weight="500" letter-spacing="0.089em"><tspan x="0" y="0">CANCEL</tspan></text>
+          </g>
+        </g>
+      </g>
+      <text id="Are_you_sure_you_want_to_reset_all_user_data_" data-name="Are you sure you want to reset all user data?" transform="translate(24 24)" fill="rgba(0,0,0,0.6)" font-size="14" font-family="Roboto-Regular, Roboto" letter-spacing="0.018em"><tspan x="0" y="15">Are you sure you want to reset all user data?</tspan></text>
+    </g>
+  </g>
+</svg>
