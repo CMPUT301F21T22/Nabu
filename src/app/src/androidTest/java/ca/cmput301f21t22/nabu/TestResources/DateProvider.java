@@ -14,31 +14,24 @@ public class DateProvider {
         int dayOfWeek = Calendar.DAY_OF_WEEK + 1;
         String day;
         if (dayOfWeek == Calendar.SUNDAY) {
-            day = "Sun";
             day = "Mon";
         }
         else if (dayOfWeek == Calendar.MONDAY) {
-            day = "Mon";
             day = "Tue";
         }
         else if (dayOfWeek == Calendar.TUESDAY) {
-            day = "Tue";
             day = "Wed";
         }
         else if (dayOfWeek == Calendar.WEDNESDAY) {
-            day = "Wed";
             day = "Thu";
         }
         else if (dayOfWeek == Calendar.THURSDAY) {
-            day = "Thu";
             day = "Fri";
         }
         else if (dayOfWeek == Calendar.FRIDAY) {
-            day = "Fri";
             day = "Sat";
         }
         else {
-            day = "Sat";
             day = "Sun";
         }
         return day;

@@ -187,6 +187,7 @@ public class DataPersistenceTest {
 
         //Edits the farm beavers habit and habit event
         //Edits the Habit
+        solo.clickOnMenuItem("Habits");
         solo.clickOnView((ImageButton) solo.getView(R.id.button_overflow_menu));
         solo.clickOnMenuItem("Edit Habit");
 
@@ -209,7 +210,8 @@ public class DataPersistenceTest {
 
         //Edits the Event
         solo.clickOnMenuItem("Habits");
-        solo.clickOnView((ImageButton) solo.getView(R.id.button_overflow_menu));
+        //solo.clickOnView((ImageButton) solo.getView(R.id.button_overflow_menu));
+        solo.clickOnImageButton(0);
         solo.clickOnMenuItem("View Events");
 
         solo.clickOnImage(6);
@@ -240,13 +242,11 @@ public class DataPersistenceTest {
         solo.clickOnMenuItem("View Events");
 
         //Habit checks
-        assertTrue(solo.waitForText("Farm Beans", 1, 2000));
-        assertTrue(solo.waitForText("I want beans", 1, 2000));
-        assertTrue(solo.waitForText("Every Day",
-                1, 2000));
+        assertTrue(solo.waitForText("Exterminate Bees", 1, 2000));
+        assertTrue(solo.waitForText("They went crazy", 1, 2000));
 
         //Event Checks
-        assertTrue(solo.waitForText("Bought Beans", 1, 2000));
+        assertTrue(solo.waitForText("Getting new bees", 1, 2000));
         assertTrue(solo.waitForText("Nov 9, 2021", 1, 2000));
 
     }
@@ -317,8 +317,6 @@ public class DataPersistenceTest {
         solo.clickOnView((ImageButton) solo.getView(R.id.button_overflow_menu));
         solo.clickOnMenuItem("View Events");
 
-        //TODO: Issue, can not find proper index for event overflow menu, and cannot seem to press
-        // it otherwise
         solo.clickOnImage(6);
         solo.clickOnMenuItem("Delete Event");
         solo.clickOnText("Delete");

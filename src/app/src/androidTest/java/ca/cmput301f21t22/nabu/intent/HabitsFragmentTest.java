@@ -307,7 +307,7 @@ public class HabitsFragmentTest {
         solo.clickOnMenuItem("Habits");
         solo.clickOnView((ImageButton) solo.getView(R.id.button_overflow_menu));
         solo.clickOnMenuItem("View Events");
-        //TODO: Issue, text not on screen but solo still returns as true
+
         assertFalse(solo.waitForText(eventComment, 1, 2000));
         assertFalse(solo.waitForText("Nov 9, 2021", 1, 2000));
     }
