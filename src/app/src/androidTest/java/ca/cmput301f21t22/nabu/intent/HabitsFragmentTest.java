@@ -33,6 +33,8 @@ import ca.cmput301f21t22.nabu.R;
  */
 public class HabitsFragmentTest {
     private Solo solo;
+    private String habitText = "Farm Bees";
+    private String habitReason = "I want Honey";
 
     @Rule
     public ActivityTestRule<MainActivity> rule =
@@ -99,7 +101,7 @@ public class HabitsFragmentTest {
         //Go to the Habits Fragment and create a habit
         solo.clickOnMenuItem("Habits");
         solo.clickOnView((FloatingActionButton) solo.getView(R.id.button_add_habit));
-        solo.enterText((EditText) solo.getView(R.id.edit_title), "Farm Bees");
+        solo.enterText((EditText) solo.getView(R.id.edit_title), this.habitText);
         solo.clickOnToggleButton("Sun");
         solo.clickOnToggleButton("Mon");
         solo.clickOnToggleButton("Tue");
@@ -108,7 +110,7 @@ public class HabitsFragmentTest {
         solo.clickOnToggleButton("Fri");
         solo.clickOnToggleButton("Sat");
 
-        solo.enterText((EditText) solo.getView(R.id.edit_reason), "I want honey");
+        solo.enterText((EditText) solo.getView(R.id.edit_reason), this.habitReason);
         solo.clickOnText("Start Date");
         solo.setDatePicker(0,2021,
                 10, 5);
@@ -117,16 +119,17 @@ public class HabitsFragmentTest {
         solo.goBack();
 
         //Asserts Habit is on screen and has the relevant information
-        assertTrue(solo.waitForText("Farm Bees", 1, 2000));
-        assertTrue(solo.waitForText("I want honey", 1, 2000));
+        assertTrue(solo.waitForText(this.habitText, 1, 2000));
+        assertTrue(solo.waitForText(this.habitReason, 1, 2000));
         assertTrue(solo.waitForText("2021", 1, 2000));
         assertTrue(solo.waitForText("Every Day",
                 1, 2000));
 
 
         //Check again, but this time with different dates
+        String habitText2 = "Farm Hornets";
         solo.clickOnView((FloatingActionButton) solo.getView(R.id.button_add_habit));
-        solo.enterText((EditText) solo.getView(R.id.edit_title), "Farm Hornets");
+        solo.enterText((EditText) solo.getView(R.id.edit_title), habitText2);
         solo.clickOnToggleButton("Sun");
         solo.clickOnToggleButton("Mon");
         solo.clickOnToggleButton("Tue");
@@ -134,7 +137,7 @@ public class HabitsFragmentTest {
         solo.clickOnToggleButton("Fri");
         solo.clickOnToggleButton("Sat");
 
-        solo.enterText((EditText) solo.getView(R.id.edit_reason), "I want honey");
+        solo.enterText((EditText) solo.getView(R.id.edit_reason), this.habitReason);
         solo.clickOnText("Start Date");
         solo.setDatePicker(0,2021,
                 10, 5);
@@ -143,8 +146,8 @@ public class HabitsFragmentTest {
         solo.goBack();
 
         //Asserts Habit is on screen and has the relevant information
-        assertTrue(solo.waitForText("Farm Hornets", 1, 2000));
-        assertTrue(solo.waitForText("I want honey", 1, 2000));
+        assertTrue(solo.waitForText(habitText2, 1, 2000));
+        assertTrue(solo.waitForText(this.habitReason, 1, 2000));
         assertTrue(solo.waitForText("Nov 5, 2021", 1, 2000));
         assertTrue(solo.waitForText("Sun, Mon, Tues, Thu, Fri, Sat",
                 1, 2000));
@@ -168,7 +171,7 @@ public class HabitsFragmentTest {
         //Go to the Habits Fragment and create a habit
         solo.clickOnMenuItem("Habits");
         solo.clickOnView((FloatingActionButton) solo.getView(R.id.button_add_habit));
-        solo.enterText((EditText) solo.getView(R.id.edit_title), "Farm Bees");
+        solo.enterText((EditText) solo.getView(R.id.edit_title), this.habitText);
         solo.clickOnToggleButton("Sun");
         solo.clickOnToggleButton("Mon");
         solo.clickOnToggleButton("Tue");
@@ -177,7 +180,7 @@ public class HabitsFragmentTest {
         solo.clickOnToggleButton("Fri");
         solo.clickOnToggleButton("Sat");
 
-        solo.enterText((EditText) solo.getView(R.id.edit_reason), "I want honey");
+        solo.enterText((EditText) solo.getView(R.id.edit_reason), this.habitReason);
         solo.clickOnText("Start Date");
         solo.setDatePicker(0,2021,
                 10, 5);
@@ -186,14 +189,15 @@ public class HabitsFragmentTest {
         solo.goBack();
 
         //Go to My Day Fragment and create an Event
+        String eventComment = "Bought Bees";
         solo.clickOnMenuItem("My Day");
-        solo.clickOnText("Farm Bees");
+        solo.clickOnText(this.habitText);
         solo.clickOnText("Edit Event");
         solo.clickOnText("2021");
         solo.setDatePicker(0,2021,
                 10, 9);
         solo.clickOnText("OK");
-        solo.enterText((EditText) solo.getView(R.id.edit_comment), "Bought Bees");
+        solo.enterText((EditText) solo.getView(R.id.edit_comment), eventComment);
         solo.clickOnView((FloatingActionButton) solo.getView(R.id.button_save));
         solo.goBack();
 
@@ -202,7 +206,7 @@ public class HabitsFragmentTest {
         solo.clickOnView((ImageButton) solo.getView(R.id.button_overflow_menu));
         solo.clickOnMenuItem("View Events");
 
-        assertTrue(solo.waitForText("Bought Bees", 1, 2000));
+        assertTrue(solo.waitForText(eventComment, 1, 2000));
         assertTrue(solo.waitForText("Nov 9, 2021", 1, 2000));
 
         solo.goBack();
@@ -221,12 +225,12 @@ public class HabitsFragmentTest {
         //Go to the Habits Fragment and create a habit
         solo.clickOnMenuItem("Habits");
         solo.clickOnView((FloatingActionButton) solo.getView(R.id.button_add_habit));
-        solo.enterText((EditText) solo.getView(R.id.edit_title), "Farm Bees");
+        solo.enterText((EditText) solo.getView(R.id.edit_title), this.habitText);
         solo.clickOnToggleButton("Sun");
         solo.clickOnToggleButton("Mon");
         solo.clickOnToggleButton("Sat");
 
-        solo.enterText((EditText) solo.getView(R.id.edit_reason), "I want honey");
+        solo.enterText((EditText) solo.getView(R.id.edit_reason), this.habitReason);
         solo.clickOnText("Start Date");
         solo.setDatePicker(0,2021,
                 10, 5);
@@ -240,7 +244,7 @@ public class HabitsFragmentTest {
         solo.clickOnText("Delete");
 
         //Checks if deleted
-        assertFalse(solo.waitForText("Farm Bees", 1, 2000));
+        assertFalse(solo.waitForText(this.habitText, 1, 2000));
     }
 
     /**
@@ -257,7 +261,7 @@ public class HabitsFragmentTest {
         //Go to the Habits Fragment and create a habit
         solo.clickOnMenuItem("Habits");
         solo.clickOnView((FloatingActionButton) solo.getView(R.id.button_add_habit));
-        solo.enterText((EditText) solo.getView(R.id.edit_title), "Farm Bees");
+        solo.enterText((EditText) solo.getView(R.id.edit_title), this.habitText);
         solo.clickOnToggleButton("Sun");
         solo.clickOnToggleButton("Mon");
         solo.clickOnToggleButton("Tue");
@@ -266,7 +270,7 @@ public class HabitsFragmentTest {
         solo.clickOnToggleButton("Fri");
         solo.clickOnToggleButton("Sat");
 
-        solo.enterText((EditText) solo.getView(R.id.edit_reason), "I want honey");
+        solo.enterText((EditText) solo.getView(R.id.edit_reason), this.habitReason);
         solo.clickOnText("Start Date");
         solo.setDatePicker(0,2021,
                 10, 5);
@@ -275,14 +279,15 @@ public class HabitsFragmentTest {
         solo.goBack();
 
         //Go to My Day Fragment and create an Event
+        String eventComment = "Bought Bees";
         solo.clickOnMenuItem("My Day");
-        solo.clickOnText("Farm Bees");
+        solo.clickOnText(this.habitText);
         solo.clickOnText("Edit Event");
         solo.clickOnText("2021");
         solo.setDatePicker(0,2021,
                 10, 9);
         solo.clickOnText("OK");
-        solo.enterText((EditText) solo.getView(R.id.edit_comment), "Bought Bees");
+        solo.enterText((EditText) solo.getView(R.id.edit_comment), eventComment);
         solo.clickOnView((FloatingActionButton) solo.getView(R.id.button_save));
         solo.goBack();
 
@@ -293,7 +298,7 @@ public class HabitsFragmentTest {
 
         //TODO: Issue, can not find proper index for event overflow menu, and cannot seem to press
         // it otherwise
-        solo.clickOnImageButton(3);
+        solo.clickOnImageButton(1);
         solo.clickOnMenuItem("Delete Event");
         solo.clickOnText("Delete");
 
@@ -303,9 +308,10 @@ public class HabitsFragmentTest {
         solo.clickOnView((ImageButton) solo.getView(R.id.button_overflow_menu));
         solo.clickOnMenuItem("View Events");
         //TODO: Issue, text not on screen but solo still returns as true
-        assertFalse(solo.waitForText("Bought Bees", 1, 2000));
+        assertFalse(solo.waitForText(eventComment, 1, 2000));
         assertFalse(solo.waitForText("Nov 9, 2021", 1, 2000));
     }
+
     /**
      * Creates a Habit
      * Edits a Habit
@@ -319,12 +325,12 @@ public class HabitsFragmentTest {
         //Go to the Habits Fragment and create a habit
         solo.clickOnMenuItem("Habits");
         solo.clickOnView((FloatingActionButton) solo.getView(R.id.button_add_habit));
-        solo.enterText((EditText) solo.getView(R.id.edit_title), "Farm Bees");
+        solo.enterText((EditText) solo.getView(R.id.edit_title), this.habitText);
         solo.clickOnToggleButton("Sun");
         solo.clickOnToggleButton("Mon");
         solo.clickOnToggleButton("Sat");
 
-        solo.enterText((EditText) solo.getView(R.id.edit_reason), "I want honey");
+        solo.enterText((EditText) solo.getView(R.id.edit_reason), this.habitReason);
         solo.clickOnText("Start Date");
         solo.setDatePicker(0,2021,
                 10, 5);
@@ -333,11 +339,13 @@ public class HabitsFragmentTest {
         solo.goBack();
 
         //Edits the Habit
+        String editedHabitTitle = "Exterminate Bees";
+        String editedHabitReason = "They went crazy";
         solo.clickOnView((ImageButton) solo.getView(R.id.button_overflow_menu));
         solo.clickOnMenuItem("Edit Habit");
 
         solo.clearEditText((EditText) solo.getView(R.id.edit_title));
-        solo.enterText((EditText) solo.getView(R.id.edit_title), "Exterminate Bees");
+        solo.enterText((EditText) solo.getView(R.id.edit_title), editedHabitTitle);
         solo.clickOnToggleButton("Sun");
         solo.clickOnToggleButton("Mon");
         solo.clickOnToggleButton("Sat");
@@ -345,7 +353,7 @@ public class HabitsFragmentTest {
         solo.clickOnToggleButton("Sat");
 
         solo.clearEditText((EditText) solo.getView(R.id.edit_reason));
-        solo.enterText((EditText) solo.getView(R.id.edit_reason), "They went crazy");
+        solo.enterText((EditText) solo.getView(R.id.edit_reason), editedHabitReason);
         solo.clickOnView(solo.getView(R.id.text_start_date));
         solo.setDatePicker(0,2021,
                 10, 9);
@@ -355,8 +363,8 @@ public class HabitsFragmentTest {
 
         //Checks if the Habit was updated
         //Asserts Habit is on screen and has the relevant information
-        assertTrue(solo.waitForText("Exterminate Bees", 1, 2000));
-        assertTrue(solo.waitForText("They went crazy", 1, 2000));
+        assertTrue(solo.waitForText(editedHabitTitle, 1, 2000));
+        assertTrue(solo.waitForText(editedHabitReason, 1, 2000));
         assertTrue(solo.waitForText("Nov 9, 2021", 1, 2000));
         assertTrue(solo.waitForText("Fri, Sat",
                 1, 2000));
@@ -376,7 +384,7 @@ public class HabitsFragmentTest {
         //Go to the Habits Fragment and create a habit
         solo.clickOnMenuItem("Habits");
         solo.clickOnView((FloatingActionButton) solo.getView(R.id.button_add_habit));
-        solo.enterText((EditText) solo.getView(R.id.edit_title), "Farm Bees");
+        solo.enterText((EditText) solo.getView(R.id.edit_title), this.habitText);
         solo.clickOnToggleButton("Sun");
         solo.clickOnToggleButton("Mon");
         solo.clickOnToggleButton("Tue");
@@ -385,7 +393,7 @@ public class HabitsFragmentTest {
         solo.clickOnToggleButton("Fri");
         solo.clickOnToggleButton("Sat");
 
-        solo.enterText((EditText) solo.getView(R.id.edit_reason), "I want honey");
+        solo.enterText((EditText) solo.getView(R.id.edit_reason), this.habitReason);
         solo.clickOnView(solo.getView(R.id.text_start_date));
         solo.setDatePicker(0,2021,
                 10, 5);
@@ -394,18 +402,20 @@ public class HabitsFragmentTest {
         solo.goBack();
 
         //Go to My Day Fragment and create an Event
+        String eventComment1 = "Bought Bees";
         solo.clickOnMenuItem("My Day");
-        solo.clickOnText("Farm Bees");
+        solo.clickOnText(this.habitText);
         solo.clickOnText("Edit Event");
         solo.clickOnText("2021");
         solo.setDatePicker(0,2021,
                 10, 9);
         solo.clickOnText("OK");
-        solo.enterText((EditText) solo.getView(R.id.edit_comment), "Bought Bees");
+        solo.enterText((EditText) solo.getView(R.id.edit_comment), eventComment1);
         solo.clickOnView((FloatingActionButton) solo.getView(R.id.button_save));
         solo.goBack();
 
         //Edits the Event
+        String eventComment2 = "Getting new bees";
         solo.clickOnMenuItem("Habits");
         solo.clickOnView((ImageButton) solo.getView(R.id.button_overflow_menu));
         solo.clickOnMenuItem("View Events");
@@ -419,14 +429,14 @@ public class HabitsFragmentTest {
                 11, 15);
         solo.clickOnText("OK");
         solo.clearEditText((EditText) solo.getView(R.id.edit_comment));
-        solo.enterText((EditText) solo.getView(R.id.edit_comment), "Getting new bees");
+        solo.enterText((EditText) solo.getView(R.id.edit_comment), eventComment2);
         solo.clickOnView((FloatingActionButton) solo.getView(R.id.button_save));
         solo.goBack();
 
         //Checks if the Event is edited
         solo.clickOnView((ImageButton) solo.getView(R.id.button_overflow_menu));
         solo.clickOnMenuItem("View Events");
-        assertTrue(solo.waitForText("Getting new bees", 1, 2000));
+        assertTrue(solo.waitForText(eventComment2, 1, 2000));
         assertTrue(solo.waitForText("Dec 15, 2021", 1, 2000));
     }
 
