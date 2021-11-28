@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="393" height="851" viewBox="0 0 393 851">
+  <defs>
+    <clipPath id="clip-Google_Pixel_5_1">
+      <rect width="393" height="851"/>
+    </clipPath>
+  </defs>
+  <g id="Google_Pixel_5_1" data-name="Google Pixel 5 – 1" clip-path="url(#clip-Google_Pixel_5_1)">
+    <rect width="393" height="851" fill="#fff"/>
+    <rect id="Rectangle_4" data-name="Rectangle 4" width="393" height="24" fill="#303f9f"/>
+    <rect id="Rectangle_5" data-name="Rectangle 5" width="393" height="66" transform="translate(0 24)" fill="#3f51b5"/>
+    <line id="Line_1" data-name="Line 1" x2="335" transform="translate(29 210.5)" fill="none" stroke="#707070" stroke-width="1"/>
+    <text id="Email" transform="translate(29 200)" fill="#707070" font-size="20" font-family="HelveticaNeue, Helvetica Neue"><tspan x="0" y="0">Email</tspan></text>
+    <g id="Component_1_1" data-name="Component 1 – 1" transform="translate(229 235)">
+      <rect id="Rectangle_3" data-name="Rectangle 3" width="135" height="51" fill="#3f51b5"/>
+    </g>
+    <text id="Next" transform="translate(276 268)" fill="#fff" font-size="20" font-family="HelveticaNeue, Helvetica Neue"><tspan x="0" y="0">Next</tspan></text>
+    <text id="Sign_in" data-name="Sign in" transform="translate(29 67)" fill="#fff" font-size="26" font-family="HelveticaNeue, Helvetica Neue"><tspan x="0" y="0">Sign in</tspan></text>
+  </g>
+</svg>
