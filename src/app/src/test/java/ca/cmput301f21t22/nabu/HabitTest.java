@@ -18,6 +18,7 @@ import ca.cmput301f21t22.nabu.data.Occurrence;
 
 public class HabitTest {
 
+    //Tests to make sure the object's creation works
     @Test
     public void testCreate() {
         List<String> events = new ArrayList<>();

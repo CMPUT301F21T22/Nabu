@@ -28,6 +28,7 @@ import java.util.Calendar;
 
 import ca.cmput301f21t22.nabu.MainActivity;
 import ca.cmput301f21t22.nabu.R;
+import ca.cmput301f21t22.nabu.TestResources.DateProvider;
 
 /**
  * Runs tests on the My Day fragment.
@@ -36,44 +37,11 @@ import ca.cmput301f21t22.nabu.R;
  */
 public class MyDayFragmentTest {
     private Solo solo;
+    private DateProvider dateProvider = new DateProvider();
     @Rule
     public ActivityTestRule<MainActivity> rule =
             new ActivityTestRule<>(MainActivity.class, true, true);
 
-    /**
-     * Creates a string representation of the current day
-     *
-     * @return day
-     *  A string representation of the current day
-     */
-    public String getCurrentDay(){
-        Calendar calendar = Calendar.getInstance();
-        int dayOfWeek = Calendar.DAY_OF_WEEK - 1;
-        String day;
-        if (dayOfWeek == Calendar.SUNDAY) {
-            day = "Sun";
-        }
-        else if (dayOfWeek == Calendar.MONDAY) {
-            day = "Mon";
-        }
-        else if (dayOfWeek == Calendar.TUESDAY) {
-            day = "Tue";
-        }
-        else if (dayOfWeek == Calendar.WEDNESDAY) {
-            day = "Wed";
-        }
-        else if (dayOfWeek == Calendar.THURSDAY) {
-            day = "Thu";
-        }
-        else if (dayOfWeek == Calendar.FRIDAY) {
-            day = "Fri";
-        }
-        else {
-            day = "Sat";
-        }
-        return day;
-
-    }
     /**
      * Runs before all tests and creates solo instance.
      *
@@ -99,6 +67,8 @@ public class MyDayFragmentTest {
 
             //Logs out user
             solo.clickOnMenuItem("Settings");
+            solo.clickOnText("Reset");
+            solo.clickOnText("Reset", 2);
             solo.clickOnText("Sign out");
             solo.clickOnText("Sign", 3);
         }
@@ -135,7 +105,7 @@ public class MyDayFragmentTest {
         solo.clickOnMenuItem("Habits");
         solo.clickOnView((FloatingActionButton) solo.getView(R.id.button_add_habit));
         solo.enterText((EditText) solo.getView(R.id.edit_title), "Farm Bees");
-        solo.clickOnToggleButton(this.getCurrentDay());
+        solo.clickOnToggleButton(this.dateProvider.getCurrentDay());
 
         solo.enterText((EditText) solo.getView(R.id.edit_reason), "I want honey");
         solo.clickOnText("Start Date");
@@ -179,21 +149,6 @@ public class MyDayFragmentTest {
         assertTrue(solo.waitForText("Farm Bees", 1, 2000));
         assertTrue(solo.waitForText("Farm Hornets", 1, 2000));
         assertFalse(solo.waitForText("Farm Wasps", 1, 2000));
-
-        //Deletes Habits
-        solo.clickOnMenuItem("Habits");
-
-        solo.clickOnView((ImageButton) solo.getView(R.id.button_overflow_menu));
-        solo.clickOnMenuItem("Delete Habit");
-        solo.clickOnText("Delete");
-
-        solo.clickOnView((ImageButton) solo.getView(R.id.button_overflow_menu));
-        solo.clickOnMenuItem("Delete Habit");
-        solo.clickOnText("Delete");
-
-        solo.clickOnView((ImageButton) solo.getView(R.id.button_overflow_menu));
-        solo.clickOnMenuItem("Delete Habit");
-        solo.clickOnText("Delete");
     }
 
     /**
@@ -211,7 +166,7 @@ public class MyDayFragmentTest {
         solo.clickOnMenuItem("Habits");
         solo.clickOnView((FloatingActionButton) solo.getView(R.id.button_add_habit));
         solo.enterText((EditText) solo.getView(R.id.edit_title), "Farm Bees");
-        solo.clickOnToggleButton(this.getCurrentDay());
+        solo.clickOnToggleButton(this.dateProvider.getCurrentDay());
 
         solo.enterText((EditText) solo.getView(R.id.edit_reason), "I want honey");
         solo.clickOnText("Start Date");
@@ -251,7 +206,7 @@ public class MyDayFragmentTest {
         solo.clickOnMenuItem("Habits");
         solo.clickOnView((FloatingActionButton) solo.getView(R.id.button_add_habit));
         solo.enterText((EditText) solo.getView(R.id.edit_title), "Farm Bees");
-        solo.clickOnToggleButton(this.getCurrentDay());
+        solo.clickOnToggleButton(this.dateProvider.getCurrentDay());
 
         solo.enterText((EditText) solo.getView(R.id.edit_reason), "I want honey");
         solo.clickOnText("Start Date");
@@ -267,12 +222,6 @@ public class MyDayFragmentTest {
         assertTrue(solo.waitForText("Habit marked as complete", 1,
                 2000));
         solo.clickOnText("Farm Bees");
-
-        //Deletes Habit
-        solo.clickOnMenuItem("Habits");
-        solo.clickOnView((ImageButton) solo.getView(R.id.button_overflow_menu));
-        solo.clickOnMenuItem("Delete Habit");
-        solo.clickOnText("Delete");
     }
 
     /**
@@ -283,6 +232,8 @@ public class MyDayFragmentTest {
     @After
     public void tearDown() throws Exception {
         solo.clickOnMenuItem("Settings");
+        solo.clickOnText("Reset");
+        solo.clickOnText("Reset", 2);
         solo.clickOnText("Sign out");
         solo.clickOnText("Sign", 3);
         solo.finishOpenedActivities();
