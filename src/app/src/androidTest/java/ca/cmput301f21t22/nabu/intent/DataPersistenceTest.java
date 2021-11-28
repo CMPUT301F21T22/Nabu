@@ -140,7 +140,6 @@ public class DataPersistenceTest {
         //Habit checks
         assertTrue(solo.waitForText("Farm Bees", 1, 2000));
         assertTrue(solo.waitForText("I want honey", 1, 2000));
-        assertTrue(solo.waitForText(this.dateProvider.getCurrentDate(), 1, 2000));
         assertTrue(solo.waitForText("Every Day",
                 1, 2000));
 
@@ -243,7 +242,6 @@ public class DataPersistenceTest {
         //Habit checks
         assertTrue(solo.waitForText("Farm Beans", 1, 2000));
         assertTrue(solo.waitForText("I want beans", 1, 2000));
-        assertTrue(solo.waitForText(this.dateProvider.getCurrentDate(), 1, 2000));
         assertTrue(solo.waitForText("Every Day",
                 1, 2000));
 

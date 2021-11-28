@@ -406,7 +406,7 @@ public class HabitsFragmentTest {
         solo.clickOnMenuItem("My Day");
         solo.clickOnText(this.habitText);
         solo.clickOnText("Edit Event");
-        solo.clickOnText(this.dateProvider.getCurrentDate());
+        solo.clickOnText(this.dateProvider.getCurrentYear());
         solo.setDatePicker(0,2021,
                 10, 9);
         solo.clickOnText("OK");
