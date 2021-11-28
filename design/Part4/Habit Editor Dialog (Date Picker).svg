@@ -1,0 +1,183 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="393" height="851" viewBox="0 0 393 851">
+  <defs>
+    <filter id="Rectangle" x="357.5" y="131.5" width="26" height="26" filterUnits="userSpaceOnUse">
+      <feOffset dy="1" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="1.5" result="blur"/>
+      <feFlood flood-opacity="0.2"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Rectangle-2" x="360.5" y="135" width="20" height="20.5" filterUnits="userSpaceOnUse">
+      <feOffset dy="2" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="0.5" result="blur-2"/>
+      <feFlood flood-opacity="0.122"/>
+      <feComposite operator="in" in2="blur-2"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Rectangle-3" x="360.5" y="134.5" width="20" height="20" filterUnits="userSpaceOnUse">
+      <feOffset dy="1" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="0.5" result="blur-3"/>
+      <feFlood flood-opacity="0.141"/>
+      <feComposite operator="in" in2="blur-3"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <clipPath id="clip-Google_Pixel_5_1">
+      <rect width="393" height="851"/>
+    </clipPath>
+  </defs>
+  <g id="Google_Pixel_5_1" data-name="Google Pixel 5 – 1" clip-path="url(#clip-Google_Pixel_5_1)">
+    <rect width="393" height="851" fill="#fff"/>
+    <g id="Group_1" data-name="Group 1" transform="translate(15 -7)">
+      <g id="Group_1-2" data-name="Group 1" transform="translate(-21 15)">
+        <g id="Ellipse_1" data-name="Ellipse 1" transform="translate(21 197)" fill="#fff" stroke="#707070" stroke-width="1">
+          <circle cx="20" cy="20" r="20" stroke="none"/>
+          <circle cx="20" cy="20" r="19.5" fill="none"/>
+        </g>
+        <g id="Ellipse_2" data-name="Ellipse 2" transform="translate(75 197)" fill="#434343" stroke="#434344" stroke-width="1">
+          <circle cx="20" cy="20" r="20" stroke="none"/>
+          <circle cx="20" cy="20" r="19.5" fill="none"/>
+        </g>
+        <g id="Ellipse_3" data-name="Ellipse 3" transform="translate(129 197)" fill="#434343" stroke="#434344" stroke-width="1">
+          <circle cx="20" cy="20" r="20" stroke="none"/>
+          <circle cx="20" cy="20" r="19.5" fill="none"/>
+        </g>
+        <g id="Path_9" data-name="Path 9" transform="translate(237 197)" fill="#434343">
+          <path d="M 20 39.5 C 17.36730003356934 39.5 14.8136100769043 38.98448944091797 12.40987968444824 37.96780014038086 C 10.08788967132568 36.98567962646484 8.002429962158203 35.57958984375 6.211420059204102 33.78858184814453 C 4.42041015625 31.9975700378418 3.014319896697998 29.912109375 2.03220009803772 27.59012031555176 C 1.015509963035583 25.1863899230957 0.5 22.63269996643066 0.5 20 C 0.5 17.36730003356934 1.015509963035583 14.8136100769043 2.03220009803772 12.40987968444824 C 3.014319896697998 10.08788967132568 4.42041015625 8.002429962158203 6.211420059204102 6.211420059204102 C 8.002429962158203 4.42041015625 10.08788967132568 3.014319896697998 12.40987968444824 2.03220009803772 C 14.8136100769043 1.015509963035583 17.36730003356934 0.5 20 0.5 C 22.63269996643066 0.5 25.1863899230957 1.015509963035583 27.59012031555176 2.03220009803772 C 29.912109375 3.014319896697998 31.9975700378418 4.42041015625 33.78858184814453 6.211420059204102 C 35.57958984375 8.002429962158203 36.98567962646484 10.08788967132568 37.96780014038086 12.40987968444824 C 38.98448944091797 14.8136100769043 39.5 17.36730003356934 39.5 20 C 39.5 21.66559982299805 39.28546905517578 23.2880802154541 38.82487106323242 25.10605049133301 C 37.82184982299805 29.09573936462402 35.42251968383789 32.73361968994141 32.06864166259766 35.35044097900391 C 30.38528060913086 36.66386032104492 28.51279067993164 37.68790054321289 26.5031795501709 38.39411926269531 C 24.41506004333496 39.1279296875 22.22706985473633 39.5 20 39.5 Z" stroke="none"/>
+          <path d="M 20 1 C 17.43457984924316 1 14.94642066955566 1.502220153808594 12.60465049743652 2.492698669433594 C 10.34226036071777 3.449611663818359 8.310220718383789 4.819721221923828 6.564968109130859 6.564968109130859 C 4.819721221923828 8.310220718383789 3.449611663818359 10.34226036071777 2.492698669433594 12.60465049743652 C 1.502220153808594 14.94642066955566 1 17.43457984924316 1 20 C 1 22.56542015075684 1.502220153808594 25.05358123779297 2.492698669433594 27.39535140991211 C 3.449611663818359 29.65773963928223 4.819721221923828 31.68978118896484 6.564968109130859 33.43502807617188 C 8.310220718383789 35.18027877807617 10.34226036071777 36.55038833618164 12.60465049743652 37.50730133056641 C 14.94642066955566 38.49777984619141 17.43457984924316 39 20 39 C 22.17046928405762 39 24.30268096923828 38.6374397277832 26.33740043640137 37.92240142822266 C 28.29576110839844 37.23419189453125 30.12054061889648 36.23622894287109 31.76107025146484 34.95623016357422 C 35.027587890625 32.40756988525391 37.36394119262695 28.86639022827148 38.34017944335938 24.98324966430664 C 38.79034042358398 23.20652961730957 39 21.62306022644043 39 20 C 39 17.43457984924316 38.49777984619141 14.94642066955566 37.50730133056641 12.60465049743652 C 36.55038833618164 10.34226036071777 35.18027877807617 8.310220718383789 33.43502807617188 6.564968109130859 C 31.68978118896484 4.819721221923828 29.65773963928223 3.449611663818359 27.39535140991211 2.492698669433594 C 25.05358123779297 1.502220153808594 22.56542015075684 1 20 1 M 20 0 C 31.04568862915039 0 40 8.954309463500977 40 20 C 40 21.68998908996582 39.79039001464844 23.33102989196777 39.30955123901367 25.22885131835938 C 37.21102142333984 33.57609939575195 29.35569953918457 40 20 40 C 8.954309463500977 40 0 31.04568862915039 0 20 C 0 8.954309463500977 8.954309463500977 0 20 0 Z" stroke="none" fill="#434343"/>
+        </g>
+        <g id="Ellipse_5" data-name="Ellipse 5" transform="translate(291 197)" fill="#434343" stroke="#434343" stroke-width="1">
+          <circle cx="20" cy="20" r="20" stroke="none"/>
+          <circle cx="20" cy="20" r="19.5" fill="none"/>
+        </g>
+        <g id="Ellipse_6" data-name="Ellipse 6" transform="translate(345 197)" fill="#fff" stroke="#707070" stroke-width="1">
+          <circle cx="20" cy="20" r="20" stroke="none"/>
+          <circle cx="20" cy="20" r="19.5" fill="none"/>
+        </g>
+        <g id="Ellipse_7" data-name="Ellipse 7" transform="translate(183 197)" fill="#434343" stroke="#434343" stroke-width="1">
+          <circle cx="20" cy="20" r="20" stroke="none"/>
+          <circle cx="20" cy="20" r="19.5" fill="none"/>
+        </g>
+      </g>
+      <text id="SUN" transform="translate(6 225)" font-size="13" font-family="HelveticaNeue, Helvetica Neue"><tspan x="0" y="12">SUN</tspan></text>
+      <text id="SAT" transform="translate(332 225)" font-size="13" font-family="HelveticaNeue, Helvetica Neue"><tspan x="0" y="12">SAT</tspan></text>
+      <text id="MON" transform="translate(58 225)" fill="#fdfdfd" font-size="13" font-family="HelveticaNeue, Helvetica Neue"><tspan x="0" y="12">MON</tspan></text>
+      <text id="TUE" transform="translate(115 225)" fill="#fcf9f9" font-size="13" font-family="HelveticaNeue, Helvetica Neue"><tspan x="0" y="12">TUE</tspan></text>
+      <text id="WED" transform="translate(167 225)" fill="#fdfcfc" font-size="13" font-family="HelveticaNeue, Helvetica Neue"><tspan x="0" y="12">WED</tspan></text>
+      <text id="THU" transform="translate(223 225)" fill="#fdfcfc" font-size="13" font-family="HelveticaNeue, Helvetica Neue"><tspan x="0" y="12">THU</tspan></text>
+      <text id="FRI" transform="translate(280 225)" fill="#fdfdfd" font-size="13" font-family="HelveticaNeue, Helvetica Neue"><tspan x="0" y="12">FRI</tspan></text>
+    </g>
+    <rect id="Rectangle_1" data-name="Rectangle 1" width="393" height="24" fill="#3716b3"/>
+    <rect id="Rectangle_2" data-name="Rectangle 2" width="393" height="66" transform="translate(0 24)" fill="#6222ee"/>
+    <text id="Modify_Habits" data-name="Modify Habits" transform="translate(96 66)" fill="#fff" font-size="24" font-family="HelveticaNeue, Helvetica Neue"><tspan x="0" y="0">Modify Habits</tspan></text>
+    <path id="Mask" d="M34,0H46L40,10ZM18,5a5,5,0,1,1,5,5A5,5,0,0,1,18,5ZM0,10V0H10V10Z" transform="translate(336 8)" fill="rgba(255,255,255,0.38)"/>
+    <g id="close_black_24dp" transform="translate(21 40)">
+      <path id="Path_7" data-name="Path 7" d="M0,0H34V34H0Z" fill="none"/>
+      <path id="Path_8" data-name="Path 8" d="M29,7.417,26.583,5,17,14.583,7.417,5,5,7.417,14.583,17,5,26.583,7.417,29,17,19.417,26.583,29,29,26.583,19.417,17Z" fill="#fff"/>
+    </g>
+    <g id="Light_Text_fields_2._Outlined_6_States_" data-name="Light 🌕/ Text fields/2. Outlined/ (6 States)" transform="translate(15 110)">
+      <g id="_Container_l_Color" data-name="🔲🎨 Container l Color" transform="translate(0 9)" fill="none" stroke="rgba(0,0,0,0.12)" stroke-miterlimit="10" stroke-width="1">
+        <rect width="263" height="56" rx="4" stroke="none"/>
+        <rect x="0.5" y="0.5" width="262" height="55" rx="3.5" fill="none"/>
+      </g>
+      <text id="_Input_text" data-name="✏️ Input text" transform="translate(13 41)" font-size="14" font-family="Roboto-Regular, Roboto" letter-spacing="0.009em"><tspan x="0" y="0">Work</tspan></text>
+      <g id="Top_label" data-name="Top label" transform="translate(13.5)">
+        <rect id="top_border_with_background_color" data-name="top border with background color" width="66" height="3" transform="translate(0 7)" fill="#f5f5f5"/>
+        <text id="_Label" data-name="✏️ Label" transform="translate(3 13)" fill="rgba(0,0,0,0.6)" font-size="12" font-family="Roboto-Regular, Roboto" letter-spacing="0.033em"><tspan x="0" y="0">Habit Title</tspan></text>
+      </g>
+    </g>
+    <g id="Light_Selection_Controls_3._Switch_B._Off_5_States_" data-name="Light 🌕/ Selection Controls/3. Switch/B. Off/(5 States)" transform="translate(350 135)">
+      <g id="Light_Selection_Controls_3._Switch_2_States_" data-name="Light 🌕/ Selection Controls/3. Switch/ (2 States)">
+        <rect id="_Color_l_Track" data-name="🎨 Color l Track" width="29" height="11" rx="5.5" transform="translate(0 3)" fill="#76eae0"/>
+        <g id="Light_Elevation_00dp" data-name="Light 🌕/Elevation/00dp" transform="translate(12)">
+          <g id="Shadow" style="mix-blend-mode: multiply;isolation: isolate">
+            <g transform="matrix(1, 0, 0, 1, -362, -135)" filter="url(#Rectangle)">
+              <rect id="Rectangle-4" data-name="Rectangle" width="17" height="17" rx="8.5" transform="translate(362 135)" fill="#fff"/>
+            </g>
+            <g transform="matrix(1, 0, 0, 1, -362, -135)" filter="url(#Rectangle-2)">
+              <rect id="Rectangle-5" data-name="Rectangle" width="17" height="17" rx="8.5" transform="translate(362 135)" fill="#fff"/>
+            </g>
+            <g transform="matrix(1, 0, 0, 1, -362, -135)" filter="url(#Rectangle-3)">
+              <rect id="Rectangle-6" data-name="Rectangle" width="17" height="17" rx="8.5" transform="translate(362 135)" fill="#fff"/>
+            </g>
+          </g>
+        </g>
+        <circle id="_Color_l_Thumb" data-name="🎨 Color l Thumb" cx="8.5" cy="8.5" r="8.5" transform="translate(12)" fill="#03d6c2"/>
+      </g>
+    </g>
+    <text id="Public" transform="translate(297 134)" font-size="13" font-family="Roboto-Regular, Roboto"><tspan x="0" y="14">Public</tspan></text>
+    <g id="event_black_24dp" transform="translate(15 364)">
+      <path id="Path_10" data-name="Path 10" d="M0,0H34V34H0Z" fill="none"/>
+      <path id="Path_11" data-name="Path 11" d="M27.889,5H26.333V2H23.222V5H10.778V2H7.667V5H6.111a3.042,3.042,0,0,0-3.1,3L3,29a3.056,3.056,0,0,0,3.111,3H27.889A3.066,3.066,0,0,0,31,29V8A3.066,3.066,0,0,0,27.889,5Zm0,24H6.111V14H27.889Zm0-18H6.111V8H27.889ZM17,18.5h7.778V26H17Z" transform="translate(0)" fill="#707070"/>
+    </g>
+    <g id="notes_black_24dp" transform="translate(15 269)">
+      <path id="Path_12" data-name="Path 12" d="M0,0H34V34H0Z" fill="none"/>
+      <path id="Path_13" data-name="Path 13" d="M3,18H21.667V16H3ZM3,6V8H31V6Zm0,7H31V11H3Z" transform="translate(0 5)" fill="#707070"/>
+    </g>
+    <g id="Group_2" data-name="Group 2" transform="translate(65 231)">
+      <circle id="Ellipse_8" data-name="Ellipse 8" cx="35.5" cy="35.5" r="35.5" transform="translate(243 535)" fill="#6222ee"/>
+      <g id="save_black_24dp" transform="translate(263 553)">
+        <path id="Path_14" data-name="Path 14" d="M0,0H34V34H0Z" fill="none"/>
+        <path id="Path_15" data-name="Path 15" d="M24.778,3H6.111A3.11,3.11,0,0,0,3,6.111V27.889A3.11,3.11,0,0,0,6.111,31H27.889A3.12,3.12,0,0,0,31,27.889V9.222Zm3.111,24.889H6.111V6.111H23.487l4.4,4.4ZM17,17a4.667,4.667,0,1,0,4.667,4.667A4.66,4.66,0,0,0,17,17ZM7.667,7.667h14v6.222h-14Z" transform="translate(0 0)" fill="#fffdfd"/>
+      </g>
+    </g>
+    <g id="Polygon_1" data-name="Polygon 1" transform="translate(358 389) rotate(180)" fill="#6f7070">
+      <path d="M 13.73148727416992 6.5 L 1.268514037132263 6.5 L 7.500000476837158 0.6839460134506226 L 13.73148727416992 6.5 Z" stroke="none"/>
+      <path d="M 7.500000476837158 1.367891788482666 L 2.537027359008789 6 L 12.46297359466553 6 L 7.500000476837158 1.367891788482666 M 7.500000476837158 0 L 15 7 L 9.5367431640625e-07 7 L 7.500000476837158 0 Z" stroke="none" fill="#707070"/>
+    </g>
+    <g id="Rectangle_5" data-name="Rectangle 5" transform="translate(-55 -12)" fill="#6f7070" stroke="#707070" stroke-width="1" opacity="0.46">
+      <rect width="489" height="898" stroke="none"/>
+      <rect x="0.5" y="0.5" width="488" height="897" fill="none"/>
+    </g>
+    <g id="Light_Text_fields_2._Outlined_6_States_2" data-name="Light 🌕/ Text fields/2. Outlined/ (6 States)" transform="translate(67 254)">
+      <g id="_Container_l_Color-2" data-name="🔲🎨 Container l Color" transform="translate(0 9)" fill="none" stroke="rgba(0,0,0,0.12)" stroke-miterlimit="10" stroke-width="1">
+        <rect width="312" height="56" rx="4" stroke="none"/>
+        <rect x="0.5" y="0.5" width="311" height="55" rx="3.5" fill="none"/>
+      </g>
+      <text id="_Input_text-2" data-name="✏️ Input text" transform="translate(13 41)" font-size="14" font-family="Roboto-Regular, Roboto" letter-spacing="0.009em"><tspan x="0" y="0">Need money to live.</tspan></text>
+      <g id="Top_label-2" data-name="Top label" transform="translate(13.5)">
+        <rect id="top_border_with_background_color-2" data-name="top border with background color" width="49" height="3" transform="translate(0 7)" fill="#f5f5f5"/>
+        <text id="_Label-2" data-name="✏️ Label" transform="translate(3 13)" fill="rgba(0,0,0,0.6)" font-size="12" font-family="Roboto-Regular, Roboto" letter-spacing="0.033em"><tspan x="0" y="0">Reason</tspan></text>
+      </g>
+    </g>
+    <g id="Light_Text_fields_2._Outlined_6_States_3" data-name="Light 🌕/ Text fields/2. Outlined/ (6 States)" transform="translate(67 349)">
+      <g id="_Container_l_Color-3" data-name="🔲🎨 Container l Color" transform="translate(0 9)" fill="none" stroke="rgba(0,0,0,0.12)" stroke-miterlimit="10" stroke-width="1">
+        <rect width="312" height="56" rx="4" stroke="none"/>
+        <rect x="0.5" y="0.5" width="311" height="55" rx="3.5" fill="none"/>
+      </g>
+      <text id="_Input_text-3" data-name="✏️ Input text" transform="translate(13 41)" font-size="14" font-family="Roboto-Regular, Roboto" letter-spacing="0.009em"><tspan x="0" y="0">Nov. 25, 2021</tspan></text>
+      <g id="Top_label-3" data-name="Top label" transform="translate(13.5)">
+        <rect id="top_border_with_background_color-3" data-name="top border with background color" width="64" height="3" transform="translate(0 7)" fill="#f5f5f5"/>
+        <text id="_Label-3" data-name="✏️ Label" transform="translate(3 13)" fill="rgba(0,0,0,0.6)" font-size="12" font-family="Roboto-Regular, Roboto" letter-spacing="0.033em"><tspan x="0" y="0">Start Date</tspan></text>
+      </g>
+    </g>
+    <rect id="Rectangle_3" data-name="Rectangle 3" width="273" height="481" rx="10" transform="translate(60 174)" fill="#fff"/>
+    <path id="Rectangle_4" data-name="Rectangle 4" d="M10,0H263a10,10,0,0,1,10,10V123a0,0,0,0,1,0,0H0a0,0,0,0,1,0,0V10A10,10,0,0,1,10,0Z" transform="translate(60 174)" fill="#03d6c2"/>
+    <text id="CANCEL" transform="translate(179 621)" fill="#6222ee" font-size="14" font-family="Roboto-Medium, Roboto" font-weight="500"><tspan x="0" y="15">CANCEL</tspan></text>
+    <text id="OK" transform="translate(278 621)" fill="#6222ee" font-size="14" font-family="Roboto-Medium, Roboto" font-weight="500"><tspan x="0" y="15">OK</tspan></text>
+    <g id="Group_3" data-name="Group 3" transform="translate(-7 -8)">
+      <text id="_2021" data-name="2021" transform="translate(80 232)" fill="#fbfbfb" font-size="20" font-family="Roboto-Medium, Roboto" font-weight="500" opacity="0.733"><tspan x="0" y="0">2021</tspan></text>
+      <text id="Fri_Nov_25" data-name="Fri, Nov 25" transform="translate(80 229)" fill="#fafbfa" font-size="36" font-family="Roboto-Medium, Roboto" font-weight="500"><tspan x="0" y="38">Fri, Nov 25</tspan></text>
+    </g>
+    <text id="November" transform="translate(159 315)" font-size="16" font-family="Roboto-Medium, Roboto" font-weight="500"><tspan x="0" y="17">November</tspan></text>
+    <text id="S_M_T_W_T_F_S" data-name="S      M      T      W      T      F      S" transform="translate(84 356)" fill="#6f7070" font-size="16" font-family="Roboto-Regular, Roboto"><tspan x="0" y="17" xml:space="preserve">S      M      T      W      T      F      S</tspan></text>
+    <text id="_1_2_3_4_5_6_" data-name="         1        2      3       4     5      6
+            " transform="translate(84 397)" font-size="16" font-family="Roboto-Regular, Roboto"><tspan x="0" y="17" xml:space="preserve">         1        2      3       4     5      6</tspan></text>
+    <text id="_7_8_9_10_11_12_13_" data-name="7       8        9     10    11   12    13
+            " transform="translate(84 437)" font-size="16" font-family="Roboto-Regular, Roboto"><tspan x="0" y="17" xml:space="preserve">7       8        9     10    11   12    13</tspan></text>
+    <text id="_21_22_23_24_25_26_27_" data-name="21    22     23    24    25    26   27
+            " transform="translate(84 517)" font-size="16" font-family="Roboto-Regular, Roboto"><tspan x="0" y="17" xml:space="preserve">21    22     23    24    25    26   27</tspan></text>
+    <text id="_28_29_30_" data-name="28    29     30
+            " transform="translate(84 557)" font-size="16" font-family="Roboto-Regular, Roboto"><tspan x="0" y="17" xml:space="preserve">28    29     30</tspan></text>
+    <g id="chevron_left_black_24dp" transform="translate(84 315)">
+      <path id="Path_16" data-name="Path 16" d="M0,0H24V24H0Z" fill="none"/>
+      <path id="Path_17" data-name="Path 17" d="M15.41,7.41,14,6,8,12l6,6,1.41-1.41L10.83,12Z"/>
+    </g>
+    <g id="chevron_left_black_24dp-2" data-name="chevron_left_black_24dp" transform="translate(277 315)">
+      <path id="Path_16-2" data-name="Path 16" d="M24,0H0V24H24Z" fill="none"/>
+      <path id="Path_17-2" data-name="Path 17" d="M8,7.41,9.41,6l6,6-6,6L8,16.59,12.58,12Z" transform="translate(0.59)"/>
+    </g>
+    <circle id="Ellipse_9" data-name="Ellipse 9" cx="15" cy="15" r="15" transform="translate(251 472)" fill="#03d6c2"/>
+    <text id="_14_15_16_17_18_19_20_" data-name="14    15     16    17    18    19   20
+            " transform="translate(84 477)" font-size="16" font-family="Roboto-Regular, Roboto"><tspan x="0" y="17" xml:space="preserve">14    15     16    17    18    19   20</tspan></text>
+  </g>
+</svg>
