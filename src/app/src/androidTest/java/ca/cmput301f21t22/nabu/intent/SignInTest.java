@@ -1,26 +1,21 @@
 package ca.cmput301f21t22.nabu.intent;
 
 import static junit.framework.TestCase.assertTrue;
+import static org.junit.Assert.assertFalse;
 
-import android.app.Activity;
+import android.widget.EditText;
 
 import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.rule.ActivityTestRule;
 
-import android.widget.EditText;
-import android.widget.ImageButton;
-
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.robotium.solo.Solo;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
-
-import static junit.framework.TestCase.assertTrue;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
 
 import ca.cmput301f21t22.nabu.MainActivity;
 import ca.cmput301f21t22.nabu.R;
@@ -33,11 +28,10 @@ import ca.cmput301f21t22.nabu.TestResources.DateProvider;
  * Each test, at its end deletes any Habits and Events it makes, and then signs out
  */
 public class SignInTest {
+    @Rule
+    public ActivityTestRule<MainActivity> rule = new ActivityTestRule<>(MainActivity.class, true, true);
     private Solo solo;
     private DateProvider dateProvider = new DateProvider();
-    @Rule
-    public ActivityTestRule<MainActivity> rule =
-            new ActivityTestRule<>(MainActivity.class, true, true);
 
     /**
      * Runs before all tests and creates solo instance.
@@ -70,22 +64,11 @@ public class SignInTest {
     }
 
     /**
-     * Gets the Activity
-     *
-     * @throws Exception
-     */
-    @Test
-    public void start() throws Exception {
-        Activity activity = rule.getActivity();
-    }
-
-    /**
      * Creates an account
      * Checks settings to make sure you are in that account
      */
     @Ignore("As there is no way within the code to remove a user from the database, this test " +
-            "should only be used with express intent. Also, whenever this test is run, a new email "
-            + "must be used")
+            "should only be used with express intent. Also, whenever this test is run, a new email " + "must be used")
     @Test
     public void checkSignUp() {
         //Asserts that the current activity is the MainActivity. Otherwise, show “Wrong Activity”
@@ -112,8 +95,7 @@ public class SignInTest {
 
         //Checks that user is logged in
         solo.clickOnMenuItem("Settings");
-        assertTrue(solo.waitForText(email, 1,
-                2000));
+        assertTrue(solo.waitForText(email, 1, 2000));
 
         //Logs Out
         solo.clickOnText("Sign out");
@@ -184,23 +166,19 @@ public class SignInTest {
 
         solo.enterText((EditText) solo.getView(R.id.edit_reason), "I want honey");
         solo.clickOnText("Start Date");
-        solo.setDatePicker(0,2021,
-                10, 5);
+        solo.setDatePicker(0, 2021, 10, 5);
         solo.clickOnText("OK");
         solo.clickOnView((FloatingActionButton) solo.getView(R.id.button_save));
-        solo.goBack();
 
         //Go to My Day Fragment and create an Event
         solo.clickOnMenuItem("My Day");
         solo.clickOnText("Farm Bees");
         solo.clickOnText("Edit Event");
         solo.clickOnText(dateProvider.getCurrentYear());
-        solo.setDatePicker(0,2021,
-                10, 9);
+        solo.setDatePicker(0, 2021, 10, 9);
         solo.clickOnText("OK");
         solo.enterText((EditText) solo.getView(R.id.edit_comment), "Bought Bees");
         solo.clickOnView((FloatingActionButton) solo.getView(R.id.button_save));
-        solo.goBack();
 
         //Go to Habits Fragment and make another Habit
         solo.clickOnMenuItem("Habits");
@@ -215,12 +193,9 @@ public class SignInTest {
 
         solo.enterText((EditText) solo.getView(R.id.edit_reason), "I want honey");
         solo.clickOnText("Start Date");
-        solo.setDatePicker(0,2021,
-                10, 5);
+        solo.setDatePicker(0, 2021, 10, 5);
         solo.clickOnText("OK");
         solo.clickOnView((FloatingActionButton) solo.getView(R.id.button_save));
-        solo.goBack();
-
 
         //Deletes Habits
         solo.clickOnMenuItem("Settings");
@@ -234,8 +209,7 @@ public class SignInTest {
         assertFalse(solo.waitForText("Farm Bees", 1, 2000));
         assertFalse(solo.waitForText("I want honey", 1, 2000));
         assertFalse(solo.waitForText("Nov 5, 2021", 1, 2000));
-        assertFalse(solo.waitForText("Every Day",
-                1, 2000));
+        assertFalse(solo.waitForText("Every Day", 1, 2000));
 
         //Event Checks
         assertFalse(solo.waitForText("Bought Bees", 1, 2000));
@@ -244,8 +218,7 @@ public class SignInTest {
         //Habit2 checks
         //Asserts Habit is on screen and has the relevant information
         assertFalse(solo.waitForText("Farm Hornets", 1, 2000));
-        assertFalse(solo.waitForText("Sun, Mon, Tues, Thu, Fri, Sat",
-                1, 2000));
+        assertFalse(solo.waitForText("Sun, Mon, Tues, Thu, Fri, Sat", 1, 2000));
 
         //Logs Out
         solo.clickOnMenuItem("Settings");
@@ -262,5 +235,4 @@ public class SignInTest {
     public void tearDown() throws Exception {
         solo.finishOpenedActivities();
     }
-
 }
