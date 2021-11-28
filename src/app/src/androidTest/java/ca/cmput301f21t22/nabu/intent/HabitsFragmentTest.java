@@ -234,7 +234,7 @@ public class HabitsFragmentTest {
         solo.clickOnView((FloatingActionButton) solo.getView(R.id.button_save));
         solo.goBack();
 
-        //Deletes Event
+        //Deletes Habit
         solo.clickOnView((ImageButton) solo.getView(R.id.button_overflow_menu));
         solo.clickOnMenuItem("Delete Habit");
         solo.clickOnText("Delete");

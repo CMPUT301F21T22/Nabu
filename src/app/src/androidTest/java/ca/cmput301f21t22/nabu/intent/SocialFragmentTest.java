@@ -105,7 +105,7 @@ public class SocialFragmentTest {
         //Creates three habits for testing purposes
         solo.clickOnMenuItem("Habits");
 
-        //Only one that should show up
+        //Should show up
         solo.clickOnView((FloatingActionButton) solo.getView(R.id.button_add_habit));
         solo.clickOnText("Public");
         solo.enterText((EditText) solo.getView(R.id.edit_title), "Farm Bees");
@@ -125,7 +125,7 @@ public class SocialFragmentTest {
         solo.clickOnView((FloatingActionButton) solo.getView(R.id.button_save));
         solo.goBack();
 
-        //Should not show up as it is not on that day
+        //Should show up
         solo.clickOnView((FloatingActionButton) solo.getView(R.id.button_add_habit));
         solo.clickOnText("Public");
         solo.enterText((EditText) solo.getView(R.id.edit_title), "Farm Bats");
@@ -215,12 +215,12 @@ public class SocialFragmentTest {
         this.socialSetUpContinue("Accept");
         solo.clickOnMenuItem("My Day");
 
-        //Check that social user's public habit appears
+        //Check that social user's public habits appears
         assertTrue(solo.waitForText("Farm Bees", 1, 2000));
         assertTrue(solo.waitForText("I want honey", 1, 2000));
+        assertTrue(solo.waitForText("Bats", 1, 2000));
 
         //Check that the habits of social user that are not supposed to appear don't appear
-        assertTrue(solo.waitForText("Bats", 1, 2000));
         assertFalse(solo.waitForText("Bears", 1, 2000));
     }
 
@@ -238,9 +238,10 @@ public class SocialFragmentTest {
         this.socialSetUpContinue("Accept");
         solo.clickOnMenuItem("My Day");
 
-        //Check that social user's public habit appears
+        //Check that social user's public habits appear
         assertTrue(solo.waitForText("Farm Bees", 1, 2000));
         assertTrue(solo.waitForText("I want honey", 1, 2000));
+        assertTrue(solo.waitForText("Bats", 1, 2000));
 
         //Log out of account
         solo.clickOnMenuItem("Settings");
@@ -266,6 +267,7 @@ public class SocialFragmentTest {
 
         assertFalse(solo.waitForText("Farm Bees", 1, 2000));
         assertFalse(solo.waitForText("I want honey", 1, 2000));
+        assertFalse(solo.waitForText("Bats", 1, 2000));
     }
 
     /**
@@ -277,19 +279,21 @@ public class SocialFragmentTest {
     public void checkUnfollowUser(){
         this.socialSetUpContinue("Accept");
 
-        //Check that social user's public habit appears
+        //Check that social user's public habits appear
         solo.clickOnMenuItem("My Day");
         assertTrue(solo.waitForText("Farm Bees", 1, 2000));
         assertTrue(solo.waitForText("I want honey", 1, 2000));
+        assertTrue(solo.waitForText("Bats", 1, 2000));
 
         //Unfollow user
         solo.clickOnMenuItem("Social");
         solo.clickOnView((ImageButton) solo.getView(R.id.unfollow_Button));
 
-        //Check that social user's public habit does not appear
+        //Check that social user's public habits do not appear
         solo.clickOnMenuItem("My Day");
         assertFalse(solo.waitForText("Farm Bees", 1, 2000));
         assertFalse(solo.waitForText("I want honey", 1, 2000));
+        assertFalse(solo.waitForText("Bats", 1, 2000));
     }
 
 
@@ -306,6 +310,7 @@ public class SocialFragmentTest {
         solo.clickOnMenuItem("My Day");
         assertFalse(solo.waitForText("Farm Bees", 1, 2000));
         assertFalse(solo.waitForText("I want honey", 1, 2000));
+        assertFalse(solo.waitForText("Bats", 1, 2000));
 
         //Check that email of social user shows up on main user's social screen
         solo.clickOnMenuItem("Social");
