@@ -1,7 +1,6 @@
 package ca.cmput301f21t22.nabu.intent;
 
 import static junit.framework.TestCase.assertTrue;
-
 import static org.junit.Assert.assertFalse;
 
 import android.app.Activity;
@@ -24,11 +23,10 @@ import ca.cmput301f21t22.nabu.R;
 import ca.cmput301f21t22.nabu.TestResources.DateProvider;
 
 public class DataPersistenceTest {
+    @Rule
+    public ActivityTestRule<MainActivity> rule = new ActivityTestRule<>(MainActivity.class, true, true);
     private Solo solo;
     private DateProvider dateProvider = new DateProvider();
-    @Rule
-    public ActivityTestRule<MainActivity> rule =
-            new ActivityTestRule<>(MainActivity.class, true, true);
 
     /**
      * Runs before all tests and creates solo instance.
@@ -67,16 +65,6 @@ public class DataPersistenceTest {
     }
 
     /**
-     * Gets the Activity
-     *
-     * @throws Exception
-     */
-    @Test
-    public void start() throws Exception {
-        Activity activity = rule.getActivity();
-    }
-
-    /**
      * Signs into an account
      * Creates a new Habit
      * Creates a new Event
@@ -103,23 +91,19 @@ public class DataPersistenceTest {
 
         solo.enterText((EditText) solo.getView(R.id.edit_reason), "I want honey");
         solo.clickOnText("Start Date");
-        solo.setDatePicker(0,2021,
-                10, 5);
+        solo.setDatePicker(0, 2021, 10, 5);
         solo.clickOnText("OK");
         solo.clickOnView((FloatingActionButton) solo.getView(R.id.button_save));
-        solo.goBack();
 
         //Go to My Day Fragment and create an Event
         solo.clickOnMenuItem("My Day");
         solo.clickOnText("Farm Bees");
         solo.clickOnText("Edit Event");
         solo.clickOnText(this.dateProvider.getCurrentYear());
-        solo.setDatePicker(0,2021,
-                10, 9);
+        solo.setDatePicker(0, 2021, 10, 9);
         solo.clickOnText("OK");
         solo.enterText((EditText) solo.getView(R.id.edit_comment), "Bought Bees");
         solo.clickOnView((FloatingActionButton) solo.getView(R.id.button_save));
-        solo.goBack();
 
         //Logs Out
         solo.clickOnMenuItem("Settings");
@@ -140,8 +124,7 @@ public class DataPersistenceTest {
         //Habit checks
         assertTrue(solo.waitForText("Farm Bees", 1, 2000));
         assertTrue(solo.waitForText("I want honey", 1, 2000));
-        assertTrue(solo.waitForText("Every Day",
-                1, 2000));
+        assertTrue(solo.waitForText("Every Day", 1, 2000));
 
         //Event Checks
         assertTrue(solo.waitForText("Bought Bees", 1, 2000));
@@ -167,23 +150,19 @@ public class DataPersistenceTest {
 
         solo.enterText((EditText) solo.getView(R.id.edit_reason), "I want dams");
         solo.clickOnText("Start Date");
-        solo.setDatePicker(0,2021,
-                10, 5);
+        solo.setDatePicker(0, 2021, 10, 5);
         solo.clickOnText("OK");
         solo.clickOnView((FloatingActionButton) solo.getView(R.id.button_save));
-        solo.goBack();
 
         //Go to My Day Fragment and create an Event
         solo.clickOnMenuItem("My Day");
         solo.clickOnText("Farm Beavers");
         solo.clickOnText("Edit Event");
         solo.clickOnText(this.dateProvider.getCurrentYear());
-        solo.setDatePicker(0,2021,
-                10, 9);
+        solo.setDatePicker(0, 2021, 10, 9);
         solo.clickOnText("OK");
         solo.enterText((EditText) solo.getView(R.id.edit_comment), "Bought Beavers");
         solo.clickOnView((FloatingActionButton) solo.getView(R.id.button_save));
-        solo.goBack();
 
         //Edits the farm beavers habit and habit event
         //Edits the Habit
@@ -202,11 +181,9 @@ public class DataPersistenceTest {
         solo.clearEditText((EditText) solo.getView(R.id.edit_reason));
         solo.enterText((EditText) solo.getView(R.id.edit_reason), "They went crazy");
         solo.clickOnView(solo.getView(R.id.text_start_date));
-        solo.setDatePicker(0,2021,
-                10, 9);
+        solo.setDatePicker(0, 2021, 10, 9);
         solo.clickOnText("OK");
         solo.clickOnView((FloatingActionButton) solo.getView(R.id.button_save));
-        solo.goBack();
 
         //Edits the Event
         solo.clickOnMenuItem("Habits");
@@ -214,16 +191,15 @@ public class DataPersistenceTest {
         solo.clickOnImageButton(0);
         solo.clickOnMenuItem("View Events");
 
+        solo.waitForText("Bought Beavers");
         solo.clickOnImage(6);
         solo.clickOnMenuItem("Edit Event");
         solo.clickOnView(solo.getView(R.id.text_date));
-        solo.setDatePicker(0,2021,
-                11, 15);
+        solo.setDatePicker(0, 2021, 11, 15);
         solo.clickOnText("OK");
         solo.clearEditText((EditText) solo.getView(R.id.edit_comment));
         solo.enterText((EditText) solo.getView(R.id.edit_comment), "Getting new bees");
         solo.clickOnView((FloatingActionButton) solo.getView(R.id.button_save));
-        solo.goBack();
 
         //Logs Out
         solo.clickOnMenuItem("Settings");
@@ -248,7 +224,6 @@ public class DataPersistenceTest {
         //Event Checks
         assertTrue(solo.waitForText("Getting new bees", 1, 2000));
         assertTrue(solo.waitForText("Nov 9, 2021", 1, 2000));
-
     }
 
     @Test
@@ -270,11 +245,9 @@ public class DataPersistenceTest {
 
         solo.enterText((EditText) solo.getView(R.id.edit_reason), "I want soup");
         solo.clickOnText("Start Date");
-        solo.setDatePicker(0, 2021,
-                10, 5);
+        solo.setDatePicker(0, 2021, 10, 5);
         solo.clickOnText("OK");
         solo.clickOnView((FloatingActionButton) solo.getView(R.id.button_save));
-        solo.goBack();
 
         //Deletes Habit
         solo.clickOnView((ImageButton) solo.getView(R.id.button_overflow_menu));
@@ -294,29 +267,26 @@ public class DataPersistenceTest {
 
         solo.enterText((EditText) solo.getView(R.id.edit_reason), "I like birds");
         solo.clickOnText("Start Date");
-        solo.setDatePicker(0, 2021,
-                10, 5);
+        solo.setDatePicker(0, 2021, 10, 5);
         solo.clickOnText("OK");
         solo.clickOnView((FloatingActionButton) solo.getView(R.id.button_save));
-        solo.goBack();
 
         //Go to My Day Fragment and create an Event
         solo.clickOnMenuItem("My Day");
         solo.clickOnText("Farm Birds");
         solo.clickOnText("Edit Event");
         solo.clickOnText(this.dateProvider.getCurrentYear());
-        solo.setDatePicker(0, 2021,
-                10, 9);
+        solo.setDatePicker(0, 2021, 10, 9);
         solo.clickOnText("OK");
         solo.enterText((EditText) solo.getView(R.id.edit_comment), "Bought Birds");
         solo.clickOnView((FloatingActionButton) solo.getView(R.id.button_save));
-        solo.goBack();
 
         //Deletes the Event
         solo.clickOnMenuItem("Habits");
         solo.clickOnView((ImageButton) solo.getView(R.id.button_overflow_menu));
         solo.clickOnMenuItem("View Events");
 
+        solo.waitForText("Bought Birds");
         solo.clickOnImage(6);
         solo.clickOnMenuItem("Delete Event");
         solo.clickOnText("Delete");

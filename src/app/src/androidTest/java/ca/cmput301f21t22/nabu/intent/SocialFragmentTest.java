@@ -1,7 +1,6 @@
 package ca.cmput301f21t22.nabu.intent;
 
 import static junit.framework.TestCase.assertTrue;
-
 import static org.junit.Assert.assertFalse;
 
 import android.widget.EditText;
@@ -28,6 +27,8 @@ import ca.cmput301f21t22.nabu.TestResources.DateProvider;
  * out otherwise.
  */
 public class SocialFragmentTest {
+    @Rule
+    public ActivityTestRule<MainActivity> rule = new ActivityTestRule<>(MainActivity.class, true, true);
     private Solo solo;
     private DateProvider dateProvider = new DateProvider();
     private String mainEmail = "boggles@swamp.bog";
@@ -35,10 +36,6 @@ public class SocialFragmentTest {
     private String socialEmail = "Tim@magnus.uk";
     private String socialEmailPassword = "3yesSuck";
     private String socialName = "tim@magnus.uk";
-
-    @Rule
-    public ActivityTestRule<MainActivity> rule =
-            new ActivityTestRule<>(MainActivity.class, true, true);
 
     /**
      * Runs before all tests and creates solo instance.
@@ -119,11 +116,9 @@ public class SocialFragmentTest {
 
         solo.enterText((EditText) solo.getView(R.id.edit_reason), "I want honey");
         solo.clickOnText("Start Date");
-        solo.setDatePicker(0,2021,
-                10, 5);
+        solo.setDatePicker(0, 2021, 10, 5);
         solo.clickOnText("OK");
         solo.clickOnView((FloatingActionButton) solo.getView(R.id.button_save));
-        solo.goBack();
 
         //Should show up
         solo.clickOnView((FloatingActionButton) solo.getView(R.id.button_add_habit));
@@ -140,11 +135,9 @@ public class SocialFragmentTest {
 
         solo.enterText((EditText) solo.getView(R.id.edit_reason), "I want to have an army");
         solo.clickOnText("Start Date");
-        solo.setDatePicker(0,2021,
-                10, 5);
+        solo.setDatePicker(0, 2021, 10, 5);
         solo.clickOnText("OK");
         solo.clickOnView((FloatingActionButton) solo.getView(R.id.button_save));
-        solo.goBack();
 
         //Should not show up as it is not public
         solo.clickOnView((FloatingActionButton) solo.getView(R.id.button_add_habit));
@@ -159,11 +152,9 @@ public class SocialFragmentTest {
 
         solo.enterText((EditText) solo.getView(R.id.edit_reason), "I want to find beehives");
         solo.clickOnText("Start Date");
-        solo.setDatePicker(0,2021,
-                10, 5);
+        solo.setDatePicker(0, 2021, 10, 5);
         solo.clickOnText("OK");
         solo.clickOnView((FloatingActionButton) solo.getView(R.id.button_save));
-        solo.goBack();
     }
 
     /**
@@ -178,8 +169,7 @@ public class SocialFragmentTest {
         solo.clickOnMenuItem("Social");
         if (option == "Accept") {
             solo.clickOnView((ImageButton) solo.getView(R.id.accept_follow_button));
-        }
-        else if (option == "Reject") {
+        } else if (option == "Reject") {
             solo.clickOnView((ImageButton) solo.getView(R.id.reject_follow_Button));
         }
 
@@ -211,7 +201,7 @@ public class SocialFragmentTest {
      * Check if social user's habit is properly shown on the MyDay Page
      */
     @Test
-    public void checkFollowedUserHabits(){
+    public void checkFollowedUserHabits() {
         this.socialSetUpContinue("Accept");
         solo.clickOnMenuItem("My Day");
 
@@ -234,7 +224,7 @@ public class SocialFragmentTest {
      * Checks that social user's habits have changed in the social feed
      */
     @Test
-    public void checkFollowedUserHabitsUpdate(){
+    public void checkFollowedUserHabitsUpdate() {
         this.socialSetUpContinue("Accept");
         solo.clickOnMenuItem("My Day");
 
@@ -276,7 +266,7 @@ public class SocialFragmentTest {
      * Check to make sure social user's habits aren't shown on the main user's MyDay Page
      */
     @Test
-    public void checkUnfollowUser(){
+    public void checkUnfollowUser() {
         this.socialSetUpContinue("Accept");
 
         //Check that social user's public habits appear
@@ -296,14 +286,13 @@ public class SocialFragmentTest {
         assertFalse(solo.waitForText("Bats", 1, 2000));
     }
 
-
     /**
      * Indicates for social user to reject main user
      * Check if the main user is not following the social user
      * Check to make sure social user's habits aren't shown on the main user's Page
      */
     @Test
-    public void checkRejectUser(){
+    public void checkRejectUser() {
         this.socialSetUpContinue("Reject");
 
         //Check that social user's public habit does not appear
@@ -315,7 +304,6 @@ public class SocialFragmentTest {
         //Check that email of social user shows up on main user's social screen
         solo.clickOnMenuItem("Social");
         assertFalse(solo.waitForText(socialEmail, 1, 2000));
-
     }
 
     /**

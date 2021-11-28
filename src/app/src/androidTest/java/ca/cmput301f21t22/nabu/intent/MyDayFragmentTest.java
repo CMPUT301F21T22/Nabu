@@ -1,30 +1,21 @@
 package ca.cmput301f21t22.nabu.intent;
 
 import static junit.framework.TestCase.assertTrue;
+import static org.junit.Assert.assertFalse;
 
-import android.app.Activity;
-import androidx.test.ext.junit.runners.AndroidJUnit4;
+import android.widget.EditText;
+import android.widget.ImageButton;
+
 import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.rule.ActivityTestRule;
 
-import android.widget.DatePicker;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.ListView;
-
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.robotium.solo.Solo;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import static junit.framework.TestCase.assertTrue;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-
-import java.time.DayOfWeek;
-import java.util.Calendar;
 
 import ca.cmput301f21t22.nabu.MainActivity;
 import ca.cmput301f21t22.nabu.R;
@@ -36,11 +27,10 @@ import ca.cmput301f21t22.nabu.TestResources.DateProvider;
  * out otherwise.
  */
 public class MyDayFragmentTest {
+    @Rule
+    public ActivityTestRule<MainActivity> rule = new ActivityTestRule<>(MainActivity.class, true, true);
     private Solo solo;
     private DateProvider dateProvider = new DateProvider();
-    @Rule
-    public ActivityTestRule<MainActivity> rule =
-            new ActivityTestRule<>(MainActivity.class, true, true);
 
     /**
      * Runs before all tests and creates solo instance.
@@ -81,16 +71,6 @@ public class MyDayFragmentTest {
     }
 
     /**
-     * Gets the Activity
-     *
-     * @throws Exception
-     */
-    @Test
-    public void start() throws Exception {
-        Activity activity = rule.getActivity();
-    }
-
-    /**
      * Creates a Habit scheduled for the current day
      * Creates a Habit scheduled for all days
      * Creates a Habit scheduled for days except for the current day
@@ -109,11 +89,9 @@ public class MyDayFragmentTest {
 
         solo.enterText((EditText) solo.getView(R.id.edit_reason), "I want honey");
         solo.clickOnText("Start Date");
-        solo.setDatePicker(0,2021,
-                10, 5);
+        solo.setDatePicker(0, 2021, 10, 5);
         solo.clickOnText("OK");
         solo.clickOnView((FloatingActionButton) solo.getView(R.id.button_save));
-        solo.goBack();
 
         solo.clickOnView((FloatingActionButton) solo.getView(R.id.button_add_habit));
         solo.enterText((EditText) solo.getView(R.id.edit_title), "Farm Hornets");
@@ -127,22 +105,18 @@ public class MyDayFragmentTest {
 
         solo.enterText((EditText) solo.getView(R.id.edit_reason), "I want honey");
         solo.clickOnText("Start Date");
-        solo.setDatePicker(0,2021,
-                10, 5);
+        solo.setDatePicker(0, 2021, 10, 5);
         solo.clickOnText("OK");
         solo.clickOnView((FloatingActionButton) solo.getView(R.id.button_save));
-        solo.goBack();
 
         solo.clickOnView((FloatingActionButton) solo.getView(R.id.button_add_habit));
         solo.enterText((EditText) solo.getView(R.id.edit_title), "Farm Wasps");
 
         solo.enterText((EditText) solo.getView(R.id.edit_reason), "I want honey");
         solo.clickOnText("Start Date");
-        solo.setDatePicker(0,2021,
-                10, 5);
+        solo.setDatePicker(0, 2021, 10, 5);
         solo.clickOnText("OK");
         solo.clickOnView((FloatingActionButton) solo.getView(R.id.button_save));
-        solo.goBack();
 
         //Go to My Day Fragment and check what Habits appear
         solo.clickOnMenuItem("My Day");
@@ -170,11 +144,9 @@ public class MyDayFragmentTest {
 
         solo.enterText((EditText) solo.getView(R.id.edit_reason), "I want honey");
         solo.clickOnText("Start Date");
-        solo.setDatePicker(0,2021,
-                10, 5);
+        solo.setDatePicker(0, 2021, 10, 5);
         solo.clickOnText("OK");
         solo.clickOnView((FloatingActionButton) solo.getView(R.id.button_save));
-        solo.goBack();
 
         //Checks Habit is shown in My Day Fragment
         solo.clickOnMenuItem("My Day");
@@ -210,17 +182,14 @@ public class MyDayFragmentTest {
 
         solo.enterText((EditText) solo.getView(R.id.edit_reason), "I want honey");
         solo.clickOnText("Start Date");
-        solo.setDatePicker(0, 2021,
-                10, 5);
+        solo.setDatePicker(0, 2021, 10, 5);
         solo.clickOnText("OK");
         solo.clickOnView((FloatingActionButton) solo.getView(R.id.button_save));
-        solo.goBack();
 
         //Clicks habit and asserts that click has been registered
         solo.clickOnMenuItem("My Day");
         solo.clickOnText("Farm Bees");
-        assertTrue(solo.waitForText("Habit marked as complete", 1,
-                2000));
+        assertTrue(solo.waitForText("Habit marked as complete", 1, 2000));
         solo.clickOnText("Farm Bees");
     }
 
