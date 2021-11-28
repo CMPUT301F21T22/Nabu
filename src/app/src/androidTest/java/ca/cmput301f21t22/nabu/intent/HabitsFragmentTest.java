@@ -25,6 +25,7 @@ import java.util.Date;
 
 import ca.cmput301f21t22.nabu.MainActivity;
 import ca.cmput301f21t22.nabu.R;
+import ca.cmput301f21t22.nabu.TestResources.DateProvider;
 
 /**
  * Runs tests on the habits fragment.
@@ -33,6 +34,7 @@ import ca.cmput301f21t22.nabu.R;
  */
 public class HabitsFragmentTest {
     private Solo solo;
+    private DateProvider dateProvider = new DateProvider();
     private String habitText = "Farm Bees";
     private String habitReason = "I want Honey";
 
@@ -121,7 +123,7 @@ public class HabitsFragmentTest {
         //Asserts Habit is on screen and has the relevant information
         assertTrue(solo.waitForText(this.habitText, 1, 2000));
         assertTrue(solo.waitForText(this.habitReason, 1, 2000));
-        assertTrue(solo.waitForText("2021", 1, 2000));
+        assertTrue(solo.waitForText(this.dateProvider.getCurrentYear(), 1, 2000));
         assertTrue(solo.waitForText("Every Day",
                 1, 2000));
 
@@ -193,7 +195,7 @@ public class HabitsFragmentTest {
         solo.clickOnMenuItem("My Day");
         solo.clickOnText(this.habitText);
         solo.clickOnText("Edit Event");
-        solo.clickOnText("2021");
+        solo.clickOnText(this.dateProvider.getCurrentYear());
         solo.setDatePicker(0,2021,
                 10, 9);
         solo.clickOnText("OK");
@@ -296,9 +298,7 @@ public class HabitsFragmentTest {
         solo.clickOnView((ImageButton) solo.getView(R.id.button_overflow_menu));
         solo.clickOnMenuItem("View Events");
 
-        //TODO: Issue, can not find proper index for event overflow menu, and cannot seem to press
-        // it otherwise
-        solo.clickOnImageButton(1);
+        solo.clickOnImage(6);
         solo.clickOnMenuItem("Delete Event");
         solo.clickOnText("Delete");
 
@@ -406,7 +406,7 @@ public class HabitsFragmentTest {
         solo.clickOnMenuItem("My Day");
         solo.clickOnText(this.habitText);
         solo.clickOnText("Edit Event");
-        solo.clickOnText("2021");
+        solo.clickOnText(this.dateProvider.getCurrentDate());
         solo.setDatePicker(0,2021,
                 10, 9);
         solo.clickOnText("OK");
@@ -420,9 +420,7 @@ public class HabitsFragmentTest {
         solo.clickOnView((ImageButton) solo.getView(R.id.button_overflow_menu));
         solo.clickOnMenuItem("View Events");
 
-        //TODO: Issue, can not find proper index for event overflow menu, and cannot seem to press
-        // it otherwise
-        solo.clickOnImageButton(1);
+        solo.clickOnImage(6);
         solo.clickOnMenuItem("Edit Event");
         solo.clickOnView(solo.getView(R.id.text_date));
         solo.setDatePicker(0,2021,

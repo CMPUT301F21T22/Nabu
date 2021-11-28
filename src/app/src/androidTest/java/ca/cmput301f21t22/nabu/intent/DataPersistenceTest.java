@@ -21,9 +21,11 @@ import org.junit.Test;
 
 import ca.cmput301f21t22.nabu.MainActivity;
 import ca.cmput301f21t22.nabu.R;
+import ca.cmput301f21t22.nabu.TestResources.DateProvider;
 
 public class DataPersistenceTest {
     private Solo solo;
+    private DateProvider dateProvider = new DateProvider();
     @Rule
     public ActivityTestRule<MainActivity> rule =
             new ActivityTestRule<>(MainActivity.class, true, true);
@@ -111,7 +113,7 @@ public class DataPersistenceTest {
         solo.clickOnMenuItem("My Day");
         solo.clickOnText("Farm Bees");
         solo.clickOnText("Edit Event");
-        solo.clickOnText("2021");
+        solo.clickOnText(this.dateProvider.getCurrentYear());
         solo.setDatePicker(0,2021,
                 10, 9);
         solo.clickOnText("OK");
@@ -138,7 +140,7 @@ public class DataPersistenceTest {
         //Habit checks
         assertTrue(solo.waitForText("Farm Bees", 1, 2000));
         assertTrue(solo.waitForText("I want honey", 1, 2000));
-        assertTrue(solo.waitForText("2021", 1, 2000));
+        assertTrue(solo.waitForText(this.dateProvider.getCurrentDate(), 1, 2000));
         assertTrue(solo.waitForText("Every Day",
                 1, 2000));
 
@@ -176,7 +178,7 @@ public class DataPersistenceTest {
         solo.clickOnMenuItem("My Day");
         solo.clickOnText("Farm Beavers");
         solo.clickOnText("Edit Event");
-        solo.clickOnText("2021");
+        solo.clickOnText(this.dateProvider.getCurrentYear());
         solo.setDatePicker(0,2021,
                 10, 9);
         solo.clickOnText("OK");
@@ -211,9 +213,7 @@ public class DataPersistenceTest {
         solo.clickOnView((ImageButton) solo.getView(R.id.button_overflow_menu));
         solo.clickOnMenuItem("View Events");
 
-        //TODO: Issue, can not find proper index for event overflow menu, and cannot seem to press
-        // it otherwise
-        solo.clickOnImageButton(1);
+        solo.clickOnImage(6);
         solo.clickOnMenuItem("Edit Event");
         solo.clickOnView(solo.getView(R.id.text_date));
         solo.setDatePicker(0,2021,
@@ -243,7 +243,7 @@ public class DataPersistenceTest {
         //Habit checks
         assertTrue(solo.waitForText("Farm Beans", 1, 2000));
         assertTrue(solo.waitForText("I want beans", 1, 2000));
-        assertTrue(solo.waitForText("2021", 1, 2000));
+        assertTrue(solo.waitForText(this.dateProvider.getCurrentDate(), 1, 2000));
         assertTrue(solo.waitForText("Every Day",
                 1, 2000));
 
@@ -306,7 +306,7 @@ public class DataPersistenceTest {
         solo.clickOnMenuItem("My Day");
         solo.clickOnText("Farm Birds");
         solo.clickOnText("Edit Event");
-        solo.clickOnText("2021");
+        solo.clickOnText(this.dateProvider.getCurrentYear());
         solo.setDatePicker(0, 2021,
                 10, 9);
         solo.clickOnText("OK");
@@ -321,7 +321,7 @@ public class DataPersistenceTest {
 
         //TODO: Issue, can not find proper index for event overflow menu, and cannot seem to press
         // it otherwise
-        solo.clickOnImageButton(3);
+        solo.clickOnImage(6);
         solo.clickOnMenuItem("Delete Event");
         solo.clickOnText("Delete");
 

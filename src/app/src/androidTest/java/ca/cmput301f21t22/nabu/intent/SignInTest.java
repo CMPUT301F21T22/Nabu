@@ -24,6 +24,7 @@ import static org.junit.Assert.assertFalse;
 
 import ca.cmput301f21t22.nabu.MainActivity;
 import ca.cmput301f21t22.nabu.R;
+import ca.cmput301f21t22.nabu.TestResources.DateProvider;
 
 /**
  * Runs tests on the login menu
@@ -33,6 +34,7 @@ import ca.cmput301f21t22.nabu.R;
  */
 public class SignInTest {
     private Solo solo;
+    private DateProvider dateProvider = new DateProvider();
     @Rule
     public ActivityTestRule<MainActivity> rule =
             new ActivityTestRule<>(MainActivity.class, true, true);
@@ -192,7 +194,7 @@ public class SignInTest {
         solo.clickOnMenuItem("My Day");
         solo.clickOnText("Farm Bees");
         solo.clickOnText("Edit Event");
-        solo.clickOnText("2021");
+        solo.clickOnText(dateProvider.getCurrentYear());
         solo.setDatePicker(0,2021,
                 10, 9);
         solo.clickOnText("OK");
