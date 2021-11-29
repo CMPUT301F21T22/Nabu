@@ -92,6 +92,7 @@ public class MyDayFragmentTest {
         solo.setDatePicker(0, 2021, 10, 5);
         solo.clickOnText("OK");
         solo.clickOnView((FloatingActionButton) solo.getView(R.id.button_save));
+        solo.waitForText("Farm Bees");
 
         solo.clickOnView((FloatingActionButton) solo.getView(R.id.button_add_habit));
         solo.enterText((EditText) solo.getView(R.id.edit_title), "Farm Hornets");
@@ -108,6 +109,7 @@ public class MyDayFragmentTest {
         solo.setDatePicker(0, 2021, 10, 5);
         solo.clickOnText("OK");
         solo.clickOnView((FloatingActionButton) solo.getView(R.id.button_save));
+        solo.waitForText("Farm Hornets");
 
         solo.clickOnView((FloatingActionButton) solo.getView(R.id.button_add_habit));
         solo.enterText((EditText) solo.getView(R.id.edit_title), "Farm Wasps");
@@ -117,6 +119,7 @@ public class MyDayFragmentTest {
         solo.setDatePicker(0, 2021, 10, 5);
         solo.clickOnText("OK");
         solo.clickOnView((FloatingActionButton) solo.getView(R.id.button_save));
+        solo.waitForText("My Day");
 
         //Go to My Day Fragment and check what Habits appear
         solo.clickOnMenuItem("My Day");
@@ -147,6 +150,7 @@ public class MyDayFragmentTest {
         solo.setDatePicker(0, 2021, 10, 5);
         solo.clickOnText("OK");
         solo.clickOnView((FloatingActionButton) solo.getView(R.id.button_save));
+        solo.waitForText("My Day");
 
         //Checks Habit is shown in My Day Fragment
         solo.clickOnMenuItem("My Day");
@@ -185,6 +189,7 @@ public class MyDayFragmentTest {
         solo.setDatePicker(0, 2021, 10, 5);
         solo.clickOnText("OK");
         solo.clickOnView((FloatingActionButton) solo.getView(R.id.button_save));
+        solo.waitForText("My Day");
 
         //Clicks habit and asserts that click has been registered
         solo.clickOnMenuItem("My Day");

@@ -91,6 +91,7 @@ public class EditHabitFragment extends DialogFragment {
         this.viewModel.isSaved().observe(this.getViewLifecycleOwner(), saved -> {
             if (saved) {
                 this.binding.buttonSave.hide();
+                this.dismiss();
             } else {
                 this.binding.buttonSave.show();
             }
@@ -194,7 +195,6 @@ public class EditHabitFragment extends DialogFragment {
                 this.validateReason(retrieveText(this.binding.editReason)) &&
                 this.validateStartDate(retrieveText(this.binding.textStartDate))) {
                 this.viewModel.saveHabit();
-                this.dismiss();
             }
         });
 

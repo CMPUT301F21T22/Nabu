@@ -119,6 +119,7 @@ public class SocialFragmentTest {
         solo.setDatePicker(0, 2021, 10, 5);
         solo.clickOnText("OK");
         solo.clickOnView((FloatingActionButton) solo.getView(R.id.button_save));
+        solo.waitForText("Farm Bees");
 
         //Should show up
         solo.clickOnView((FloatingActionButton) solo.getView(R.id.button_add_habit));
@@ -138,6 +139,7 @@ public class SocialFragmentTest {
         solo.setDatePicker(0, 2021, 10, 5);
         solo.clickOnText("OK");
         solo.clickOnView((FloatingActionButton) solo.getView(R.id.button_save));
+        solo.waitForText("Farm Bats");
 
         //Should not show up as it is not public
         solo.clickOnView((FloatingActionButton) solo.getView(R.id.button_add_habit));
@@ -155,6 +157,7 @@ public class SocialFragmentTest {
         solo.setDatePicker(0, 2021, 10, 5);
         solo.clickOnText("OK");
         solo.clickOnView((FloatingActionButton) solo.getView(R.id.button_save));
+        solo.waitForText("Farm Bears");
     }
 
     /**

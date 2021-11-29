@@ -162,6 +162,7 @@ public class HabitsFragmentTest {
         solo.setDatePicker(0, 2021, 10, 5);
         solo.clickOnText("OK");
         solo.clickOnView((FloatingActionButton) solo.getView(R.id.button_save));
+        solo.waitForText("My Day");
 
         //Go to My Day Fragment and create an Event
         String eventComment = "Bought Bees";
@@ -173,6 +174,7 @@ public class HabitsFragmentTest {
         solo.clickOnText("OK");
         solo.enterText((EditText) solo.getView(R.id.edit_comment), eventComment);
         solo.clickOnView((FloatingActionButton) solo.getView(R.id.button_save));
+        solo.waitForText("Habits");
 
         //Check the Event
         solo.clickOnMenuItem("Habits");
@@ -208,6 +210,7 @@ public class HabitsFragmentTest {
         solo.setDatePicker(0, 2021, 10, 5);
         solo.clickOnText("OK");
         solo.clickOnView((FloatingActionButton) solo.getView(R.id.button_save));
+        solo.waitForText(this.habitText);
 
         //Deletes Habit
         solo.clickOnView((ImageButton) solo.getView(R.id.button_overflow_menu));
@@ -246,6 +249,7 @@ public class HabitsFragmentTest {
         solo.setDatePicker(0, 2021, 10, 5);
         solo.clickOnText("OK");
         solo.clickOnView((FloatingActionButton) solo.getView(R.id.button_save));
+        solo.waitForText("My Day");
 
         //Go to My Day Fragment and create an Event
         String eventComment = "Bought Bees";
@@ -257,6 +261,7 @@ public class HabitsFragmentTest {
         solo.clickOnText("OK");
         solo.enterText((EditText) solo.getView(R.id.edit_comment), eventComment);
         solo.clickOnView((FloatingActionButton) solo.getView(R.id.button_save));
+        solo.waitForText("Habits");
 
         //Deletes the Event
         solo.clickOnMenuItem("Habits");
@@ -301,6 +306,7 @@ public class HabitsFragmentTest {
         solo.setDatePicker(0, 2021, 10, 5);
         solo.clickOnText("OK");
         solo.clickOnView((FloatingActionButton) solo.getView(R.id.button_save));
+        solo.waitForText(this.habitText);
 
         //Edits the Habit
         String editedHabitTitle = "Exterminate Bees";
@@ -359,6 +365,7 @@ public class HabitsFragmentTest {
         solo.setDatePicker(0, 2021, 10, 5);
         solo.clickOnText("OK");
         solo.clickOnView((FloatingActionButton) solo.getView(R.id.button_save));
+        solo.waitForText("My Day");
 
         //Go to My Day Fragment and create an Event
         String eventComment1 = "Bought Bees";
@@ -370,6 +377,7 @@ public class HabitsFragmentTest {
         solo.clickOnText("OK");
         solo.enterText((EditText) solo.getView(R.id.edit_comment), eventComment1);
         solo.clickOnView((FloatingActionButton) solo.getView(R.id.button_save));
+        solo.waitForText("Habits");
 
         //Edits the Event
         String eventComment2 = "Getting new bees";

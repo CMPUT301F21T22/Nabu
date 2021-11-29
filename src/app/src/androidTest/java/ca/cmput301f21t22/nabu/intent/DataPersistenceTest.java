@@ -3,7 +3,6 @@ package ca.cmput301f21t22.nabu.intent;
 import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertFalse;
 
-import android.app.Activity;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
@@ -94,6 +93,7 @@ public class DataPersistenceTest {
         solo.setDatePicker(0, 2021, 10, 5);
         solo.clickOnText("OK");
         solo.clickOnView((FloatingActionButton) solo.getView(R.id.button_save));
+        solo.waitForText("Farm Bees");
 
         //Go to My Day Fragment and create an Event
         solo.clickOnMenuItem("My Day");
@@ -104,6 +104,7 @@ public class DataPersistenceTest {
         solo.clickOnText("OK");
         solo.enterText((EditText) solo.getView(R.id.edit_comment), "Bought Bees");
         solo.clickOnView((FloatingActionButton) solo.getView(R.id.button_save));
+        solo.waitForText("Settings");
 
         //Logs Out
         solo.clickOnMenuItem("Settings");
@@ -153,6 +154,7 @@ public class DataPersistenceTest {
         solo.setDatePicker(0, 2021, 10, 5);
         solo.clickOnText("OK");
         solo.clickOnView((FloatingActionButton) solo.getView(R.id.button_save));
+        solo.waitForText("My Day");
 
         //Go to My Day Fragment and create an Event
         solo.clickOnMenuItem("My Day");
@@ -163,6 +165,7 @@ public class DataPersistenceTest {
         solo.clickOnText("OK");
         solo.enterText((EditText) solo.getView(R.id.edit_comment), "Bought Beavers");
         solo.clickOnView((FloatingActionButton) solo.getView(R.id.button_save));
+        solo.waitForText("Habits");
 
         //Edits the farm beavers habit and habit event
         //Edits the Habit
@@ -184,6 +187,7 @@ public class DataPersistenceTest {
         solo.setDatePicker(0, 2021, 10, 9);
         solo.clickOnText("OK");
         solo.clickOnView((FloatingActionButton) solo.getView(R.id.button_save));
+        solo.waitForText("Habits");
 
         //Edits the Event
         solo.clickOnMenuItem("Habits");
@@ -200,6 +204,7 @@ public class DataPersistenceTest {
         solo.clearEditText((EditText) solo.getView(R.id.edit_comment));
         solo.enterText((EditText) solo.getView(R.id.edit_comment), "Getting new bees");
         solo.clickOnView((FloatingActionButton) solo.getView(R.id.button_save));
+        solo.waitForText("Settings");
 
         //Logs Out
         solo.clickOnMenuItem("Settings");
@@ -248,6 +253,7 @@ public class DataPersistenceTest {
         solo.setDatePicker(0, 2021, 10, 5);
         solo.clickOnText("OK");
         solo.clickOnView((FloatingActionButton) solo.getView(R.id.button_save));
+        solo.waitForText("Farm Beats");
 
         //Deletes Habit
         solo.clickOnView((ImageButton) solo.getView(R.id.button_overflow_menu));
@@ -270,6 +276,7 @@ public class DataPersistenceTest {
         solo.setDatePicker(0, 2021, 10, 5);
         solo.clickOnText("OK");
         solo.clickOnView((FloatingActionButton) solo.getView(R.id.button_save));
+        solo.waitForText("My Day");
 
         //Go to My Day Fragment and create an Event
         solo.clickOnMenuItem("My Day");
@@ -280,6 +287,7 @@ public class DataPersistenceTest {
         solo.clickOnText("OK");
         solo.enterText((EditText) solo.getView(R.id.edit_comment), "Bought Birds");
         solo.clickOnView((FloatingActionButton) solo.getView(R.id.button_save));
+        solo.waitForText("Habits");
 
         //Deletes the Event
         solo.clickOnMenuItem("Habits");

@@ -169,6 +169,7 @@ public class SignInTest {
         solo.setDatePicker(0, 2021, 10, 5);
         solo.clickOnText("OK");
         solo.clickOnView((FloatingActionButton) solo.getView(R.id.button_save));
+        solo.waitForText("My Day");
 
         //Go to My Day Fragment and create an Event
         solo.clickOnMenuItem("My Day");
@@ -179,6 +180,7 @@ public class SignInTest {
         solo.clickOnText("OK");
         solo.enterText((EditText) solo.getView(R.id.edit_comment), "Bought Bees");
         solo.clickOnView((FloatingActionButton) solo.getView(R.id.button_save));
+        solo.waitForText("Habits");
 
         //Go to Habits Fragment and make another Habit
         solo.clickOnMenuItem("Habits");
@@ -196,6 +198,7 @@ public class SignInTest {
         solo.setDatePicker(0, 2021, 10, 5);
         solo.clickOnText("OK");
         solo.clickOnView((FloatingActionButton) solo.getView(R.id.button_save));
+        solo.waitForText("Settings");
 
         //Deletes Habits
         solo.clickOnMenuItem("Settings");

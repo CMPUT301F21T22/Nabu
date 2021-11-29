@@ -99,6 +99,7 @@ public class EditEventFragment extends DialogFragment {
         this.viewModel.isSaved().observe(this.getViewLifecycleOwner(), saved -> {
             if (saved) {
                 this.binding.buttonSave.hide();
+                this.dismiss();
             } else {
                 this.binding.buttonSave.show();
             }
@@ -164,7 +165,6 @@ public class EditEventFragment extends DialogFragment {
             if (this.validateDate(retrieveText(this.binding.textDate)) &&
                 this.validateComment(retrieveText(this.binding.editComment))) {
                 this.viewModel.saveEvent();
-                this.dismiss();
             }
         });
 
